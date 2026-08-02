@@ -1,9 +1,11 @@
 # Python
 .venv/
 __pycache__/
+tools/__pycache__/
 *.pyc
 
-# Build output (regenerable via ./build.sh)
+# Build output (regenerable via ./make.sh)
+review/
 build/*
 !build/Project_Verde_Documentation.pdf
 assets/charts/
