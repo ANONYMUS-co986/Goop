@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project Verde — The Plant That Waters Itself</title>
+<style>
+@page { size: A4; margin: 14mm 12mm 16mm 12mm; @bottom-right { content: "Project Verde · Page " counter(page) " of " counter(pages); font-size: 9pt; color: #555; } @top-left { content: "DAV ACON 5 · 2026"; font-size: 8pt; color: #777; text-transform: uppercase; letter-spacing: 1px; } }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif; color: #1a2332; line-height: 1.45; font-size: 10.5pt; }
+h1 { font-size: 26pt; color: #0b1f2a; letter-spacing: -1.5pt; line-height: 1.1; margin-bottom: 6pt; }
+h2 { font-size: 16pt; color: #06453b; border-left: 4pt solid #c8a84d; padding-left: 10pt; margin: 18pt 0 10pt 0; letter-spacing: -0.5pt; }
+h3 { font-size: 12pt; color: #06453b; margin: 14pt 0 6pt 0; }
+p { margin-bottom: 8pt; max-width: 100%; }
+.cover { page-break-after: always; background: linear-gradient(160deg, #0b1f2a 0%, #06453b 100%); color: white; padding: 28mm 14mm; position: relative; overflow: hidden; }
+.cover h1 { color: white; font-size: 42pt; letter-spacing: -3pt; margin-top: 18mm; }
+.cover .subtitle { font-size: 16pt; color: #c8a84d; margin: 10pt 0 6pt; letter-spacing: 1pt; text-transform: uppercase; }
+.hero-img { width: 100%; height: 42mm; object-fit: cover; border-radius: 8pt; margin-top: 16pt; border: 2pt solid #c8a84d; }
+.kpi-row { display: flex; gap: 8pt; margin-top: 14pt; }
+.kpi { background: rgba(255,255,255,0.1); border: 1pt solid rgba(255,255,255,0.25); padding: 8pt 10pt; border-radius: 6pt; flex: 1; }
+.kpi .big { font-size: 16pt; font-weight: 700; color: #c8a84d; }
+.callout { background: #f6f8f6; border-left: 4pt solid #06453b; padding: 10pt 12pt; margin: 10pt 0; border-radius: 0 6pt 6pt 0; }
+.tag { display: inline-block; background: #06453b; color: white; padding: 2pt 6pt; border-radius: 4pt; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.5pt; margin-right: 4pt; }
+.two-col { display: flex; gap: 10pt; }
+.two-col > div { flex: 1; }
+img { max-width: 100%; border-radius: 6pt; display: block; }
+.small { font-size: 8.5pt; color: #555; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div style="font-size:8pt;color:#c8a84d;text-transform:uppercase;letter-spacing:2pt;">DAV ACON 5 · Tech Exhibition 2026</div>
+  <h1>Project Verde</h1>
+  <div class="subtitle">The Plant That Waters Itself — And Talks to AI</div>
+  <p style="font-size:12pt;color:#ccc;max-width:85%;margin-top:8pt;">A complete three-tier IoT irrigation system: ESP32 sensors, Firebase cloud, AI vision, and a single-file web dashboard — built for under ₹1,890.</p>
+  <img src="cover_hero.png" class="hero-img" alt="Cover art">
+  <div class="kpi-row">
+    <div class="kpi"><div class="big">₹1,890</div>Total build cost</div>
+    <div class="kpi"><div class="big">5</div>Live sensors</div>
+    <div class="kpi"><div class="big">94%</div>AI diagnosis</div>
+    <div class="kpi"><div class="big">2</div>API calls/sec (was 17)</div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<h2>The Whole Story in 60 Seconds</h2>
+<p>Urban families forget to water plants. We built a smart garden that knows soil moisture, tank level, weather, and plant health — then acts automatically. ESP32 brain + 5 sensors + ESP32-CAM eye. Firebase cloud. Web app with Gemini AI and live weather. The big win: we fixed a 10-second pump glitch by bundling 17 network calls into 2. Zero reboots since.</p>
+<div class="callout"><strong>Key stat:</strong> 85% less network latency. Pump stays ON continuously until threshold reached. System uptime: 10+ minutes with zero watchdog reboots.</div>
+
+<!-- ARCHITECTURE -->
+<h2>How It Works — System Architecture</h2>
+<div class="two-col">
+  <div><img src="architecture.png" alt="Architecture"></div>
+  <div>
+    <h3>Three tiers, 1-second heartbeat</h3>
+    <ul style="font-size:9.5pt;">
+      <li><span class="tag">EDGE</span> ESP32 WROOM-32 + sensors + pump/UV LED</li>
+      <li><span class="tag">EYES</span> ESP32-CAM captures SVGA photos</li>
+      <li><span class="tag">CLOUD</span> Firebase RTDB (10 metrics / sec)</li>
+      <li><span class="tag">APP</span> Single-file HTML dashboard</li>
+      <li><span class="tag">AI</span> Gemini + Plant.id + OpenRouter</li>
+    </ul>
+    <p class="small">Data flows: HTTPS JSON every second. All thresholds persist in NVS flash.</p>
+  </div>
+</div>
+
+<!-- HARDWARE -->
+<h2>Hardware & Power Design</h2>
+<p>We used a 5 V / 2 A adapter (not USB-PD — PD lacks handshake chip, outputs ~0 mA). 1000 µF capacitor absorbs spikes. 1N4007 flyback diode kills pump inductive spikes. Relay isolates pump electrically.</p>
+<div class="callout"><strong>Hard-won lesson:</strong> 67 W USB-PD charger starved the ESP32. 5 V adapter solved brownouts. Camera RF interference fixed by dropping XCLK from 20 MHz to 8 MHz.</div>
+
+<!-- BUG STORY -->
+<h2>The Big Bug — Before & After</h2>
+<p>The AUTO pump clicked ON/OFF every ~10 s. Root cause: 17 blocking Firebase HTTPS calls per second → network stall → 8 s watchdog reboot → loop.</p>
+<img src="bug_before_after.png" alt="Bug fix infographic">
+<div class="callout"><strong>Fix:</strong> JSON bundling — 1 write to <code>/sensors</code> (10 metrics) + 1 read of <code>/controls</code> (9 keys) per second. ~85% less latency, zero reboots.</div>
+
+<!-- AI & RESULTS -->
+<h2>AI, APIs & Tested Results</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="big">94%</div>Nutrient deficiency diagnosis (Plant.id)</div>
+  <div class="kpi"><div class="big">≤2 s</div>CAM upload time</div>
+  <div class="kpi"><div class="big">3</div>Network fallback WiFi</div>
+  <div class="kpi"><div class="big">0</div>Reboots since fix</div>
+</div>
+<p class="small">4 APIs: OpenWeatherMap, crop.health (Plant.id), Google Gemini 2.5 Flash, OpenRouter. All on free tiers.</p>
+
+<!-- COST -->
+<h2>Cost & Sustainability</h2>
+<table style="width:100%;font-size:9.5pt;border-collapse:collapse;">
+<tr style="background:#06453b;color:white;"><th style="padding:6pt;text-align:left;">Category</th><th style="padding:6pt;text-align:right;">INR</th></tr>
+<tr><td style="padding:4pt;border-bottom:0.5pt solid #ccc;">Electronics</td><td style="padding:4pt;border-bottom:0.5pt solid #ccc;text-align:right;">1,320</td></tr>
+<tr><td style="padding:4pt;border-bottom:0.5pt solid #ccc;">Power & protection</td><td style="padding:4pt;border-bottom:0.5pt solid #ccc;text-align:right;">220</td></tr>
+<tr><td style="padding:4pt;border-bottom:0.5pt solid #ccc;">Mechanical</td><td style="padding:4pt;border-bottom:0.5pt solid #ccc;text-align:right;">350</td></tr>
+<tr style="font-weight:bold;background:#f6f8f6;"><td style="padding:6pt;">Total</td><td style="padding:6pt;text-align:right;">≈ 1,890</td></tr>
+</table>
+
+<!-- CONCLUSION -->
+<h2>Conclusion</h2>
+<p>Project Verde proves that a ₹1,890 student build can operate like a funded startup product. We documented every failure honestly — because credibility beats perfection. The plant waters itself. The AI explains why. And the judges see a system that actually works.</p>
+<div class="callout">Built by Aarav Choudhary & Anuj — Class X — for DAV ACON 5, 2026.</div>
+
+</body>
+</html>
