@@ -4,5 +4,6 @@ __pycache__/
 *.pyc
 
 # Build output (regenerable via ./build.sh)
-build/
+build/*
+!build/Project_Verde_Documentation.pdf
 assets/charts/
