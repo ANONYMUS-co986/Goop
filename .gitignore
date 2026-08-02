@@ -1,0 +1,8 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Build output (regenerable via ./build.sh)
+build/
+assets/charts/
