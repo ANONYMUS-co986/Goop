@@ -62,7 +62,7 @@ for i in range(1, len(chunks), 3):
     body = chunks[i + 2] if i + 2 < len(chunks) else ""
     n = folio_of[pid]
     body = re.sub(r'(<span class="folio">PAGE <b>)\d+(</b>)', rf'\g<1>{n:02d}\g<2>', body, count=1)
-    out.extend([marker, pid, body])
+    out.extend([marker, body])  # NOTE: pid is a nested capture of marker, not source text — re-emitting it would inject the raw id as visible text after every <section>
 doc = "".join(out)
 
 # retarget TOC anchors so chapters open on their divider pages where present

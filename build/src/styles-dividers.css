@@ -47,7 +47,7 @@
 .divider .page-foot{ position:absolute; left:52px; right:52px; bottom:26px; z-index:3;
   color:rgba(237,235,226,.5); border-top:1px solid rgba(237,235,226,.16); }
 .divider .div-credit{
-  position:absolute; right:52px; top:52px; z-index:3;
+  position:absolute; right:52px; top:auto; bottom:64px; z-index:3;
   font-family:'JetBrains Mono'; font-size:7pt; letter-spacing:.18em;
   color:rgba(237,235,226,.5); text-transform:uppercase;
 }

@@ -1,6 +1,7 @@
 # build tooling + scratch renders (can be recreated)
 build/tools/
 build/render/
+build/slides/
 build/assets/img/*.png
 !build/assets/img/qr_demo.png
 __pycache__/

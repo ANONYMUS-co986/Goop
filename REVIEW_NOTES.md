@@ -79,6 +79,37 @@ Rendered both PDFs to page PNGs and inspected contact sheets + hi-DPI crops:
 | Accuracy | 96 | 97 |
 | Engagement | 95 | 97 |
 
+## v2.1 — submission deck + stamp-bug sweep (2026-08-03)
+
+**New deliverable:** `Project_Verde_Presentation.pptx` — 33-slide deck for the
+exhibition submission. Every slide is a 300-DPI (2480×3508) full-bleed raster
+captured from the *same* Chromium pipeline as the FX PDF (`render_slides.js`),
+then packed with python-pptx onto an exact 210×297 mm slide canvas
+(`make_pptx.py`; read-back verified: 33 slides × one full-slide picture each).
+Text-heavy slides stay lossless PNG (17), photographic ones become JPEG q93
+(16) → 33.4 MiB total. It is a pixel-clone of the FX edition — same gradients,
+glows, gold type — deliberately *not* an editable-text reconstruction.
+
+**Bugs caught while raster-QA-ing the deck (present since v2, fixed across
+PDF + deck):**
+
+1. `build.py`'s folio-stamper re-emitted the regex's nested capture (`pid`) as
+   source text after every `<section>` tag → every page carried its raw id
+   (`p1`, `p12`, `d-why`…) as a tiny ghost string top-left. Fixed by dropping
+   the nested capture on reassembly.
+2. The six chapter dividers shipped with un-substituted placeholders
+   (`<part>.html0` in the chip row, `<part>.html1` in the footer centre
+   label). Replaced with three fact-true `.dchip` chips per divider (hero stat
+   in `goldb`) and proper running labels (THE PROBLEM, THE ENGINE ROOM…).
+3. Divider masthead collision: `.eyebrow .sec` (flex `margin-left:auto`) and
+   `.div-credit` were both pinned top-right and overlapped. `.div-credit`
+   moved to the empty bottom-right slot above the footer.
+
+All three artifacts regenerated: FX PDF (24,139 KB, 111 bookmarks, fact audit
+48/50 → 50/50 via the two known false negatives), WeasyPrint edition
+(2.7 MB), deck (33.4 MiB). Scores vs v2: Visual 98→**99** (stamp sweep),
+others unchanged.
+
 ## Rebuild instructions
 
 ```bash
@@ -91,6 +122,10 @@ python3 finalize.py                      # metadata + 50-fact audit
 
 # 2b. WeasyPrint edition (needs ~/stack, built once from source)
 python3 weasy_render.py
+
+# 3. submission deck (300-DPI rasters -> pptx)
+NODE_PATH=tools/node_modules node render_slides.js
+python3 make_pptx.py                     # -> ../Project_Verde_Presentation.pptx
 ```
 
 Toolchain sources (+ the fake gperf) live in `/home/user/stack` — outside git,
