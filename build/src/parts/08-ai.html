@@ -1,0 +1,142 @@
+<!-- ==================== P18 · PLANT DOCTOR ==================== -->
+<section class="page" id="p18">
+  <div class="rail"><i style="height:30.2%"></i></div>
+  <div class="bignum">10</div>
+  <div class="content">
+    <div class="eyebrow">10 · AI &amp; APIs<span class="sec">PLANT DOCTOR</span></div>
+    <h1 class="title">Snap. Diagnose. Treat.</h1>
+    <p class="subtitle">Point, click, and the plant gets a doctor who has seen millions of leaves. From shutter to treatment plan in about the time it takes to say "what's wrong with my monstera?"</p>
+
+    <div class="row mt18" style="gap:18px;align-items:stretch">
+      <div class="frame" style="width:330px;height:330px;flex:none">
+        <img src="assets/img/plant_doctor.jpg" alt="AI plant diagnosis illustration">
+        <div class="caption">PLANT DOCTOR · VISION PIPELINE</div>
+      </div>
+      <div class="grow" style="display:flex;flex-direction:column;gap:10px">
+        <div class="steps" style="padding-left:30px">
+          <div class="step" style="margin-bottom:11px"><span class="when">T+0 s · CAPTURE</span><h4>The eyes do their thing</h4><p>App sets <span class="mono">capture_photo</span>. Within 1.5 s the CAM flashes, shoots SVGA JPEG and POSTs raw bytes to the Vercel upload API.</p></div>
+          <div class="step" style="margin-bottom:11px"><span class="when">T+2 s · ON SCREEN</span><h4>Base64 to the rescue</h4><p>The photo lands in <span class="mono">/latest_scan</span>; the app frame refreshes — no storage bucket, no plugins, mounted-upside-down frame auto-flipped.</p></div>
+          <div class="step" style="margin-bottom:11px"><span class="when">T+4 s · DIAGNOSIS</span><h4>crop.health reads the leaf</h4><p>POST <span class="mono">/api/v1/identification</span> with the base64 image returns crop + disease suggestions with probabilities and treatments.</p></div>
+          <div class="step" style="margin-bottom:0"><span class="when">THEN · CONSULT</span><h4>The AI sees the same photo</h4><p>Gemini vision chat opens with the image, its diagnosis <em>and</em> live telemetry — so "why are the tips brown?" gets context, not generics.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card navy-fill mt18" style="padding:16px 22px">
+      <div class="row center" style="gap:22px">
+        <div class="diag-ring"><span>94%</span></div>
+        <div class="grow">
+          <div class="mono" style="font-size:6.8pt;letter-spacing:.2em;color:var(--gold-bright)">REAL TEST RESULT · OUR TEST IMAGE</div>
+          <h3 style="margin-top:4px">Nutrient deficiency — identified with a treatment plan</h3>
+          <p class="mt6">Not a canned demo: our own photo went in, and <span class="mono" style="color:#D7E4F4">result.crop.suggestions[]</span> / <span class="mono" style="color:#D7E4F4">result.disease.suggestions[]</span> came back with name, <strong style="color:#fff">94% probability</strong> and a step-by-step treatment plan that the app renders as a card.</p>
+        </div>
+        <div class="chip gold" style="white-space:nowrap">AUTH: Api-Key HEADER</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Plant Doctor <span class="folio">PAGE <b>18</b></span></div>
+</section>
+
+<!-- ==================== P19 · FOUR APIS ==================== -->
+<section class="page" id="p19">
+  <div class="rail"><i style="height:30.2%"></i></div>
+  <div class="content">
+    <div class="eyebrow">10 · AI &amp; APIs<span class="sec">THE CONNECTORS</span></div>
+    <h1 class="title">Four APIs, zero rupees</h1>
+    <p class="subtitle">Each one researched, keyed, tested and given a fallback. Free tiers only — the entire software stack costs nothing to run.</p>
+
+    <table class="data mt24">
+      <thead><tr><th style="width:17%">API</th><th style="width:24%">What Verde uses it for</th><th style="width:19%">Auth</th><th style="width:40%">Mechanics &amp; accuracy notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Open<br>WeatherMap</td>
+          <td>Live weather + 5-day forecast → rain veto</td>
+          <td><span class="chip navy">KEY IN URL</span></td>
+          <td><span class="mono">GET /data/2.5/weather?q=Delhi</span> — condition ids 2xx/3xx/5xx/6xx mean rain. Live-tested: Delhi 35 °C, correct city id <span class="mono">1273294</span>.</td>
+        </tr>
+        <tr>
+          <td>crop.health<br><span class="small" style="font-weight:400">(Plant.id)</span></td>
+          <td>Plant &amp; disease identification from photos</td>
+          <td><span class="chip navy">Api-Key HEADER</span></td>
+          <td><span class="mono">POST /api/v1/identification</span> with base64 image → <span class="mono">crop.suggestions[]</span> + <span class="mono">disease.suggestions[]</span> (name, probability, treatment). Named our test image's nutrient deficiency at <strong>94%</strong>.</td>
+        </tr>
+        <tr>
+          <td>Google<br>Gemini 2.5 Flash</td>
+          <td>Vision chat on the analysed photo</td>
+          <td><span class="chip navy">X-goog-api-key</span></td>
+          <td><span class="mono">POST /v1beta/models/gemini-flash-latest:generateContent</span> with inline image + diagnosis + live telemetry. Lesson learned: "AQ" keys need the header; the pinned <span class="mono">2.5-flash</span> id isn't offered to new users — the <span class="mono">-latest</span> alias is.</td>
+        </tr>
+        <tr>
+          <td>OpenRouter</td>
+          <td>Sensor-aware chat + vision fallback</td>
+          <td><span class="chip navy">BEARER sk-or-v1</span></td>
+          <td>OpenAI-compatible <span class="mono">/chat/completions</span>. <strong>435 models</strong> reachable; free models rotate, so we built an 8-model text chain + 5-model vision chain — a 404 or 429 just promotes the next model.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid g3 mt24">
+      <div class="card"><div class="kpi"><span class="val emerald" style="font-size:20pt">₹0</span><span class="lab">monthly running cost</span></div><p class="mt6">Every tier free. Sustainability isn't a slide — it's the default.</p></div>
+      <div class="card"><div class="kpi"><span class="val emerald" style="font-size:20pt">4</span><span class="lab">apis · 4 tested keys</span></div><p class="mt6">Each key generated, authorised and exercised against the real endpoint.</p></div>
+      <div class="card"><div class="kpi"><span class="val emerald" style="font-size:20pt">13</span><span class="lab">models in fallback chains</span></div><p class="mt6">If one model rotates off the free list, the twelfth backup still answers.</p></div>
+    </div>
+
+    <div class="callout mt18">
+      <div class="ibadge sm" style="flex:none"><svg><use href="#i-wrench"/></svg></div>
+      <div><div class="ttl">Why document the auth quirks?</div><p>Because "key in URL vs header" cost us an afternoon each. The next team that builds on Verde should lose those afternoons to something more interesting.</p></div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> APIs <span class="folio">PAGE <b>19</b></span></div>
+</section>
+
+<!-- ==================== P20 · AI ASSISTANTS ==================== -->
+<section class="page" id="p20">
+  <div class="rail"><i style="height:30.2%"></i><u style="height:3.8%"></u></div>
+  <div class="content">
+    <div class="eyebrow">10 · AI &amp; APIs<span class="sec">ASSISTANTS</span></div>
+    <h1 class="title">Two assistants, thirteen lifelines</h1>
+    <p class="subtitle">The app ships with two AI chats. One sees your plant, one reads its vitals — and behind both, fallback chains that refuse to dead-end.</p>
+
+    <div class="grid g2 mt24">
+      <div class="card emerald-edge">
+        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg><use href="#i-eye"/></svg></div><h3>Gemini vision chat</h3><span class="chip" style="margin-left:auto;font-size:6.4pt">SEES THE PHOTO</span></div>
+        <p class="mt6">Opens with the scanned image, its crop.health diagnosis <em>and</em> the live telemetry block, so answers ground themselves in your actual plant, your actual soil, your actual weather.</p>
+        <div class="code mt10" style="font-size:7pt;line-height:1.55">"tips are browning — is it the soil or the air?"<br><span class="c-dim">→ checks THIS photo · 94% diagnosis · 41% RH</span></div>
+      </div>
+      <div class="card gold-edge">
+        <div class="row center" style="gap:10px"><div class="ibadge sm gold"><svg><use href="#i-spark"/></svg></div><h3>OpenRouter sensor chat</h3><span class="chip gold" style="margin-left:auto;font-size:6.4pt">READS THE VITALS</span></div>
+        <p class="mt6">A plant-care assistant wired into live sensor data with one-tap quick prompts: "Should I water today?", "Summarise this week's moisture," "Is my light schedule right?"</p>
+        <div class="row mt10" style="gap:6px;flex-wrap:wrap">
+          <span class="chip navy" style="font-size:6.4pt">WATER TODAY?</span>
+          <span class="chip navy" style="font-size:6.4pt">WEEK SUMMARY</span>
+          <span class="chip navy" style="font-size:6.4pt">LIGHT CHECK</span>
+          <span class="chip navy" style="font-size:6.4pt">FEEDING PLAN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card navy-fill mt24" style="padding:20px 24px">
+      <div class="mono mb14" style="font-size:7pt;letter-spacing:.22em;color:var(--gold-bright)">WHY CHAINS? FREE MODELS ROTATE — 435 MODELS DEEP, WE NEVER DEAD-END</div>
+      <div class="chain-row">
+        <span class="chain-lab mono">TEXT CHAIN · 8 MODELS</span>
+        <div class="chain">
+          <span>model 1</span><b>→</b><span>2</span><b>→</b><span>3</span><b>→</b><span>4</span><b>→</b><span>5</span><b>→</b><span>6</span><b>→</b><span>7</span><b>→</b><span>8</span>
+          <em class="mono">if 404 / 429 → promote next, silently</em>
+        </div>
+      </div>
+      <div class="chain-row mt10">
+        <span class="chain-lab mono">VISION CHAIN · 5 MODELS</span>
+        <div class="chain">
+          <span>model 1</span><b>→</b><span>2</span><b>→</b><span>3</span><b>→</b><span>4</span><b>→</b><span>5</span>
+          <em class="mono">same rule — the user sees an answer, never an error</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="pullquote mt30" style="max-width:58ch;margin-left:8px">
+      <p>"Sorry, that model is unavailable" is a sentence our users will never read.</p>
+      <cite>— design rule #2</cite>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> AI assistants <span class="folio">PAGE <b>20</b></span></div>
+</section>

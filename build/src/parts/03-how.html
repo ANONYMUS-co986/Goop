@@ -1,0 +1,223 @@
+<!-- ==================== P6 · ARCHITECTURE ==================== -->
+<section class="page" id="p6">
+  <div class="rail"><i style="height:11.2%"></i></div>
+  <div class="bignum">04</div>
+  <div class="content">
+    <div class="eyebrow">04 · How it works<span class="sec">ARCHITECTURE</span></div>
+    <h1 class="title">Three tiers, one conversation</h1>
+    <p class="subtitle">Hardware at the edge, truth in the cloud, delight on the screen. If the internet dies, the plant still gets watered — AUTO logic lives on the chip, not in the cloud.</p>
+
+    <svg viewBox="0 0 690 600" style="width:100%;height:600px;margin-top:14px" font-family="Inter,sans-serif">
+      <defs>
+        <marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#0E9F6E"/></marker>
+        <marker id="arwg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#B98A2A"/></marker>
+        <marker id="arwb" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.4" markerHeight="6.4" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#5F8FBB"/></marker>
+      </defs>
+
+      <!-- band tints -->
+      <rect x="8" y="34" width="220" height="548" rx="18" fill="rgba(14,159,110,.06)" stroke="rgba(14,159,110,.3)" stroke-dasharray="3 4"/>
+      <rect x="252" y="34" width="180" height="548" rx="18" fill="rgba(232,180,74,.07)" stroke="rgba(232,180,74,.4)" stroke-dasharray="3 4"/>
+      <rect x="456" y="34" width="226" height="548" rx="18" fill="rgba(95,143,187,.08)" stroke="rgba(95,143,187,.4)" stroke-dasharray="3 4"/>
+
+      <text x="118" y="26" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="3" fill="#0A7A54">TIER 1 · EDGE</text>
+      <text x="342" y="26" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="3" fill="#B98A2A">TIER 2 · CLOUD</text>
+      <text x="569" y="26" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" letter-spacing="3" fill="#5F8FBB">TIER 3 · EXPERIENCE</text>
+
+      <!-- sensors -->
+      <g font-family="JetBrains Mono,monospace" font-size="8.5" fill="#33415C">
+        <rect x="24" y="52" width="86" height="30" rx="8" fill="#fff" stroke="rgba(14,159,110,.45)"/><text x="67" y="71" text-anchor="middle">SOIL %</text>
+        <rect x="118" y="52" width="86" height="30" rx="8" fill="#fff" stroke="rgba(14,159,110,.45)"/><text x="161" y="71" text-anchor="middle">DHT11</text>
+        <rect x="24" y="90" width="86" height="30" rx="8" fill="#fff" stroke="rgba(14,159,110,.45)"/><text x="67" y="109" text-anchor="middle">LDR</text>
+        <rect x="118" y="90" width="86" height="30" rx="8" fill="#fff" stroke="rgba(14,159,110,.45)"/><text x="161" y="109" text-anchor="middle">HC-SR04</text>
+      </g>
+      <!-- esp32 brain -->
+      <rect x="24" y="150" width="180" height="104" rx="14" fill="#0A1628"/>
+      <text x="114" y="174" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="600" font-size="12.5" fill="#F4F1E6">ESP32 WROOM-32</text>
+      <text x="114" y="190" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#19C882">THE BRAIN · V3.0.7-FINAL</text>
+      <text x="114" y="207" text-anchor="middle" font-size="8.6" fill="#9FB0C8">AUTO logic · filters · thresholds</text>
+      <text x="114" y="221" text-anchor="middle" font-size="8.6" fill="#9FB0C8">8 s watchdog · 3-network WiFi</text>
+      <rect x="40" y="231" width="148" height="14" rx="7" fill="rgba(25,200,130,.14)"/>
+      <text x="114" y="241" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" letter-spacing="1.5" fill="#19C882">WATERS THE PLANT EVEN OFFLINE</text>
+      <path d="M114 120 L114 150" stroke="#0E9F6E" stroke-width="2" marker-end="url(#arw)"/>
+      <!-- actuators -->
+      <g font-family="JetBrains Mono,monospace" font-size="8.5" fill="#33415C">
+        <rect x="24" y="278" width="86" height="30" rx="8" fill="#fff" stroke="rgba(232,180,74,.55)"/><text x="67" y="297" text-anchor="middle">PUMP 5V</text>
+        <rect x="118" y="278" width="86" height="30" rx="8" fill="#fff" stroke="rgba(232,180,74,.55)"/><text x="161" y="297" text-anchor="middle">UV LED</text>
+      </g>
+      <path d="M114 254 L114 278" stroke="#B98A2A" stroke-width="2" marker-end="url(#arwg)"/>
+
+      <!-- esp32-cam -->
+      <rect x="24" y="348" width="180" height="86" rx="14" fill="#0F2140"/>
+      <text x="114" y="372" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="600" font-size="11.5" fill="#F4F1E6">ESP32-CAM (OV2640)</text>
+      <text x="114" y="387" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#19C882">THE EYES · V3.0.4-FINAL</text>
+      <text x="114" y="403" text-anchor="middle" font-size="8.4" fill="#9FB0C8">polls capture flag every 1.5 s</text>
+      <text x="114" y="416" text-anchor="middle" font-size="8.4" fill="#9FB0C8">flash → SVGA JPEG → upload</text>
+
+      <rect x="24" y="470" width="180" height="72" rx="12" fill="none" stroke="rgba(14,159,110,.4)"/>
+      <text x="114" y="494" text-anchor="middle" font-size="8.6" fill="#33415C">5 V / 2 A adapter · 1000 µF</text>
+      <text x="114" y="508" text-anchor="middle" font-size="8.6" fill="#33415C">1N4007 flyback · relay isolation</text>
+      <text x="114" y="526" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" letter-spacing="1.5" fill="#0A7A54">POWER, ENGINEERED (P.10)</text>
+
+      <!-- cloud -->
+      <rect x="268" y="128" width="148" height="172" rx="14" fill="#fff" stroke="rgba(232,180,74,.6)" stroke-width="1.6"/>
+      <text x="342" y="152" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="600" font-size="12" fill="#17233A">Firebase RTDB</text>
+      <text x="342" y="166" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#B98A2A">verde-tech-haha</text>
+      <g font-family="JetBrains Mono,monospace" font-size="8.2" fill="#33415C">
+        <text x="284" y="190">/sensors</text><text x="284" y="206">/controls</text><text x="284" y="222">/latest_scan</text><text x="284" y="238">/weather</text><text x="284" y="254">/historical_logs</text><text x="284" y="270">/actuators</text>
+      </g>
+      <rect x="284" y="282" width="116" height="12" rx="6" fill="rgba(232,180,74,.16)"/>
+      <text x="342" y="291" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.6" letter-spacing="1" fill="#B98A2A">ONE SOURCE OF TRUTH</text>
+
+      <rect x="268" y="352" width="148" height="58" rx="12" fill="#fff" stroke="rgba(95,143,187,.5)"/>
+      <text x="342" y="374" text-anchor="middle" font-size="8.6" font-weight="600" fill="#17233A">Vercel upload API</text>
+      <text x="342" y="388" text-anchor="middle" font-size="8" fill="#65718C">JPEG bytes → /latest_scan</text>
+      <text x="342" y="400" text-anchor="middle" font-size="8" fill="#65718C">(base64) for the app</text>
+      <path d="M342 352 L342 306" stroke="#5F8FBB" stroke-width="2" marker-end="url(#arwb)"/>
+      <text x="350" y="332" font-family="JetBrains Mono,monospace" font-size="7" fill="#5F8FBB">BASE64</text>
+
+      <rect x="268" y="448" width="148" height="94" rx="12" fill="rgba(232,180,74,.10)" stroke="rgba(232,180,74,.45)"/>
+      <text x="342" y="472" text-anchor="middle" font-size="8.8" font-weight="600" fill="#B98A2A">No servers harmed</text>
+      <text x="342" y="488" text-anchor="middle" font-size="8" fill="#65718C">Firebase + one Vercel</text>
+      <text x="342" y="501" text-anchor="middle" font-size="8" fill="#65718C">function. Zero VMs,</text>
+      <text x="342" y="514" text-anchor="middle" font-size="8" fill="#65718C">zero bills, zero ops.</text>
+      <text x="342" y="533" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.8" letter-spacing="1" fill="#B98A2A">₹0 / MONTH</text>
+
+      <!-- brain<->cloud arrows -->
+      <path d="M228 182 L268 182" stroke="#0E9F6E" stroke-width="2.2" marker-end="url(#arw)"/>
+      <path d="M268 236 L228 236" stroke="#B98A2A" stroke-width="2.2" marker-end="url(#arwg)"/>
+      <text x="248" y="176" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#0A7A54">1 PUT/s</text>
+      <text x="248" y="230" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#B98A2A">1 GET/s</text>
+
+      <!-- cam -> vercel -->
+      <path d="M204 381 L268 381" stroke="#5F8FBB" stroke-width="2" marker-end="url(#arwb)"/>
+      <text x="236" y="375" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#5F8FBB">JPEG</text>
+
+      <!-- app -->
+      <rect x="472" y="52" width="196" height="128" rx="14" fill="#0A1628"/>
+      <text x="570" y="76" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="600" font-size="12" fill="#F4F1E6">Verde Web App</text>
+      <text x="570" y="90" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.6" fill="#19C882">ONE HTML FILE · NO INSTALL</text>
+      <g font-family="JetBrains Mono,monospace" font-size="7.4">
+        <rect x="486" y="102" width="80" height="26" rx="7" fill="rgba(25,200,130,.14)"/><text x="526" y="118" text-anchor="middle" fill="#7FE3B8">DASHBOARD</text>
+        <rect x="574" y="102" width="80" height="26" rx="7" fill="rgba(245,201,92,.14)"/><text x="614" y="118" text-anchor="middle" fill="#F0C971">WEATHER</text>
+        <rect x="486" y="136" width="80" height="26" rx="7" fill="rgba(95,166,230,.16)"/><text x="526" y="152" text-anchor="middle" fill="#9CC7F0">PLANT DOCTOR</text>
+        <rect x="574" y="136" width="80" height="26" rx="7" fill="rgba(214,138,220,.16)"/><text x="614" y="152" text-anchor="middle" fill="#D7A6E0">AI ASSISTANTS</text>
+      </g>
+
+      <path d="M432 150 L472 150" stroke="#0E9F6E" stroke-width="2.2" marker-end="url(#arw)"/>
+      <path d="M472 208 L432 208" stroke="#B98A2A" stroke-width="2.2" marker-end="url(#arwg)"/>
+      <text x="452" y="144" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#0A7A54">REST</text>
+      <text x="452" y="202" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#B98A2A">CONTROLS</text>
+      <text x="570" y="196" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.6" fill="#8AA0BC">reads /latest_scan · photo frame ≤ 2 s</text>
+
+      <!-- APIs -->
+      <text x="569" y="238" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2.5" fill="#5F8FBB">4 EXTERNAL APIS · FREE TIERS</text>
+      <g font-size="8.4" fill="#33415C">
+        <rect x="472" y="252" width="92" height="52" rx="10" fill="#fff" stroke="rgba(95,143,187,.5)"/>
+        <text x="518" y="274" text-anchor="middle" font-weight="600" fill="#17233A">OpenWeather</text><text x="518" y="288" text-anchor="middle" font-size="7.4" fill="#65718C">rain veto</text>
+        <rect x="576" y="252" width="92" height="52" rx="10" fill="#fff" stroke="rgba(95,143,187,.5)"/>
+        <text x="622" y="274" text-anchor="middle" font-weight="600" fill="#17233A">crop.health</text><text x="622" y="288" text-anchor="middle" font-size="7.4" fill="#65718C">plant ID 94%</text>
+        <rect x="472" y="316" width="92" height="52" rx="10" fill="#fff" stroke="rgba(95,143,187,.5)"/>
+        <text x="518" y="338" text-anchor="middle" font-weight="600" fill="#17233A">Gemini</text><text x="518" y="352" text-anchor="middle" font-size="7.4" fill="#65718C">vision chat</text>
+        <rect x="576" y="316" width="92" height="52" rx="10" fill="#fff" stroke="rgba(95,143,187,.5)"/>
+        <text x="622" y="338" text-anchor="middle" font-weight="600" fill="#17233A">OpenRouter</text><text x="622" y="352" text-anchor="middle" font-size="7.4" fill="#65718C">13-model chains</text>
+      </g>
+      <path d="M570 206 L570 252" stroke="#5F8FBB" stroke-width="1.6" stroke-dasharray="4 4" marker-end="url(#arwb)"/>
+      <text x="600" y="232" font-family="JetBrains Mono,monospace" font-size="7" fill="#5F8FBB">ON DEMAND</text>
+
+      <!-- why one file -->
+      <rect x="472" y="396" width="196" height="58" rx="12" fill="#fff" stroke="rgba(95,143,187,.45)"/>
+      <text x="570" y="418" text-anchor="middle" font-size="8.8" font-weight="600" fill="#17233A">Why one HTML file?</text>
+      <text x="570" y="432" text-anchor="middle" font-size="7.8" fill="#65718C">double-click to run · host anywhere</text>
+      <text x="570" y="444" text-anchor="middle" font-size="7.8" fill="#65718C">survives any venue laptop</text>
+
+      <!-- offline badge -->
+      <rect x="472" y="470" width="196" height="72" rx="12" fill="rgba(14,159,110,.08)" stroke="rgba(14,159,110,.4)"/>
+      <text x="570" y="496" text-anchor="middle" font-size="8.8" font-weight="600" fill="#0A7A54">Design rule #1</text>
+      <text x="570" y="512" text-anchor="middle" font-size="8.2" fill="#33415C">The cloud can leave.</text>
+      <text x="570" y="526" text-anchor="middle" font-size="8.2" fill="#33415C">The watering can't stop.</text>
+    </svg>
+
+    <div class="row mt14" style="gap:10px;flex-wrap:wrap">
+      <span class="chip">HTTPS JSON · 1-SECOND HEARTBEAT</span>
+      <span class="chip gold">10 METRICS UP · 9 KEYS DOWN</span>
+      <span class="chip navy">ESP32 USES LEGACY DB SECRET</span>
+      <span class="chip navy">RULES: PUBLIC READ · VALIDATED WRITES</span>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Architecture <span class="folio">PAGE <b>06</b></span></div>
+</section>
+
+<!-- ==================== P7 · HEARTBEAT ==================== -->
+<section class="page dark grain" id="p7">
+  <div class="rail"><i style="height:11.2%"></i><u style="height:3.8%"></u></div>
+  <div style="position:absolute;right:0;top:0;bottom:0;width:34%;z-index:0;opacity:.5;
+    background:url('assets/img/texture_trace.jpg') right center/cover no-repeat;
+    -webkit-mask-image:linear-gradient(270deg,#000 30%,transparent);mask-image:linear-gradient(270deg,#000 30%,transparent)"></div>
+  <div class="glow" style="width:480px;height:480px;top:-160px;left:-160px;background:radial-gradient(circle,rgba(25,200,130,.13),transparent 65%)"></div>
+  <div class="content">
+    <div class="eyebrow">04 · How it works<span class="sec">RHYTHM</span></div>
+    <h1 class="title">The one-second heartbeat</h1>
+    <p class="subtitle">Every second, forever, the same disciplined routine. No <span class="mono">delay()</span>, no blocking calls, no excuses — a <span class="mono">millis()</span> scheduler keeps every task in its lane.</p>
+
+    <svg viewBox="0 0 690 262" style="width:100%;height:262px;margin-top:20px" font-family="Inter,sans-serif">
+      <defs><marker id="arr2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#19C882"/></marker></defs>
+      <!-- ruler -->
+      <line x1="30" y1="130" x2="660" y2="130" stroke="rgba(237,235,226,.25)" stroke-width="1.5"/>
+      <g stroke="rgba(237,235,226,.18)" stroke-width="1">
+        <line x1="30" y1="124" x2="30" y2="136"/><line x1="93" y1="127" x2="93" y2="133"/><line x1="156" y1="127" x2="156" y2="133"/><line x1="219" y1="124" x2="219" y2="136"/><line x1="282" y1="127" x2="282" y2="133"/><line x1="345" y1="127" x2="345" y2="133"/><line x1="408" y1="124" x2="408" y2="136"/><line x1="471" y1="127" x2="471" y2="133"/><line x1="534" y1="127" x2="534" y2="133"/><line x1="597" y1="124" x2="597" y2="136"/><line x1="660" y1="124" x2="660" y2="136"/>
+      </g>
+      <g font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(237,235,226,.45)">
+        <text x="30" y="150" text-anchor="middle">0 ms</text><text x="219" y="150" text-anchor="middle">300</text><text x="408" y="150" text-anchor="middle">600</text><text x="597" y="150" text-anchor="middle">900</text><text x="660" y="150" text-anchor="middle">1 s</text>
+      </g>
+      <!-- events above -->
+      <g font-size="8.4">
+        <line x1="40" y1="130" x2="40" y2="64" stroke="#19C882" stroke-width="1.4"/><circle cx="40" cy="130" r="4.5" fill="#19C882"/>
+        <text x="46" y="60" fill="#EDEBE2" font-weight="600">Loop wakes</text>
+        <text x="46" y="72" fill="rgba(237,235,226,.55)" font-size="7.6">non-blocking millis() tick</text>
+
+        <line x1="52" y1="130" x2="52" y2="94" stroke="#19C882" stroke-width="1.4"/><circle cx="52" cy="130" r="4.5" fill="#19C882"/>
+        <text x="58" y="90" fill="#EDEBE2" font-weight="600">Soil probe powered 15 ms</text>
+        <text x="58" y="102" fill="rgba(237,235,226,.55)" font-size="7.6">GPIO23 gates VCC — no corrosion</text>
+
+        <line x1="150" y1="130" x2="150" y2="58" stroke="#19C882" stroke-width="1.4"/><circle cx="150" cy="130" r="4.5" fill="#19C882"/>
+        <text x="156" y="54" fill="#EDEBE2" font-weight="600">Read &amp; filter everything</text>
+        <text x="156" y="66" fill="rgba(237,235,226,.55)" font-size="7.6">10-pt avg soil/LDR · 5-pt + rejects for tank</text>
+
+        <line x1="250" y1="130" x2="250" y2="92" stroke="#F5C95C" stroke-width="1.4"/><circle cx="250" cy="130" r="4.5" fill="#F5C95C"/>
+        <text x="256" y="88" fill="#F5C95C" font-weight="600">AUTO decision</text>
+        <text x="256" y="100" fill="rgba(237,235,226,.55)" font-size="7.6">moisture &lt; 35% · tank safe · no rain</text>
+
+        <line x1="300" y1="130" x2="300" y2="184" stroke="#19C882" stroke-width="1.4"/><circle cx="300" cy="130" r="4.5" fill="#19C882"/>
+        <text x="306" y="182" fill="#EDEBE2" font-weight="600">Feed the watchdog</text>
+        <text x="306" y="194" fill="rgba(237,235,226,.55)" font-size="7.6">8 s timer, patted every loop</text>
+
+        <rect x="386" y="112" width="240" height="36" rx="10" fill="rgba(25,200,130,.10)" stroke="rgba(25,200,130,.45)"/>
+        <text x="506" y="126" text-anchor="middle" fill="#7FE3B8" font-weight="600" font-size="8.6">The cloud handshake — the only network talk</text>
+        <text x="506" y="139" text-anchor="middle" fill="rgba(237,235,226,.6)" font-size="7.8">1 PUT /sensors (10 metrics) + 1 GET /controls (9 keys)</text>
+
+        <line x1="655" y1="130" x2="655" y2="64" stroke="#F5C95C" stroke-width="1.4"/><circle cx="655" cy="130" r="4.5" fill="#F5C95C"/>
+        <text x="649" y="60" text-anchor="end" fill="#F5C95C" font-weight="600">Apply &amp; repeat</text>
+        <text x="649" y="72" text-anchor="end" fill="rgba(237,235,226,.55)" font-size="7.6">new commands land next loop</text>
+      </g>
+      <path d="M30 168 L660 168" stroke="none"/>
+      <text x="30" y="232" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="rgba(237,235,226,.4)">SAME DISCIPLINE · 86,400 TIMES A DAY</text>
+      <text x="660" y="232" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="2" fill="rgba(237,235,226,.4)">SENSORS RUN AT 1 Hz</text>
+      <path d="M30 200 L660 200" stroke="rgba(237,235,226,.1)" stroke-width="1"/>
+      <path d="M36 200 L654 200" stroke="rgba(25,200,130,.35)" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.5 7.5" marker-end="url(#arr2)"/>
+    </svg>
+
+    <div class="grid g3 mt18" style="grid-template-columns:repeat(6,1fr)">
+      <div class="card" style="grid-column:span 2"><div class="mono" style="color:var(--emerald-bright);font-size:13pt;font-weight:700">1 s</div><h3 style="font-size:9.5pt;margin-top:2px">Sensors + cloud</h3><p>Fresh metrics out, fresh commands in. The dashboard never sits on stale data.</p></div>
+      <div class="card" style="grid-column:span 2"><div class="mono" style="color:var(--gold-bright);font-size:13pt;font-weight:700">1.5 s</div><h3 style="font-size:9.5pt;margin-top:2px">CAM polls</h3><p>The camera asks "photo requested?" — after the main brain, never blocking it.</p></div>
+      <div class="card" style="grid-column:span 2"><div class="mono" style="color:#8FC2EE;font-size:13pt;font-weight:700">10 s</div><h3 style="font-size:9.5pt;margin-top:2px">WiFi health</h3><p>Drop? Reconnect. Falls back across home → hotspot → school networks.</p></div>
+      <div class="card" style="grid-column:span 3"><div class="mono" style="color:var(--emerald-bright);font-size:13pt;font-weight:700">60 s</div><h3 style="font-size:9.5pt;margin-top:2px">History logging</h3><p>A moisture point lands in <span class="mono">/historical_logs</span> every minute — fuel for the trend chart and tomorrow's predictive watering.</p></div>
+      <div class="card" style="grid-column:span 3"><div class="mono" style="color:var(--gold-bright);font-size:13pt;font-weight:700">3 min</div><h3 style="font-size:9.5pt;margin-top:2px">Weather check</h3><p>The app re-reads Delhi's sky. Rain brewing? A countdown starts, then the pump is vetoed. Page 17.</p></div>
+    </div>
+
+    <div class="callout gold mt18">
+      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-alert"/></svg></div>
+      <div><div class="ttl">Why the obsession with "non-blocking"?</div><p>Because the one time we let network calls block the loop, the watchdog ate us — a reboot every 10 seconds and a pump that stuttered like a telegraph key. That story gets its own spread: page 13.</p></div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The heartbeat <span class="folio">PAGE <b>07</b></span></div>
+</section>

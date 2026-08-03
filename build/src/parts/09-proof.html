@@ -1,0 +1,120 @@
+<!-- ==================== P21 · FEATURES ==================== -->
+<section class="page dark grain" id="p21">
+  <div class="rail"><i style="height:34%"></i></div>
+  <div style="position:absolute;left:0;bottom:0;right:100px;top:0;z-index:0;opacity:.3;background:url('assets/img/texture_trace.jpg') left bottom/cover no-repeat;-webkit-mask-image:linear-gradient(75deg,#000 5%,transparent 60%);mask-image:linear-gradient(75deg,#000 5%,transparent 60%)"></div>
+  <div class="glow" style="width:520px;height:520px;bottom:-200px;right:-160px;background:radial-gradient(circle,rgba(25,200,130,.12),transparent 65%)"></div>
+  <div class="content">
+    <div class="eyebrow">11 · Proof<span class="sec">ALL LIVE</span></div>
+    <h1 class="title">Everything on this wall works</h1>
+    <p class="subtitle">No roadmap items, no "coming soon", no mockups. Each tile below was demonstrated live on the bench before it earned a place here.</p>
+
+    <div class="grid g4 mt24" style="gap:12px">
+      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-chart"/></svg></div><h4>Live dashboard</h4><p>8 telemetry tiles, sparklines, hover trend arrows, uptime timer, fullscreen demo mode.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-pump"/></svg></div><h4>AUTO watering</h4><p>Three locks — dry soil, safe tank, no rain — then waters to the exact threshold.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-rain"/></svg></div><h4>Rain veto</h4><p>Delhi forecast checked every 3 minutes; an override countdown bars the pump.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-spark"/></svg></div><h4>Plant Doctor</h4><p>Photo → crop.health → name, probability &amp; treatment. 94% on our test scan.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-camera"/></svg></div><h4>On-demand camera</h4><p>CAPTURE → SVGA photo in the app within 2 seconds, flash and all.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-eye"/></svg></div><h4>Vision AI chat</h4><p>Gemini answers questions about the same photo the doctor just read.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-chip"/></svg></div><h4>Sensor-aware chat</h4><p>OpenRouter assistant reads live vitals; 13-model fallback chains.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-slider"/></svg></div><h4>Live thresholds</h4><p>Three sliders, adopted mid-loop by the ESP32, persisted in NVS flash.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-bulb"/></svg></div><h4>Dusk grow light</h4><p>UV LED rides the LDR with ±2% hysteresis. Zero flicker at sunset.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-waves"/></svg></div><h4>Tank calibration</h4><p>SET EMPTY / SET FULL remaps the sensor in-app. No reflash, ever.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-shield"/></svg></div><h4>Watchdog + logs</h4><p>8 s hardware fuse, upload success/fail counters, minute-by-minute history.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-wifi"/></svg></div><h4>3-network fallback</h4><p>Home, hotspot, school. It hunts for a signal so we never have to.</p></div>
+    </div>
+
+    <div class="row mt24 center" style="gap:10px;justify-content:center;flex-wrap:wrap">
+      <span class="chip">SENSORS 1 Hz</span>
+      <span class="chip">CLOUD 1 s</span>
+      <span class="chip gold">PHOTO ≤ 2 s</span>
+      <span class="chip">WEATHER 3 min</span>
+      <span class="chip gold">13/13 TESTS PASS</span>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Features <span class="folio">PAGE <b>21</b></span></div>
+</section>
+
+<!-- ==================== P22 · TEST MATRIX ==================== -->
+<section class="page" id="p22">
+  <div class="rail"><i style="height:34%"></i></div>
+  <div class="bignum">11</div>
+  <div class="content">
+    <div class="eyebrow">11 · Proof<span class="sec">TEST MATRIX</span></div>
+    <div class="row end" style="justify-content:space-between">
+      <h1 class="title" style="margin-bottom:0">Thirteen tests. Thirteen passes.</h1>
+      <span class="pass" style="font-size:8.6pt;padding:6px 14px;margin-bottom:4px"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>13 / 13 PASS</span>
+    </div>
+    <p class="subtitle mt6">We tested like the judges would try to break it — breath, hands, buckets and bad WiFi.</p>
+
+    <div class="grid g2 mt18" style="gap:12px 26px">
+      <div>
+        <div class="mono test-group">BOOT &amp; STAMINA</div>
+        <div class="test-row"><div><b>WiFi / boot</b><p>Joins the saved network cleanly from cold power.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Watchdog soak — 10+ min</b><p>Continuous uptime under load. Reboots: zero.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Rain override</b><p>Forced the flag; AUTO held even with parched soil.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="mono test-group mt14">SENSORS</div>
+        <div class="test-row"><div><b>DHT11 breathe test</b><p>One sigh on the sensor; humidity tile climbs, then settles.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Moisture water-dunk</b><p>Probe dunked; reading sweeps, filtered, no wild spikes.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>LDR cover test</b><p>A thumb over the sensor = "dark"; grow light glides on.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Ultrasonic hand test</b><p>Hand moved in the tank; distance tracks, splash junk rejected.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+      </div>
+      <div>
+        <div class="mono test-group">ACTUATION</div>
+        <div class="test-row"><div><b>Pump AUTO — 120 s soak</b><p>Two minutes continuous watering. No glitch, no stutter.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>OFF exactly at threshold</b><p>Moisture crossed 35% mid-run; pump stopped on the line.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Tank lock</b><p>Emptied the tank; both AUTO and manual were refused. Pump saved.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="mono test-group mt14">EXPERIENCE</div>
+        <div class="test-row"><div><b>CAM capture ≤ 2 s</b><p>Button to base64 photo on screen. Timed. Twice.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Plant Doctor diagnosis</b><p>Test scan identified at 94% with treatment plan.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>AI chats + fallbacks</b><p>Both assistants answered; killing model 1 promoted model 2 silently.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="callout mt18">
+          <div class="ibadge sm" style="flex:none"><svg><use href="#i-target"/></svg></div>
+          <div><div class="ttl">Method, for the record</div><p>Every test had a trigger and a pass condition written down <em>before</em> we ran it. "It worked once" is an anecdote; "13/13" is a result.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Testing <span class="folio">PAGE <b>22</b></span></div>
+</section>
+
+<!-- ==================== P23 · BUG JOURNAL ==================== -->
+<section class="page" id="p23">
+  <div class="rail"><i style="height:34%"></i><u style="height:3.8%"></u></div>
+  <div class="content">
+    <div class="eyebrow">11 · Proof<span class="sec">TROUBLESHOOTING JOURNAL</span></div>
+    <h1 class="title">Ten bugs, zero hidden</h1>
+    <p class="subtitle">Half our engineering education arrived wearing a bug costume. Published here for the next team — and for judges who like honesty more than perfection.</p>
+
+    <div class="mt18">
+      <div class="mono test-group">ELECTRICAL</div>
+      <table class="data journal">
+        <tbody>
+          <tr><td class="jno" style="color:var(--red)">02</td><td>Camera probe error <span class="mono">0x106</span></td><td>FPC ribbon unseated</td><td>Reseat <strong>gold-side down</strong> + full power cycle</td></tr>
+          <tr><td class="jno" style="color:var(--red)">03</td><td>"PSRAM not found" at boot</td><td>Weak power, not missing RAM</td><td>Dumb <strong>5 V / 2 A</strong> adapter</td></tr>
+          <tr><td class="jno" style="color:var(--red)">04</td><td>Boot crash <span class="mono">0x20002</span></td><td>Camera + WiFi power surge at boot</td><td><strong>Sequential boot</strong>: camera first, WiFi after 500 ms</td></tr>
+          <tr><td class="jno" style="color:var(--red)">05</td><td>WiFi dies when camera runs</td><td>20 MHz XCLK radio interference</td><td>Throttle XCLK to <strong>8 MHz</strong></td></tr>
+          <tr><td class="jno" style="color:var(--red)">06</td><td>67 W USB-PD brick starves board</td><td>PD needs a handshake chip we lack</td><td>Same 5 V / 2 A phone adapter</td></tr>
+          <tr><td class="jno" style="color:var(--red)">07</td><td>Relay dead on arrival… not</td><td>Split breadboard rails</td><td>Bridge rails: <strong>+ to +, − to −</strong></td></tr>
+          <tr><td class="jno" style="color:var(--red)">08</td><td>Temperature reads 0 °C</td><td>DHT on the wrong pin, floating ground</td><td><strong>GPIO 4</strong> + shared GND</td></tr>
+        </tbody>
+      </table>
+      <div class="mono test-group mt14">SOFTWARE &amp; CLOUD</div>
+      <table class="data journal">
+        <tbody>
+          <tr><td class="jno" style="color:var(--red)">01</td><td>AUTO pump clicks every ~10 s</td><td>17 blocking Firebase calls/s → watchdog loop</td><td><strong>JSON bundling</strong> → 2 calls/s (page 14)</td></tr>
+          <tr><td class="jno" style="color:var(--red)">09</td><td>Firebase updates in "spurts"</td><td>13 calls/s of tiny writes</td><td>One bundled call per second</td></tr>
+          <tr><td class="jno" style="color:var(--red)">10</td><td><span class="mono">missing terminating quote</span> compile error</td><td>Whitespace corrupted in a copy-paste</td><td>Re-download the source file; stop hand-copying</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card navy-fill mt18" style="padding:16px 22px">
+      <div class="row center" style="gap:20px">
+        <div class="ibadge gold"><svg><use href="#i-bug"/></svg></div>
+        <p class="grow" style="font-size:9pt">Pattern noticed: <strong style="color:#fff">six of ten bugs were power or connection</strong>, not code. That's why page 10 exists — hardware discipline is firmware reliability.</p>
+        <span class="chip gold" style="white-space:nowrap">ALL FIXED · ALL DOCUMENTED</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Bug journal <span class="folio">PAGE <b>23</b></span></div>
+</section>

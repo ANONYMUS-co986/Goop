@@ -1,0 +1,179 @@
+<!-- ==================== P15 · CLOUD SCHEMA ==================== -->
+<section class="page dark grain" id="p15">
+  <div class="rail"><i style="height:26.4%"></i></div>
+  <div class="bignum">09</div>
+  <div class="content">
+    <div class="eyebrow">09 · Cloud &amp; the app<span class="sec">FIREBASE RTDB</span></div>
+    <h1 class="title">The whole truth, in one JSON tree</h1>
+    <p class="subtitle">Every sensor reading, every command, every photo and log lives in one Realtime Database. The ESP32 writes, the app reads, and vice versa — they never talk to each other directly.</p>
+
+    <div class="code mt24" style="font-size:8.5pt;line-height:1.7;white-space:pre-wrap">
+      <div class="dots"><i></i><i></i><i></i></div>
+<span class="c-val">verde-tech-haha</span> <span class="c-dim">(Realtime Database · the single source of truth)</span>
+<span class="c-branch">├──</span> <span class="c-key">sensors/</span>       <span class="c-dim">moisture · temperature · humidity · light · tank_level · lux</span>
+<span class="c-branch">│</span>                  <span class="c-dim">watchdog_status · voltage_sag · successful_uploads · failed_uploads</span>
+<span class="c-branch">├──</span> <span class="c-key">controls/</span>      <span class="c-dim">manual_mode · pump_state · light_manual_mode · grow_light_state</span>
+<span class="c-branch">│</span>                  <span class="c-dim">capture_photo · weather_override</span>
+<span class="c-branch">│</span>                  <span class="c-dim">moisture_threshold · tank_threshold · light_threshold</span>
+<span class="c-branch">├──</span> <span class="c-key">latest_scan/</span>   <span class="c-dim">imageUrl (base64) · status · captured_at</span>
+<span class="c-branch">│</span>                  <span class="c-dim">scientificName · diseaseName · probability · treatmentPlan</span>
+<span class="c-branch">├──</span> <span class="c-key">weather/</span>       <span class="c-dim">city · temp · condition · description · humidity</span>
+<span class="c-branch">│</span>                  <span class="c-dim">wind_speed · rain_expected · synced_at</span>
+<span class="c-branch">├──</span> <span class="c-key">historical_logs/</span>  <span class="c-dim">moisture_log [ { time, moisture }, ··· ]</span>
+<span class="c-branch">└──</span> <span class="c-key">actuators/</span>     <span class="c-dim">pump_actual · grow_light_actual · mode</span>
+    </div>
+
+    <div class="grid g3 mt18">
+      <div class="card">
+        <div class="mono mb6" style="font-size:6.8pt;letter-spacing:.2em;color:var(--gold-bright)">RULES OF THE HOUSE</div>
+        <ul class="tick" style="margin-top:2px">
+          <li>Public read — a judge's phone works instantly</li>
+          <li>Validated writes — booleans &amp; numbers 0–100 only</li>
+          <li>ESP32 authenticates with a legacy database secret</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="mono mb6" style="font-size:6.8pt;letter-spacing:.2em;color:var(--emerald-bright)">WHY REALTIME DB</div>
+        <p>Zero server code, free tier, JSON everywhere, and web sockets that make the dashboard feel alive instead of reloaded. The app and the ESP32 never talk directly — the tree is the conversation.</p>
+      </div>
+      <div class="card">
+        <div class="mono mb6" style="font-size:6.8pt;letter-spacing:.2em;color:#8FC2EE">THE PHOTO PATH</div>
+        <p>JPEGs travel as base64 in <span class="mono">/latest_scan</span> via our Vercel upload API — no storage bucket, no extra bill. Photo to screen in under two seconds.</p>
+      </div>
+    </div>
+
+    <div class="grid g3 mt14">
+      <div class="card" style="display:flex;align-items:center;gap:14px"><div class="kpi"><span class="val emerald" style="font-size:24pt">10</span></div><span class="lab" style="max-width:12ch">metrics upstream every second</span></div>
+      <div class="card" style="display:flex;align-items:center;gap:14px"><div class="kpi"><span class="val emerald" style="font-size:24pt">9</span></div><span class="lab" style="max-width:12ch">command keys downstream every second</span></div>
+      <div class="card" style="display:flex;align-items:center;gap:14px"><div class="kpi"><span class="val emerald" style="font-size:24pt">6</span></div><span class="lab" style="max-width:12ch">top-level branches · zero servers to babysit</span></div>
+    </div>
+
+    <div class="callout gold mt14">
+      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-db"/></svg></div>
+      <div><div class="ttl">One tree, three readers</div><p>The ESP32 writes <span class="mono">/sensors</span> &amp; reads <span class="mono">/controls</span>. The app does the reverse. The CAM only watches <span class="mono">capture_photo</span>. Nobody waits for anybody — they just check the tree.</p></div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Cloud <span class="folio">PAGE <b>15</b></span></div>
+</section>
+
+<!-- ==================== P16 · WEB APP ==================== -->
+<section class="page" id="p16">
+  <div class="rail"><i style="height:26.4%"></i></div>
+  <div class="bignum">09</div>
+  <div class="content">
+    <div class="eyebrow">09 · Cloud &amp; the app<span class="sec">THE FACE</span></div>
+    <div class="row end" style="justify-content:space-between">
+      <h1 class="title" style="margin-bottom:0">One HTML file. Zero excuses.</h1>
+      <span class="chip navy mono" style="margin-bottom:6px">SINGLE-FILE WEB APP</span>
+    </div>
+    <p class="subtitle mt6">The entire product face — dashboard, weather, plant doctor, AI assistants — ships as one double-clickable HTML file. If a browser opens it, it runs. Recreated faithfully below.</p>
+
+    <div class="browser mt18">
+      <div class="b-chrome"><i></i><i></i><i></i><span class="b-url mono">verde-app.html — Dashboard</span><span class="b-live mono"><u></u>LIVE</span></div>
+      <div class="b-body">
+        <div class="b-tiles">
+          <div class="b-tile"><span class="bt-l">SOIL MOISTURE</span><span class="bt-v" style="color:#0E9F6E">41%</span><span class="bt-t">▲ rising</span></div>
+          <div class="b-tile"><span class="bt-l">TEMPERATURE</span><span class="bt-v">28.4°C</span><span class="bt-t">▼ cooling</span></div>
+          <div class="b-tile"><span class="bt-l">HUMIDITY</span><span class="bt-v">52%</span><span class="bt-t">▲ rising</span></div>
+          <div class="b-tile"><span class="bt-l">LIGHT</span><span class="bt-v">DAY</span><span class="bt-t">— steady</span></div>
+          <div class="b-tile"><span class="bt-l">TANK LEVEL</span><span class="bt-v" style="color:#B98A2A">73%</span><span class="bt-t">▼ used</span></div>
+          <div class="b-tile"><span class="bt-l">PUMP</span><span class="bt-v" style="color:#0E9F6E">AUTO</span><span class="bt-t">idle · locks ok</span></div>
+          <div class="b-tile"><span class="bt-l">GROW LIGHT</span><span class="bt-v">OFF</span><span class="bt-t">dusk pending</span></div>
+          <div class="b-tile"><span class="bt-l">WATCHDOG</span><span class="bt-v" style="color:#0E9F6E">FED</span><span class="bt-t">0 reboots</span></div>
+        </div>
+        <div class="b-lower">
+          <div class="b-chart">
+            <svg viewBox="0 0 330 120" style="width:100%;height:100%">
+              <defs><linearGradient id="moist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(14,159,110,.35)"/><stop offset="1" stop-color="rgba(14,159,110,0)"/></linearGradient></defs>
+              <line x1="6" y1="52" x2="324" y2="52" stroke="#B98A2A" stroke-width="1" stroke-dasharray="4 3"/>
+              <text x="322" y="47" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="7" fill="#B98A2A">THRESHOLD 35%</text>
+              <rect x="150" y="20" width="64" height="88" fill="rgba(14,159,110,.10)"/>
+              <text x="182" y="112" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.4" fill="#0A7A54">PUMP ON</text>
+              <path d="M6 22 C 40 30 70 44 100 54 S 160 74 176 62 C 190 52 196 30 214 26 S 260 30 290 38 L 324 44 L 324 108 L 6 108 Z" fill="url(#moist)"/>
+              <path d="M6 22 C 40 30 70 44 100 54 S 160 74 176 62 C 190 52 196 30 214 26 S 260 30 290 38 L 324 44" fill="none" stroke="#0E9F6E" stroke-width="2"/>
+              <circle cx="176" cy="62" r="3" fill="#0E9F6E"/>
+              <text x="176" y="76" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6.4" fill="#0A7A54">35% → AUTO START</text>
+            </svg>
+            <div class="bt-l" style="margin-top:4px">MOISTURE · WATERING CYCLE · LAST READINGS</div>
+          </div>
+          <div class="b-side">
+            <div class="b-slider"><span class="mono">MOISTURE&nbsp;35%</span><div class="bs-track"><div class="bs-fill" style="width:35%"></div><div class="bs-knob" style="left:35%"></div></div></div>
+            <div class="b-slider"><span class="mono">TANK&nbsp;15%</span><div class="bs-track"><div class="bs-fill" style="width:15%"></div><div class="bs-knob" style="left:15%"></div></div></div>
+            <div class="b-slider"><span class="mono">LIGHT&nbsp;35</span><div class="bs-track"><div class="bs-fill" style="width:35%"></div><div class="bs-knob" style="left:35%"></div></div></div>
+            <div class="b-btnrow"><span class="b-btn on">PUMP · AUTO</span><span class="b-btn">WATER NOW</span></div>
+            <div class="b-btnrow"><span class="b-btn">CAPTURE PHOTO</span><span class="b-btn on">DEMO MODE</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g4 mt14" style="gap:10px">
+      <div class="card" style="padding:12px 14px"><h3 style="font-size:9.5pt">Dashboard</h3><p style="font-size:7.9pt;margin-top:3px">8 live tiles with sparklines &amp; hover trend arrows, 8 controls, 3 sliders, predicted actuator states, toasts, uptime, fullscreen demo mode.</p></div>
+      <div class="card" style="padding:12px 14px"><h3 style="font-size:9.5pt">Weather</h3><p style="font-size:7.9pt;margin-top:3px">Live Delhi sky, 5-day chips, rain-override with a visible countdown. Details next page.</p></div>
+      <div class="card" style="padding:12px 14px"><h3 style="font-size:9.5pt">Plant Doctor</h3><p style="font-size:7.9pt;margin-top:3px">CAM frame updating ≤2 s, CAPTURE button, upload-or-CAM modal, crop.health diagnosis + AI chat on the same photo.</p></div>
+      <div class="card" style="padding:12px 14px"><h3 style="font-size:9.5pt">AI Assistants</h3><p style="font-size:7.9pt;margin-top:3px">Gemini vision chat + OpenRouter sensor-aware chat with quick prompts and model fallback chains.</p></div>
+    </div>
+
+    <div class="row mt14" style="gap:10px;flex-wrap:wrap">
+      <span class="chip">TANK CALIBRATION: SET EMPTY / SET FULL — APP-SIDE REMAP</span>
+      <span class="chip navy">IMAGE FLIP FIX (CAM MOUNTS UPSIDE-DOWN)</span>
+      <span class="chip gold">BURGER MENU · 4 PAGES · NO RELOADS</span>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The web app <span class="folio">PAGE <b>16</b></span></div>
+</section>
+
+<!-- ==================== P17 · WEATHER ==================== -->
+<section class="page" id="p17">
+  <div class="rail"><i style="height:26.4%"></i><u style="height:3.8%"></u></div>
+  <div class="content">
+    <div class="eyebrow">09 · Cloud &amp; the app<span class="sec">WEATHER BRAIN</span></div>
+    <h1 class="title">The sky gets a vote</h1>
+    <p class="subtitle">Watering before a downpour is how roots drown. So the app asks Delhi's sky every three minutes — and can overrule the pump.</p>
+
+    <div class="row mt30" style="gap:22px;align-items:stretch">
+      <div class="grow" style="display:flex;flex-direction:column;gap:0">
+        <div class="steps">
+          <div class="step"><span class="when">EVERY 3 MINUTES</span><h4>The app looks up</h4><p>An <span class="mono">OpenWeatherMap</span> call fetches Delhi's live condition + 5-day forecast: <span class="mono">GET /data/2.5/weather?q=Delhi</span>, key in the URL.</p></div>
+          <div class="step"><span class="when">CONDITION DECODER</span><h4>Rain codes translation</h4><p>Weather IDs in the <strong>2xx / 3xx / 5xx / 6xx</strong> families mean drizzle, rain, storm or snow. One flag becomes truth: <span class="mono">rain_expected</span>.</p></div>
+          <div class="step"><span class="when">COUNTDOWN</span><h4>The override arms visibly</h4><p>A countdown timer shows on the Weather page. When it hits zero, the app writes <span class="mono">weather_override = 1</span> to the cloud.</p></div>
+          <div class="step"><span class="when">THE VETO</span><h4>Pump barred, politely</h4><p>The ESP32's AUTO logic sees the flag and holds off — even with dry soil, the rain veto wins (page 12). When the sky clears, the veto retracts.</p></div>
+        </div>
+      </div>
+
+      <div style="width:258px;flex:none;display:flex;flex-direction:column;gap:12px">
+        <div class="wx-now">
+          <div class="row center" style="justify-content:space-between">
+            <div>
+              <div class="mono" style="font-size:6.6pt;letter-spacing:.2em;color:rgba(255,255,255,.55)">DELHI · LIVE-TESTED</div>
+              <div style="font-family:'Space Grotesk';font-weight:700;font-size:30pt;color:#fff;line-height:1.05;margin-top:2px">35°C</div>
+              <div style="font-size:8pt;color:rgba(255,255,255,.7)">clear sky · feels like exam week</div>
+            </div>
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#F5C95C" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </div>
+          <div class="wx-week">
+            <div class="wx-day"><span class="mono">TUE</span><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg><b>36°</b></div>
+            <div class="wx-day"><span class="mono">WED</span><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg><b>37°</b></div>
+            <div class="wx-day rain"><span class="mono">THU</span><svg viewBox="0 0 24 24"><use href="#i-rain"/></svg><b>31°</b></div>
+            <div class="wx-day"><span class="mono">FRI</span><svg viewBox="0 0 24 24"><use href="#i-cloud"/></svg><b>33°</b></div>
+            <div class="wx-day"><span class="mono">SAT</span><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg><b>35°</b></div>
+          </div>
+          <div class="wx-override mono"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 14a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 5.6 4.2 4.2 0 0 1 17 14H7Z"/><path d="M8 17.5 7 20M12 17.5 11 20M16 17.5 15 20"/></svg> RAIN THURSDAY → OVERRIDE COUNTDOWN ARMED</div>
+        </div>
+        <div class="callout">
+          <div class="ibadge sm" style="flex:none"><svg><use href="#i-check"/></svg></div>
+          <div><div class="ttl">Verified live, not in theory</div><p>Real API, real city id <span class="mono">1273294</span>, real 35 °C on the bench. The override fired on cue during testing and released the pump afterwards.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card tinted mt24" style="padding:16px 22px">
+      <div class="row center" style="gap:20px">
+        <div class="ibadge gold"><svg><use href="#i-rain"/></svg></div>
+        <p class="grow" style="font-size:9pt">A commercial ₹8,000 kit would water on schedule straight into a monsoon. Verde's pump listens to the sky — <strong>the forecast is a sensor too.</strong></p>
+        <span class="chip gold" style="white-space:nowrap">CHECK CADENCE: 3 MIN</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Weather brain <span class="folio">PAGE <b>17</b></span></div>
+</section>
