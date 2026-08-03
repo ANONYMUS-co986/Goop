@@ -137,7 +137,7 @@
           <div class="step"><span class="when">EVERY 3 MINUTES</span><h4>The app looks up</h4><p>An <span class="mono">OpenWeatherMap</span> call fetches Delhi's live condition + 5-day forecast: <span class="mono">GET /data/2.5/weather?q=Delhi</span>, key in the URL.</p></div>
           <div class="step"><span class="when">CONDITION DECODER</span><h4>Rain codes translation</h4><p>Weather IDs in the <strong>2xx / 3xx / 5xx / 6xx</strong> families mean drizzle, rain, storm or snow. One flag becomes truth: <span class="mono">rain_expected</span>.</p></div>
           <div class="step"><span class="when">COUNTDOWN</span><h4>The override arms visibly</h4><p>A countdown timer shows on the Weather page. When it hits zero, the app writes <span class="mono">weather_override = 1</span> to the cloud.</p></div>
-          <div class="step"><span class="when">THE VETO</span><h4>Pump barred, politely</h4><p>The ESP32's AUTO logic sees the flag and holds off — even with dry soil, the rain veto wins (page 12). When the sky clears, the veto retracts.</p></div>
+          <div class="step"><span class="when">THE VETO</span><h4>Pump barred, politely</h4><p>The ESP32's AUTO logic sees the flag and holds off — even with dry soil, the rain veto wins (page 14). When the sky clears, the veto retracts.</p></div>
         </div>
       </div>
 

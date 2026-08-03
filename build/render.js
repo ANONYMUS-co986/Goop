@@ -1,7 +1,8 @@
 // Render build/index.html -> Project_Verde_Documentation.pdf via bundled Chromium
 const path = require('path');
 process.env.LD_LIBRARY_PATH = '/tmp/al2023/lib' + (process.env.LD_LIBRARY_PATH ? ':' + process.env.LD_LIBRARY_PATH : '');
-const chromium = require('@sparticuz/chromium').default;
+const _cr = require('@sparticuz/chromium');
+const chromium = _cr.default || _cr;
 const { chromium: pw } = require('playwright-core');
 
 (async () => {

@@ -474,6 +474,61 @@ a.toc-item{ color:inherit; }
 .hwmod>.card{ padding:12px 14px; }
 .hwmod .gpio{ font-size:6.4pt; }
 
+
+/* ---------- full-bleed chapter dividers (generated art) ---------- */
+.divider{ background:var(--navy); }
+.divider .div-bg{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  filter:saturate(1.06) brightness(.94);
+}
+.divider .div-scrim{
+  position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(180deg, rgba(10,22,40,.62) 0%, rgba(10,22,40,.18) 34%, rgba(10,22,40,.30) 58%, rgba(10,22,40,.94) 88%, #0A1628 100%),
+    linear-gradient(100deg, rgba(10,22,40,.66) 0%, rgba(10,22,40,.10) 46%, rgba(10,22,40,.42) 100%);
+}
+.divider .content.div-content{
+  position:absolute; inset:0; z-index:3; padding:44px 52px 84px;
+  display:flex; flex-direction:column;
+}
+.divider .eyebrow{ color:var(--gold); }
+.divider .eyebrow .sec{ color:rgba(237,235,226,.55); }
+
+.div-ghost{
+  font-family:'Space Grotesk'; font-weight:700; font-size:150pt; line-height:.82;
+  color:rgba(232,180,74,.13); letter-spacing:-.04em; margin-top:2px;
+  user-select:none;
+}
+.divider h1.div-title{
+  font-family:'Space Grotesk'; font-weight:600; font-size:37pt; line-height:1.04;
+  letter-spacing:-.015em; color:#F7F4E9; margin-top:auto; margin-bottom:12px;
+  text-shadow:0 2px 26px rgba(3,8,18,.6);
+}
+.divider h1.div-title em{ font-style:normal; color:var(--emerald-bright); }
+.divider p.div-lede{
+  font-size:10.8pt; color:rgba(237,235,226,.78); max-width:62ch; margin-bottom:18px;
+  text-shadow:0 1px 12px rgba(3,8,18,.55);
+}
+.div-items{
+  display:flex; flex-wrap:wrap; gap:8px;
+}
+.div-items .dchip{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'JetBrains Mono'; font-size:7.8pt; letter-spacing:.06em;
+  color:#EDEDE2; padding:7px 13px; border-radius:99px;
+  background:rgba(10,22,40,.66); border:1px solid rgba(232,180,74,.34);
+}
+.div-items .dchip svg{ width:12px; height:12px; color:var(--emerald-bright); flex:none; }
+.div-items .dchip.goldb{ border-color:rgba(232,180,74,.5); color:var(--gold); }
+.divider .page-foot{ position:absolute; left:52px; right:52px; bottom:26px; z-index:3;
+  color:rgba(237,235,226,.5); border-top:1px solid rgba(237,235,226,.16); }
+.divider .div-credit{
+  position:absolute; right:52px; top:52px; z-index:3;
+  font-family:'JetBrains Mono'; font-size:7pt; letter-spacing:.18em;
+  color:rgba(237,235,226,.5); text-transform:uppercase;
+}
+
 </style>
 </head>
 <body>
@@ -514,7 +569,7 @@ a.toc-item{ color:inherit; }
 </svg>
 
 <!-- ==================== P1 · COVER ==================== -->
-<section class="page dark grain" id="p1">
+<section class="page dark grain" id="p1">p1
   <div style="position:absolute;inset:0;z-index:0">
     <img src="assets/img/cover_art.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center bottom;
       -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 15%,#000 34%);
@@ -527,7 +582,7 @@ a.toc-item{ color:inherit; }
   <div style="position:relative;z-index:3;padding:52px 56px 0;display:flex;flex-direction:column;height:100%">
     <div class="row center" style="justify-content:space-between">
       <span class="chip gold">DAV ACON 5 · TECH EXHIBITION 2026</span>
-      <span class="chip navy"><svg width="11" height="11"><use href="#i-leaf"/></svg> SMART IOT · PLANT CARE</span>
+      <span class="chip navy"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> SMART IOT · PLANT CARE</span>
     </div>
 
     <div style="margin-top:58px">
@@ -567,7 +622,7 @@ a.toc-item{ color:inherit; }
 </section>
 
 <!-- ==================== P2 · STORY IN 60 SECONDS ==================== -->
-<section class="page" id="p2">
+<section class="page" id="p2">p2
   <div class="rail"><i style="height:3.6%"></i></div>
   <div class="bignum">01</div>
   <div class="content">
@@ -589,19 +644,19 @@ a.toc-item{ color:inherit; }
     <div class="card tinted mt24" style="padding:18px 22px">
       <div class="row center" style="gap:18px">
         <div style="text-align:center;flex:1">
-          <div class="ibadge" style="margin:0 auto 8px"><svg><use href="#i-chip"/></svg></div>
+          <div class="ibadge" style="margin:0 auto 8px"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></div>
           <h3 style="font-size:10pt">The Edge</h3>
           <p class="small">ESP32 brain + 5 sensors, pump &amp; UV light. ESP32-CAM eyes.</p>
         </div>
         <svg width="34" height="14" viewBox="0 0 34 14" style="flex:none"><path d="M1 7h28m0 0-5-5m5 5-5 5" fill="none" stroke="#B98A2A" stroke-width="2" stroke-linecap="round"/></svg>
         <div style="text-align:center;flex:1">
-          <div class="ibadge gold" style="margin:0 auto 8px"><svg><use href="#i-cloud"/></svg></div>
+          <div class="ibadge gold" style="margin:0 auto 8px"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 9.6 4.2 4.2 0 0 1 17 18H7Z"/></svg></div>
           <h3 style="font-size:10pt">The Cloud</h3>
           <p class="small">Firebase Realtime DB — one source of truth, synced each second.</p>
         </div>
         <svg width="34" height="14" viewBox="0 0 34 14" style="flex:none"><path d="M1 7h28m0 0-5-5m5 5-5 5" fill="none" stroke="#B98A2A" stroke-width="2" stroke-linecap="round"/></svg>
         <div style="text-align:center;flex:1">
-          <div class="ibadge navy" style="margin:0 auto 8px"><svg><use href="#i-phone"/></svg></div>
+          <div class="ibadge navy" style="margin:0 auto 8px"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
           <h3 style="font-size:10pt">The Experience</h3>
           <p class="small">Single-file web app: dashboard, weather, plant doctor, AI chats.</p>
         </div>
@@ -613,36 +668,36 @@ a.toc-item{ color:inherit; }
       <cite>— the one-sentence pitch</cite>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The plant that waters itself <span class="folio">PAGE <b>02</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The plant that waters itself <span class="folio">PAGE <b>02</b></span></div>
 </section>
 
 <!-- ==================== P3 · CONTENTS ==================== -->
-<section class="page" id="p3">
+<section class="page" id="p3">p3
   <div class="rail"><i style="height:3.6%"></i></div>
   <div class="content">
     <div class="eyebrow">Navigation<span class="sec">HYPERLINKED</span></div>
     <h1 class="title">Contents</h1>
-    <p class="subtitle">Twenty-six pages, eight chapters. Every line below is a live link.</p>
+    <p class="subtitle">Thirty-three pages, eight chapter-rooms. Every line below is a live link — divider art marks each turn of the story.</p>
 
     <div class="grid g2 mt24" style="gap:10px 34px">
       <a href="#p2" class="toc-item"><div class="toc-row"><span class="tno">01</span><span class="ttl">The story in 60 seconds</span><span class="dots"></span><span class="pg">02</span></div><p class="tdesc">One page. Every number that matters.</p></a>
-      <a href="#p4" class="toc-item"><div class="toc-row"><span class="tno">02</span><span class="ttl">Why plants die in cities</span><span class="dots"></span><span class="pg">04</span></div><p class="tdesc">The problem — and the ₹8,000 gap in the market.</p></a>
-      <a href="#p5" class="toc-item"><div class="toc-row"><span class="tno">03</span><span class="ttl">Our solution, in one loop</span><span class="dots"></span><span class="pg">05</span></div><p class="tdesc">Sense → decide → act → explain. Three tiers, one plant.</p></a>
-      <a href="#p6" class="toc-item"><div class="toc-row"><span class="tno">04</span><span class="ttl">How it works</span><span class="dots"></span><span class="pg">06</span></div><p class="tdesc">System architecture · the one-second heartbeat timeline.</p></a>
-      <a href="#p8" class="toc-item"><div class="toc-row"><span class="tno">05</span><span class="ttl">Hardware</span><span class="dots"></span><span class="pg">08</span></div><p class="tdesc">Meet the modules · wiring map · power lessons learned the smoky way.</p></a>
-      <a href="#p11" class="toc-item"><div class="toc-row"><span class="tno">06</span><span class="ttl">Firmware — the engine room</span><span class="dots"></span><span class="pg">11</span></div><p class="tdesc">Non-blocking scheduler · AUTO logic · watchdog discipline.</p></a>
-      <a href="#p13" class="toc-item"><div class="toc-row"><span class="tno">07</span><span class="ttl">The bug that nearly sank us</span><span class="dots"></span><span class="pg">13</span></div><p class="tdesc">A 10-second pump stutter, a watchdog, and a 17-calls-per-second mistake.</p></a>
-      <a href="#p14" class="toc-item"><div class="toc-row"><span class="tno">08</span><span class="ttl">The fix: 17 calls → 2 calls</span><span class="dots"></span><span class="pg">14</span></div><p class="tdesc">JSON bundling, before &amp; after — the ~85% latency diet.</p></a>
-      <a href="#p15" class="toc-item"><div class="toc-row"><span class="tno">09</span><span class="ttl">Cloud &amp; the web app</span><span class="dots"></span><span class="pg">15</span></div><p class="tdesc">Firebase schema · four app pages · weather that can veto watering.</p></a>
-      <a href="#p18" class="toc-item"><div class="toc-row"><span class="tno">10</span><span class="ttl">AI &amp; the four APIs</span><span class="dots"></span><span class="pg">18</span></div><p class="tdesc">Plant Doctor · OpenWeatherMap · Gemini · OpenRouter fallback chains.</p></a>
-      <a href="#p21" class="toc-item"><div class="toc-row"><span class="tno">11</span><span class="ttl">Proof</span><span class="dots"></span><span class="pg">21</span></div><p class="tdesc">Every live feature · a 13-point test matrix · an honest bug journal.</p></a>
-      <a href="#p24" class="toc-item"><div class="toc-row"><span class="tno">12</span><span class="ttl">Cost &amp; what's next</span><span class="dots"></span><span class="pg">24</span></div><p class="tdesc">₹1,890 audit · 76% cheaper than commercial · the solar roadmap.</p></a>
-      <a href="#p26" class="toc-item toc-wide"><div class="toc-row"><span class="tno">13</span><span class="ttl">The 3-minute judge tour &amp; closing notes</span><span class="dots"></span><span class="pg">26</span></div><p class="tdesc">Exactly what we'd show you at the stall — timed to the second.</p></a>
+      <a href="#d-why" class="toc-item"><div class="toc-row"><span class="tno">02</span><span class="ttl">Why plants die in cities</span><span class="dots"></span><span class="pg">04</span></div><p class="tdesc">The problem — and the ₹8,000 gap in the market.</p></a>
+      <a href="#p5" class="toc-item"><div class="toc-row"><span class="tno">03</span><span class="ttl">Our solution, in one loop</span><span class="dots"></span><span class="pg">06</span></div><p class="tdesc">Sense → decide → act → explain. Three tiers, one plant.</p></a>
+      <a href="#p6" class="toc-item"><div class="toc-row"><span class="tno">04</span><span class="ttl">How it works</span><span class="dots"></span><span class="pg">07</span></div><p class="tdesc">System architecture · the one-second heartbeat timeline.</p></a>
+      <a href="#p8" class="toc-item"><div class="toc-row"><span class="tno">05</span><span class="ttl">Hardware</span><span class="dots"></span><span class="pg">09</span></div><p class="tdesc">Meet the modules · wiring map · power lessons learned the smoky way.</p></a>
+      <a href="#d-fw" class="toc-item"><div class="toc-row"><span class="tno">06</span><span class="ttl">Firmware — the engine room</span><span class="dots"></span><span class="pg">12</span></div><p class="tdesc">Non-blocking scheduler · AUTO logic · watchdog discipline.</p></a>
+      <a href="#p13" class="toc-item"><div class="toc-row"><span class="tno">07</span><span class="ttl">The bug that nearly sank us</span><span class="dots"></span><span class="pg">15</span></div><p class="tdesc">A 10-second pump stutter, a watchdog, and a 17-calls-per-second mistake.</p></a>
+      <a href="#p14" class="toc-item"><div class="toc-row"><span class="tno">08</span><span class="ttl">The fix: 17 calls → 2 calls</span><span class="dots"></span><span class="pg">16</span></div><p class="tdesc">JSON bundling, before &amp; after — the ~85% latency diet.</p></a>
+      <a href="#d-cloud" class="toc-item"><div class="toc-row"><span class="tno">09</span><span class="ttl">Cloud &amp; the web app</span><span class="dots"></span><span class="pg">17</span></div><p class="tdesc">Firebase schema · four app pages · weather that can veto watering.</p></a>
+      <a href="#d-ai" class="toc-item"><div class="toc-row"><span class="tno">10</span><span class="ttl">AI &amp; the four APIs</span><span class="dots"></span><span class="pg">21</span></div><p class="tdesc">Plant Doctor · OpenWeatherMap · Gemini · OpenRouter fallback chains.</p></a>
+      <a href="#d-proof" class="toc-item"><div class="toc-row"><span class="tno">11</span><span class="ttl">Proof</span><span class="dots"></span><span class="pg">25</span></div><p class="tdesc">Every live feature · a 13-point test matrix · an honest bug journal.</p></a>
+      <a href="#d-next" class="toc-item"><div class="toc-row"><span class="tno">12</span><span class="ttl">Cost &amp; what's next</span><span class="dots"></span><span class="pg">29</span></div><p class="tdesc">₹1,890 audit · 76% cheaper than commercial · the solar roadmap.</p></a>
+      <a href="#p26" class="toc-item toc-wide"><div class="toc-row"><span class="tno">13</span><span class="ttl">The 3-minute judge tour &amp; closing notes</span><span class="dots"></span><span class="pg">32</span></div><p class="tdesc">Exactly what we'd show you at the stall — timed to the second.</p></a>
     </div>
 
     <div class="card navy-fill mt30" style="padding:18px 22px">
       <div class="row center" style="gap:22px">
-        <div class="ibadge gold" style="width:44px;height:44px;border-radius:14px"><svg width="22" height="22"><use href="#i-book"/></svg></div>
+        <div class="ibadge gold" style="width:44px;height:44px;border-radius:14px"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/></svg></div>
         <div class="grow">
           <h3>How to read this document</h3>
           <p style="margin-top:3px">In a hurry? Pages 2, 14 and 26 tell the whole story. Here for engineering? Chapters 05–08. Every page is built to be skimmed in under ten seconds — headings carry the plot.</p>
@@ -651,11 +706,28 @@ a.toc-item{ color:inherit; }
       </div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Contents <span class="folio">PAGE <b>03</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Contents <span class="folio">PAGE <b>03</b></span></div>
+</section>
+
+<!-- =============== CHAPTER DIVIDER · WHY =============== -->
+<section class="page dark grain divider" id="d-why">d-why
+  <img class="div-bg" src="assets/img/why_art.jpg" alt="">
+  <div class="div-scrim"></div>
+  <div class="div-credit">Project Verde · Field Notes</div>
+  <div class="content div-content">
+    <div class="eyebrow">Chapter 02 · The why <span class="sec">THE PROBLEM</span></div>
+    <div class="div-ghost">02</div>
+    <h1 class="div-title">The silence that<br>kills <em>houseplants.</em></h1>
+    <p class="div-lede">City plants die quietly — of forgetfulness and guesswork. Before a single wire was cut, we needed to feel that problem: the forgotten fern, the drowned succulent, the blind owner watering on vibes.</p>
+    <div class="div-items">
+01a-div-why.html0
+    </div>
+  </div>
+  <div class="page-foot">Project Verde · DAV ACON 5 <span class="dot"></span> 01a-div-why.html1 <span class="folio">PAGE <b>04</b></span></div>
 </section>
 
 <!-- ==================== P4 · PROBLEM ==================== -->
-<section class="page" id="p4">
+<section class="page" id="p4">p4
   <div class="rail"><i style="height:7.4%"></i></div>
   <div class="bignum">02</div>
   <div class="content">
@@ -665,17 +737,17 @@ a.toc-item{ color:inherit; }
 
     <div class="grid g3 mt24">
       <div class="card gold-edge">
-        <div class="ibadge gold mb10"><svg><use href="#i-clock"/></svg></div>
+        <div class="ibadge gold mb10"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.4 2"/></svg></div>
         <h3>Forgotten</h3>
         <p>Urban families travel, study late, work shifts. Watering slips a day, then a week. The soil says nothing — it just quietly hits zero.</p>
       </div>
       <div class="card gold-edge">
-        <div class="ibadge gold mb10"><svg><use href="#i-drop"/></svg></div>
+        <div class="ibadge gold mb10"><svg viewBox="0 0 24 24"><path d="M12 3c3.5 4.4 6 7.6 6 10.6A6 6 0 0 1 6 13.6C6 10.6 8.5 7.4 12 3Z"/><path d="M9.5 13.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div>
         <h3>Drowned</h3>
         <p>The opposite sin: daily "just in case" watering. Roots rot in soggy soil while the plant looks, from above, perfectly loved.</p>
       </div>
       <div class="card gold-edge">
-        <div class="ibadge gold mb10"><svg><use href="#i-eye"/></svg></div>
+        <div class="ibadge gold mb10"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Blind</h3>
         <p>No one knows the soil moisture right now, whether the tank is empty, or that rain is coming tonight. Plants die of missing information.</p>
       </div>
@@ -706,11 +778,11 @@ a.toc-item{ color:inherit; }
       <cite>— every plant parent, ever</cite>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The why <span class="folio">PAGE <b>04</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The why <span class="folio">PAGE <b>05</b></span></div>
 </section>
 
 <!-- ==================== P5 · SOLUTION ==================== -->
-<section class="page dark grain" id="p5">
+<section class="page dark grain" id="p5">p5
   <div class="rail"><i style="height:7.4%"></i><u style="height:4%"></u></div>
   <div class="glow" style="width:560px;height:560px;bottom:-220px;left:-180px;background:radial-gradient(circle,rgba(25,200,130,.14),transparent 65%)"></div>
   <div class="content" style="padding-left:52px">
@@ -724,10 +796,10 @@ a.toc-item{ color:inherit; }
     <p class="subtitle">Verde closes the loop a human keeps forgetting to close. Four verbs, running every second of every day — for roughly the cost of four movie tickets.</p>
 
     <div class="grid g4 mt24">
-      <div class="card"><div class="ibadge sm mb10"><svg><use href="#i-waves"/></svg></div><h3 style="font-size:10.5pt">1 · Sense</h3><p>Five probes read soil, air, light &amp; tank — filtered, averaged, honest.</p></div>
-      <div class="card"><div class="ibadge sm mb10"><svg><use href="#i-chip"/></svg></div><h3 style="font-size:10.5pt">2 · Decide</h3><p>The ESP32 brain applies AUTO logic with thresholds you tune live.</p></div>
-      <div class="card"><div class="ibadge sm gold mb10"><svg><use href="#i-pump"/></svg></div><h3 style="font-size:10.5pt">3 · Act</h3><p>Pump waters until the soil says "enough" — then stops, exactly there.</p></div>
-      <div class="card"><div class="ibadge sm navy mb10"><svg><use href="#i-spark"/></svg></div><h3 style="font-size:10.5pt">4 · Explain</h3><p>Dashboard, weather veto, camera, AI doctor. The plant finally has a voice.</p></div>
+      <div class="card"><div class="ibadge sm mb10"><svg viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8M12 16a4 4 0 0 0 4-4"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 4a8 8 0 0 0-8 8M12 8a4 4 0 0 0-4 4"/></svg></div><h3 style="font-size:10.5pt">1 · Sense</h3><p>Five probes read soil, air, light &amp; tank — filtered, averaged, honest.</p></div>
+      <div class="card"><div class="ibadge sm mb10"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></div><h3 style="font-size:10.5pt">2 · Decide</h3><p>The ESP32 brain applies AUTO logic with thresholds you tune live.</p></div>
+      <div class="card"><div class="ibadge sm gold mb10"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="12" height="9" rx="2"/><path d="M15 12h4a2 2 0 0 1 2 2v3M7 9V6.5A2.5 2.5 0 0 1 9.5 4H14"/></svg></div><h3 style="font-size:10.5pt">3 · Act</h3><p>Pump waters until the soil says "enough" — then stops, exactly there.</p></div>
+      <div class="card"><div class="ibadge sm navy mb10"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div><h3 style="font-size:10.5pt">4 · Explain</h3><p>Dashboard, weather veto, camera, AI doctor. The plant finally has a voice.</p></div>
     </div>
 
     <div class="row mt24" style="gap:12px">
@@ -751,11 +823,11 @@ a.toc-item{ color:inherit; }
       <span class="chip navy">STUDENT-OPENABLE · STUDENT-FIXABLE</span>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The solution <span class="folio">PAGE <b>05</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The solution <span class="folio">PAGE <b>06</b></span></div>
 </section>
 
 <!-- ==================== P6 · ARCHITECTURE ==================== -->
-<section class="page" id="p6">
+<section class="page" id="p6">p6
   <div class="rail"><i style="height:11.2%"></i></div>
   <div class="bignum">04</div>
   <div class="content">
@@ -900,11 +972,11 @@ a.toc-item{ color:inherit; }
       <span class="chip navy">RULES: PUBLIC READ · VALIDATED WRITES</span>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Architecture <span class="folio">PAGE <b>06</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Architecture <span class="folio">PAGE <b>07</b></span></div>
 </section>
 
 <!-- ==================== P7 · HEARTBEAT ==================== -->
-<section class="page dark grain" id="p7">
+<section class="page dark grain" id="p7">p7
   <div class="rail"><i style="height:11.2%"></i><u style="height:3.8%"></u></div>
   <div style="position:absolute;right:0;top:0;bottom:0;width:34%;z-index:0;opacity:.5;
     background:url('assets/img/texture_trace.jpg') right center/cover no-repeat;
@@ -971,15 +1043,15 @@ a.toc-item{ color:inherit; }
     </div>
 
     <div class="callout gold mt18">
-      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-alert"/></svg></div>
-      <div><div class="ttl">Why the obsession with "non-blocking"?</div><p>Because the one time we let network calls block the loop, the watchdog ate us — a reboot every 10 seconds and a pump that stuttered like a telegraph key. That story gets its own spread: page 13.</p></div>
+      <div class="ibadge gold sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4L12 4Z"/><path d="M12 10v4"/><circle cx="12" cy="16.8" r=".9" fill="currentColor" stroke="none"/></svg></div>
+      <div><div class="ttl">Why the obsession with "non-blocking"?</div><p>Because the one time we let network calls block the loop, the watchdog ate us — a reboot every 10 seconds and a pump that stuttered like a telegraph key. That story gets its own spread: page 15.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The heartbeat <span class="folio">PAGE <b>07</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The heartbeat <span class="folio">PAGE <b>08</b></span></div>
 </section>
 
 <!-- ==================== P8 · HARDWARE CARDS ==================== -->
-<section class="page" id="p8">
+<section class="page" id="p8">p8
   <div class="rail"><i style="height:15%"></i></div>
   <div class="bignum">05</div>
   <div class="content">
@@ -994,55 +1066,55 @@ a.toc-item{ color:inherit; }
 
     <div class="grid g4 hwmod" style="gap:9px">
       <div class="card emerald-edge" style="grid-column:span 2;padding:12px 14px">
-        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg><use href="#i-chip"/></svg></div><h3>ESP32 WROOM-32 — the brain</h3><span style="margin-left:auto" class="gpio">32-bit · WiFi</span></div>
+        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></div><h3>ESP32 WROOM-32 — the brain</h3><span style="margin-left:auto" class="gpio">32-bit · WiFi</span></div>
         <p class="mt6">Runs AUTO logic, filters, thresholds and the 1-second heart­beat. Keeps watering even if WiFi dies.</p>
       </div>
       <div class="card emerald-edge" style="grid-column:span 2;padding:12px 14px">
-        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg><use href="#i-camera"/></svg></div><h3>ESP32-CAM — the eyes</h3><span style="margin-left:auto" class="gpio">OV2640</span></div>
+        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg></div><h3>ESP32-CAM — the eyes</h3><span style="margin-left:auto" class="gpio">OV2640</span></div>
         <p class="mt6">Shoots SVGA plant portraits on demand, uploads within seconds. Own board, own firmware, zero load on the brain.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-drop"/></svg></div><h3 style="font-size:10pt">Soil moisture</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M12 3c3.5 4.4 6 7.6 6 10.6A6 6 0 0 1 6 13.6C6 10.6 8.5 7.4 12 3Z"/><path d="M9.5 13.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div><h3 style="font-size:10pt">Soil moisture</h3></div>
         <div class="mt6 mb6"><span class="gpio">AO → GPIO 34</span> <span class="gpio">VCC gate → GPIO 23</span></div>
         <p>LM393 comparator, read for just 15 ms at a time — power-gating stops probe corrosion.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-thermo"/></svg></div><h3 style="font-size:10pt">DHT11</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M10 13.6V5a2 2 0 1 1 4 0v8.6a4.5 4.5 0 1 1-4 0Z"/><circle cx="12" cy="17.5" r="1.4" fill="currentColor" stroke="none"/></svg></div><h3 style="font-size:10pt">DHT11</h3></div>
         <div class="mt6 mb6"><span class="gpio">DATA → GPIO 4</span></div>
         <p>Air temperature + humidity. Cheap, slow, honest — sampled once a second.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-sun"/></svg></div><h3 style="font-size:10pt">LDR module</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div><h3 style="font-size:10pt">LDR module</h3></div>
         <div class="mt6 mb6"><span class="gpio">AO → GPIO 35</span></div>
         <p>Sees dusk arrive. "Dark" triggers the grow light; ±2% hysteresis stops flicker at sunset.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-waves"/></svg></div><h3 style="font-size:10pt">HC-SR04</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8M12 16a4 4 0 0 0 4-4"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 4a8 8 0 0 0-8 8M12 8a4 4 0 0 0-4 4"/></svg></div><h3 style="font-size:10pt">HC-SR04</h3></div>
         <div class="mt6 mb6"><span class="gpio">TRIG → 18</span> <span class="gpio">ECHO → 19</span></div>
         <p>Ultrasonic tank level. 5-point filter rejects pump-splash garbage — a splash can't fake an empty tank.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm gold"><svg><use href="#i-pump"/></svg></div><h3 style="font-size:10pt">2-ch relay → pump</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="12" height="9" rx="2"/><path d="M15 12h4a2 2 0 0 1 2 2v3M7 9V6.5A2.5 2.5 0 0 1 9.5 4H14"/></svg></div><h3 style="font-size:10pt">2-ch relay → pump</h3></div>
         <div class="mt6 mb6"><span class="gpio">IN1 → GPIO 5</span> <span class="chip navy" style="font-size:6.6pt">ACTIVE-LOW</span></div>
         <p>Switches the 5 V submersible pump on its own isolated supply. The brain never touches pump current.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm gold"><svg><use href="#i-bulb"/></svg></div><h3 style="font-size:10pt">UV grow LED</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 1 3.2 11.1c-.7.5-1.2 1.2-1.2 2v.9h-4v-.9c0-.8-.5-1.5-1.2-2A6 6 0 0 1 12 3Z"/><path d="M10 20h4"/></svg></div><h3 style="font-size:10pt">UV grow LED</h3></div>
         <div class="mt6 mb6"><span class="gpio">GPIO 12</span> <span class="chip navy" style="font-size:6.6pt">ACTIVE-HIGH · 220 Ω</span></div>
         <p>Photosynthetic light on schedule or on command — sunrise on demand for a windowsill plant.</p>
       </div>
     </div>
 
     <div class="callout mt10" style="padding:11px 14px">
-      <div class="ibadge sm" style="flex:none"><svg><use href="#i-leaf"/></svg></div>
+      <div class="ibadge sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg></div>
       <div><div class="ttl">Why two microcontrollers?</div><p>The camera is a diva: it wants RAM, clean power and precise timing. Give it its own board and the brain stays fast — one waters, one watches, neither waits for the other.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Hardware <span class="folio">PAGE <b>08</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Hardware <span class="folio">PAGE <b>09</b></span></div>
 </section>
 
 <!-- ==================== P9 · WIRING MAP (v2) ==================== -->
-<section class="page" id="p9">
+<section class="page" id="p9">p9
   <div class="rail"><i style="height:15%"></i></div>
   <div class="content">
     <div class="eyebrow">05 · Hardware<span class="sec">WIRING MAP</span></div>
@@ -1079,7 +1151,7 @@ a.toc-item{ color:inherit; }
         <text x="304" y="457">GPIO MATRIX</text>
         <text x="304" y="556">LDO</text><text x="352" y="556">XOSC 40M</text>
         <text x="290" y="600">V3.0.7 runs here — 86,400 loops a day.</text>
-        <text x="290" y="612">The watchdog approves. See page 11.</text>
+        <text x="290" y="612">The watchdog approves. See page 13.</text>
       </g>
       <!-- decorative unused pins -->
       <g fill="#12263F">
@@ -1168,7 +1240,7 @@ a.toc-item{ color:inherit; }
       <rect x="480" y="440" width="182" height="112" rx="12" fill="rgba(242,193,78,.10)" stroke="rgba(232,180,74,.55)"/>
       <text x="494" y="463" font-family="Space Grotesk,sans-serif" font-weight="600" font-size="10.5" fill="#B98A2A">5 V / 2 A phone adapter</text>
       <text x="494" y="479" font-family="JetBrains Mono,monospace" font-size="7.2" fill="#8a6a24">NOT a 67 W USB-PD brick —</text>
-      <text x="494" y="492" font-family="JetBrains Mono,monospace" font-size="7.2" fill="#8a6a24">PD needs a handshake (p.10)</text>
+      <text x="494" y="492" font-family="JetBrains Mono,monospace" font-size="7.2" fill="#8a6a24">PD needs a handshake (p.11)</text>
       <text x="494" y="512" font-family="JetBrains Mono,monospace" font-size="7.2" fill="#8a6a24">+ 1000 µF across the rails</text>
       <text x="494" y="532" font-family="JetBrains Mono,monospace" font-size="6.8" fill="#B98A2A">VIN + GND feed the board</text>
       <path d="M444 480 H480" stroke="#B98A2A" stroke-width="2.4"/>
@@ -1179,7 +1251,7 @@ a.toc-item{ color:inherit; }
       <rect x="28" y="620" width="404" height="74" rx="12" fill="#fff" stroke="rgba(14,159,110,.4)"/>
       <text x="44" y="645" font-family="Space Grotesk,sans-serif" font-weight="600" font-size="10" fill="#17233A">ESP32-CAM · a board of its own</text>
       <text x="44" y="660" font-family="JetBrains Mono,monospace" font-size="7.4" fill="#0A7A54">zero shared pins — it talks over WiFi, not wires</text>
-      <text x="44" y="678" font-family="JetBrains Mono,monospace" font-size="6.8" fill="#65718C">own power rail · sequential boot · 8 MHz XCLK (p.23)</text>
+      <text x="44" y="678" font-family="JetBrains Mono,monospace" font-size="6.8" fill="#65718C">own power rail · sequential boot · 8 MHz XCLK (p.28)</text>
       <g font-family="JetBrains Mono,monospace" font-size="7.6" fill="#33415C">
         <line x1="480" y1="636" x2="504" y2="636" stroke="#0E9F6E" stroke-width="2.4"/><text x="510" y="639">SIGNAL</text>
         <line x1="576" y1="636" x2="600" y2="636" stroke="#B98A2A" stroke-width="2.4"/><text x="606" y="639">POWER</text>
@@ -1189,11 +1261,11 @@ a.toc-item{ color:inherit; }
       </g>
     </svg>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Wiring <span class="folio">PAGE <b>09</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Wiring <span class="folio">PAGE <b>10</b></span></div>
 </section>
 
 <!-- ==================== P10 · POWER LESSONS ==================== -->
-<section class="page" id="p10">
+<section class="page" id="p10">p10
   <div class="rail"><i style="height:15%"></i><u style="height:3.8%"></u></div>
   <div class="bignum">05</div>
   <div class="content">
@@ -1250,15 +1322,32 @@ a.toc-item{ color:inherit; }
     </div>
 
     <div class="callout gold mt18">
-      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-bolt"/></svg></div>
+      <div class="ibadge gold sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11l-1 8.5L18.5 10H12l1-8Z"/></svg></div>
       <div><div class="ttl">Our power checklist (tape it to your table)</div><p>Dumb 5 V / 2 A adapter · 1000 µF across the rails · diode across the pump · pump on relay-isolated supply · rails bridged + to +, − to −. Five lines, zero reboots.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Power <span class="folio">PAGE <b>10</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Power <span class="folio">PAGE <b>11</b></span></div>
+</section>
+
+<!-- =============== CHAPTER DIVIDER · FIRMWARE =============== -->
+<section class="page dark grain divider" id="d-fw">d-fw
+  <img class="div-bg" src="assets/img/firmware_art.jpg" alt="">
+  <div class="div-scrim"></div>
+  <div class="div-credit">Project Verde · Field Notes</div>
+  <div class="content div-content">
+    <div class="eyebrow">Chapter 06 · The engine room <span class="sec">NO BLOCKING. EVER.</span></div>
+    <div class="div-ghost">06</div>
+    <h1 class="div-title">Where copper traces<br>flow like <em>water canals.</em></h1>
+    <p class="div-lede">An ESP32 sketch that behaves like a grown-up RTOS — every task on a schedule, every sensor filtered, every decision logged. This is the chapter with the smoke stains.</p>
+    <div class="div-items">
+04z-div-firmware.html0
+    </div>
+  </div>
+  <div class="page-foot">Project Verde · DAV ACON 5 <span class="dot"></span> 04z-div-firmware.html1 <span class="folio">PAGE <b>12</b></span></div>
 </section>
 
 <!-- ==================== P11 · FIRMWARE ENGINE ==================== -->
-<section class="page" id="p11">
+<section class="page" id="p11">p11
   <div class="rail"><i style="height:18.8%"></i></div>
   <div class="bignum">06</div>
   <div class="content">
@@ -1267,7 +1356,7 @@ a.toc-item{ color:inherit; }
       <h1 class="title" style="margin-bottom:0">The engine room</h1>
       <span class="chip navy mono" style="margin-bottom:8px">Code_1_Main_Brain.ino · V3.0.7-FINAL</span>
     </div>
-    <p class="subtitle mt6">An ESP32 sketch that behaves like a grown-up RTOS: every task on a schedule, every sensor filtered, every decision logged. No blocking calls anywhere — not after what happened on page 13.</p>
+    <p class="subtitle mt6">An ESP32 sketch that behaves like a grown-up RTOS: every task on a schedule, every sensor filtered, every decision logged. No blocking calls anywhere — not after what happened on page 15.</p>
 
     <div class="grid g4 mt24">
       <div class="card navy-fill"><div class="kpi"><span class="val" style="color:var(--emerald-bright);font-size:20pt">1 Hz</span><span class="lab">Sensor reads</span></div><p class="mt6">All five probes sampled, filtered and judged once per second.</p></div>
@@ -1278,22 +1367,22 @@ a.toc-item{ color:inherit; }
 
     <div class="grid g3 mt18">
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-shield"/></svg></div><h3 style="font-size:10.5pt">The watchdog pact</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg></div><h3 style="font-size:10.5pt">The watchdog pact</h3></div>
         <p class="mt6">A hardware watchdog arms an <strong>8-second</strong> fuse. The loop must pet it every pass; a hung loop gets a reboot instead of a dead plant. 10-minute soak test: <strong>0 reboots</strong>.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-chart"/></svg></div><h3 style="font-size:10.5pt">Filters that don't lie</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M4 4v15.2c0 .4.4.8.8.8H20"/><path d="M8 15.5v-4M12 15.5V8M16 15.5v-2.5"/></svg></div><h3 style="font-size:10.5pt">Filters that don't lie</h3></div>
         <p class="mt6"><strong>10-point moving averages</strong> for soil &amp; LDR. The tank gets a <strong>5-point average + invalid-read rejection</strong> — pump splash can't impersonate an empty tank.</p>
       </div>
       <div class="card">
-        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-bulb"/></svg></div><h3 style="font-size:10.5pt">±2% hysteresis</h3></div>
+        <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 1 3.2 11.1c-.7.5-1.2 1.2-1.2 2v.9h-4v-.9c0-.8-.5-1.5-1.2-2A6 6 0 0 1 12 3Z"/><path d="M10 20h4"/></svg></div><h3 style="font-size:10.5pt">±2% hysteresis</h3></div>
         <p class="mt6">At sunset the light sensor hovers on the edge. Hysteresis gives the grow LED a dead-band so it glides on once — <strong>no flicker disco</strong>.</p>
       </div>
     </div>
 
     <div class="card tinted mt18" style="padding:20px 24px">
       <div class="row center mb14" style="gap:10px">
-        <div class="ibadge sm gold"><svg><use href="#i-slider"/></svg></div>
+        <div class="ibadge sm gold"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/><circle cx="9" cy="7" r="2.2" fill="#fff"/><circle cx="15" cy="12" r="2.2" fill="#fff"/><circle cx="8" cy="17" r="2.2" fill="#fff"/></svg></div>
         <h3 style="margin:0">Thresholds you can tune from the app — saved to flash (NVS)</h3>
         <span class="chip navy" style="margin-left:auto;font-size:6.6pt">SURVIVES POWER CUTS</span>
       </div>
@@ -1310,11 +1399,11 @@ a.toc-item{ color:inherit; }
       <span class="chip navy">LOGS: successful_uploads / failed_uploads</span>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Firmware <span class="folio">PAGE <b>11</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Firmware <span class="folio">PAGE <b>13</b></span></div>
 </section>
 
 <!-- ==================== P12 · AUTO FLOWCHART ==================== -->
-<section class="page" id="p12">
+<section class="page" id="p12">p12
   <div class="rail"><i style="height:18.8%"></i></div>
   <div class="content">
     <div class="eyebrow">06 · Firmware<span class="sec">DECISION LOGIC</span></div>
@@ -1377,7 +1466,7 @@ a.toc-item{ color:inherit; }
         <!-- pump on -->
         <rect x="118" y="550" width="184" height="56" rx="12" fill="#0E9F6E"/>
         <text x="210" y="573" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="11.5" font-weight="600" fill="#fff">PUMP ON</text>
-        <text x="210" y="589" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.2" fill="rgba(255,255,255,.85)">stays ON — no 10 s stutter (p.13)</text>
+        <text x="210" y="589" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.2" fill="rgba(255,255,255,.85)">stays ON — no 10 s stutter (p.15)</text>
         <path d="M210 606 V628" stroke="#33415C" stroke-width="1.8" marker-end="url(#fa)"/>
 
         <rect x="96" y="632" width="228" height="56" rx="12" fill="#0A1628"/>
@@ -1387,7 +1476,7 @@ a.toc-item{ color:inherit; }
 
       <div class="grow" style="display:flex;flex-direction:column;gap:12px">
         <div class="card emerald-edge">
-          <div class="row center" style="gap:8px"><div class="ibadge sm"><svg><use href="#i-shield"/></svg></div><h3 style="font-size:10.5pt;margin:0">Three locks, one pump</h3></div>
+          <div class="row center" style="gap:8px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg></div><h3 style="font-size:10.5pt;margin:0">Three locks, one pump</h3></div>
           <ul class="tick mt6">
             <li><strong>Dry-soil consent</strong> — watering starts only below the threshold you set (35% default).</li>
             <li><strong>Tank lock</strong> — an empty tank means a dead pump if it ran dry. Level under 15%? Refused, even in manual.</li>
@@ -1395,7 +1484,7 @@ a.toc-item{ color:inherit; }
           </ul>
         </div>
         <div class="card">
-          <div class="row center" style="gap:8px"><div class="ibadge sm gold"><svg><use href="#i-bulb"/></svg></div><h3 style="font-size:10.5pt;margin:0">The light has its own brain</h3></div>
+          <div class="row center" style="gap:8px"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 1 3.2 11.1c-.7.5-1.2 1.2-1.2 2v.9h-4v-.9c0-.8-.5-1.5-1.2-2A6 6 0 0 1 12 3Z"/><path d="M10 20h4"/></svg></div><h3 style="font-size:10.5pt;margin:0">The light has its own brain</h3></div>
           <p class="mt6">LDR says "dark" (past the 35 line)? The UV grow LED switches on — with <strong>±2% hysteresis</strong> so a passing cloud at dusk doesn't start a strobe party.</p>
         </div>
         <div class="card navy-fill">
@@ -1421,11 +1510,11 @@ a.toc-item{ color:inherit; }
       <span style="display:inline-flex;align-items:center;gap:7px;font-size:7.6pt;color:var(--ink-2)"><i style="width:22px;border-top:2px dashed #8A94A6;display:inline-block"></i>refusal path → safe OFF</span>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> AUTO logic <span class="folio">PAGE <b>12</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> AUTO logic <span class="folio">PAGE <b>14</b></span></div>
 </section>
 
 <!-- ==================== P13 · THE BUG ==================== -->
-<section class="page" id="p13">
+<section class="page" id="p13">p13
   <div class="rail"><i style="height:22.6%"></i></div>
   <div class="bignum">07</div>
   <div class="content">
@@ -1460,11 +1549,11 @@ a.toc-item{ color:inherit; }
       <cite>— firmware log, the night we understood</cite>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The bug <span class="folio">PAGE <b>13</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The bug <span class="folio">PAGE <b>15</b></span></div>
 </section>
 
 <!-- ==================== P14 · THE FIX ==================== -->
-<section class="page dark grain" id="p14">
+<section class="page dark grain" id="p14">p14
   <div class="rail"><i style="height:22.6%"></i><u style="height:3.8%"></u></div>
   <div style="position:absolute;left:0;top:0;bottom:0;width:30%;z-index:0;opacity:.42;background:url('assets/img/texture_trace.jpg') left center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,#000 25%,transparent);mask-image:linear-gradient(90deg,#000 25%,transparent)"></div>
   <div class="glow" style="width:560px;height:560px;top:-180px;right:-180px;background:radial-gradient(circle,rgba(245,201,92,.12),transparent 65%)"></div>
@@ -1517,15 +1606,32 @@ a.toc-item{ color:inherit; }
     </div>
 
     <div class="callout gold" style="margin-top:auto">
-      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-coin"/></svg></div>
+      <div class="ibadge gold sm" style="flex:none"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 7.5h8M8 7.5c3.5 0 4.5 1.2 4.5 2.6S11.5 12.8 8 12.8l4.8 4.7M8 10.2h8"/></svg></div>
       <div><div class="ttl">What it taught us</div><p>Count your network calls like coins. A microcontroller doesn't grief you for bad logic — it griefs you for chattering. Two fat envelopes beat seventeen thin letters.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The fix <span class="folio">PAGE <b>14</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The fix <span class="folio">PAGE <b>16</b></span></div>
+</section>
+
+<!-- =============== CHAPTER DIVIDER · CLOUD =============== -->
+<section class="page dark grain divider" id="d-cloud">d-cloud
+  <img class="div-bg" src="assets/img/cloud_art.jpg" alt="">
+  <div class="div-scrim"></div>
+  <div class="div-credit">Project Verde · Field Notes</div>
+  <div class="content div-content">
+    <div class="eyebrow">Chapter 09 · Cloud & the app <span class="sec">ONE HTML FILE</span></div>
+    <div class="div-ghost">09</div>
+    <h1 class="div-title">A whisper goes up.<br>A weather brain<br>comes <em>down.</em></h1>
+    <p class="div-lede">Firebase is the single source of truth, the app is a single double-clickable file, and Delhi’s sky gets a veto vote on every watering. Zero rupees, zero servers, zero excuses.</p>
+    <div class="div-items">
+06a-div-cloud.html0
+    </div>
+  </div>
+  <div class="page-foot">Project Verde · DAV ACON 5 <span class="dot"></span> 06a-div-cloud.html1 <span class="folio">PAGE <b>17</b></span></div>
 </section>
 
 <!-- ==================== P15 · CLOUD SCHEMA ==================== -->
-<section class="page dark grain" id="p15">
+<section class="page dark grain" id="p15">p15
   <div class="rail"><i style="height:26.4%"></i></div>
   <div class="bignum">09</div>
   <div class="content">
@@ -1575,15 +1681,15 @@ a.toc-item{ color:inherit; }
     </div>
 
     <div class="callout gold mt14">
-      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-db"/></svg></div>
+      <div class="ibadge gold sm" style="flex:none"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13"/><path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/></svg></div>
       <div><div class="ttl">One tree, three readers</div><p>The ESP32 writes <span class="mono">/sensors</span> &amp; reads <span class="mono">/controls</span>. The app does the reverse. The CAM only watches <span class="mono">capture_photo</span>. Nobody waits for anybody — they just check the tree.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Cloud <span class="folio">PAGE <b>15</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Cloud <span class="folio">PAGE <b>18</b></span></div>
 </section>
 
 <!-- ==================== P16 · WEB APP ==================== -->
-<section class="page" id="p16">
+<section class="page" id="p16">p16
   <div class="rail"><i style="height:26.4%"></i></div>
   <div class="bignum">09</div>
   <div class="content">
@@ -1646,11 +1752,11 @@ a.toc-item{ color:inherit; }
       <span class="chip gold">BURGER MENU · 4 PAGES · NO RELOADS</span>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The web app <span class="folio">PAGE <b>16</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> The web app <span class="folio">PAGE <b>19</b></span></div>
 </section>
 
 <!-- ==================== P17 · WEATHER ==================== -->
-<section class="page" id="p17">
+<section class="page" id="p17">p17
   <div class="rail"><i style="height:26.4%"></i><u style="height:3.8%"></u></div>
   <div class="content">
     <div class="eyebrow">09 · Cloud &amp; the app<span class="sec">WEATHER BRAIN</span></div>
@@ -1663,7 +1769,7 @@ a.toc-item{ color:inherit; }
           <div class="step"><span class="when">EVERY 3 MINUTES</span><h4>The app looks up</h4><p>An <span class="mono">OpenWeatherMap</span> call fetches Delhi's live condition + 5-day forecast: <span class="mono">GET /data/2.5/weather?q=Delhi</span>, key in the URL.</p></div>
           <div class="step"><span class="when">CONDITION DECODER</span><h4>Rain codes translation</h4><p>Weather IDs in the <strong>2xx / 3xx / 5xx / 6xx</strong> families mean drizzle, rain, storm or snow. One flag becomes truth: <span class="mono">rain_expected</span>.</p></div>
           <div class="step"><span class="when">COUNTDOWN</span><h4>The override arms visibly</h4><p>A countdown timer shows on the Weather page. When it hits zero, the app writes <span class="mono">weather_override = 1</span> to the cloud.</p></div>
-          <div class="step"><span class="when">THE VETO</span><h4>Pump barred, politely</h4><p>The ESP32's AUTO logic sees the flag and holds off — even with dry soil, the rain veto wins (page 12). When the sky clears, the veto retracts.</p></div>
+          <div class="step"><span class="when">THE VETO</span><h4>Pump barred, politely</h4><p>The ESP32's AUTO logic sees the flag and holds off — even with dry soil, the rain veto wins (page 14). When the sky clears, the veto retracts.</p></div>
         </div>
       </div>
 
@@ -1678,16 +1784,16 @@ a.toc-item{ color:inherit; }
             <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#F5C95C" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           </div>
           <div class="wx-week">
-            <div class="wx-day"><span class="mono">TUE</span><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg><b>36°</b></div>
-            <div class="wx-day"><span class="mono">WED</span><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg><b>37°</b></div>
-            <div class="wx-day rain"><span class="mono">THU</span><svg viewBox="0 0 24 24"><use href="#i-rain"/></svg><b>31°</b></div>
-            <div class="wx-day"><span class="mono">FRI</span><svg viewBox="0 0 24 24"><use href="#i-cloud"/></svg><b>33°</b></div>
-            <div class="wx-day"><span class="mono">SAT</span><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg><b>35°</b></div>
+            <div class="wx-day"><span class="mono">TUE</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><b>36°</b></div>
+            <div class="wx-day"><span class="mono">WED</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><b>37°</b></div>
+            <div class="wx-day rain"><span class="mono">THU</span><svg viewBox="0 0 24 24"><path d="M7 14a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 5.6 4.2 4.2 0 0 1 17 14H7Z"/><path d="M8 17.5 7 20M12 17.5 11 20M16 17.5 15 20"/></svg><b>31°</b></div>
+            <div class="wx-day"><span class="mono">FRI</span><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 9.6 4.2 4.2 0 0 1 17 18H7Z"/></svg><b>33°</b></div>
+            <div class="wx-day"><span class="mono">SAT</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><b>35°</b></div>
           </div>
           <div class="wx-override mono"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 14a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 5.6 4.2 4.2 0 0 1 17 14H7Z"/><path d="M8 17.5 7 20M12 17.5 11 20M16 17.5 15 20"/></svg> RAIN THURSDAY → OVERRIDE COUNTDOWN ARMED</div>
         </div>
         <div class="callout">
-          <div class="ibadge sm" style="flex:none"><svg><use href="#i-check"/></svg></div>
+          <div class="ibadge sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg></div>
           <div><div class="ttl">Verified live, not in theory</div><p>Real API, real city id <span class="mono">1273294</span>, real 35 °C on the bench. The override fired on cue during testing and released the pump afterwards.</p></div>
         </div>
       </div>
@@ -1695,17 +1801,34 @@ a.toc-item{ color:inherit; }
 
     <div class="card tinted mt24" style="padding:16px 22px">
       <div class="row center" style="gap:20px">
-        <div class="ibadge gold"><svg><use href="#i-rain"/></svg></div>
+        <div class="ibadge gold"><svg viewBox="0 0 24 24"><path d="M7 14a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 5.6 4.2 4.2 0 0 1 17 14H7Z"/><path d="M8 17.5 7 20M12 17.5 11 20M16 17.5 15 20"/></svg></div>
         <p class="grow" style="font-size:9pt">A commercial ₹8,000 kit would water on schedule straight into a monsoon. Verde's pump listens to the sky — <strong>the forecast is a sensor too.</strong></p>
         <span class="chip gold" style="white-space:nowrap">CHECK CADENCE: 3 MIN</span>
       </div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Weather brain <span class="folio">PAGE <b>17</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Weather brain <span class="folio">PAGE <b>20</b></span></div>
+</section>
+
+<!-- =============== CHAPTER DIVIDER · AI =============== -->
+<section class="page dark grain divider" id="d-ai">d-ai
+  <img class="div-bg" src="assets/img/ai_art.jpg" alt="">
+  <div class="div-scrim"></div>
+  <div class="div-credit">Project Verde · Field Notes</div>
+  <div class="content div-content">
+    <div class="eyebrow">Chapter 10 · AI & the four APIs <span class="sec">FREE TIERS ONLY</span></div>
+    <div class="div-ghost">10</div>
+    <h1 class="div-title">Point, click,<br>and the plant gets<br>a <em>doctor.</em></h1>
+    <p class="div-lede">crop.health reads the leaf, OpenWeatherMap reads the sky, and two assistants — Gemini and OpenRouter — refuse to stay dead thanks to thirteen fallback lifelines. The entire AI stack costs ₵0.</p>
+    <div class="div-items">
+07a-div-ai.html0
+    </div>
+  </div>
+  <div class="page-foot">Project Verde · DAV ACON 5 <span class="dot"></span> 07a-div-ai.html1 <span class="folio">PAGE <b>21</b></span></div>
 </section>
 
 <!-- ==================== P18 · PLANT DOCTOR ==================== -->
-<section class="page" id="p18">
+<section class="page" id="p18">p18
   <div class="rail"><i style="height:30.2%"></i></div>
   <div class="bignum">10</div>
   <div class="content">
@@ -1740,11 +1863,11 @@ a.toc-item{ color:inherit; }
       </div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Plant Doctor <span class="folio">PAGE <b>18</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Plant Doctor <span class="folio">PAGE <b>22</b></span></div>
 </section>
 
 <!-- ==================== P19 · FOUR APIS ==================== -->
-<section class="page" id="p19">
+<section class="page" id="p19">p19
   <div class="rail"><i style="height:30.2%"></i></div>
   <div class="content">
     <div class="eyebrow">10 · AI &amp; APIs<span class="sec">THE CONNECTORS</span></div>
@@ -1788,15 +1911,15 @@ a.toc-item{ color:inherit; }
     </div>
 
     <div class="callout mt18">
-      <div class="ibadge sm" style="flex:none"><svg><use href="#i-wrench"/></svg></div>
+      <div class="ibadge sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="M14.5 6.5a4.2 4.2 0 0 1 5-5L16 5l1.5 1.5L21 5a4.2 4.2 0 0 1-5.5 5L7 18.5A2.1 2.1 0 0 1 4 15.5L12.5 7"/></svg></div>
       <div><div class="ttl">Why document the auth quirks?</div><p>Because "key in URL vs header" cost us an afternoon each. The next team that builds on Verde should lose those afternoons to something more interesting.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> APIs <span class="folio">PAGE <b>19</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> APIs <span class="folio">PAGE <b>23</b></span></div>
 </section>
 
 <!-- ==================== P20 · AI ASSISTANTS ==================== -->
-<section class="page" id="p20">
+<section class="page" id="p20">p20
   <div class="rail"><i style="height:30.2%"></i><u style="height:3.8%"></u></div>
   <div class="content">
     <div class="eyebrow">10 · AI &amp; APIs<span class="sec">ASSISTANTS</span></div>
@@ -1805,12 +1928,12 @@ a.toc-item{ color:inherit; }
 
     <div class="grid g2 mt24">
       <div class="card emerald-edge">
-        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg><use href="#i-eye"/></svg></div><h3>Gemini vision chat</h3><span class="chip" style="margin-left:auto;font-size:6.4pt">SEES THE PHOTO</span></div>
+        <div class="row center" style="gap:10px"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Gemini vision chat</h3><span class="chip" style="margin-left:auto;font-size:6.4pt">SEES THE PHOTO</span></div>
         <p class="mt6">Opens with the scanned image, its crop.health diagnosis <em>and</em> the live telemetry block, so answers ground themselves in your actual plant, your actual soil, your actual weather.</p>
         <div class="code mt10" style="font-size:7pt;line-height:1.55">"tips are browning — is it the soil or the air?"<br><span class="c-dim">→ checks THIS photo · 94% diagnosis · 41% RH</span></div>
       </div>
       <div class="card gold-edge">
-        <div class="row center" style="gap:10px"><div class="ibadge sm gold"><svg><use href="#i-spark"/></svg></div><h3>OpenRouter sensor chat</h3><span class="chip gold" style="margin-left:auto;font-size:6.4pt">READS THE VITALS</span></div>
+        <div class="row center" style="gap:10px"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div><h3>OpenRouter sensor chat</h3><span class="chip gold" style="margin-left:auto;font-size:6.4pt">READS THE VITALS</span></div>
         <p class="mt6">A plant-care assistant wired into live sensor data with one-tap quick prompts: "Should I water today?", "Summarise this week's moisture," "Is my light schedule right?"</p>
         <div class="row mt10" style="gap:6px;flex-wrap:wrap">
           <span class="chip navy" style="font-size:6.4pt">WATER TODAY?</span>
@@ -1844,11 +1967,28 @@ a.toc-item{ color:inherit; }
       <cite>— design rule #2</cite>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> AI assistants <span class="folio">PAGE <b>20</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> AI assistants <span class="folio">PAGE <b>24</b></span></div>
+</section>
+
+<!-- =============== CHAPTER DIVIDER · PROOF =============== -->
+<section class="page dark grain divider" id="d-proof">d-proof
+  <img class="div-bg" src="assets/img/proof_art.jpg" alt="">
+  <div class="div-scrim"></div>
+  <div class="div-credit">Project Verde · Field Notes</div>
+  <div class="content div-content">
+    <div class="eyebrow">Chapter 11 · Proof, honestly <span class="sec">TESTED ON THE BENCH</span></div>
+    <div class="div-ghost">11</div>
+    <h1 class="div-title">Everything on this<br>wall <em>works.</em></h1>
+    <p class="div-lede">No roadmap items, nothing “coming soon”. Thirteen tests, thirteen passes, and a troubleshooting journal that counts all ten bugs out loud — because judges can smell perfect from a kilometre away.</p>
+    <div class="div-items">
+08a-div-proof.html0
+    </div>
+  </div>
+  <div class="page-foot">Project Verde · DAV ACON 5 <span class="dot"></span> 08a-div-proof.html1 <span class="folio">PAGE <b>25</b></span></div>
 </section>
 
 <!-- ==================== P21 · FEATURES ==================== -->
-<section class="page dark grain" id="p21">
+<section class="page dark grain" id="p21">p21
   <div class="rail"><i style="height:34%"></i></div>
   <div style="position:absolute;left:0;bottom:0;right:100px;top:0;z-index:0;opacity:.3;background:url('assets/img/texture_trace.jpg') left bottom/cover no-repeat;-webkit-mask-image:linear-gradient(75deg,#000 5%,transparent 60%);mask-image:linear-gradient(75deg,#000 5%,transparent 60%)"></div>
   <div class="glow" style="width:520px;height:520px;bottom:-200px;right:-160px;background:radial-gradient(circle,rgba(25,200,130,.12),transparent 65%)"></div>
@@ -1858,18 +1998,18 @@ a.toc-item{ color:inherit; }
     <p class="subtitle">No roadmap items, no "coming soon", no mockups. Each tile below was demonstrated live on the bench before it earned a place here.</p>
 
     <div class="grid g4 mt24" style="gap:12px">
-      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-chart"/></svg></div><h4>Live dashboard</h4><p>8 telemetry tiles, sparklines, hover trend arrows, uptime timer, fullscreen demo mode.</p></div>
-      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-pump"/></svg></div><h4>AUTO watering</h4><p>Three locks — dry soil, safe tank, no rain — then waters to the exact threshold.</p></div>
-      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-rain"/></svg></div><h4>Rain veto</h4><p>Delhi forecast checked every 3 minutes; an override countdown bars the pump.</p></div>
-      <div class="card feat"><div class="ibadge sm"><svg><use href="#i-spark"/></svg></div><h4>Plant Doctor</h4><p>Photo → crop.health → name, probability &amp; treatment. 94% on our test scan.</p></div>
-      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-camera"/></svg></div><h4>On-demand camera</h4><p>CAPTURE → SVGA photo in the app within 2 seconds, flash and all.</p></div>
-      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-eye"/></svg></div><h4>Vision AI chat</h4><p>Gemini answers questions about the same photo the doctor just read.</p></div>
-      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-chip"/></svg></div><h4>Sensor-aware chat</h4><p>OpenRouter assistant reads live vitals; 13-model fallback chains.</p></div>
-      <div class="card feat"><div class="ibadge sm gold"><svg><use href="#i-slider"/></svg></div><h4>Live thresholds</h4><p>Three sliders, adopted mid-loop by the ESP32, persisted in NVS flash.</p></div>
-      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-bulb"/></svg></div><h4>Dusk grow light</h4><p>UV LED rides the LDR with ±2% hysteresis. Zero flicker at sunset.</p></div>
-      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-waves"/></svg></div><h4>Tank calibration</h4><p>SET EMPTY / SET FULL remaps the sensor in-app. No reflash, ever.</p></div>
-      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-shield"/></svg></div><h4>Watchdog + logs</h4><p>8 s hardware fuse, upload success/fail counters, minute-by-minute history.</p></div>
-      <div class="card feat"><div class="ibadge sm navy"><svg><use href="#i-wifi"/></svg></div><h4>3-network fallback</h4><p>Home, hotspot, school. It hunts for a signal so we never have to.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M4 4v15.2c0 .4.4.8.8.8H20"/><path d="M8 15.5v-4M12 15.5V8M16 15.5v-2.5"/></svg></div><h4>Live dashboard</h4><p>8 telemetry tiles, sparklines, hover trend arrows, uptime timer, fullscreen demo mode.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="12" height="9" rx="2"/><path d="M15 12h4a2 2 0 0 1 2 2v3M7 9V6.5A2.5 2.5 0 0 1 9.5 4H14"/></svg></div><h4>AUTO watering</h4><p>Three locks — dry soil, safe tank, no rain — then waters to the exact threshold.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M7 14a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.8 5.6 4.2 4.2 0 0 1 17 14H7Z"/><path d="M8 17.5 7 20M12 17.5 11 20M16 17.5 15 20"/></svg></div><h4>Rain veto</h4><p>Delhi forecast checked every 3 minutes; an override countdown bars the pump.</p></div>
+      <div class="card feat"><div class="ibadge sm"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div><h4>Plant Doctor</h4><p>Photo → crop.health → name, probability &amp; treatment. 94% on our test scan.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg></div><h4>On-demand camera</h4><p>CAPTURE → SVGA photo in the app within 2 seconds, flash and all.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></div><h4>Vision AI chat</h4><p>Gemini answers questions about the same photo the doctor just read.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></div><h4>Sensor-aware chat</h4><p>OpenRouter assistant reads live vitals; 13-model fallback chains.</p></div>
+      <div class="card feat"><div class="ibadge sm gold"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/><circle cx="9" cy="7" r="2.2" fill="#fff"/><circle cx="15" cy="12" r="2.2" fill="#fff"/><circle cx="8" cy="17" r="2.2" fill="#fff"/></svg></div><h4>Live thresholds</h4><p>Three sliders, adopted mid-loop by the ESP32, persisted in NVS flash.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 1 3.2 11.1c-.7.5-1.2 1.2-1.2 2v.9h-4v-.9c0-.8-.5-1.5-1.2-2A6 6 0 0 1 12 3Z"/><path d="M10 20h4"/></svg></div><h4>Dusk grow light</h4><p>UV LED rides the LDR with ±2% hysteresis. Zero flicker at sunset.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8M12 16a4 4 0 0 0 4-4"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M12 4a8 8 0 0 0-8 8M12 8a4 4 0 0 0-4 4"/></svg></div><h4>Tank calibration</h4><p>SET EMPTY / SET FULL remaps the sensor in-app. No reflash, ever.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 3 8.4 7 10 4-1.6 7-5.4 7-10V6l-7-3Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg></div><h4>Watchdog + logs</h4><p>8 s hardware fuse, upload success/fail counters, minute-by-minute history.</p></div>
+      <div class="card feat"><div class="ibadge sm navy"><svg viewBox="0 0 24 24"><path d="M4 10a12 12 0 0 1 16 0M7.5 13.5a7 7 0 0 1 9 0M11 17a2.2 2.2 0 0 1 2 0"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></div><h4>3-network fallback</h4><p>Home, hotspot, school. It hunts for a signal so we never have to.</p></div>
     </div>
 
     <div class="row mt24 center" style="gap:10px;justify-content:center;flex-wrap:wrap">
@@ -1880,54 +2020,54 @@ a.toc-item{ color:inherit; }
       <span class="chip gold">13/13 TESTS PASS</span>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Features <span class="folio">PAGE <b>21</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Features <span class="folio">PAGE <b>26</b></span></div>
 </section>
 
 <!-- ==================== P22 · TEST MATRIX ==================== -->
-<section class="page" id="p22">
+<section class="page" id="p22">p22
   <div class="rail"><i style="height:34%"></i></div>
   <div class="bignum">11</div>
   <div class="content">
     <div class="eyebrow">11 · Proof<span class="sec">TEST MATRIX</span></div>
     <div class="row end" style="justify-content:space-between">
       <h1 class="title" style="margin-bottom:0">Thirteen tests. Thirteen passes.</h1>
-      <span class="pass" style="font-size:8.6pt;padding:6px 14px;margin-bottom:4px"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>13 / 13 PASS</span>
+      <span class="pass" style="font-size:8.6pt;padding:6px 14px;margin-bottom:4px"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>13 / 13 PASS</span>
     </div>
     <p class="subtitle mt6">We tested like the judges would try to break it — breath, hands, buckets and bad WiFi.</p>
 
     <div class="grid g2 mt18" style="gap:12px 26px">
       <div>
         <div class="mono test-group">BOOT &amp; STAMINA</div>
-        <div class="test-row"><div><b>WiFi / boot</b><p>Joins the saved network cleanly from cold power.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>Watchdog soak — 10+ min</b><p>Continuous uptime under load. Reboots: zero.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>Rain override</b><p>Forced the flag; AUTO held even with parched soil.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>WiFi / boot</b><p>Joins the saved network cleanly from cold power.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Watchdog soak — 10+ min</b><p>Continuous uptime under load. Reboots: zero.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Rain override</b><p>Forced the flag; AUTO held even with parched soil.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
         <div class="mono test-group mt14">SENSORS</div>
-        <div class="test-row"><div><b>DHT11 breathe test</b><p>One sigh on the sensor; humidity tile climbs, then settles.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>Moisture water-dunk</b><p>Probe dunked; reading sweeps, filtered, no wild spikes.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>LDR cover test</b><p>A thumb over the sensor = "dark"; grow light glides on.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>Ultrasonic hand test</b><p>Hand moved in the tank; distance tracks, splash junk rejected.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>DHT11 breathe test</b><p>One sigh on the sensor; humidity tile climbs, then settles.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Moisture water-dunk</b><p>Probe dunked; reading sweeps, filtered, no wild spikes.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>LDR cover test</b><p>A thumb over the sensor = "dark"; grow light glides on.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Ultrasonic hand test</b><p>Hand moved in the tank; distance tracks, splash junk rejected.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
       </div>
       <div>
         <div class="mono test-group">ACTUATION</div>
-        <div class="test-row"><div><b>Pump AUTO — 120 s soak</b><p>Two minutes continuous watering. No glitch, no stutter.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>OFF exactly at threshold</b><p>Moisture crossed 35% mid-run; pump stopped on the line.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>Tank lock</b><p>Emptied the tank; both AUTO and manual were refused. Pump saved.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Pump AUTO — 120 s soak</b><p>Two minutes continuous watering. No glitch, no stutter.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>OFF exactly at threshold</b><p>Moisture crossed 35% mid-run; pump stopped on the line.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Tank lock</b><p>Emptied the tank; both AUTO and manual were refused. Pump saved.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
         <div class="mono test-group mt14">EXPERIENCE</div>
-        <div class="test-row"><div><b>CAM capture ≤ 2 s</b><p>Button to base64 photo on screen. Timed. Twice.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>Plant Doctor diagnosis</b><p>Test scan identified at 94% with treatment plan.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
-        <div class="test-row"><div><b>AI chats + fallbacks</b><p>Both assistants answered; killing model 1 promoted model 2 silently.</p></div><span class="pass"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>CAM capture ≤ 2 s</b><p>Button to base64 photo on screen. Timed. Twice.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>Plant Doctor diagnosis</b><p>Test scan identified at 94% with treatment plan.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
+        <div class="test-row"><div><b>AI chats + fallbacks</b><p>Both assistants answered; killing model 1 promoted model 2 silently.</p></div><span class="pass"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>PASS</span></div>
         <div class="callout mt18">
-          <div class="ibadge sm" style="flex:none"><svg><use href="#i-target"/></svg></div>
+          <div class="ibadge sm" style="flex:none"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></div>
           <div><div class="ttl">Method, for the record</div><p>Every test had a trigger and a pass condition written down <em>before</em> we ran it. "It worked once" is an anecdote; "13/13" is a result.</p></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Testing <span class="folio">PAGE <b>22</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Testing <span class="folio">PAGE <b>27</b></span></div>
 </section>
 
 <!-- ==================== P23 · BUG JOURNAL ==================== -->
-<section class="page" id="p23">
+<section class="page" id="p23">p23
   <div class="rail"><i style="height:34%"></i><u style="height:3.8%"></u></div>
   <div class="content">
     <div class="eyebrow">11 · Proof<span class="sec">TROUBLESHOOTING JOURNAL</span></div>
@@ -1950,7 +2090,7 @@ a.toc-item{ color:inherit; }
       <div class="mono test-group mt14">SOFTWARE &amp; CLOUD</div>
       <table class="data journal">
         <tbody>
-          <tr><td class="jno" style="color:var(--red)">01</td><td>AUTO pump clicks every ~10 s</td><td>17 blocking Firebase calls/s → watchdog loop</td><td><strong>JSON bundling</strong> → 2 calls/s (page 14)</td></tr>
+          <tr><td class="jno" style="color:var(--red)">01</td><td>AUTO pump clicks every ~10 s</td><td>17 blocking Firebase calls/s → watchdog loop</td><td><strong>JSON bundling</strong> → 2 calls/s (page 16)</td></tr>
           <tr><td class="jno" style="color:var(--red)">09</td><td>Firebase updates in "spurts"</td><td>13 calls/s of tiny writes</td><td>One bundled call per second</td></tr>
           <tr><td class="jno" style="color:var(--red)">10</td><td><span class="mono">missing terminating quote</span> compile error</td><td>Whitespace corrupted in a copy-paste</td><td>Re-download the source file; stop hand-copying</td></tr>
         </tbody>
@@ -1959,17 +2099,34 @@ a.toc-item{ color:inherit; }
 
     <div class="card navy-fill mt18" style="padding:16px 22px">
       <div class="row center" style="gap:20px">
-        <div class="ibadge gold"><svg><use href="#i-bug"/></svg></div>
-        <p class="grow" style="font-size:9pt">Pattern noticed: <strong style="color:#fff">six of ten bugs were power or connection</strong>, not code. That's why page 10 exists — hardware discipline is firmware reliability.</p>
+        <div class="ibadge gold"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="5" ry="6.5"/><path d="M12 6.5V4M9 4.5 10.5 7M15 4.5 13.5 7M7 11H3.5M7 15H3.5M20.5 11H17M20.5 15H17M8.5 19.5 6 22M15.5 19.5 18 22"/></svg></div>
+        <p class="grow" style="font-size:9pt">Pattern noticed: <strong style="color:#fff">six of ten bugs were power or connection</strong>, not code. That's why page 11 exists — hardware discipline is firmware reliability.</p>
         <span class="chip gold" style="white-space:nowrap">ALL FIXED · ALL DOCUMENTED</span>
       </div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Bug journal <span class="folio">PAGE <b>23</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Bug journal <span class="folio">PAGE <b>28</b></span></div>
+</section>
+
+<!-- =============== CHAPTER DIVIDER · NEXT =============== -->
+<section class="page dark grain divider" id="d-next">d-next
+  <img class="div-bg" src="assets/img/future_art.jpg" alt="">
+  <div class="div-scrim"></div>
+  <div class="div-credit">Project Verde · Field Notes</div>
+  <div class="content div-content">
+    <div class="eyebrow">Chapter 12 · The value & what’s next <span class="sec">ROADMAP, HONESTLY</span></div>
+    <div class="div-ghost">12</div>
+    <h1 class="div-title">It started as a<br>₹1,890 dare. It ends<br>where it grows <em>next.</em></h1>
+    <p class="div-lede">The full itemised audit against the ₹8,000 commercial box, why repairable-through-hole beats glued, and the seeds already ordered for the next build — solar, NPK probes, many plants.</p>
+    <div class="div-items">
+09a-div-future.html0
+    </div>
+  </div>
+  <div class="page-foot">Project Verde · DAV ACON 5 <span class="dot"></span> 09a-div-future.html1 <span class="folio">PAGE <b>29</b></span></div>
 </section>
 
 <!-- ==================== P24 · COST ==================== -->
-<section class="page dark grain" id="p24">
+<section class="page dark grain" id="p24">p24
   <div class="rail"><i style="height:37.8%"></i></div>
   <div class="glow" style="width:560px;height:560px;top:-180px;left:-180px;background:radial-gradient(circle,rgba(245,201,92,.10),transparent 65%)"></div>
   <div class="content">
@@ -2011,15 +2168,16 @@ a.toc-item{ color:inherit; }
     </div>
 
     <div class="callout gold mt18">
-      <div class="ibadge gold sm" style="flex:none"><svg><use href="#i-leaf"/></svg></div>
+      <div class="ibadge gold sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg></div>
       <div><div class="ttl">Sustainability, for real</div><p>Repairable through-hole modules a student can replace in minutes. No subscription. No cloud bill. The most sustainable gadget is the one you can fix.</p></div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Costing <span class="folio">PAGE <b>24</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Costing <span class="folio">PAGE <b>30</b></span></div>
 </section>
 
+
 <!-- ==================== P25 · FUTURE ==================== -->
-<section class="page" id="p25">
+<section class="page" id="p25">p25
   <div class="rail"><i style="height:37.8%"></i></div>
   <div class="bignum">12</div>
   <div class="content">
@@ -2044,11 +2202,11 @@ a.toc-item{ color:inherit; }
       <cite>— the roadmap, honestly</cite>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Future <span class="folio">PAGE <b>25</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Future <span class="folio">PAGE <b>31</b></span></div>
 </section>
 
 <!-- ==================== P26 · JUDGE TOUR ==================== -->
-<section class="page" id="p26">
+<section class="page" id="p26">p26
   <div class="rail"><i style="height:41.6%"></i></div>
   <div class="bignum">13</div>
   <div class="content">
@@ -2068,7 +2226,7 @@ a.toc-item{ color:inherit; }
 
     <div class="grid g2 mt18" style="gap:12px">
       <div class="callout">
-        <div class="ibadge sm" style="flex:none"><svg><use href="#i-wifi"/></svg></div>
+        <div class="ibadge sm" style="flex:none"><svg viewBox="0 0 24 24"><path d="M4 10a12 12 0 0 1 16 0M7.5 13.5a7 7 0 0 1 9 0M11 17a2.2 2.2 0 0 1 2 0"/><circle cx="12" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></div>
         <div><div class="ttl">If the venue WiFi dies</div><p>We switch to hotspot #2 (of 3 saved). If <em>everything</em> dies, AUTO keeps watering the plant offline and we demo the app on cached data — the cloud can leave, the watering can't stop.</p></div>
       </div>
       <div class="card" style="padding:14px 16px">
@@ -2083,17 +2241,17 @@ a.toc-item{ color:inherit; }
       </div>
     </div>
   </div>
-  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)"><use href="#i-leaf"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Judge tour <span class="folio">PAGE <b>26</b></span></div>
+  <div class="page-foot"><svg width="12" height="12" style="color:var(--emerald)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg> Project Verde · DAV ACON 5 <span class="dot"></span> Judge tour <span class="folio">PAGE <b>32</b></span></div>
 </section>
 
 <!-- ==================== P27 · BACK COVER ==================== -->
-<section class="page dark grain" id="p27">
+<section class="page dark grain" id="p27">p27
   <div style="position:absolute;right:0;top:0;bottom:0;width:46%;z-index:0;opacity:.85;background:url('assets/img/texture_trace.jpg') right center/cover no-repeat;-webkit-mask-image:linear-gradient(270deg,#000 30%,transparent);mask-image:linear-gradient(270deg,#000 30%,transparent)"></div>
   <div class="glow" style="width:600px;height:600px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(25,200,130,.14),transparent 65%)"></div>
   <div class="content" style="display:flex;flex-direction:column">
     <div class="row center" style="justify-content:space-between">
       <span class="chip gold">PROJECT VERDE · CLOSING NOTES</span>
-      <svg width="22" height="22" style="color:var(--emerald-bright)"><use href="#i-leaf"/></svg>
+      <svg width="22" height="22" style="color:var(--emerald-bright)" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 20 4c0 10-6 16-16 16Z"/><path d="M4 20c3-6 7-10 12-12"/></svg>
     </div>
 
     <div style="margin-top:96px;max-width:480px">
