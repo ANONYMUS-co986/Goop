@@ -84,3 +84,40 @@ With it, the boot timeline completes naturally in ~3.5 s wall — correct.
   narrow-aspect rig scale lerp to 0.58 (verified in `b2m_explode.png`).
 - Accepted as designed: edge-of-orbit clipping of pump/soil labels as the
   turntable slowly rotates (parts drift in/out like a real exhibit).
+
+---
+
+## Batch B3 — /brain + interaction kit (2026-08-04) — **9/9 PASS**
+
+| # | Capture | Subject | HTTP | Console errors | Verdict |
+|---|---------|---------|------|----------------|---------|
+| 1 | `b3_header.png` | THE BRAIN header + toggle | 200 | none | PASS |
+| 2 | `b3_storm_before.png` | storm mode: 17-packet congestion | 200 | none | PASS — ANOMALY LIVE, calls 17/cycle |
+| 3 | `b3_storm_after.png` | toggle flip → 2-call laminar flow | 200 | none | PASS — NOMINAL, counters 2/cycle (6 = 3×2 ✓) |
+| 4 | `b3_hover_case.png` | case-file card hover | 200 | none | PASS — spotlight tracks cursor + title caught mid-scramble |
+| 5 | `b3m_storm.png` | mobile storm | 200 | none | PASS (toggle-nowrap after F14) |
+| 6 | `b_transition.png` | curtain mid-cover w/ strip gaps | 200 | none | PASS — page-switch loader fires |
+| 7 | `b_transition_arrive.png` | arrival on /build after curtain | 200 | none | PASS — full cover→push→reveal loop (cursor lens showing "OPEN" too!) |
+| 8 | `b3_burger.png` | command deck on /brain | 200 | none | PASS — active route lime, B2 now ● LIVE |
+| 9 | `b_home_recheck.png` + rAF probe | hero after interaction upgrades | 200 | none | PASS (verification via DOM probe: stats count ₹1,863→target ✓) |
+
+### Findings & fixes this batch
+- **F13 (site, fixed)** framer-motion `useInView` never fired under headless
+  QA → CountUp reverted to a hand-rolled IntersectionObserver. DOM probe
+  verified live counting (₹1,863 → 1,890 mid-ease = correct behavior).
+- **F14 (site, fixed)** mobile storm toggle wrapped its labels to two lines
+  → whitespace-nowrap on both pills.
+- **F15 (harness)** first transition test clicked the *same-route* card —
+  Switch correctly no-ops `href === pathname`. Not a bug; harness target
+  clarified (`#saga a[href='/build']`), full loop then proven (6+7).
+- Accepted quirk: cursor lens label persists one beat after SPA nav if the
+  mouse never moves (it heals on the first real mousemove — humans move).
+- Infra: sandbox wiped node_modules again mid-batch → both toolchains
+  reinstalled; al2023 libs self-healed via shot.js as designed.
+
+### Interaction kit shipped (all pages upgraded)
+`Switch` curtain loader on every TransitionLink (burger rows, saga cards,
+hero CTAs, next-door links, FabGate) · `ScrambleText` decode-on-hover ·
+`Magnetic` spring buttons · `GlowCard` cursor-tracking spotlight + border
+gleam · `Tip` global data-tip tooltip (hero stats, pin map stories, pipeline
+stages) · `CountUp` hero stats · cursor **label lens** via data-cursor.

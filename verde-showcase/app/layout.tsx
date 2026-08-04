@@ -11,6 +11,8 @@ import Grain from "@/components/fx/Grain";
 import Cursor from "@/components/fx/Cursor";
 import SmoothScroll from "@/components/fx/SmoothScroll";
 import Preloader from "@/components/fx/Preloader";
+import Switch from "@/components/fx/Switch";
+import Tip from "@/components/fx/Tip";
 import Burger from "@/components/nav/Burger";
 
 export const metadata: Metadata = {
@@ -35,6 +37,8 @@ export default function RootLayout({
         <SmoothScroll />
         <Cursor />
         <Grain />
+        <Switch />
+        <Tip />
         <Burger />
         {children}
       </body>

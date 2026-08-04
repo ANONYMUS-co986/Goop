@@ -1,6 +1,8 @@
-import Link from "next/link";
 import HeroSection from "@/components/three/HeroSection";
 import { ROUTES } from "@/components/nav/nav";
+import TransitionLink from "@/components/nav/TransitionLink";
+import GlowCard from "@/components/fx/GlowCard";
+import ScrambleText from "@/components/fx/Scramble";
 
 const LEDGER = [
   "17→2 CALLS/SEC", "8 MHZ XCLK", "₹1,890 BUILD", "13/13 TESTS",
@@ -28,32 +30,35 @@ export default function Home() {
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {ROUTES.map((r, i) => (
-              <Link
+              <TransitionLink
                 key={r.href}
                 href={r.href}
+                label={r.label}
                 data-hover
+                data-cursor={r.live ? "open" : `batch ${r.batch}`}
                 className={`group relative overflow-hidden rounded-2xl border p-6 min-h-[190px] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
                   r.live
                     ? "border-lime/35 bg-gradient-to-br from-lime-ghost to-transparent shadow-glow-lime"
                     : "border-white/10 bg-white/[0.03] hover:border-lime/25"
                 } ${i === 0 ? "sm:col-span-2 lg:col-span-2" : ""}`}
               >
+                <GlowCard className="absolute inset-0 rounded-2xl" />
                 <span className="absolute -right-3 -top-6 font-display font-bold text-8xl text-stroke-ghost select-none transition-colors group-hover:text-stroke-lime">
                   {r.ghost}
                 </span>
-                <div>
+                <div className="relative">
                   <span className={`chip ${r.live ? "border-lime/40 bg-lime-ghost text-lime" : "border-white/10 bg-white/[0.04] text-dew-mute"}`}>
                     {r.live ? "● live now" : `◌ batch ${r.batch}`}
                   </span>
                   <h3 className="mt-4 font-display font-bold uppercase text-2xl text-dew group-hover:text-lime transition-colors">
-                    {r.label}
+                    <ScrambleText text={r.label} hover root="a" />
                   </h3>
                   <p className="mt-2 font-sans text-[13px] text-dew-dim leading-relaxed max-w-[240px]">{r.blurb}</p>
                 </div>
-                <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.26em] text-dew-mute group-hover:text-lime transition-colors">
+                <div className="relative mt-5 font-mono text-[10px] uppercase tracking-[0.26em] text-dew-mute group-hover:text-lime transition-colors">
                   open door <span className="inline-block transition-transform group-hover:translate-x-1.5">→</span>
                 </div>
-              </Link>
+              </TransitionLink>
             ))}
           </div>
         </div>

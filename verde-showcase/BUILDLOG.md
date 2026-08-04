@@ -83,6 +83,29 @@ custom cursor (lime dot + lerped reticle, coarse-pointer + reduced-motion safe)
 - QA: `qa/QA_LOG.md` — 5/5 PASS, fixes F7–F12 (spread, spin rate,
   framing, headers, probe visibility, portrait crop).
 
+### B3 — /brain + interaction kit ✅ (2026-08-04) — QA 9/9 PASS
+- **THE STORM** (`fx/StormCanvas.tsx`): pure Canvas2D viz of the 17→2 bug —
+  before = 17 choked packets/cycle + hard "10s AUTO STUTTER" freeze wave;
+  after = 2 laminar bundle packets. Slot-deterministic spawns (exactly 17
+  or 2 per cycle), live cycle/call counters, pauses offscreen, static
+  frame for reduced-motion. Animated before/after toggle (spring pill).
+- **CASE FILE: THE 10s STUTTER** — 6 chapter cards (symptom → discharge)
+  w/ per-chapter spotlight color (danger/amber/lime).
+- **PIPELINE** — SENSE→FILTER→DECIDE→ACT→REPORT stage cards w/ hover
+  tips carrying the real engineering notes (hysteresis, probe gating,
+  ring filters, active-LOW).
+- **TERMINAL** — line-staggered excerpt of actual v3.0.7 constants.
+- **Interaction kit (new in `fx/`)**, wired through every shipped page:
+  - `Switch` — page-switch loader: 5-strip ink curtain + destination
+    flash, push-at-blackout, lifts when the new route mounts (failsafe
+    2.4s), reduced-motion = instant nav. Driven by `TransitionLink`.
+  - `ScrambleText` (decode-on-hover / on-mount), `Magnetic` (spring
+    pull), `GlowCard` (spotlight + mask-composite border gleam),
+    `Tip` (global data-tip follower), `CountUp` (IO-driven),
+    cursor **label lens** (`data-cursor` → ring blooms w/ caption).
+- QA: `qa/QA_LOG.md` — 9/9 PASS, fixes F13–F15.
+
 ## Up next
-- B3: **/brain** — the 17→2 telemetry storm as an interactive viz:
-  call packet rain, the 10s AUTO stutter, the JSON-bundle fix, WDT.
+- B4: **/doctor** — the AI Plant Doctor: camera pipeline (ESP32-CAM →
+  Vercel upload → crop.kindwise 94% vs Gemini), Rx card UI, three-tier
+  AI fallback chain as an interactive route diagram.

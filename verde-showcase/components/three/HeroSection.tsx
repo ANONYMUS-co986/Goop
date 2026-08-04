@@ -2,6 +2,10 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import Magnetic from "@/components/fx/Magnetic";
+import ScrambleText from "@/components/fx/Scramble";
+import CountUp from "@/components/fx/CountUp";
+import TransitionLink from "@/components/nav/TransitionLink";
 
 const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
   ssr: false,
@@ -13,10 +17,10 @@ const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
 });
 
 const STATS = [
-  { k: "₹1,890", l: "total build" },
-  { k: "94%", l: "leaf-id confidence" },
-  { k: "2 MCU", l: "one brain + one eye" },
-  { k: "60s", l: "cloud heartbeat" },
+  { n: 1890, prefix: "₹", suffix: "", l: "total build", tip: "cheaper than the pizza night it took to debug it" },
+  { n: 94, prefix: "", suffix: "%", l: "leaf-id confidence", tip: "crop.kindwise on a real tulsi leaf — not stock photos" },
+  { n: 2, prefix: "", suffix: " MCU", l: "one brain + one eye", tip: "ESP32 devkit + ESP32-CAM, talking over WiFi" },
+  { n: 60, prefix: "", suffix: "s", l: "cloud heartbeat", tip: "RTDB bundle push every minute, zero reboots" },
 ];
 
 export default function HeroSection() {
@@ -73,18 +77,25 @@ export default function HeroSection() {
           transition={{ delay: 0.95 }}
           className="pointer-events-auto mt-9 flex flex-wrap items-center justify-center gap-3"
         >
-          <a
-            href="#saga"
-            className="rounded-full border border-lime/50 bg-lime text-ink-2 px-7 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.22em] shadow-glow-lime transition-transform hover:scale-[1.04]"
-          >
-            Enter the lab ↓
-          </a>
-          <a
-            href="/build"
-            className="rounded-full border border-hydro/40 bg-hydro-ghost text-hydro px-7 py-3 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors hover:bg-hydro/20"
-          >
-            Skip to the build
-          </a>
+          <Magnetic strength={0.4}>
+            <a
+              href="#saga"
+              data-cursor="dive"
+              className="block rounded-full border border-lime/50 bg-lime text-ink-2 px-7 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.22em] shadow-glow-lime transition-transform hover:scale-[1.04]"
+            >
+              <ScrambleText text="Enter the lab" hover root="a" /> ↓
+            </a>
+          </Magnetic>
+          <Magnetic strength={0.4}>
+            <TransitionLink
+              href="/build"
+              label="The Build"
+              data-cursor="open"
+              className="block rounded-full border border-hydro/40 bg-hydro-ghost text-hydro px-7 py-3 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors hover:bg-hydro/20"
+            >
+              <ScrambleText text="Skip to the build" hover root="a" />
+            </TransitionLink>
+          </Magnetic>
         </motion.div>
       </div>
 
@@ -97,8 +108,10 @@ export default function HeroSection() {
       >
         <div className="mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.06]">
           {STATS.map((s) => (
-            <div key={s.l} className="px-4 md:px-6 py-4 text-center">
-              <div className="font-display font-bold text-xl md:text-2xl text-dew">{s.k}</div>
+            <div key={s.l} data-tip={s.tip} className="px-4 md:px-6 py-4 text-center transition-colors hover:bg-lime-ghost/40">
+              <div className="font-display font-bold text-xl md:text-2xl text-dew">
+                <CountUp to={s.n} prefix={s.prefix} suffix={s.suffix} />
+              </div>
               <div className="font-mono text-[9px] uppercase tracking-[0.26em] text-dew-mute mt-1">{s.l}</div>
             </div>
           ))}

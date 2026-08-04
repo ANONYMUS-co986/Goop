@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import TransitionLink from "@/components/nav/TransitionLink";
+import GlowCard from "@/components/fx/GlowCard";
+import ScrambleText from "@/components/fx/Scramble";
 
 const BuildCanvas = dynamic(() => import("@/components/three/BuildCanvas"), {
   ssr: false,
@@ -39,15 +41,15 @@ const BOM: { item: string; role: string; price: string }[] = [
   { item: "Water tank", role: "upcycled from home", price: "₹0" },
 ];
 
-const PINMAP: { pin: string; job: string; note: string }[] = [
-  { pin: "GPIO4", job: "DHT11 DATA", note: "10k pull-up, 2s poll" },
-  { pin: "GPIO5", job: "PUMP RELAY", note: "active-LOW — boot-safe" },
-  { pin: "GPIO12", job: "UV LED", note: "algae patrol" },
-  { pin: "GPIO18 / 19", job: "SONAR TRIG / ECHO", note: "tank level pings" },
-  { pin: "GPIO23", job: "MOISTURE POWER", note: "probe gated — kills corrosion" },
-  { pin: "GPIO34", job: "SOIL ADC", note: "10-pt ring filter" },
-  { pin: "GPIO35", job: "LDR ADC", note: "10-pt ring filter" },
-  { pin: "GPIO2", job: "BOARD LED", note: "heartbeat blink" },
+const PINMAP: { pin: string; job: string; note: string; tip: string }[] = [
+  { pin: "GPIO4", job: "DHT11 DATA", note: "10k pull-up, 2s poll", tip: "the DHT11 lies by ±2°C on a bad day — we average, we forgive" },
+  { pin: "GPIO5", job: "PUMP RELAY", note: "active-LOW — boot-safe", tip: "wired active-LOW so a mid-boot pin float can never flood the pot — learned that the wet way" },
+  { pin: "GPIO12", job: "UV LED", note: "algae patrol", tip: "strapping pin — must float during flash, so the strip gets gated on after boot" },
+  { pin: "GPIO18 / 19", job: "SONAR TRIG / ECHO", note: "tank level pings", tip: "5-pt median filter — splashes read as 'full tank' without it" },
+  { pin: "GPIO23", job: "MOISTURE POWER", note: "probe gated — kills corrosion", tip: "probe is only powered during the 30ms read — our first resistive probe died of electrolysis in days; capacitive + gating is the fix" },
+  { pin: "GPIO34", job: "SOIL ADC", note: "10-pt ring filter", tip: "input-only pin, has an ADC all to itself — noisy 12-bit joy" },
+  { pin: "GPIO35", job: "LDR ADC", note: "10-pt ring filter", tip: "35% hysteresis band stops the pump chattering at dusk — mosquitos of the digital world" },
+  { pin: "GPIO2", job: "BOARD LED", note: "heartbeat blink", tip: "if this stops blinking, the 8s watchdog already bit us" },
 ];
 
 export default function BuildPage() {
@@ -183,26 +185,28 @@ export default function BuildPage() {
         </p>
         <div className="grid md:grid-cols-2 gap-3">
           {PINMAP.map((row) => (
-            <div
+            <GlowCard
               key={row.pin}
+              data-tip={row.tip}
               className="group flex items-baseline gap-4 border border-white/10 rounded-xl px-5 py-4 glass hover:border-lime/40 transition-colors"
             >
-              <span className="font-mono text-lime text-sm w-28 shrink-0">{row.pin}</span>
-              <span className="font-display font-semibold group-hover:text-lime transition-colors">{row.job}</span>
-              <span className="ml-auto font-mono text-[10px] text-dew-mute text-right">{row.note}</span>
-            </div>
+              <span className="relative font-mono text-lime text-sm w-28 shrink-0">{row.pin}</span>
+              <span className="relative font-display font-semibold group-hover:text-lime transition-colors">{row.job}</span>
+              <span className="relative ml-auto font-mono text-[10px] text-dew-mute text-right">{row.note}</span>
+            </GlowCard>
           ))}
         </div>
       </section>
 
       {/* ————— next door ————— */}
       <section className="px-6 md:px-16 pb-24">
-        <Link href="/brain" className="group block border border-uv/30 rounded-2xl px-8 py-10 glass hover:border-uv/70 transition-colors">
-          <div className="font-mono text-[10px] tracking-[0.3em] text-uv uppercase mb-3">next room · batch b3</div>
-          <div className="font-display font-extrabold text-3xl md:text-5xl group-hover:text-uv transition-colors">
+        <TransitionLink href="/brain" label="The Brain" data-cursor="enter" className="group relative block overflow-hidden border border-uv/30 rounded-2xl px-8 py-10 glass hover:border-uv/70 transition-colors">
+          <GlowCard className="absolute inset-0 rounded-2xl" color="167,139,250" size={300} />
+          <div className="relative font-mono text-[10px] tracking-[0.3em] text-uv uppercase mb-3">next room · batch b3</div>
+          <div className="relative font-display font-extrabold text-3xl md:text-5xl group-hover:text-uv transition-colors">
             THE BRAIN — how 17 API calls became 2 <span className="inline-block transition-transform group-hover:translate-x-2">→</span>
           </div>
-        </Link>
+        </TransitionLink>
       </section>
     </main>
   );

@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ROUTES } from "./nav";
+import TransitionLink from "./TransitionLink";
+import ScrambleText from "@/components/fx/Scramble";
 
 /**
  * Burger command deck — full-viewport navigation overlay.
@@ -80,17 +81,22 @@ export default function Burger() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.18 + i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <Link
+                      <TransitionLink
                         href={r.href}
-                        onClick={() => setOpen(false)}
+                        label={r.label}
+                        onNavigate={() => setOpen(false)}
+                        data-cursor={active ? "here" : "go"}
                         className="group flex items-baseline gap-4 md:gap-6 py-2.5 md:py-3 border-b border-white/[0.06] hover:border-lime/30 transition-colors"
                       >
                         <span className="font-mono text-[11px] text-lime/70 w-7 shrink-0">{r.ghost}</span>
-                        <span className={`font-display font-bold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl transition-all duration-300 ${
-                          active ? "text-lime drop-shadow-[0_0_18px_rgba(166,255,63,0.4)]" : "text-dew group-hover:text-lime group-hover:translate-x-3"
-                        }`}>
-                          {r.label}
-                        </span>
+                        <ScrambleText
+                          text={r.label}
+                          hover
+                          root="a"
+                          className={`font-display font-bold uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl transition-all duration-300 ${
+                            active ? "text-lime drop-shadow-[0_0_18px_rgba(166,255,63,0.4)]" : "text-dew group-hover:text-lime group-hover:translate-x-3"
+                          }`}
+                        />
                         <span className="hidden md:inline font-sans text-xs text-dew-mute max-w-[220px] leading-snug">
                           {r.blurb}
                         </span>
@@ -101,7 +107,7 @@ export default function Burger() {
                         }`}>
                           {r.live ? "● live" : `◌ ${r.batch}`}
                         </span>
-                      </Link>
+                      </TransitionLink>
                     </motion.li>
                   );
                 })}

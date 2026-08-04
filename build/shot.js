@@ -1,4 +1,4 @@
-// shot.js <url> <out.png> [waitMs] [scrollY]
+// shot.js <url> <out.png> [waitMs] [scrollY] [waitForSelector] [clickSelector] [hoverSelector]
 // Headless QA capture for the showcase site — waits for compile, fonts, idle.
 const path = require('path');
 const fs = require('fs');
@@ -35,6 +35,7 @@ const { chromium: pw } = require('playwright-core');
   const scrollY = parseInt(process.argv[5] || '0', 10);
   const waitFor = process.argv[6] || '';
   const clickSel = process.argv[7] || '';
+  const hoverSel = process.argv[8] || '';
   // optional mobile emulation: QA_VW=390 QA_VH=844 node build/shot.js ...
   const vw = parseInt(process.env.QA_VW || '1440', 10);
   const vh = parseInt(process.env.QA_VH || '900', 10);
@@ -95,6 +96,10 @@ const { chromium: pw } = require('playwright-core');
   if (scrollY > 0) {
     await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), scrollY);
     await page.waitForTimeout(1200);
+  }
+  if (hoverSel) {
+    await page.hover(hoverSel).catch(e => errors.push('hoverSel: ' + e.message.slice(0, 80)));
+    await page.waitForTimeout(1100);
   }
   await page.screenshot({ path: out });
   console.log('HTTP', status, '| errors:', errors.length ? errors.slice(0, 6) : 'none');
