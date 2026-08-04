@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
+import { ScrollTrigger, gsap } from "@/lib/gsap";
 
 /**
  * Unified kinetic scroll — one Lenis instance for the whole lab.
@@ -29,7 +29,14 @@ export default function SmoothScroll() {
 
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
+    // Lenis ↔ ScrollTrigger sync: every smooth-scroll tick updates triggers
+    lenis.on("scroll", ScrollTrigger.update);
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    if (document.fonts) document.fonts.ready.then(refresh).catch(() => {});
+
     return () => {
+      window.removeEventListener("load", refresh);
       lenis.destroy();
       delete (window as unknown as { __lenis?: Lenis }).__lenis;
       delete (window as unknown as { __qaNoLag?: () => void }).__qaNoLag;

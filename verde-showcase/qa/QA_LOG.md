@@ -115,6 +115,41 @@ With it, the boot timeline completes naturally in ~3.5 s wall — correct.
 - Infra: sandbox wiped node_modules again mid-batch → both toolchains
   reinstalled; al2023 libs self-healed via shot.js as designed.
 
+---
+
+## Batch B4 — /doctor + scroll/heavy-lift kit (2026-08-04) — **6/6 PASS**
+
+| # | Capture | Subject | HTTP | Console errors | Verdict |
+|---|---------|---------|------|----------------|---------|
+| 1 | `b4_header.png` | AI DOCTOR + ghost Rx parallax | 200 | none | PASS |
+| 2 | `b4_chain_kill.png` | kill-switch on crop.kindwise | 200 | none | PASS — strike-through, SERVING→gemini, revive btn, live tooltip ✓ |
+| 3 | `b4_eye.png` | cam mock + scanline + spec chips | 200 | none | PASS |
+| 4 | `b4m_doctor.png` | mobile chain + Rx | 200 | none | PASS (after F17) |
+| 5 | `b_home_scrollfx.png` | saga w/ 4 LIVE doors + velocity marquee | 200 | none | PASS |
+| 6 | `b3_casefx.png` | tilt case files + pipeline regroup | 200 | none | PASS |
+
+### Findings & fixes this batch
+- **F16 (verified behavior)** SplitText headers: animation completes then
+  DOM reverts to plain text — settle-state captures prove clean final
+  typography; mid-char-explosion frames are non-deterministic headless.
+- **F17 (site, fixed)** mobile: the 13-char unbreakable "PRESCRIPTION."
+  overflowed 390px → xs size 1.65rem, wraps clean on two lines.
+- **F18 (performance contract, kit)** anti-stutter measures: `ViewportPause`
+  kills R3F frameloops when any canvas leaves the viewport (hero + exploded
+  rig), Lenis → `ScrollTrigger.update` glue + refresh on load/fonts, all
+  reveals `once:true` transform/opacity-only, SplitText reverts its DOM
+  after each blast. Nothing animates that isn't on screen.
+- Saga board state: HOME / THE BUILD / THE BRAIN / AI DOCTOR all ● LIVE.
+
+### Scroll & component kit shipped (React Bits ports, Night Lab flavor)
+`SplitReveal` (GSAP SplitText char explosions on scroll-enter) ·
+`Reveal/RevealGroup` (ScrollTrigger rise/blur/stagger) · `TiltCard`
+(3D perspective tilt + spring return) · `ShinyText` (light sweep) ·
+`ClickSpark` (global click tracers) · `RotatingText` (hero cue cycler) ·
+`VelocityMarquee` (Lenis-velocity speed + skew) · `Parallax` (ghost
+numeral drift) · `ViewportPause` (canvas sleep). Registered once via
+`lib/gsap.ts`.
+
 ### Interaction kit shipped (all pages upgraded)
 `Switch` curtain loader on every TransitionLink (burger rows, saga cards,
 hero CTAs, next-door links, FabGate) · `ScrambleText` decode-on-hover ·

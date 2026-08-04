@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState, useCallback } from "react";
 import type { CSSProperties, MutableRefObject } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, Sparkles } from "@react-three/drei";
 import { EffectComposer, Bloom, Noise, Vignette } from "@react-three/postprocessing";
+import ViewportPause from "./ViewportPause";
 
 /**
  * THE BUILD — exploded ESP32 rig.
@@ -240,13 +241,17 @@ function Rig({ progressRef }: { progressRef: MutableRefObject<number> }) {
 }
 
 export default function BuildCanvas({ progressRef }: { progressRef: MutableRefObject<number> }) {
+  const [visible, setVisible] = useState(true);
+  const onChange = useCallback((v: boolean) => setVisible(v), []);
   return (
     <Canvas
+      frameloop={visible ? "always" : "never"}
       dpr={[1, 1.6]}
       camera={{ position: [0, 2.3, 7.4], fov: 40 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onCreated={({ gl }) => { gl.toneMapping = THREE.NoToneMapping; }}
     >
+      <ViewportPause onChange={onChange} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[4, 6, 3]} intensity={1.1} color="#E9FFF2" />
       <directionalLight position={[-5, 3, -2]} intensity={0.4} color="#67E8F9" />

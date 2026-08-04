@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Magnetic from "@/components/fx/Magnetic";
 import ScrambleText from "@/components/fx/Scramble";
 import CountUp from "@/components/fx/CountUp";
+import RotatingText from "@/components/fx/RotatingText";
 import TransitionLink from "@/components/nav/TransitionLink";
 
 const HeroCanvas = dynamic(() => import("./HeroCanvas"), {
@@ -125,7 +126,7 @@ export default function HeroSection() {
         transition={{ delay: 1.4 }}
         className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 font-mono text-[9px] uppercase tracking-[0.3em] text-dew-mute hidden md:block"
       >
-        scroll — the saga is long
+        verde // <RotatingText className="text-lime/80" words={["the plant that texts the cloud", "₹1,890 of pure stubbornness", "thirteen tests. zero reboots.", "scroll — the saga is long"]} />
       </motion.div>
     </section>
   );

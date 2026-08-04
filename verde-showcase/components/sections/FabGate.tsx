@@ -1,6 +1,8 @@
 import TransitionLink from "@/components/nav/TransitionLink";
 import Magnetic from "@/components/fx/Magnetic";
 import ScrambleText from "@/components/fx/Scramble";
+import VelocityMarquee from "@/components/fx/VelocityMarquee";
+import Parallax from "@/components/fx/Parallax";
 import type { VerdeRoute } from "@/components/nav/nav";
 
 /**
@@ -10,9 +12,11 @@ import type { VerdeRoute } from "@/components/nav/nav";
 export default function FabGate({ route }: { route: VerdeRoute }) {
   return (
     <main className="relative min-h-[100svh] bg-ink bg-grid-thin bg-grid-44 overflow-hidden">
-      <span className="pointer-events-none absolute -top-10 right-0 font-display font-bold text-[42vw] md:text-[26rem] leading-none text-stroke-ghost select-none">
-        {route.ghost}
-      </span>
+      <Parallax speed={0.45} className="pointer-events-none absolute -top-10 right-0">
+        <span className="font-display font-bold text-[42vw] md:text-[26rem] leading-none text-stroke-ghost select-none">
+          {route.ghost}
+        </span>
+      </Parallax>
 
       <section className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
         <div className="chip border-amber/40 bg-amber/10 text-amber mb-8">
@@ -45,18 +49,9 @@ export default function FabGate({ route }: { route: VerdeRoute }) {
       </section>
 
       <footer className="absolute bottom-0 inset-x-0 border-t border-white/[0.07] bg-ink-2/80 py-3.5 overflow-hidden">
-        <div className="flex w-max animate-marquee whitespace-nowrap">
-          {[0, 1].map((rep) => (
-            <div key={rep} className="flex shrink-0">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i} className="mx-6 font-mono text-[10px] uppercase tracking-[0.3em] text-dew-mute">
-                  {route.label} <span className="text-lime/60 ml-6">//</span> under construction
-                  <span className="text-lime/60 ml-6">//</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
+        <VelocityMarquee
+          items={Array.from({ length: 6 }).flatMap(() => [route.label, "under construction"])}
+        />
       </footer>
     </main>
   );

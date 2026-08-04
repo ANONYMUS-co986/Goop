@@ -6,6 +6,9 @@ import { motion } from "framer-motion";
 import TransitionLink from "@/components/nav/TransitionLink";
 import GlowCard from "@/components/fx/GlowCard";
 import ScrambleText from "@/components/fx/Scramble";
+import SplitReveal from "@/components/fx/SplitReveal";
+import { Reveal, RevealGroup } from "@/components/fx/Reveal";
+import Parallax from "@/components/fx/Parallax";
 
 const BuildCanvas = dynamic(() => import("@/components/three/BuildCanvas"), {
   ssr: false,
@@ -86,10 +89,16 @@ export default function BuildPage() {
       {/* ————— header ————— */}
       <section className="relative min-h-[72vh] flex flex-col justify-end px-6 md:px-16 pb-14 pt-36 overflow-hidden">
         <div className="absolute inset-0 bg-grid-thin bg-grid-44 opacity-60" aria-hidden />
+        <Parallax speed={0.6} className="pointer-events-none absolute -right-8 top-10 select-none" >
+          <span className="font-display font-bold text-[38vw] md:text-[22rem] leading-none text-stroke-ghost">₹</span>
+        </Parallax>
         <span className="chip border-lime/40 bg-lime-ghost text-lime w-fit mb-6">● live · batch B2</span>
-        <h1 className="font-display font-extrabold leading-[0.92] tracking-tight text-[13vw] md:text-[7.5rem]">
-          THE BUILD.
-        </h1>
+        <SplitReveal
+          as="h1"
+          text="THE BUILD."
+          className="font-display font-extrabold leading-[0.92] tracking-tight text-[13vw] md:text-[7.5rem]"
+          stagger={0.03}
+        />
         <p className="mt-5 max-w-xl text-dew-dim text-base md:text-lg leading-relaxed">
           <span className="text-lime">₹1,890</span> of Delhi local-market electronics, exploded in
           mid-air. Scroll — the rig takes itself apart, then wires itself back together.
@@ -146,13 +155,12 @@ export default function BuildPage() {
       {/* ————— BOM ————— */}
       <section className="px-6 md:px-16 py-24 md:py-32">
         <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl leading-none">
-            THE RECEIPTS<span className="text-lime">.</span>
-          </h2>
+          <SplitReveal as="h2" text="THE RECEIPTS." className="font-display font-extrabold text-4xl md:text-6xl leading-none" />
           <span className="font-mono text-[10px] tracking-[0.3em] text-dew-mute uppercase">
             actual market haul · no sponsors, no regrets
           </span>
         </div>
+        <Reveal variant="up">
         <div className="border border-white/10 rounded-2xl overflow-hidden glass">
           {BOM.map((row, i) => (
             <div
@@ -172,18 +180,19 @@ export default function BuildPage() {
             <span className="font-mono text-xl md:text-2xl text-lime font-bold tabular-nums">₹1,890</span>
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* ————— pin map ————— */}
       <section className="px-6 md:px-16 pb-28">
-        <h2 className="font-display font-extrabold text-4xl md:text-6xl leading-none mb-3">
-          WHERE EVERY WIRE LANDS<span className="text-lime">.</span>
-        </h2>
+        <SplitReveal as="h2" text="WHERE EVERY WIRE LANDS." className="font-display font-extrabold text-4xl md:text-6xl leading-none mb-3" />
+        <Reveal variant="blur" delay={0.1}>
         <p className="text-dew-dim max-w-xl mb-10">
           Straight from <span className="font-mono text-lime text-sm">Code_1_Main_Brain.ino</span>{" "}
           v3.0.7-FINAL — the firmware that never shipped a reboot.
         </p>
-        <div className="grid md:grid-cols-2 gap-3">
+        </Reveal>
+        <RevealGroup className="grid md:grid-cols-2 gap-3" stagger={0.05}>
           {PINMAP.map((row) => (
             <GlowCard
               key={row.pin}
@@ -195,7 +204,7 @@ export default function BuildPage() {
               <span className="relative ml-auto font-mono text-[10px] text-dew-mute text-right">{row.note}</span>
             </GlowCard>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       {/* ————— next door ————— */}

@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sparkles, Grid } from "@react-three/drei";
 import { EffectComposer, Bloom, ChromaticAberration, Noise, Vignette } from "@react-three/postprocessing";
+import ViewportPause from "./ViewportPause";
 
 /**
  * The holographic digital-twin plant.
@@ -192,8 +193,11 @@ function Rig() {
 }
 
 export default function HeroCanvas() {
+  const [visible, setVisible] = useState(true);
+  const onChange = useCallback((v: boolean) => setVisible(v), []);
   return (
     <Canvas
+      frameloop={visible ? "always" : "never"}
       dpr={[1, 1.75]}
       camera={{ position: [0, 1.05, 4.4], fov: 42 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
@@ -201,6 +205,7 @@ export default function HeroCanvas() {
         gl.toneMapping = THREE.NoToneMapping;
       }}
     >
+      <ViewportPause onChange={onChange} />
       <Rig />
       <Sparkles count={85} scale={[5, 3.4, 5]} size={2.2} speed={0.35} color="#A6FF3F" opacity={0.5} position={[0, 1, 0]} />
       <Sparkles count={28} scale={[4, 2.6, 4]} size={3.4} speed={0.25} color="#67E8F9" opacity={0.4} position={[0, 0.6, 0]} />

@@ -13,6 +13,7 @@ import SmoothScroll from "@/components/fx/SmoothScroll";
 import Preloader from "@/components/fx/Preloader";
 import Switch from "@/components/fx/Switch";
 import Tip from "@/components/fx/Tip";
+import ClickSpark from "@/components/fx/ClickSpark";
 import Burger from "@/components/nav/Burger";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Grain />
         <Switch />
         <Tip />
+        <ClickSpark />
         <Burger />
         {children}
       </body>

@@ -105,7 +105,27 @@ custom cursor (lime dot + lerped reticle, coarse-pointer + reduced-motion safe)
     cursor **label lens** (`data-cursor` → ring blooms w/ caption).
 - QA: `qa/QA_LOG.md` — 9/9 PASS, fixes F13–F15.
 
+### B4 — /doctor + scroll/heavy-lift kit ✅ (2026-08-04) — QA 6/6 PASS
+- **THE EYE**: ESP32-CAM war story — procedural SVG leaf cam mock w/
+  looping scanline + REC HUD, hover-spec chips (8MHz XCLK RF fix, 500ms
+  staged boot, 1.5s poll, 150ms flash, fb_return heap hygiene).
+- **ONE LEAF, THREE BRAINS** (interactive kill-chain): 3 provider cards
+  (crop.kindwise → gemini-flash-latest → llama-3.3-70b) with working
+  kill switches — chain reroutes, SERVING tab migrates, live readout
+  "diagnosis served by …", magnetic revive-all. Tooltips narrate.
+- **THE PRESCRIPTION**: doctor-pad Rx card (ruled rows, red-margin
+  aesthetic, tulsi 94% confidence, hydro signature, rotated 13/13 stamp)
+  inside TiltCard + GlowCard + ShinyText shimmer.
+- **Heavy-lift kit** (this batch's real payload — all pages upgraded):
+  SplitText char explosions on every page h1/h2 (₹, 17→2, Rx ghost
+  parallax behind them), Reveal/RevealGroup scroll staggers (saga, BOM,
+  pin map, case file, pipeline, terminal), VelocityMarquee replaces both
+  static tickers (scroll flick = speed + skew), RotatingText hero cue,
+  TiltCard case files + Rx + cam, ClickSpark globally, ShinyText accents.
+- **Anti-stutter**: ViewportPause freezes offscreen R3F loops, Lenis↔
+  ScrollTrigger sync, once-only transform reveals.
+- QA: `qa/QA_LOG.md` — 6/6 PASS, fixes F16–F18.
+
 ## Up next
-- B4: **/doctor** — the AI Plant Doctor: camera pipeline (ESP32-CAM →
-  Vercel upload → crop.kindwise 94% vs Gemini), Rx card UI, three-tier
-  AI fallback chain as an interactive route diagram.
+- B5: **/proof** — the 13/13 wall: every test as its own card, the 10
+  bug tombstones (flip cards), zero-reboot counter, the checklist scan.

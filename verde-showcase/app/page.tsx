@@ -3,6 +3,9 @@ import { ROUTES } from "@/components/nav/nav";
 import TransitionLink from "@/components/nav/TransitionLink";
 import GlowCard from "@/components/fx/GlowCard";
 import ScrambleText from "@/components/fx/Scramble";
+import SplitReveal from "@/components/fx/SplitReveal";
+import { Reveal, RevealGroup } from "@/components/fx/Reveal";
+import VelocityMarquee from "@/components/fx/VelocityMarquee";
 
 const LEDGER = [
   "17→2 CALLS/SEC", "8 MHZ XCLK", "₹1,890 BUILD", "13/13 TESTS",
@@ -18,17 +21,21 @@ export default function Home() {
       {/* THE SAGA — bento route map */}
       <section id="saga" className="relative px-6 md:px-10 py-24 md:py-32 bg-ink">
         <div className="mx-auto max-w-6xl">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-lime mb-4">the saga // choose your wing</p>
+          <Reveal variant="fade"><p className="font-mono text-[10px] uppercase tracking-[0.3em] text-lime mb-4">the saga // choose your wing</p></Reveal>
           <h2 className="font-display font-bold uppercase tracking-tight text-4xl md:text-6xl text-dew max-w-3xl leading-[0.95]">
-            Six rooms. <span className="text-stroke-lime">One greenhouse</span> operating system.
+            <SplitReveal as="span" text="Six rooms. " className="inline" />{" "}
+            <SplitReveal as="span" text="One greenhouse" className="inline text-stroke-lime" delay={0.18} />{" "}
+            <SplitReveal as="span" text="operating system." className="inline" delay={0.42} />
           </h2>
-          <p className="mt-6 max-w-2xl font-sans text-sm md:text-base text-dew-dim leading-relaxed">
-            Every failure and every flex of Project Verde, staged room by room.
-            Doors marked with their build batch light up as fabrication
-            completes — starting with the Home hologram you just met.
-          </p>
+          <Reveal variant="blur" delay={0.15}>
+            <p className="mt-6 max-w-2xl font-sans text-sm md:text-base text-dew-dim leading-relaxed">
+              Every failure and every flex of Project Verde, staged room by room.
+              Doors marked with their build batch light up as fabrication
+              completes — starting with the Home hologram you just met.
+            </p>
+          </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <RevealGroup className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
             {ROUTES.map((r, i) => (
               <TransitionLink
                 key={r.href}
@@ -60,23 +67,13 @@ export default function Home() {
                 </div>
               </TransitionLink>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
-      {/* ledger marquee footer */}
+      {/* ledger marquee footer — scroll velocity reactive */}
       <footer className="border-t border-white/[0.07] bg-ink-2/80 py-4 overflow-hidden">
-        <div className="flex w-max animate-marquee whitespace-nowrap">
-          {[0, 1].map((rep) => (
-            <div key={rep} className="flex shrink-0">
-              {LEDGER.map((t, i) => (
-                <span key={`${rep}-${i}`} className="mx-6 font-mono text-[10px] uppercase tracking-[0.3em] text-dew-mute">
-                  {t} <span className="text-lime/60 ml-6">//</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
+        <VelocityMarquee items={LEDGER} />
       </footer>
     </main>
   );

@@ -8,6 +8,10 @@ import GlowCard from "@/components/fx/GlowCard";
 import ScrambleText from "@/components/fx/Scramble";
 import CountUp from "@/components/fx/CountUp";
 import Magnetic from "@/components/fx/Magnetic";
+import SplitReveal from "@/components/fx/SplitReveal";
+import { Reveal, RevealGroup } from "@/components/fx/Reveal";
+import TiltCard from "@/components/fx/TiltCard";
+import Parallax from "@/components/fx/Parallax";
 
 const CASEFILE = [
   { n: "01", t: "THE SYMPTOM", c: "danger", body: "Every ~10 seconds the dashboard froze for a beat. Scroll, buttons, charts — everything hiccupped on schedule, like the app had a pacemaker with a loose wire." },
@@ -54,10 +58,16 @@ export default function BrainPage() {
       {/* ————— header ————— */}
       <section className="relative min-h-[66vh] flex flex-col justify-end px-6 md:px-16 pb-14 pt-36 overflow-hidden">
         <div className="absolute inset-0 bg-grid-thin bg-grid-44 opacity-60" aria-hidden />
+        <Parallax speed={0.55} className="pointer-events-none absolute right-0 top-6 select-none">
+          <span className="font-mono font-bold text-[30vw] md:text-[17rem] leading-none text-stroke-ghost">17→2</span>
+        </Parallax>
         <span className="chip border-lime/40 bg-lime-ghost text-lime w-fit mb-6">● live · batch B3</span>
-        <h1 className="font-display font-extrabold leading-[0.92] tracking-tight text-[13vw] md:text-[7.5rem]">
-          THE BRAIN<span className="text-lime">.</span>
-        </h1>
+        <SplitReveal
+          as="h1"
+          text="THE BRAIN."
+          className="font-display font-extrabold leading-[0.92] tracking-tight text-[13vw] md:text-[7.5rem]"
+          stagger={0.03}
+        />
         <p className="mt-5 max-w-xl text-dew-dim text-base md:text-lg leading-relaxed">
           593 lines of C++ that nearly lost to{" "}
           <span className="text-danger">seventeen HTTP calls</span> — and the
@@ -76,13 +86,13 @@ export default function BrainPage() {
       <section className="px-6 md:px-16 py-16 md:py-24">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-8">
           <div>
-            <h2 className="font-display font-extrabold text-4xl md:text-6xl leading-none">
-              THE STORM<span className="text-uv">.</span>
-            </h2>
+            <SplitReveal as="h2" text="THE STORM." className="font-display font-extrabold text-4xl md:text-6xl leading-none" />
+            <Reveal variant="blur" delay={0.1}>
             <p className="mt-3 max-w-lg text-dew-dim text-sm md:text-base">
               Flip the switch. Left: the bug as diagnosed — watch for the red
               10s stutter. Right: the shipped fix.
             </p>
+            </Reveal>
           </div>
 
           {/* before/after toggle */}
@@ -131,38 +141,40 @@ export default function BrainPage() {
 
       {/* ————— CASE FILE ————— */}
       <section className="px-6 md:px-16 py-16 md:py-24">
-        <h2 className="font-display font-extrabold text-4xl md:text-6xl leading-none mb-3">
-          CASE FILE: THE 10s STUTTER<span className="text-uv">.</span>
-        </h2>
+        <SplitReveal as="h2" text="CASE FILE: THE 10s STUTTER." className="font-display font-extrabold text-4xl md:text-6xl leading-none mb-3" />
+        <Reveal variant="blur" delay={0.1}>
         <p className="text-dew-dim max-w-xl mb-10">
           The bug that nearly killed Project Verde, written down as it
-          actually happened. Hover a card — it glows where your cursor lands.
+          actually happened. Hover a card — it glows where your cursor lands,
+          tilts where it wanders.
         </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        </Reveal>
+        <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
           {CASEFILE.map((c) => (
+            <TiltCard key={c.n} max={6}>
             <GlowCard
-              key={c.n}
               color={c.c === "lime" ? "166,255,63" : c.c === "danger" ? "255,92,108" : "255,194,75"}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 min-h-[210px] flex flex-col"
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 min-h-[210px] flex flex-col h-full"
             >
               <span className={`relative font-mono text-[10px] tracking-[0.3em] ${c.c === "lime" ? "text-lime" : c.c === "danger" ? "text-danger" : "text-amber"}`}>
                 {c.n} · <ScrambleText text={c.t} hover root="div" />
               </span>
               <p className="relative mt-4 text-dew-dim text-sm leading-relaxed">{c.body}</p>
             </GlowCard>
+            </TiltCard>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       {/* ————— PIPELINE ————— */}
       <section className="px-6 md:px-16 py-16 md:py-24">
-        <h2 className="font-display font-extrabold text-4xl md:text-6xl leading-none mb-3">
-          THE LOOP THAT NEVER SLEEPS<span className="text-lime">.</span>
-        </h2>
+        <SplitReveal as="h2" text="THE LOOP THAT NEVER SLEEPS." className="font-display font-extrabold text-4xl md:text-6xl leading-none mb-3" />
+        <Reveal variant="blur" delay={0.1}>
         <p className="text-dew-dim max-w-xl mb-10">
           Every 10 seconds, forever. Hover a stage for the engineering notes.
         </p>
-        <div className="grid md:grid-cols-5 gap-3">
+        </Reveal>
+        <RevealGroup className="grid md:grid-cols-5 gap-3" stagger={0.06}>
           {PIPELINE.map((s, i) => (
             <div key={s.k} className="relative" data-tip={s.tip}>
               <GlowCard className="rounded-xl border border-white/10 bg-ink-2/70 px-5 py-6 h-full hover:border-lime/50 transition-colors">
@@ -177,11 +189,12 @@ export default function BrainPage() {
               )}
             </div>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       {/* ————— TERMINAL ————— */}
       <section className="px-6 md:px-16 py-16 md:pb-28">
+        <Reveal variant="up">
         <div className="rounded-2xl border border-white/10 bg-ink-2/80 overflow-hidden">
           <div className="flex items-center gap-2 px-5 py-3 border-b border-white/[0.07]">
             <span className="h-2 w-2 rounded-full bg-danger/80" />
@@ -215,6 +228,7 @@ export default function BrainPage() {
             </motion.div>
           </div>
         </div>
+        </Reveal>
       </section>
 
       {/* ————— next door ————— */}
