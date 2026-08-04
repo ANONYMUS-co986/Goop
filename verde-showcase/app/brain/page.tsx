@@ -9,7 +9,7 @@ import ScrambleText from "@/components/fx/Scramble";
 import CountUp from "@/components/fx/CountUp";
 import Magnetic from "@/components/fx/Magnetic";
 import SplitReveal from "@/components/fx/SplitReveal";
-import { Reveal, RevealGroup } from "@/components/fx/Reveal";
+import { Reveal, RevealGroup, AssembleGroup } from "@/components/fx/Reveal";
 import TiltCard from "@/components/fx/TiltCard";
 import Parallax from "@/components/fx/Parallax";
 
@@ -149,7 +149,7 @@ export default function BrainPage() {
           tilts where it wanders.
         </p>
         </Reveal>
-        <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
+        <AssembleGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.08} distance={120}>
           {CASEFILE.map((c) => (
             <TiltCard key={c.n} max={6}>
             <GlowCard
@@ -163,7 +163,7 @@ export default function BrainPage() {
             </GlowCard>
             </TiltCard>
           ))}
-        </RevealGroup>
+        </AssembleGroup>
       </section>
 
       {/* ————— PIPELINE ————— */}

@@ -156,3 +156,52 @@ hero CTAs, next-door links, FabGate) · `ScrambleText` decode-on-hover ·
 `Magnetic` spring buttons · `GlowCard` cursor-tracking spotlight + border
 gleam · `Tip` global data-tip tooltip (hero stats, pin map stories, pipeline
 stages) · `CountUp` hero stats · cursor **label lens** via data-cursor.
+
+## Batch B5 — /proof + assembly-line kit (2026-08-04) — **11/11 PASS**
+
+User feedback acted on: "are you REALLY sure the scroll anims are happening —
+things coming from sides, assembling" → honest answer was no, everything
+rose from below. Batch pays that debt: side-entry now exists, is wired into
+four page areas, and we captured **mid-flight frozen frames** as receipts.
+
+| # | Capture | Subject | HTTP | Console errors | Verdict |
+|---|---------|---------|------|----------------|---------|
+| 1 | `b5-01-hero.png` | RECEIPTS. + ghost 04 + stat trio | 200 | none (hmr ws aside) | PASS |
+| 2 | `b5-02/03-thirteen.png` | 13/13 scan-list settle | 200 | none | PASS |
+| 3 | `b5-04-thirteen-FROZEN.png` | **mid-flight receipt** — rows converging from alternating sides (GSAP at ¼ timeScale, +2.6s frame) | 200 | none | PASS — visible x-offsets per row |
+| 4 | `b5-05-saga-FROZEN.png` | home saga doors, all 5 live-lit | 200 | none | PASS |
+| 5 | `b5-06-tombs.png` | ScrollStack mid-stack (cards 05-07) | 200 | none | PASS (after F20,F21) |
+| 6 | `b5-07-method.png` | quote + zero-wall + live session clock 00:00:04 | 200 | none | PASS |
+| 7 | `b5-08-gate.png` | next-wing gate + velocity marquee | 200 | none | PASS (after F19) |
+| 8 | `b5-09-mobile-hero.png` | 390px hero | 200 | none | PASS (after F22: 2.4rem xs) |
+| 9 | `b5-10-mobile-tombs.png` | 390px stack | 200 | none | PASS |
+| 10 | `b5-11-hover-row.png` | hover on T05: lime border + glow + translate + cursor lens "PASS" + data-tip bubble | 200 | none | PASS — four systems in one frame |
+| 11 | `b5-12*` | typecheck | n/a | n/a | PASS `tsc --noEmit` twice |
+
+### Findings & fixes this batch
+- **F19 (real DX bug, fixed)** ScrambleText was **frame-counted**, not
+  time-based — at low fps (SwiftShader, throttled tabs) a 16-frame decode
+  ran 16+ seconds wall-clock and got caught mid-garble on captures twice.
+  Now `performance.now()`-paced → resolves in ~520ms at ANY fps.
+- **F20 (real design bug, fixed)** tombstone cards used `glass-deep`
+  (bg-black/40) → stacked cards bled through each other. Solid `#0A1612`.
+- **F21 (real compositing bug, fixed)** ScrollStack dimmed covered cards
+  with **opacity** → top cards went see-through mid-scrub. Switched to
+  `filter: brightness()` — opaque surfaces stay opaque, GPU-composited.
+- **F22 (mobile, fixed)** unbreakable "RECEIPTS." overflowed 390px twice
+  (12vw then 2.4rem — Syne is ~0.78em wide uppercase; verify by pixels).
+- Afterwards: ScrollStack drama rebalanced for the long haul
+  (scale 0.92→0.95, dim 0.55→0.85 — pile reads stacked, not vaporized).
+
+### Component kit shipped (React Bits ports, Night Lab flavor)
+`AssembleGroup` (children converge from alternating sides, rotate,
+back.out snap — the "assembly line") · `ScrollStack` (sticky-stack
+Rolodex with brightness-dim scrub) · `StarBorder` (comet-glow pill) ·
+`PixelCard` (hover pixel-bloom canvas, zero idle cost) · `Reveal` gained
+`left`/`right` variants w/ expo.out · scoop: AssembleGroup re-wired into
+Home saga doors, Brain case file, Build pin map + ₹1,890 BOM rows.
+`lib/gsap.ts` now exports `window.__gsap` for QA timeScale freezes.
+
+### Floor state
+● LIVE: Home · The Build · The Brain · AI Doctor · **Proof Wall (new)**
+◌ B6 gate: Team Verde (gate card links live from /proof).

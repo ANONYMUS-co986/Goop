@@ -129,3 +129,33 @@ custom cursor (lime dot + lerped reticle, coarse-pointer + reduced-motion safe)
 ## Up next
 - B5: **/proof** — the 13/13 wall: every test as its own card, the 10
   bug tombstones (flip cards), zero-reboot counter, the checklist scan.
+
+## B5 — THE PROOF WALL (/proof goes LIVE) (2026-08-04)
+- **RECEIPTS. hero**: SplitReveal h1 over ghost "04" parallax; stat trio =
+  PixelCard 13/13 + StarBorder 0-reboots pill + PixelCard 10-bugs;
+  AssembleGroup flies the trio in from the wings.
+- **THE THIRTEEN**: 13 test rows verbatim from the logbook (T01 WiFi/boot
+  → T13 AI fallbacks), alternating-side assembly, hover = lime border +
+  glow + translate + cursor lens PASS + data-tip ("pass condition was
+  written before the run").
+- **TEN TOMBSTONES** (ScrollStack port): 10 bug cards numeric-stamped,
+  severity chips (6 electrical amber / 4 software+cloud uv), CAUSE OF
+  DEATH → THE RESURRECTION, rotated FIXED stamp, brightness-dim Rolodex
+  stack scrub; pattern callout GlowCard: "six of ten bugs were power or
+  connection, not code."
+- **THE METHOD**: quote wall ("'It worked once' is an anecdote; '13/13'
+  is a result") + zero-reboot CRT chamber (giant lime 0 in StarBorder,
+  WDT 8s / v3.0.7 / 600s tiles) + live session uptime clock.
+- Gate → Team Verde (B6) + back-links; velocity footer marquee.
+- Fixes F19–F22 (frame-based scramble→time-based · translucent tomb
+  cards→solid · opacity-dim→brightness · xs h1 overflow).
+- React Bits ports shipped: AssembleGroup · ScrollStack · StarBorder ·
+  PixelCard (+ Reveal left/right variants). Side-assembly migrated into
+  Home/Brain/Build grids per user feedback.
+- QA: `qa/QA_LOG.md` — 11/11 PASS, incl. two mid-flight frozen frames
+  (QA_SLOW=4 global timeScale receipts).
+
+## Up next
+- B6: **/team** — Aarav × Anuj cards, lit-fest wins, the two-AI war,
+  "two builders, one greenhouse OS".
+- B7: perf + reduced-motion sweep, prod build, deploy (Vercel like the app).

@@ -4,7 +4,7 @@ import TransitionLink from "@/components/nav/TransitionLink";
 import GlowCard from "@/components/fx/GlowCard";
 import ScrambleText from "@/components/fx/Scramble";
 import SplitReveal from "@/components/fx/SplitReveal";
-import { Reveal, RevealGroup } from "@/components/fx/Reveal";
+import { Reveal, AssembleGroup } from "@/components/fx/Reveal";
 import VelocityMarquee from "@/components/fx/VelocityMarquee";
 
 const LEDGER = [
@@ -35,7 +35,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <RevealGroup className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.07}>
+          <AssembleGroup className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={0.08} distance={130}>
             {ROUTES.map((r, i) => (
               <TransitionLink
                 key={r.href}
@@ -67,7 +67,7 @@ export default function Home() {
                 </div>
               </TransitionLink>
             ))}
-          </RevealGroup>
+          </AssembleGroup>
         </div>
       </section>
 

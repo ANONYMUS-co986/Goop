@@ -29,17 +29,19 @@ export default function ScrambleText({
   const play = useCallback(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     cancelAnimationFrame(raf.current);
-    let frame = 0;
-    const total = 16;
+    // time-based, not frame-based — resolves in ~520ms of WALL clock at any
+    // fps, so slow devices / background tabs can't leave it stuck scrambled
+    const DUR = 520;
+    const start = performance.now();
     const step = () => {
-      frame++;
-      const reveal = Math.floor((frame / total) * text.length);
+      const p = Math.min(1, (performance.now() - start) / DUR);
+      const reveal = Math.floor(p * text.length);
       let out = "";
       for (let i = 0; i < text.length; i++) {
         out += i < reveal || text[i] === " " ? text[i] : GLYPHS[(Math.random() * GLYPHS.length) | 0];
       }
       setDisplay(out);
-      if (reveal < text.length) raf.current = requestAnimationFrame(step);
+      if (p < 1) raf.current = requestAnimationFrame(step);
       else setDisplay(text);
     };
     raf.current = requestAnimationFrame(step);

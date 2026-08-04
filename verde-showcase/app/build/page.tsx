@@ -7,7 +7,7 @@ import TransitionLink from "@/components/nav/TransitionLink";
 import GlowCard from "@/components/fx/GlowCard";
 import ScrambleText from "@/components/fx/Scramble";
 import SplitReveal from "@/components/fx/SplitReveal";
-import { Reveal, RevealGroup } from "@/components/fx/Reveal";
+import { Reveal, AssembleGroup } from "@/components/fx/Reveal";
 import Parallax from "@/components/fx/Parallax";
 
 const BuildCanvas = dynamic(() => import("@/components/three/BuildCanvas"), {
@@ -160,8 +160,8 @@ export default function BuildPage() {
             actual market haul · no sponsors, no regrets
           </span>
         </div>
-        <Reveal variant="up">
         <div className="border border-white/10 rounded-2xl overflow-hidden glass">
+          <AssembleGroup stagger={0.045} distance={90}>
           {BOM.map((row, i) => (
             <div
               key={row.item}
@@ -179,8 +179,8 @@ export default function BuildPage() {
             <span className="hidden md:block font-mono text-[11px] text-dew-dim">a pizza night, basically</span>
             <span className="font-mono text-xl md:text-2xl text-lime font-bold tabular-nums">₹1,890</span>
           </div>
+          </AssembleGroup>
         </div>
-        </Reveal>
       </section>
 
       {/* ————— pin map ————— */}
@@ -192,7 +192,7 @@ export default function BuildPage() {
           v3.0.7-FINAL — the firmware that never shipped a reboot.
         </p>
         </Reveal>
-        <RevealGroup className="grid md:grid-cols-2 gap-3" stagger={0.05}>
+        <AssembleGroup className="grid md:grid-cols-2 gap-3" stagger={0.05} distance={90}>
           {PINMAP.map((row) => (
             <GlowCard
               key={row.pin}
@@ -204,7 +204,7 @@ export default function BuildPage() {
               <span className="relative ml-auto font-mono text-[10px] text-dew-mute text-right">{row.note}</span>
             </GlowCard>
           ))}
-        </RevealGroup>
+        </AssembleGroup>
       </section>
 
       {/* ————— next door ————— */}

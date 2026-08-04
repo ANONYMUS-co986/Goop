@@ -101,3 +101,39 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .shiny-sweep { display: none; }
 }
+
+/* ————— StarBorder (reactbits port) ————— */
+.star-border {
+  position: relative;
+  overflow: hidden;
+}
+.sb-glow {
+  position: absolute;
+  width: 300%;
+  height: 32%;
+  opacity: 0.55;
+  will-change: transform;
+  background: radial-gradient(circle, var(--sb-color, #ffc24b), transparent 10%);
+  border-radius: 50%;
+}
+.sb-glow-bottom {
+  bottom: -12%;
+  right: -250%;
+  animation: sb-move-bottom var(--sb-speed, 5s) linear infinite alternate;
+}
+.sb-glow-top {
+  top: -12%;
+  left: -250%;
+  animation: sb-move-top var(--sb-speed, 5s) linear infinite alternate;
+}
+@keyframes sb-move-bottom {
+  0% { transform: translate(0%, 0%); }
+  100% { transform: translate(-100%, 0%); }
+}
+@keyframes sb-move-top {
+  0% { transform: translate(0%, 0%); }
+  100% { transform: translate(100%, 0%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb-glow { display: none; }
+}
