@@ -2,6 +2,12 @@
 build/tools/
 build/render/
 build/slides/
+
+# showcase site (next.js)
+verde-showcase/node_modules/
+verde-showcase/.next/
+verde-showcase/out/
+verde-showcase/*.tsbuildinfo
 build/assets/img/*.png
 !build/assets/img/qr_demo.png
 __pycache__/
