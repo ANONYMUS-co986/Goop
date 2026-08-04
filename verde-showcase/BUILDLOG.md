@@ -44,6 +44,27 @@ custom cursor (lime dot + lerped reticle, coarse-pointer + reduced-motion safe)
   reinstalled `@sparticuz/chromium@138.0.2 + playwright-core@1.49.1`;
   shot.js now inflates `al2023.tar.br` itself when missing.
 
+### B1 — Home + site chrome ✅ (2026-08-04) — QA 8/8 PASS
+- **Preloader** (`fx/Preloader.tsx`): 4-stage boot — kernel log stagger,
+  % counter + rail, sprout stroke-draw, 5-strip scaleY exit explosion.
+  sessionStorage fast re-boot; tap/Esc skips; reduced-motion → gone.
+- **Hero** (`three/HeroCanvas.tsx` + `HeroSection.tsx`): fully procedural
+  hologram (ZERO downloaded assets) — one shared GLSL fresnel shader
+  (pot/stems/ribbon-leaves), looping 6.5 s scan-band rebuild soil→crown,
+  random flicker, sparkles ×2 + grid floor; postprocessing stack =
+  Bloom + ChromaticAberration 0.00045 + Noise + Vignette, NoToneMapping.
+  Pointer-parallax rig; **portrait screens dolly the plant back in Z so the
+  headline keeps clear air** (QA F5).
+- **Burger nav** (`nav/Burger.tsx` + `nav.ts`): clip-circle wipe overlay,
+  staggered route rows w/ LIVE+batch chips, ghost numerals, syscon footer
+  (session uptime), Esc closes, Lenis pauses while open.
+- **Home page**: hero + `#saga` bento (6 doors) + LEDGER marquee.
+  Route transitions (`app/template.tsx`) blur-rise via framer-motion.
+- **FabGate** (`sections/FabGate.tsx`): honest in-fabrication interstitial
+  for /build /brain /doctor /proof /team until their batches land.
+- QA: see `qa/QA_LOG.md` — 8/8 PASS, 3 harness fixes + 3 site fixes
+  (cursor 0,0 artifact F4, mobile holo crowding F5, menu footer overlap F6).
+
 ## Up next
-- B1: mind-bending preloader (boot kernel → particle gather → split-text
-  explosion → reveal) + holographic hero canvas + burger menu shell.
+- B2: **/build** — scroll-driven exploded ESP32 (GSAP ScrollTrigger pinned),
+  wiring callouts, BOM table with the real ₹1,890 breakdown.

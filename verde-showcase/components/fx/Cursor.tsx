@@ -66,11 +66,12 @@ export default function Cursor() {
       <div
         ref={dotRef}
         className="pointer-events-none fixed left-0 top-0 z-[10001] h-1.5 w-1.5 rounded-full bg-lime"
-        style={{ boxShadow: "0 0 10px rgba(166,255,63,0.8)" }}
+        style={{ boxShadow: "0 0 10px rgba(166,255,63,0.8)", transform: "translate(-100px, -100px)" }}
       />
       <div
         ref={ringRef}
         className="pointer-events-none fixed left-0 top-0 z-[10000] h-8 w-8 rounded-full border border-dew/45 transition-[border-color,box-shadow] duration-200"
+        style={{ transform: "translate(-100px, -100px)" }}
       />
     </>
   );

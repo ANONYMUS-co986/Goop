@@ -10,6 +10,8 @@ import "./globals.css";
 import Grain from "@/components/fx/Grain";
 import Cursor from "@/components/fx/Cursor";
 import SmoothScroll from "@/components/fx/SmoothScroll";
+import Preloader from "@/components/fx/Preloader";
+import Burger from "@/components/nav/Burger";
 
 export const metadata: Metadata = {
   title: "VERDE — The Plant That Waters Itself",
@@ -29,9 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="lab-cursor-active min-h-screen">
+        <Preloader />
         <SmoothScroll />
         <Cursor />
         <Grain />
+        <Burger />
         {children}
       </body>
     </html>
