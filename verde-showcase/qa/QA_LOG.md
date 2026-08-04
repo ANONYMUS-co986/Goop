@@ -56,3 +56,31 @@ With it, the boot timeline completes naturally in ~3.5 s wall — correct.
   Standard ritual shots always skip the preloader first (deterministic).
 - Interactions verified by capture, not just code: menu open (4/7),
   scroll position (3/8), preloader states (1), WebGL first frames (2/6).
+
+---
+
+## Batch B2 — /build (2026-08-04) — **5/5 PASS**
+
+| # | Capture | View | HTTP | Console errors | Verdict |
+|---|---------|------|------|----------------|---------|
+| 1 | `b2_header.png` | desktop | 200 | none | PASS — THE BUILD., LIVE chip, stat chips |
+| 2 | `b2_mid.png` | desktop @73% explode | 200 | none | PASS — constellation mid-air, slack wires |
+| 3 | `b2_full.png` | desktop @100% WIRED | 200 | none | PASS — every module tethered to its pad |
+| 4 | `b2_bom.png` | desktop receipts | 200 | none | PASS — 12 rows + ₹1,890 total + pin map |
+| 5 | `b2m_explode.png` | mobile 390×844 @95% | 200 | none | PASS — narrow-aspect rig scale holds frame |
+
+### Findings & fixes this batch
+- **F7 (site, fixed)** first explode pass scattered parts out of frame →
+  every dir vector tightened ~40%, camera pulled to z=7.4.
+- **F8 (site, fixed)** 0.12 rad/s turntable over-rotated before captures →
+  0.04 rad/s (classier live AND deterministic in QA).
+- **F9 (site, fixed)** full-explode state drifted out of the top of frame →
+  rig y re-centers with progress (`-0.9 - p·0.55`).
+- **F10 (site, fixed)** pin headers rendered as one implausible gold plank
+  (and an empty label chip) → twin 2.5u bars, label only on the first.
+- **F11 (site, fixed)** soil probe near-black on ink + its label collided
+  with the % rail → lightened to #48555F, explode y lifted.
+- **F12 (site, fixed)** portrait viewports clipped the module orbit →
+  narrow-aspect rig scale lerp to 0.58 (verified in `b2m_explode.png`).
+- Accepted as designed: edge-of-orbit clipping of pump/soil labels as the
+  turntable slowly rotates (parts drift in/out like a real exhibit).

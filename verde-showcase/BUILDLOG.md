@@ -65,6 +65,24 @@ custom cursor (lime dot + lerped reticle, coarse-pointer + reduced-motion safe)
 - QA: see `qa/QA_LOG.md` — 8/8 PASS, 3 harness fixes + 3 site fixes
   (cursor 0,0 artifact F4, mobile holo crowding F5, menu footer overlap F6).
 
+### B2 — /build ✅ (2026-08-04) — QA 5/5 PASS
+- **Sticky exploded rig** (`three/BuildCanvas.tsx`): 380vh scroll-scrubbed
+  disassembly. 7 board parts stair-rise → 7 external modules orbit out →
+  slack wires re-tether every module to its GPIO pad (14-seg arcs
+  recomputed per frame). All procedural: PCB + lime edge trace, ESP32
+  shield can w/ antenna zone, twin pin-header bars, USB, EN/BOOT, GPIO2
+  LED (emissive), DHT11, soil probe, HC-SR04 (chrome eyes), LDR, relay,
+  pump, UV strip (emissive uv). drei Html mono labels per part.
+- **Stage rail**: DISASSEMBLY % + scaleX rail + 5 named stages
+  (CHASSIS/BRAIN/SENSES/HANDS/WIRED) w/ swap captions + right-edge ticks.
+- **Receipts**: 12-row BOM table — real haul, ₹1,890 total row.
+- **Pin map**: 8 GPIO cards straight from firmware v3.0.7 (incl. the
+  active-LOW pump relay + probe power gating callouts).
+- Responsive: narrow-aspect rig scale 0.58, mobile stage rail, scroll
+  progress via rAF-throttled listener (no ScrollTrigger dependency).
+- QA: `qa/QA_LOG.md` — 5/5 PASS, fixes F7–F12 (spread, spin rate,
+  framing, headers, probe visibility, portrait crop).
+
 ## Up next
-- B2: **/build** — scroll-driven exploded ESP32 (GSAP ScrollTrigger pinned),
-  wiring callouts, BOM table with the real ₹1,890 breakdown.
+- B3: **/brain** — the 17→2 telemetry storm as an interactive viz:
+  call packet rain, the 10s AUTO stutter, the JSON-bundle fix, WDT.
