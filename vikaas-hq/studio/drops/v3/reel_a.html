@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>REEL α — THE DRAWER · vikaas studio v3</title>
+<style>
+@font-face{font-family:'Anton';src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Bebas';src:url('../../seed/fonts/BebasNeue.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Archivo';src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Inter';src:url('../../seed/fonts/Inter.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Devnag';src:url('../../seed/fonts/NotoSansDevanagari.ttf') format('truetype');font-display:block}
+:root{
+  --ink:#070B08; --ink2:#0D1510; --dew:#EAFFF4; --lime:#2EDE82; --acid:#B9FF3F;
+  --red:#FF4D5E; --cream:#EFE9DC; --violet:#A78BFA; --mute:#8FA99A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden}
+.anton{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em}
+.bebas{font-family:'Bebas',sans-serif;letter-spacing:.06em}
+.dev{font-family:'Devnag',sans-serif}
+.mono{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:.30em;text-transform:uppercase}
+.w{display:inline-block;white-space:pre}
+/* texture + light */
+#grain{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+#vig{position:absolute;inset:0;z-index:41;pointer-events:none;background:radial-gradient(ellipse 130% 110% at 50% 42%,transparent 55%,rgba(0,0,0,.55) 100%)}
+#flash{position:absolute;inset:0;z-index:60;background:#fff;opacity:0;pointer-events:none}
+#wipe{position:absolute;top:-6%;bottom:-6%;left:0;width:135%;z-index:55;background:var(--acid);transform:translateX(-130%) skewX(-12deg);pointer-events:none}
+/* footer */
+#foot{position:absolute;left:0;right:0;bottom:0;z-index:45;opacity:0}
+#foot .bar{height:6px;width:100%;background:rgba(234,255,244,.12)}
+#foot .fill{height:100%;width:100%;background:var(--acid);transform-origin:left;transform:scaleX(0)}
+#foot .row{display:flex;justify-content:space-between;padding:16px 30px 22px;font-size:20px;color:var(--mute)}
+#foot .row .mono{font-size:20px;letter-spacing:.22em}
+/* ————— S0 logo ————— */
+#s0{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--ink)}
+#s0 .pool{position:absolute;left:50%;top:44%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(46,222,130,.14) 0%,transparent 60%)}
+#logosvg{width:430px;height:430px;position:relative;z-index:2}
+#s0 .word{margin-top:44px;text-align:center;position:relative;z-index:2}
+#s0 .dev{font-size:78px;font-weight:700;color:var(--dew)}
+#s0 .en{font-family:'Anton';font-size:64px;letter-spacing:.42em;color:var(--dew);margin-top:6px}
+#s0 .tag{margin-top:22px;font-size:24px;color:var(--acid);letter-spacing:.34em}
+/* ————— S1 hook ————— */
+#s1{display:flex;flex-direction:column;justify-content:center;padding:0 84px;background:var(--ink)}
+#s1 .kick{color:var(--acid);font-size:26px;margin-bottom:34px}
+#s1 h1{font-size:118px;line-height:1.02;color:var(--dew)}
+#s1 h1 .dim{color:var(--mute)}
+/* ————— S2 photo ————— */
+#s2{background:#000}
+#s2 .ph{position:absolute;inset:0;overflow:hidden}
+#s2 .ph img{position:absolute;left:50%;top:50%;width:auto;height:100%;min-width:100%;min-height:100%}
+#s2 .dim-ov{position:absolute;inset:0;background:#000;opacity:0}
+#s2 .cap{position:absolute;left:70px;bottom:250px;font-size:58px;color:var(--dew);text-shadow:0 4px 30px rgba(0,0,0,.8)}
+#s2 .chiprow{position:absolute;left:70px;bottom:250px;display:flex;flex-direction:column;gap:26px}
+#chips{opacity:0;visibility:hidden}
+.chip{background:rgba(7,11,8,.82);backdrop-filter:blur(4px);border:1px solid rgba(234,255,244,.16);border-radius:18px;padding:22px 34px;display:flex;align-items:baseline;gap:22px;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+.chip b{font-family:'Anton';font-size:64px;color:var(--acid);line-height:1}
+.chip span{font-size:34px;color:var(--dew)}
+#kg{opacity:0;visibility:hidden}
+#s2 .kgwrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-shadow:0 6px 60px rgba(0,0,0,.9)}
+#kgn{font-family:'Anton';font-size:560px;line-height:.9;color:var(--dew)}
+#s2 .kglab{font-family:'Anton';font-size:66px;color:var(--acid);margin-top:18px}
+#s2 .kgsub{margin-top:26px;font-size:26px;color:var(--dew);opacity:.85;letter-spacing:.3em;text-transform:uppercase}
+/* ————— S5 homes ————— */
+#s5{background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-1.2deg)}
+#s5 h1{font-size:104px;color:var(--ink);text-align:center;line-height:1.04;position:relative}
+#s5 .strike{position:relative;display:inline-block}
+#s5 .strike i{position:absolute;left:-3%;right:-3%;top:54%;height:14px;background:var(--red);transform:scaleX(0);transform-origin:left;display:block}
+#s5 h2{font-size:150px;color:var(--ink);margin-top:34px}
+#s5 .sub{margin-top:26px;font-size:32px;font-weight:700;color:#4a5142;letter-spacing:.18em;text-transform:uppercase}
+/* ————— S6 tally ————— */
+#s6{background:var(--ink2);display:flex;flex-direction:column;align-items:center;justify-content:center}
+#s6 h1{font-size:96px;color:var(--dew);text-align:center;line-height:1.05}
+#s6 h1 b{color:var(--acid);font-family:'Anton'}
+#tally{display:grid;grid-template-columns:repeat(5,auto);gap:38px 44px;margin-top:60px}
+.tg{width:92px;height:120px}
+.tg line{stroke:var(--dew);stroke-width:9;stroke-linecap:round}
+.tg .diag{stroke:var(--acid);stroke-width:10}
+/* ————— S7 zero / S8 fifteen ————— */
+#s7,#s8{background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ghost{position:absolute;opacity:0;visibility:hidden;font-family:'Anton';font-size:900px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(234,255,244,.06);user-select:none}
+#zeroN{font-family:'Anton';font-size:700px;line-height:.86;color:var(--red);text-shadow:0 0 90px rgba(255,77,94,.35)}
+#s7 .cap,#s8 .capT{font-family:'Archivo';font-size:46px;color:var(--dew);margin-top:36px;max-width:860px;line-height:1.3}
+#fifN{font-family:'Anton';font-size:640px;line-height:.86;color:var(--lime);text-shadow:0 0 110px rgba(46,222,130,.4)}
+#s8 .src{margin-top:44px;border:1.5px solid rgba(185,255,63,.5);color:var(--acid);border-radius:999px;padding:14px 30px;font-size:23px;letter-spacing:.2em;text-transform:uppercase}
+/* ————— S9/S10 quotes ————— */
+#s9,#s10{background:var(--ink);display:flex;align-items:center;justify-content:center;padding:0 80px;text-align:center}
+#s9 h1{font-size:96px;color:var(--dew);line-height:1.08}
+#s9 h1 b{color:var(--lime)}
+#s10 h1{font-size:104px;color:var(--dew);line-height:1.05}
+#s10 h1 b{color:var(--acid)}
+/* ————— S11 punch ————— */
+#s11{background:var(--ink);display:flex;align-items:center;justify-content:center}
+#card{position:relative;width:880px;background:var(--cream);border-radius:26px;padding:74px 70px 64px;transform:rotate(-1.5deg);box-shadow:0 40px 120px rgba(0,0,0,.6)}
+#card .mini{width:120px;height:120px;margin-bottom:30px}
+#card h1{font-size:78px;color:#3a4136;line-height:1.12}
+#card h1 .strike{position:relative;display:inline-block}
+#card h1 .strike i{position:absolute;left:-2%;right:-2%;top:54%;height:10px;background:var(--red);transform:scaleX(0);transform-origin:left;display:block}
+#card h2{font-size:96px;color:var(--ink);margin-top:16px;line-height:1.05}
+#card h2 u{text-decoration:none;border-bottom:14px solid var(--acid)}
+#card .meta{margin-top:44px;display:flex;gap:18px;align-items:center}
+#card .pill{border:2px solid var(--ink);border-radius:999px;padding:12px 26px;font-size:24px;color:var(--ink);font-weight:700;letter-spacing:.14em}
+#card .pill.g{background:var(--ink);color:var(--acid);border-color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="ghost" id="ghost1">0</div>
+
+  <div class="scene" id="s0">
+    <div class="pool"></div>
+    <svg id="logosvg" viewBox="0 0 400 400">
+      <defs>
+        <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ff08e"/><stop offset="100%" stop-color="#18c56a"/></linearGradient>
+        <linearGradient id="gViolet" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b98cff"/><stop offset="100%" stop-color="#7a4de0"/></linearGradient>
+      </defs>
+      <path class="dp" id="ring1" d="M200,44 A156,156 0 0 1 356,200 A156,156 0 0 1 200,356" fill="none" stroke="url(#gViolet)" stroke-width="26" stroke-linecap="round"/>
+      <path class="dp" id="ring2" d="M200,356 A156,156 0 0 1 44,200 A156,156 0 0 1 200,44" fill="none" stroke="url(#gGreen)" stroke-width="26" stroke-linecap="round"/>
+      <circle id="n1" cx="330" cy="140" r="13" fill="#b98cff"/>
+      <circle id="n2" cx="352" cy="212" r="13" fill="#b98cff"/>
+      <circle id="n3" cx="300" cy="300" r="13" fill="#b98cff"/>
+      <path class="dp" id="t1" d="M330,140 L286,140 L286,178" fill="none" stroke="#b98cff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="dp" id="t2" d="M300,300 L266,268" fill="none" stroke="#b98cff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="dp" id="stem" d="M200,300 C200,250 200,214 200,168" fill="none" stroke="url(#gGreen)" stroke-width="24" stroke-linecap="round"/>
+      <path id="leafL" d="M200,214 C160,214 132,186 132,150 C170,150 200,178 200,214 Z" fill="url(#gGreen)"/>
+      <path id="leafR" d="M200,190 C200,140 232,100 276,92 C280,142 248,186 200,190 Z" fill="url(#gGreen)"/>
+    </svg>
+    <div class="word">
+      <div class="dev" id="lgDev">विकास</div>
+      <div class="en" id="lgEn">VIKAAS</div>
+      <div class="tag mono" id="lgTag">e-waste changemaker</div>
+    </div>
+  </div>
+
+  <div class="scene" id="s1">
+    <div class="kick mono">my house · gurugram · the audit begins</div>
+    <h1 class="anton" id="hook1">OPEN THE DRAWER <span class="dim">YOU'VE BEEN</span> IGNORING.</h1>
+  </div>
+
+  <div class="scene" id="s2">
+    <div class="ph"><img id="phImg" src="src/drawer_real.jpg" alt=""></div>
+    <div class="dim-ov" id="dimOv"></div>
+    <div class="cap anton" id="cap1">you call it a drawer.</div>
+    <div class="chiprow" id="chips">
+      <div class="chip"><b>3</b><span>phones. all "kept just in case".</span></div>
+      <div class="chip"><b>7</b><span>chargers. none matched anything.</span></div>
+      <div class="chip"><b>1</b><span>swollen power bank. ticking.</span></div>
+    </div>
+    <div class="kgwrap" id="kg">
+      <div id="kgn">0.0</div>
+      <div class="kglab anton">KG OF DEAD TECH.</div>
+      <div class="kgsub mono">weighed. not guessed.</div>
+    </div>
+  </div>
+
+  <div class="scene" id="s5">
+    <h1 class="anton" id="hom1">I ASKED <span class="strike" id="str5">10 HOMES.<i></i></span></h1>
+    <h2 class="anton" id="hom2">SAME DRAWER.</h2>
+    <div class="sub" id="hom3">every. single. one.</div>
+  </div>
+
+  <div class="scene" id="s6">
+    <h1 class="anton" id="tal1">ALL 10 HAD <b>ONE.</b></h1>
+    <div id="tally"></div>
+  </div>
+
+  <div class="scene" id="s7">
+    <div id="zeroN">0</div>
+    <div class="cap" id="zcap">authorised recyclers they could name.</div>
+  </div>
+
+  <div class="scene" id="s8">
+    <div id="fifN">1</div>
+    <div class="capT" id="fcap">authorised e-waste recyclers. in Gurugram. right now.</div>
+    <div class="src mono" id="fsrc">source ✓ HSPCB · govt of haryana list</div>
+  </div>
+
+  <div class="scene" id="s9"><h1 class="anton" id="q1">THE INFRASTRUCTURE <b>ALREADY EXISTS.</b></h1></div>
+  <div class="scene" id="s10"><h1 class="anton" id="q2">NOBODY <b>TOLD US.</b></h1></div>
+
+  <div class="scene" id="s11">
+    <div id="card">
+      <svg class="mini" viewBox="0 0 400 400">
+        <path d="M200,44 A156,156 0 0 1 356,200 A156,156 0 0 1 200,356" fill="none" stroke="#7a4de0" stroke-width="26" stroke-linecap="round"/>
+        <path d="M200,356 A156,156 0 0 1 44,200 A156,156 0 0 1 200,44" fill="none" stroke="#18c56a" stroke-width="26" stroke-linecap="round"/>
+        <path d="M200,300 C200,250 200,214 200,168" fill="none" stroke="#18c56a" stroke-width="24" stroke-linecap="round"/>
+        <path d="M200,214 C160,214 132,186 132,150 C170,150 200,178 200,214 Z" fill="#2EDE82"/>
+        <path d="M200,190 C200,140 232,100 276,92 C280,142 248,186 200,190 Z" fill="#2EDE82"/>
+      </svg>
+      <h1 class="anton" id="pun1">The world <span class="strike">didn't need me.<i></i></span></h1>
+      <h2 class="anton" id="pun2">MY DRAWER <u>DID.</u></h2>
+      <div class="meta" id="punMeta">
+        <span class="pill g">@qwerty_aarav</span>
+        <span class="pill">#EWasteOff</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="foot">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="row"><span class="mono">@qwerty_aarav</span><span class="mono">vikaas · <span class="dev" style="font-size:20px">विकास</span></span></div>
+  </div>
+
+  <div id="vig"></div>
+  <div id="grain"></div>
+  <div id="flash"></div>
+  <div id="wipe"></div>
+</div>
+
+<script src="../../node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+(function(){
+  const DUR = 27.2;
+  const $ = (s)=>document.querySelector(s);
+  // word splitter → .w spans
+  function splitWords(el){
+    const words = el.innerHTML.trim().split(/(<[^>]+>)/g).join('').split(/\s+/);
+    // simpler: operate on text only for hook+quotes (tags safe subset)
+  }
+  function splitTextWords(el){
+    const nodes=[...el.childNodes]; el.innerHTML='';
+    nodes.forEach(n=>{
+      if(n.nodeType===3){
+        n.textContent.split(/(\s+)/).forEach(tok=>{
+          if(tok.trim()===''){ el.appendChild(document.createTextNode(' ')); }
+          else { const s=document.createElement('span'); s.className='w'; s.textContent=tok; el.appendChild(s); }
+        });
+      } else el.appendChild(n);
+    });
+  }
+  ['hook1','q1','q2'].forEach(id=>splitTextWords(document.getElementById(id)));
+
+  // tally build: 10 groups of 5 strokes
+  const tally=$('#tally');
+  const groups=[];
+  for(let g=0; g<10; g++){
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox','0 0 92 120'); svg.classList.add('tg');
+    for(let i=0;i<4;i++){
+      const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+      l.setAttribute('x1',10+i*20); l.setAttribute('y1',10); l.setAttribute('x2',10+i*20); l.setAttribute('y2',96);
+      svg.appendChild(l);
+    }
+    const d=document.createElementNS('http://www.w3.org/2000/svg','line');
+    d.setAttribute('x1',2); d.setAttribute('y1',108); d.setAttribute('x2',82); d.setAttribute('y2',14); d.classList.add('diag');
+    svg.appendChild(d);
+    tally.appendChild(svg); groups.push(svg);
+  }
+  // prep stroke draw
+  function prepDraw(path){
+    const L=path.getTotalLength();
+    path.style.strokeDasharray=L; path.style.strokeDashoffset=L;
+    return L;
+  }
+  const logoDraw=['ring1','ring2','t1','t2','stem'].map(id=>{const p=document.getElementById(id);const L=prepDraw(p);return {p,L};});
+  const tallyParts=[];
+  groups.forEach(svg=>[...svg.querySelectorAll('line')].forEach(l=>{const L=prepDraw(l);tallyParts.push({p:l,L});}));
+
+  gsap.ticker.lagSmoothing(0);
+  const tl = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+  const show=(sel,at)=>tl.set(sel,{autoAlpha:1},at);
+  const hide=(sel,at)=>tl.set(sel,{autoAlpha:0},at);
+
+  /* ————— S0 logo ident 0–2.35 ————— */
+  show('#s0',0);
+  gsap.set(['#n1','#n2','#n3'],{scale:0,transformOrigin:'50% 50%'});
+  gsap.set(['#leafL','#leafR'],{scale:0,transformOrigin:'100% 100%'});
+  gsap.set(['#lgDev','#lgEn','#lgTag'],{autoAlpha:0,y:26});
+  logoDraw.forEach((o,i)=>tl.to(o.p,{strokeDashoffset:0,duration:.42,ease:'power2.inOut'},0.10+i*0.10));
+  tl.to(['#n1','#n2','#n3'],{scale:1,duration:.28,ease:'back.out(3)',stagger:.09},0.42);
+  tl.to(['#leafL','#leafR'],{scale:1,duration:.36,ease:'back.out(2)',stagger:.1},0.74);
+  tl.to('#lgDev',{autoAlpha:1,y:0,duration:.24},1.02);
+  tl.fromTo('#lgEn',{letterSpacing:'.64em',autoAlpha:0},{letterSpacing:'.42em',autoAlpha:1,duration:.34,ease:'power2.out'},1.16);
+  tl.to('#lgTag',{autoAlpha:1,y:0,duration:.24},1.42);
+  // alive breathes
+  tl.to('#logosvg',{scale:1.02,duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},1.56);
+  tl.to('#s0',{autoAlpha:0,duration:.12},2.18);
+
+  // acid wipe 2.16–2.6
+  tl.fromTo('#wipe',{x:'-130%'},{x:'0%',duration:.22,ease:'power3.in'},2.16);
+  tl.to('#wipe',{x:'135%',duration:.26,ease:'power3.out'},2.38);
+
+  /* ————— S1 hook 2.4–4.3 ————— */
+  show('#s1',2.4);
+  hide('#s1',4.3);
+  tl.fromTo('#s1 .kick',{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.2},2.46);
+  tl.fromTo('#hook1 .w, #hook1 .dim',{autoAlpha:0,y:44},{autoAlpha:1,y:0,duration:.34,stagger:.05},2.52);
+  tl.to('#hook1 .w, #hook1 .dim',{autoAlpha:0,y:-30,duration:.22,stagger:.03,ease:'power2.in'},4.02);
+
+  /* ————— S2 photo 4.15–11.75 ————— */
+  show('#s2',4.15);
+  gsap.set('#phImg',{xPercent:-50,yPercent:-50});
+  tl.fromTo('#phImg',{scale:1.05},{scale:1.16,duration:7.5,ease:'none'},4.15);
+  tl.fromTo('#cap1',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.3},4.55);
+  tl.to('#cap1',{autoAlpha:0,y:-26,duration:.24,ease:'power2.in'},6.2);
+  tl.to('#dimOv',{opacity:.62,duration:.4},6.35);
+  tl.set('#chips',{autoAlpha:1},6.35);
+  tl.fromTo('#chips .chip',{autoAlpha:0,x:-70},{autoAlpha:1,x:0,duration:.4,stagger:.28,ease:'back.out(1.6)'},6.55);
+  tl.to('#chips .chip',{autoAlpha:0,y:-24,duration:.22,stagger:.08,ease:'power2.in'},9.0);
+  tl.to('#dimOv',{opacity:.86,duration:.34},9.2);
+  show('#kg',9.35); // kgwrap inside s2 (autoAlpha starts 0 via parent? it's child of visible scene; manage separately)
+  // kg count 0.0 → 1.4
+  const kgObj={v:0};
+  tl.fromTo('#kgn',{scale:.7,autoAlpha:0},{scale:1,autoAlpha:1,duration:.3,ease:'back.out(2)'},9.4);
+  tl.to(kgObj,{v:1.4,duration:.85,ease:'power2.out',onUpdate:()=>{$('#kgn').textContent=kgObj.v.toFixed(1);}},9.55);
+  tl.fromTo('#s2 .kglab',{autoAlpha:0,y:30},{autoAlpha:1,y:0,duration:.26},9.9);
+  tl.fromTo('#s2 .kgsub',{autoAlpha:0},{autoAlpha:1,duration:.24},10.3);
+  tl.to('#kgn',{scale:1.07,duration:.16,yoyo:true,repeat:1,ease:'power1.inOut'},10.75);
+  hide('#s2',11.75);
+
+  /* ————— S5 homes 11.55–14.15 ————— */
+  show('#s5',11.55); hide('#s5',14.15);
+  tl.fromTo('#s5',{rotate:-3,scale:1.04},{rotate:-1.2,scale:1,duration:.4,ease:'power2.out'},11.55);
+  tl.fromTo('#hom1 .w, #hom1',{autoAlpha:0},{autoAlpha:1,duration:.01},11.55);
+  tl.fromTo('#hom1',{autoAlpha:0,y:50},{autoAlpha:1,y:0,duration:.34},11.6);
+  tl.to('#str5 i',{scaleX:1,duration:.3,ease:'power2.inOut'},12.35);
+  tl.fromTo('#hom2',{autoAlpha:0,y:60,scale:.9},{autoAlpha:1,y:0,scale:1,duration:.4,ease:'back.out(2.2)'},12.75);
+  tl.fromTo('#hom3',{autoAlpha:0},{autoAlpha:1,duration:.24},13.3);
+
+  /* ————— S6 tally 13.95–16.55 ————— */
+  show('#s6',13.95); hide('#s6',16.55);
+  tl.fromTo('#tal1',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.3},13.98);
+  const per=1.15/tallyParts.length;
+  tallyParts.forEach((o,i)=>{
+    const isDiag=o.p.classList.contains('diag');
+    tl.to(o.p,{strokeDashoffset:0,duration:isDiag?.14:.07,ease:'none'},14.35+i*per);
+  });
+  tl.to('#tally',{scale:1.03,duration:.2,yoyo:true,repeat:1,ease:'sine.inOut'},15.7);
+
+  /* ————— S7 zero 16.35–18.75 ————— */
+  show('#s7',16.35); hide('#s7',18.75);
+  tl.set('#flash',{opacity:.3},16.35);
+  tl.to('#flash',{opacity:0,duration:.3,ease:'power1.out'},16.35);
+  tl.fromTo('#zeroN',{scale:2.6,autoAlpha:0},{scale:1,autoAlpha:1,duration:.34,ease:'power4.out'},16.38);
+  tl.to('#zeroN',{scale:1.05,duration:.2,yoyo:true,repeat:3,ease:'sine.inOut'},16.75);
+  tl.fromTo('#zcap',{autoAlpha:0,y:30},{autoAlpha:1,y:0,duration:.28},17.35);
+  tl.fromTo('#ghost1',{autoAlpha:0},{autoAlpha:1,duration:.4},16.5);
+
+  /* ————— S8 fifteen 18.55–21.75 ————— */
+  show('#s8',18.55); hide('#s8',21.75);
+  hide('#ghost1',18.55);
+  tl.set('#flash',{opacity:.3},18.55);
+  tl.to('#flash',{opacity:0,duration:.3},18.55);
+  const fObj={v:1};
+  tl.fromTo('#fifN',{scale:.6,autoAlpha:0},{scale:1,autoAlpha:1,duration:.3,ease:'back.out(2)'},18.6);
+  tl.to(fObj,{v:15,duration:1.15,ease:'power2.out',snap:{v:1},onUpdate:()=>{$('#fifN').textContent=Math.round(fObj.v);}},18.75);
+  tl.to('#fifN',{scale:1.08,duration:.18,yoyo:true,repeat:1},19.95);
+  tl.fromTo('#fcap',{autoAlpha:0,y:34},{autoAlpha:1,y:0,duration:.3},20.1);
+  tl.fromTo('#fsrc',{autoAlpha:0,scale:.85},{autoAlpha:1,scale:1,duration:.3,ease:'back.out(2)'},20.6);
+
+  /* ————— S9/S10 quotes ————— */
+  show('#s9',21.55); hide('#s9',23.35);
+  tl.fromTo('#q1 .w, #q1 b',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.3,stagger:.06},21.6);
+  show('#s10',23.15); hide('#s10',24.5);
+  tl.fromTo('#q2 .w, #q2 b',{autoAlpha:0,y:40},{autoAlpha:1,y:0,duration:.3,stagger:.07},23.2);
+
+  /* ————— S11 punch 24.35–27.2 ————— */
+  show('#s11',24.35);
+  tl.fromTo('#card',{scale:.88,rotate:-5,autoAlpha:0},{scale:1,rotate:-1.5,autoAlpha:1,duration:.44,ease:'back.out(1.8)'},24.4);
+  tl.fromTo('#pun1',{autoAlpha:0,y:34},{autoAlpha:1,y:0,duration:.3},24.9);
+  tl.to('#pun1 .strike i',{scaleX:1,duration:.32,ease:'power2.inOut'},25.5);
+  tl.fromTo('#pun2',{autoAlpha:0,y:44,scale:.92},{autoAlpha:1,y:0,scale:1,duration:.36,ease:'back.out(2)'},25.95);
+  tl.fromTo('#punMeta',{autoAlpha:0,y:24},{autoAlpha:1,y:0,duration:.28},26.5);
+  tl.to('#card',{rotate:-1.1,duration:.6,yoyo:true,repeat:1,ease:'sine.inOut'},26.6);
+
+  /* footer + progress */
+  tl.to('#foot',{opacity:1,duration:.3},2.5);
+  tl.fromTo('#fill',{scaleX:0},{scaleX:1,duration:DUR,ease:'none'},0);
+
+  window.__reel={duration:DUR,seek:(t)=>{tl.time(t);}};
+})();
+</script>
+</body>
+</html>
