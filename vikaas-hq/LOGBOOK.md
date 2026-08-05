@@ -28,3 +28,20 @@
 - Learning: `.lay` RGB copies must be `position:absolute` INSIDE the .big (relative) so flare offsets don't reflow; `mix-blend-mode:screen` only reads right on dark scenes — so flare used on ink cuts, cream cuts get shake only.
 - First encode chain glitched transiently (render output eaten); rerun clean. Rule banked: never trust a chained pipe silently — re-run pieces with visible output.
 - AUDIO: both baked with the CC-BY quiet mix (Thinking Music fade/hp/loudnorm). Edit γ's upload note = swap trending audio in-app (IG library), Original Audio → 0. Legit phonk without copyright strikes.
+
+## V4-1 — Audio sovereignty achieved (trackgen.py)
+- 3 original loops synthesised in pure numpy: TR_B "TAPE AUDIT" (92bpm D-minor pad/clock-tick/bell investigative bed), TR_E "DOORSTEP PHONK" (140bpm F#-minor memphis cowbell + distorted 808 + hat rolls + riser), TR_D "KABADI BOUNCE" (100bpm oom-pah + slide-whistle/boing/honk gags on a param timeline). QA'd via spectrogram PNGs (structure visible: gaps/sweeps/gag glides) + astats peaks (−0.35..−0.96 dBFS).
+- Banked skills: one-pole LP loop, Schroeder combs+allpass reverb, tanh drive chain, sidechain pump (unused in final — beds sit clear), tape_dress (hiss+crackle+flutter = identity). Rule: drama needs pad+air; phonk needs 8th grid + saturation; comedy needs silence between oom-pahs so the VO lands.
+- pip → PyPI reachable: numpy in studio venv OK.
+
+## V4-2 — EDIT γ2 "DOORSTEP PHONK PROTOCOL" (19.72s, 591 frames, beat-grid locked)
+- All cuts on 140bpm 4-beat multiples (C(n)=n*0.4286). New transitions: VHS streak rows + whip-blur entrances + viewfinder brackets/REC pulse on photo cuts. Real imagery: drawer photo (own) + landfill photo (tapp.online, clean) + kapwing blank puppet (cropped to panels). "IT JUST…VANISHES." blur-out now hands off INTO the landfill ("THIS IS WHERE 'AWAY' LIVES.") — the best single beat in the drop.
+- Bug banked: bare class selectors ('.bk1') match the FIRST scene only — always scope '#cN .bk1'. Lesson permanent.
+
+## V4-3 — VID δ "MERE GHAR KA E-WASTE COMEDY CLUB" (40.8s) — first AI-voiceover film
+- 8× generate_speech (lang=hi, masculine/characters) clips, deadpan narrator reads; durations probed then timeline built BACKWARD from VO so jokes land (bounce text at whistle-down, elastic calc at boing, tag swing at honk). Premixed bed 0.40 + VO 1.35, alimiter 0.95 → engine loudnorm.
+- Puppet template lesson: kapwing temp-1 was a FILLED example ("what's that smell") not a blank — inspect every meme asset at 100% before compositing. Fix = temp-3 classic blank, cropped to panels; puppet now a running-gag across both new vids (comedy repetition = signature).
+- Integrity: gold figure hedged "~0.034g/phone (un/epa estimates)" ON-SCREEN plus "recycler quotes dramatised" pattern from reel 2. Funny AND bulletproof.
+
+## V4-4 — Post fleet P1–P7 + fixes logged
+- 7 cards 1080×1350@2x: riso meme / 15-0 ledger / 3-panel saga SVG / blueprint mine / tier list / classic drake / receipts protocol. Self-review caught: P2 slash colliding with label (moved), P4 right callouts clipped past 1080 (reseeded+resized), P6 header wrap (nowrap). Re-shot, verified via fix sheet. UPLOAD_KIT_V4.md = calendar+captions+click-by-click+rules.
