@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VID δ — MERE GHAR KA E-WASTE COMEDY CLUB · vikaas studio v4</title>
+<style>
+@font-face{font-family:'Anton';src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Archivo';src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Devnag';src:url('../../seed/fonts/NotoSansDevanagari.ttf') format('truetype');font-display:block}
+:root{
+  --ink:#070B08; --ink2:#0D1510; --dew:#EAFFF4; --lime:#2EDE82; --acid:#B9FF3F;
+  --red:#FF4D5E; --cream:#EFE9DC; --violet:#A78BFA; --gold:#FFD34D; --mute:#8FA99A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px}
+.anton{font-family:'Anton',sans-serif;font-weight:400}
+.dev{font-family:'Devnag',sans-serif}
+.mono{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+#grain{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+#vig{position:absolute;inset:0;z-index:41;pointer-events:none;background:radial-gradient(ellipse 130% 110% at 50% 42%,transparent 55%,rgba(0,0,0,.5) 100%)}
+#flash{position:absolute;inset:0;z-index:60;background:#fff;opacity:0;pointer-events:none}
+#foot{position:absolute;left:0;right:0;bottom:0;z-index:45;opacity:0}
+#foot .bar{height:6px;width:100%;background:rgba(234,255,244,.12)}
+#foot .fill{height:100%;width:100%;background:var(--acid);transform-origin:left;transform:scaleX(0)}
+#foot .row{display:flex;justify-content:space-between;padding:16px 30px 22px;font-size:20px;color:rgba(234,255,244,.55)}
+#foot .row .mono{font-size:20px;letter-spacing:.22em}
+.tx-ink{color:var(--ink)} .tx-dew{color:var(--dew)} .tx-acid{color:var(--acid)}
+.tx-lime{color:var(--lime)} .tx-red{color:var(--red)} .tx-mute{color:var(--mute)} .tx-gold{color:var(--gold)}
+/* chapter chips */
+.chap{display:flex;align-items:center;gap:26px;margin-bottom:46px}
+.chap .no{font-family:'Anton';font-size:30px;letter-spacing:.2em;border:2px solid currentColor;border-radius:999px;padding:12px 26px}
+.chap .nm{font-family:'Anton';font-size:46px;letter-spacing:.06em}
+/* quote cards */
+.qcard{background:var(--cream);color:var(--ink);border-radius:26px;padding:64px 62px;max-width:900px;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.qcard .q{font-family:'Anton';font-size:72px;line-height:1.12;letter-spacing:.01em}
+.qcard .who{margin-top:26px;font-size:24px;font-weight:700;color:#4a5142;letter-spacing:.24em;text-transform:uppercase}
+.stampmini{position:absolute;right:70px;bottom:120px;transform:rotate(-8deg);border:4px solid var(--red);color:var(--red);font-family:'Anton';font-size:38px;padding:12px 24px;border-radius:12px;letter-spacing:.1em}
+/* narrator boards (acid) */
+.nar .who{font-size:28px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-bottom:40px;color:rgba(7,11,8,.7)}
+.nar .line{font-family:'Anton';font-size:96px;line-height:1.08;color:var(--ink);max-width:940px}
+.nar .line .dev{letter-spacing:.01em}
+.nar .sub{margin-top:34px;font-size:30px;font-weight:700;color:#274b35;letter-spacing:.2em;text-transform:uppercase}
+/* gold specks */
+#sN2 .bignum{font-family:'Anton';font-size:460px;line-height:.9;color:var(--gold);text-shadow:0 0 90px rgba(255,211,77,.3)}
+#sN2 .cap{margin-top:30px;font-size:44px;line-height:1.25;max-width:920px}
+#sN2 .sub{margin-top:26px;font-size:26px;color:var(--mute);letter-spacing:.24em;text-transform:uppercase}
+/* calculator */
+.calc{background:#101810;border:2px solid rgba(185,255,63,.4);border-radius:26px;padding:54px 58px;width:900px;box-shadow:0 40px 120px rgba(0,0,0,.6);text-align:left}
+.calc .lcd{background:#0a120b;color:var(--acid);font-family:'Anton';font-size:84px;text-align:right;padding:24px 34px;border-radius:16px;letter-spacing:.06em;overflow:hidden}
+.calc .row{display:flex;justify-content:space-between;align-items:baseline;padding:26px 8px;border-bottom:1px dashed rgba(234,255,244,.18);font-size:34px;color:var(--dew)}
+.calc .row .v{font-family:'Anton';font-size:44px}
+.calc .row.tot{border-bottom:none;margin-top:8px;background:rgba(255,77,94,.1);border-radius:14px;padding:26px 18px}
+.calc .row.tot .v{color:var(--red);font-size:64px}
+.calc .src{margin-top:22px;font-size:21px;color:var(--mute);letter-spacing:.22em;text-transform:uppercase;text-align:right}
+/* price tag */
+.tagwrap{position:relative;transform:rotate(-4deg)}
+.ptag{background:var(--gold);color:var(--ink);border-radius:22px;padding:60px 80px 54px;box-shadow:0 40px 120px rgba(0,0,0,.65);position:relative}
+.ptag .hole{position:absolute;left:-16px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:var(--ink)}
+.ptag .off{font-size:26px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#5a4500}
+.ptag .price{font-family:'Anton';font-size:330px;line-height:.95}
+.ptag .all{font-family:'Anton';font-size:46px;margin-top:10px}
+/* puppet */
+.pcard{background:#fff;border-radius:24px;padding:26px 26px 30px;box-shadow:0 40px 120px rgba(0,0,0,.6);transform:rotate(-2.5deg);max-width:880px}
+.pcard img{width:100%;height:auto;display:block;border-radius:10px}
+.pcap{margin-top:22px;font-family:'Anton';font-size:54px;color:#111;line-height:1.1}
+.pcap2{margin-top:12px;font-size:23px;font-weight:700;color:#555;letter-spacing:.18em;text-transform:uppercase}
+/* end */
+#sEND .mini{width:230px;height:230px}
+#htag3{font-family:'Anton';font-size:112px;color:var(--acid);margin-top:34px}
+#sEND .hdl{margin-top:20px;font-size:26px;letter-spacing:.3em;text-transform:uppercase}
+#sEND .act{margin-top:52px;font-size:24px;color:var(--mute);letter-spacing:.24em;text-transform:uppercase}
+/* logo ribbon */
+#s0 .ribbon{position:absolute;transform:rotate(-4deg);background:var(--acid);color:var(--ink);font-family:'Anton';font-size:54px;padding:18px 46px;border-radius:14px;letter-spacing:.08em}
+#s0 .mini{width:250px;height:250px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <div class="scene" id="s0" style="background:var(--ink)">
+    <svg class="mini" id="logoD" viewBox="0 0 400 400">
+      <defs>
+        <linearGradient id="gGD" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ff08e"/><stop offset="100%" stop-color="#18c56a"/></linearGradient>
+        <linearGradient id="gVD" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b98cff"/><stop offset="100%" stop-color="#7a4de0"/></linearGradient>
+      </defs>
+      <path class="dr0" d="M200,44 A156,156 0 0 1 356,200 A156,156 0 0 1 200,356" fill="none" stroke="url(#gVD)" stroke-width="26" stroke-linecap="round"/>
+      <path class="dr0" d="M200,356 A156,156 0 0 1 44,200 A156,156 0 0 1 200,44" fill="none" stroke="url(#gGD)" stroke-width="26" stroke-linecap="round"/>
+      <path class="dr0" d="M200,300 C200,250 200,214 200,168" fill="none" stroke="url(#gGD)" stroke-width="24" stroke-linecap="round"/>
+      <path id="dL1" d="M200,214 C160,214 132,186 132,150 C170,150 200,178 200,214 Z" fill="url(#gGD)"/>
+      <path id="dL2" d="M200,190 C200,140 232,100 276,92 C280,142 248,186 200,190 Z" fill="url(#gGD)"/>
+    </svg>
+    <div class="ribbon" id="rib0">VIKAAS COMEDY CLUB</div>
+  </div>
+
+  <div class="scene" id="sPOV" style="background:var(--cream)">
+    <div class="chap tx-ink" style="margin-bottom:60px"><span class="no" style="border-color:var(--ink)">POV</span><span class="nm dev" style="letter-spacing:.02em">मेरे घर का e-waste</span></div>
+    <div class="anton tx-ink" id="pov1" style="font-size:84px;line-height:1.16;max-width:920px;letter-spacing:.01em">
+      <span class="dev" style="letter-spacing:.01em">तुम घर का इकलौता</span><br>E-WASTE <span class="dev" style="letter-spacing:.01em">वॉरियर हो।</span>
+    </div>
+    <div class="mono" id="pov2" style="color:#4a5142;margin-top:44px">everyone else is just… storing evidence.</div>
+  </div>
+
+  <div class="scene" id="sMUM" style="background:var(--ink)">
+    <div class="chap tx-acid"><span class="no">CHAPTER 01</span><span class="nm dev" style="letter-spacing:.02em">मम्मी</span></div>
+    <div class="qcard" id="qc1">
+      <div class="q dev" style="letter-spacing:.01em">"वो चार्जर मत फेंकना।<br>कभी काम आएगा।"</div>
+      <div class="who">— मम्मी · every month · since forever</div>
+    </div>
+    <div class="stampmini" id="st1">SINCE 2014</div>
+  </div>
+
+  <div class="scene nar" id="sN1" style="background:var(--acid)">
+    <div class="who">नरेटर — the voice of truth</div>
+    <div class="line" id="linN1"><span class="dev" style="letter-spacing:.01em">2014 से एक बार भी<br>काम नहीं आया।</span></div>
+    <div class="sub" id="subN1">not once. eleven years. zero calls.</div>
+  </div>
+
+  <div class="scene" id="sPAPA" style="background:var(--ink)">
+    <div class="chap tx-gold"><span class="no" style="border-color:var(--gold);color:var(--gold)">CHAPTER 02</span><span class="nm dev" style="letter-spacing:.02em">पापा</span></div>
+    <div class="qcard" id="qc2" style="border:4px solid var(--gold)">
+      <div class="q dev" style="letter-spacing:.01em">"पुराने फ़ोन में<br>सोना होता है बेटा।"</div>
+      <div class="who">— पापा · the family economist</div>
+    </div>
+    <div class="stampmini" id="st2" style="border-color:var(--gold);color:var(--gold)">GOLD RUSH</div>
+  </div>
+
+  <div class="scene" id="sN2" style="background:var(--ink2)">
+    <div class="who mono" style="color:var(--mute);letter-spacing:.3em;margin-bottom:30px">नरेटर — returns, with a calculator</div>
+    <div class="bignum" id="bn2">0.03g</div>
+    <div class="cap tx-dew" id="capN2"><span class="dev" style="letter-spacing:.02em">तक़रीबन इतना सोना। <b>रास्ते की चिंगम भी महँगी है।</b></span></div>
+    <div class="sub" id="subN2">real, tiny, and not a retirement plan · ~0.034g/phone per un/epa estimates</div>
+  </div>
+
+  <div class="scene" id="sCALC" style="background:var(--cream)">
+    <div class="chap tx-ink"><span class="no" style="border-color:var(--ink)">CHAPTER 03</span><span class="nm dev" style="letter-spacing:.02em">कैलकुलेटर</span></div>
+    <div class="calc" id="calc">
+      <div class="lcd" id="lcd">ERROR: JOKES = MATH</div>
+      <div class="row"><span>RECYCLER MINIMUM</span><span class="v">500.0 kg</span></div>
+      <div class="row"><span class="dev" style="letter-spacing:.04em">mere paas</span><span class="v">1.4 kg</span></div>
+      <div class="row tot"><span class="dev" style="letter-spacing:.04em">short by</span><span class="v" id="shortV">−0.0 kg</span></div>
+      <div class="src">numbers: my scale + their minimum · comedy: free</div>
+    </div>
+  </div>
+
+  <div class="scene" id="sKAB" style="background:var(--ink)">
+    <div class="chap tx-dew"><span class="no">CHAPTER 04</span><span class="nm dev" style="letter-spacing:.02em">कबाड़ीवाला</span></div>
+    <div class="tagwrap" id="tagw">
+      <div class="ptag">
+        <div class="hole"></div>
+        <div class="off">special offer · today only</div>
+        <div class="price">₹40</div>
+        <div class="all dev" style="letter-spacing:.02em">पूरी तिजोरी के।</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="sPUP" style="background:var(--ink)">
+    <div class="pcard" id="pcard2">
+      <img src="src/puppet2.jpg" alt="">
+      <div class="pcap dev" style="letter-spacing:.02em">मेरा फ़ेस, पूरे ऑफर के बाद।</div>
+      <div class="pcap2">no further questions.</div>
+    </div>
+  </div>
+
+  <div class="scene" id="sEND" style="background:var(--ink)">
+    <svg class="mini" id="logoE" viewBox="0 0 400 400">
+      <defs>
+        <linearGradient id="gGE" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ff08e"/><stop offset="100%" stop-color="#18c56a"/></linearGradient>
+        <linearGradient id="gVE" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b98cff"/><stop offset="100%" stop-color="#7a4de0"/></linearGradient>
+      </defs>
+      <path class="dr1" d="M200,44 A156,156 0 0 1 356,200 A156,156 0 0 1 200,356" fill="none" stroke="url(#gVE)" stroke-width="26" stroke-linecap="round"/>
+      <path class="dr1" d="M200,356 A156,156 0 0 1 44,200 A156,156 0 0 1 200,44" fill="none" stroke="url(#gGE)" stroke-width="26" stroke-linecap="round"/>
+      <path class="dr1" d="M200,300 C200,250 200,214 200,168" fill="none" stroke="url(#gGE)" stroke-width="24" stroke-linecap="round"/>
+      <path id="eL1" d="M200,214 C160,214 132,186 132,150 C170,150 200,178 200,214 Z" fill="url(#gGE)"/>
+      <path id="eL2" d="M200,190 C200,140 232,100 276,92 C280,142 248,186 200,190 Z" fill="url(#gGE)"/>
+    </svg>
+    <div id="htag3">#EWasteOff</div>
+    <div class="hdl mono tx-dew">@qwerty_aarav · vikaas</div>
+    <div class="act mono">अब अपना ड्रॉर खोलो ↓</div>
+  </div>
+
+  <div id="foot">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="row"><span class="mono">@qwerty_aarav</span><span class="mono">vid δ · comedy club</span></div>
+  </div>
+
+  <div id="vig"></div>
+  <div id="grain"></div>
+  <div id="flash"></div>
+</div>
+
+<script src="../../node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+(function(){
+  const DUR = 40.8;
+  const $ = (s)=>document.querySelector(s);
+  gsap.ticker.lagSmoothing(0);
+  const tl = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+  const show=(sel,at)=>tl.set(sel,{autoAlpha:1},at);
+  const hide=(sel,at)=>tl.set(sel,{autoAlpha:0},at);
+  const flash=(at,op)=>{ tl.set('#flash',{opacity:op||.4},at); tl.to('#flash',{opacity:0,duration:.16,ease:'power1.out'},at); };
+  const wob=(sel,at)=>tl.to(sel,{rotate:2.4,duration:.09,yoyo:true,repeat:3,ease:'sine.inOut'},at);
+  const drawAll=(sel,at,gap)=>{
+    document.querySelectorAll(sel).forEach((p,i)=>{
+      const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L;
+      tl.to(p,{strokeDashoffset:0,duration:.34,ease:'power2.inOut'},at+i*(gap||.09));
+    });
+  };
+
+  /* s0 logo pop 0–0.95 */
+  show('#s0',0); hide('#s0',0.95);
+  drawAll('#s0 .dr0',0.05);
+  gsap.set(['#dL1','#dL2'],{scale:0,transformOrigin:'100% 100%'});
+  tl.to(['#dL1','#dL2'],{scale:1,duration:.24,ease:'back.out(2)',stagger:.06},0.42);
+  tl.fromTo('#rib0',{autoAlpha:0,scale:.7,rotate:-10},{autoAlpha:1,scale:1,rotate:-4,duration:.3,ease:'back.out(2.4)'},0.5);
+
+  /* sPOV 1.0–4.45  (vo1@1.0) */
+  show('#sPOV',0.98); hide('#sPOV',4.45);
+  flash(1.0,.35);
+  tl.fromTo('#sPOV .chap',{autoAlpha:0,y:-22},{autoAlpha:1,y:0,duration:.22},1.05);
+  tl.fromTo('#pov1',{autoAlpha:0,y:44},{autoAlpha:1,y:0,duration:.3},1.25);
+  wob('#pov1',2.6);
+  tl.fromTo('#pov2',{autoAlpha:0},{autoAlpha:1,duration:.24},3.3);
+
+  /* sMUM 4.5–8.3 (vo2@4.5) */
+  show('#sMUM',4.48); hide('#sMUM',8.3);
+  flash(4.5,.35);
+  tl.fromTo('#sMUM .chap',{autoAlpha:0,x:-40},{autoAlpha:1,x:0,duration:.24},4.55);
+  tl.fromTo('#qc1',{autoAlpha:0,y:70,scale:.92},{autoAlpha:1,y:0,scale:1,duration:.36,ease:'back.out(1.8)'},4.75);
+  tl.fromTo('#st1',{autoAlpha:0,scale:2.4,rotate:-20},{autoAlpha:1,scale:1,rotate:-8,duration:.26,ease:'power4.out'},7.3);
+  tl.to('#qc1',{rotate:1.2,duration:.4,yoyo:true,repeat:1,ease:'sine.inOut'},6.6);
+
+  /* sN1 8.35–12.85 (vo3@8.35 + whistle-down) */
+  show('#sN1',8.33); hide('#sN1',12.85);
+  flash(8.35,.5);
+  tl.fromTo('#sN1 .who',{autoAlpha:0},{autoAlpha:1,duration:.2},8.4);
+  tl.fromTo('#linN1',{autoAlpha:0,y:-90},{autoAlpha:1,y:0,duration:.4,ease:'bounce.out'},8.55); /* text falls WITH the slide-whistle */
+  tl.fromTo('#subN1',{autoAlpha:0},{autoAlpha:1,duration:.24},11.3);
+  tl.to('#linN1',{y:14,duration:.3,yoyo:true,repeat:1,ease:'sine.inOut'},11.9);
+
+  /* sPAPA 12.9–16.45 (vo4@12.9) */
+  show('#sPAPA',12.88); hide('#sPAPA',16.45);
+  flash(12.9,.35);
+  tl.fromTo('#sPAPA .chap',{autoAlpha:0,x:-40},{autoAlpha:1,x:0,duration:.24},12.95);
+  tl.fromTo('#qc2',{autoAlpha:0,y:70,scale:.92},{autoAlpha:1,y:0,scale:1,duration:.36,ease:'back.out(1.8)'},13.15);
+  tl.fromTo('#st2',{autoAlpha:0,scale:2.4,rotate:14},{autoAlpha:1,scale:1,rotate:-8,duration:.26,ease:'power4.out'},15.4);
+
+  /* sN2 16.5–22.35 (vo5@16.5 + whistle-down) */
+  show('#sN2',16.48); hide('#sN2',22.35);
+  flash(16.5,.45);
+  tl.fromTo('#sN2 .who',{autoAlpha:0},{autoAlpha:1,duration:.2},16.55);
+  tl.fromTo('#bn2',{autoAlpha:0,scale:2.2},{autoAlpha:1,scale:1,duration:.34,ease:'power4.out'},16.7);
+  tl.to('#bn2',{scale:1.05,duration:.2,yoyo:true,repeat:3,ease:'sine.inOut'},17.1);
+  tl.fromTo('#capN2',{autoAlpha:0,y:34},{autoAlpha:1,y:0,duration:.28},18.6);
+  tl.fromTo('#subN2',{autoAlpha:0},{autoAlpha:1,duration:.26},20.6);
+
+  /* sCALC 22.4–30.15 (vo6@22.4 + boing) */
+  show('#sCALC',22.38); hide('#sCALC',30.15);
+  flash(22.4,.4);
+  tl.fromTo('#sCALC .chap',{autoAlpha:0,y:-24},{autoAlpha:1,y:0,duration:.24},22.45);
+  tl.fromTo('#calc',{autoAlpha:0,y:80,scale:.9},{autoAlpha:1,y:0,scale:1,duration:.4,ease:'elastic.out(1,.6)'},22.6); /* BOING sync */
+  tl.fromTo('#calc .row',{autoAlpha:0,x:-26},{autoAlpha:1,x:0,duration:.24,stagger:.28},23.3);
+  const sObj={v:0};
+  tl.to(sObj,{v:498.6,duration:2.4,ease:'power2.out',onUpdate:()=>{$('#shortV').textContent='−'+sObj.v.toFixed(1)+' kg';}},25.0);
+  tl.call(()=>{$('#lcd').textContent='math: confirmed sad';},null,27.6);
+  tl.to('#lcd',{opacity:.2,duration:.12,yoyo:true,repeat:3,ease:'none'},28.9);
+
+  /* sKAB 30.2–34.15 (vo7@30.2 + honk) */
+  show('#sKAB',30.18); hide('#sKAB',34.15);
+  flash(30.2,.4);
+  tl.fromTo('#sKAB .chap',{autoAlpha:0,x:-40},{autoAlpha:1,x:0,duration:.24},30.25);
+  tl.fromTo('#tagw',{autoAlpha:0,scale:.6,rotate:-16},{autoAlpha:1,scale:1,rotate:-4,duration:.4,ease:'back.out(2.2)'},30.4);
+  tl.to('#tagw',{rotate:3.5,duration:.5,yoyo:true,repeat:3,ease:'sine.inOut'},31.6); /* swings with the honk */
+
+  /* sPUP 34.2–36.95 */
+  show('#sPUP',34.18); hide('#sPUP',36.95);
+  flash(34.2,.5);
+  tl.fromTo('#pcard2',{autoAlpha:0,scale:.72,rotate:-9},{autoAlpha:1,scale:1,rotate:-2.5,duration:.3,ease:'back.out(2.2)'},34.3);
+  tl.to('#pcard2',{scale:1.05,duration:.14,yoyo:true,repeat:1},35.4);
+  tl.to('#pcard2 img',{scale:1.06,duration:.9,ease:'none'},34.8);
+
+  /* sEND 37.0–40.8 (vo8@37.0) */
+  show('#sEND',36.98);
+  flash(37.0,.4);
+  drawAll('#sEND .dr1',37.15,.1);
+  gsap.set(['#eL1','#eL2'],{scale:0,transformOrigin:'100% 100%'});
+  tl.to(['#eL1','#eL2'],{scale:1,duration:.26,ease:'back.out(2)',stagger:.07},37.55);
+  tl.fromTo('#htag3',{autoAlpha:0,y:36,scale:.9},{autoAlpha:1,y:0,scale:1,duration:.3,ease:'back.out(2.4)'},38.1);
+  tl.fromTo('#sEND .hdl',{autoAlpha:0},{autoAlpha:1,duration:.22},38.5);
+  tl.fromTo('#sEND .act',{autoAlpha:0},{autoAlpha:1,duration:.26},38.9);
+  tl.to('#logoE',{scale:1.04,duration:.4,yoyo:true,repeat:1,ease:'sine.inOut'},39.3);
+
+  tl.to('#foot',{opacity:1,duration:.2},1.1);
+  tl.fromTo('#fill',{scaleX:0},{scaleX:1,duration:DUR,ease:'none'},0);
+
+  window.__reel={duration:DUR,seek:(t)=>{tl.time(t);}};
+})();
+</script>
+</body>
+</html>
