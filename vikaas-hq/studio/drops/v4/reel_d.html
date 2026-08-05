@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>VID δ — MERE GHAR KA E-WASTE COMEDY CLUB · vikaas studio v4</title>
 <style>
-@font-face{font-family:'Anton';src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
-@font-face{font-family:'Archivo';src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Anton','Devnag',sans-serif;src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Archivo','Devnag',sans-serif;src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
 @font-face{font-family:'Devnag';src:url('../../seed/fonts/NotoSansDevanagari.ttf') format('truetype');font-display:block}
 :root{
   --ink:#070B08; --ink2:#0D1510; --dew:#EAFFF4; --lime:#2EDE82; --acid:#B9FF3F;
@@ -13,12 +13,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
-body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
+body{font-family:'Archivo','Devnag',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
 .scene{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px}
-.anton{font-family:'Anton',sans-serif;font-weight:400}
+.anton{font-family:'Anton','Devnag',sans-serif;font-weight:400}
 .dev{font-family:'Devnag',sans-serif}
-.mono{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+.mono{font-family:'Archivo','Devnag',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
 #grain{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
 #vig{position:absolute;inset:0;z-index:41;pointer-events:none;background:radial-gradient(ellipse 130% 110% at 50% 42%,transparent 55%,rgba(0,0,0,.5) 100%)}
@@ -32,27 +32,27 @@ body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:an
 .tx-lime{color:var(--lime)} .tx-red{color:var(--red)} .tx-mute{color:var(--mute)} .tx-gold{color:var(--gold)}
 /* chapter chips */
 .chap{display:flex;align-items:center;gap:26px;margin-bottom:46px}
-.chap .no{font-family:'Anton';font-size:30px;letter-spacing:.2em;border:2px solid currentColor;border-radius:999px;padding:12px 26px}
-.chap .nm{font-family:'Anton';font-size:46px;letter-spacing:.06em}
+.chap .no{font-family:'Anton','Devnag',sans-serif;font-size:30px;letter-spacing:.2em;border:2px solid currentColor;border-radius:999px;padding:12px 26px}
+.chap .nm{font-family:'Anton','Devnag',sans-serif;font-size:46px;letter-spacing:.06em}
 /* quote cards */
 .qcard{background:var(--cream);color:var(--ink);border-radius:26px;padding:64px 62px;max-width:900px;box-shadow:0 40px 120px rgba(0,0,0,.6)}
-.qcard .q{font-family:'Anton';font-size:72px;line-height:1.12;letter-spacing:.01em}
+.qcard .q{font-family:'Anton','Devnag',sans-serif;font-size:72px;line-height:1.12;letter-spacing:.01em}
 .qcard .who{margin-top:26px;font-size:24px;font-weight:700;color:#4a5142;letter-spacing:.24em;text-transform:uppercase}
-.stampmini{position:absolute;right:70px;bottom:120px;transform:rotate(-8deg);border:4px solid var(--red);color:var(--red);font-family:'Anton';font-size:38px;padding:12px 24px;border-radius:12px;letter-spacing:.1em}
+.stampmini{position:absolute;right:70px;bottom:120px;transform:rotate(-8deg);border:4px solid var(--red);color:var(--red);font-family:'Anton','Devnag',sans-serif;font-size:38px;padding:12px 24px;border-radius:12px;letter-spacing:.1em}
 /* narrator boards (acid) */
 .nar .who{font-size:28px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-bottom:40px;color:rgba(7,11,8,.7)}
-.nar .line{font-family:'Anton';font-size:96px;line-height:1.08;color:var(--ink);max-width:940px}
+.nar .line{font-family:'Anton','Devnag',sans-serif;font-size:96px;line-height:1.08;color:var(--ink);max-width:940px}
 .nar .line .dev{letter-spacing:.01em}
 .nar .sub{margin-top:34px;font-size:30px;font-weight:700;color:#274b35;letter-spacing:.2em;text-transform:uppercase}
 /* gold specks */
-#sN2 .bignum{font-family:'Anton';font-size:460px;line-height:.9;color:var(--gold);text-shadow:0 0 90px rgba(255,211,77,.3)}
+#sN2 .bignum{font-family:'Anton','Devnag',sans-serif;font-size:460px;line-height:.9;color:var(--gold);text-shadow:0 0 90px rgba(255,211,77,.3)}
 #sN2 .cap{margin-top:30px;font-size:44px;line-height:1.25;max-width:920px}
 #sN2 .sub{margin-top:26px;font-size:26px;color:var(--mute);letter-spacing:.24em;text-transform:uppercase}
 /* calculator */
 .calc{background:#101810;border:2px solid rgba(185,255,63,.4);border-radius:26px;padding:54px 58px;width:900px;box-shadow:0 40px 120px rgba(0,0,0,.6);text-align:left}
-.calc .lcd{background:#0a120b;color:var(--acid);font-family:'Anton';font-size:84px;text-align:right;padding:24px 34px;border-radius:16px;letter-spacing:.06em;overflow:hidden}
+.calc .lcd{background:#0a120b;color:var(--acid);font-family:'Anton','Devnag',sans-serif;font-size:84px;text-align:right;padding:24px 34px;border-radius:16px;letter-spacing:.06em;overflow:hidden}
 .calc .row{display:flex;justify-content:space-between;align-items:baseline;padding:26px 8px;border-bottom:1px dashed rgba(234,255,244,.18);font-size:34px;color:var(--dew)}
-.calc .row .v{font-family:'Anton';font-size:44px}
+.calc .row .v{font-family:'Anton','Devnag',sans-serif;font-size:44px}
 .calc .row.tot{border-bottom:none;margin-top:8px;background:rgba(255,77,94,.1);border-radius:14px;padding:26px 18px}
 .calc .row.tot .v{color:var(--red);font-size:64px}
 .calc .src{margin-top:22px;font-size:21px;color:var(--mute);letter-spacing:.22em;text-transform:uppercase;text-align:right}
@@ -61,20 +61,20 @@ body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:an
 .ptag{background:var(--gold);color:var(--ink);border-radius:22px;padding:60px 80px 54px;box-shadow:0 40px 120px rgba(0,0,0,.65);position:relative}
 .ptag .hole{position:absolute;left:-16px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:var(--ink)}
 .ptag .off{font-size:26px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#5a4500}
-.ptag .price{font-family:'Anton';font-size:330px;line-height:.95}
-.ptag .all{font-family:'Anton';font-size:46px;margin-top:10px}
+.ptag .price{font-family:'Anton','Devnag',sans-serif;font-size:330px;line-height:.95}
+.ptag .all{font-family:'Anton','Devnag',sans-serif;font-size:46px;margin-top:10px}
 /* puppet */
 .pcard{background:#fff;border-radius:24px;padding:26px 26px 30px;box-shadow:0 40px 120px rgba(0,0,0,.6);transform:rotate(-2.5deg);max-width:880px}
 .pcard img{width:100%;height:auto;display:block;border-radius:10px}
-.pcap{margin-top:22px;font-family:'Anton';font-size:54px;color:#111;line-height:1.1}
+.pcap{margin-top:22px;font-family:'Anton','Devnag',sans-serif;font-size:54px;color:#111;line-height:1.1}
 .pcap2{margin-top:12px;font-size:23px;font-weight:700;color:#555;letter-spacing:.18em;text-transform:uppercase}
 /* end */
 #sEND .mini{width:230px;height:230px}
-#htag3{font-family:'Anton';font-size:112px;color:var(--acid);margin-top:34px}
+#htag3{font-family:'Anton','Devnag',sans-serif;font-size:112px;color:var(--acid);margin-top:34px}
 #sEND .hdl{margin-top:20px;font-size:26px;letter-spacing:.3em;text-transform:uppercase}
 #sEND .act{margin-top:52px;font-size:24px;color:var(--mute);letter-spacing:.24em;text-transform:uppercase}
 /* logo ribbon */
-#s0 .ribbon{position:absolute;transform:rotate(-4deg);background:var(--acid);color:var(--ink);font-family:'Anton';font-size:54px;padding:18px 46px;border-radius:14px;letter-spacing:.08em}
+#s0 .ribbon{position:absolute;transform:rotate(-4deg);background:var(--acid);color:var(--ink);font-family:'Anton','Devnag',sans-serif;font-size:54px;padding:18px 46px;border-radius:14px;letter-spacing:.08em}
 #s0 .mini{width:250px;height:250px}
 </style>
 </head>

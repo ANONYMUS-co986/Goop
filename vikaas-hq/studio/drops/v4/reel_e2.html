@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>EDIT γ2 — DOORSTEP PHONK PROTOCOL · vikaas studio v4</title>
 <style>
-@font-face{font-family:'Anton';src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
-@font-face{font-family:'Archivo';src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Anton','Devnag',sans-serif;src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Archivo','Devnag',sans-serif;src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
 @font-face{font-family:'Devnag';src:url('../../seed/fonts/NotoSansDevanagari.ttf') format('truetype');font-display:block}
 :root{
   --ink:#070B08; --ink2:#0D1510; --dew:#EAFFF4; --lime:#2EDE82; --acid:#B9FF3F;
@@ -13,12 +13,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
-body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
+body{font-family:'Archivo','Devnag',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
 .cut{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px;transform-origin:50% 50%}
-.anton{font-family:'Anton',sans-serif;font-weight:400}
+.anton{font-family:'Anton','Devnag',sans-serif;font-weight:400}
 .dev{font-family:'Devnag',sans-serif}
-.mono{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+.mono{font-family:'Archivo','Devnag',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
 #grain{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.10;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
 #scan{position:absolute;inset:0;z-index:41;pointer-events:none;opacity:.5;
@@ -38,7 +38,7 @@ body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:an
 #foot .fill{height:100%;width:100%;background:var(--acid);transform-origin:left;transform:scaleX(0)}
 #foot .row{display:flex;justify-content:space-between;padding:16px 30px 22px;font-size:20px;color:rgba(234,255,244,.55)}
 #foot .row .mono{font-size:20px;letter-spacing:.22em}
-.big{position:relative;font-family:'Anton';font-size:170px;line-height:1.02}
+.big{position:relative;font-family:'Anton','Devnag',sans-serif;font-size:170px;line-height:1.02}
 .big .lay{position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;pointer-events:none;opacity:0}
 .big .lay.r{color:#ff2440}
 .big .lay.b{color:#24b8ff}
@@ -50,8 +50,8 @@ uline{text-decoration:none;border-bottom:16px solid currentColor}
 .chiprow{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 .chip{border:2px solid currentColor;border-radius:999px;padding:16px 30px;font-size:30px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .chip.g{background:var(--acid);color:var(--ink);border-color:var(--acid)}
-.numhero{font-family:'Anton';font-size:380px;line-height:.9}
-.datattl{font-family:'Anton';font-size:104px;line-height:1.06;max-width:940px}
+.numhero{font-family:'Anton','Devnag',sans-serif;font-size:380px;line-height:.9}
+.datattl{font-family:'Anton','Devnag',sans-serif;font-size:104px;line-height:1.06;max-width:940px}
 .src{margin-top:44px;border:1.5px solid rgba(185,255,63,.5);color:var(--acid);border-radius:999px;padding:14px 30px;font-size:22px;letter-spacing:.2em;text-transform:uppercase}
 /* photo cuts */
 .phbg{position:absolute;inset:0;overflow:hidden}
@@ -65,18 +65,18 @@ uline{text-decoration:none;border-bottom:16px solid currentColor}
 .rec{position:absolute;right:72px;top:120px;z-index:6;display:flex;gap:14px;align-items:center;font-size:26px;color:var(--dew);letter-spacing:.24em}
 .rec .dot{width:24px;height:24px;border-radius:50%;background:var(--red)}
 .capstrip{position:absolute;left:0;right:0;bottom:150px;z-index:6;background:rgba(7,11,8,.78);padding:34px 60px;text-align:center}
-.capstrip .h{font-family:'Anton';font-size:74px;line-height:1.05}
+.capstrip .h{font-family:'Anton','Devnag',sans-serif;font-size:74px;line-height:1.05}
 .capstrip .s{margin-top:14px;font-size:24px;letter-spacing:.26em;text-transform:uppercase;opacity:.8}
 /* puppet card cut */
 .pcard{background:#fff;border-radius:24px;padding:26px 26px 30px;box-shadow:0 40px 120px rgba(0,0,0,.6);transform:rotate(-2.5deg);max-width:860px}
 .pcard img{width:100%;height:auto;display:block;border-radius:10px}
-.pcap{margin-top:22px;font-family:'Anton';font-size:52px;color:#111;line-height:1.1}
+.pcap{margin-top:22px;font-family:'Anton','Devnag',sans-serif;font-size:52px;color:#111;line-height:1.1}
 .pcap2{margin-top:12px;font-size:23px;font-weight:700;color:#555;letter-spacing:.18em;text-transform:uppercase}
 .c8card{background:var(--cream);color:var(--ink);border-radius:26px;padding:74px 68px;max-width:900px;transform:rotate(-2deg);box-shadow:0 40px 120px rgba(0,0,0,.6)}
 .c8card .d1{font-size:84px;font-weight:700;line-height:1.14;letter-spacing:.01em}
 .c8card .d2{margin-top:28px;font-size:28px;font-weight:700;color:#4a5142;letter-spacing:.2em;text-transform:uppercase}
 #c10 .mini{width:230px;height:230px}
-#htag2{font-family:'Anton';font-size:112px;color:var(--acid);margin-top:34px}
+#htag2{font-family:'Anton','Devnag',sans-serif;font-size:112px;color:var(--acid);margin-top:34px}
 #c10 .hdl{margin-top:20px;font-size:26px;letter-spacing:.3em;text-transform:uppercase}
 #c10 .wink{margin-top:54px;font-size:21px;color:var(--mute);letter-spacing:.22em;text-transform:uppercase}
 </style>

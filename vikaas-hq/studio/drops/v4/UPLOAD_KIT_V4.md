@@ -8,10 +8,11 @@
 
 | # | File | Type | Length/Size |
 |---|------|------|-------------|
-| V1 | `drops/v3/01_REEL_the-drawer_v3.mp4` | Reel (posted for M1 — keep) | 27.2s |
-| V2 | `drops/v3/02_REEL_15-recyclers-0-doorsteps.mp4` | Reel | 26.0s |
-| V3 | `drops/v4/05_EDIT_doorstep-phonk.mp4` | Reel/Edit | 19.7s |
-| V4 | `drops/v4/04_REEL_comedy-club.mp4` | Reel (Hindi VO comedy) | 40.8s |
+| V1 | `drops/FINAL_PACK/VIKAAS_01_THE-DRAWER.mp4` | Reel (posted for M1 — keep) | 27.2s |
+| V2 | `drops/FINAL_PACK/VIKAAS_02_15-RECYCLERS-0-DOORSTEPS.mp4` | Reel | 26.0s |
+| V3 | `drops/FINAL_PACK/VIKAAS_05_DOORSTEP-PHONK.mp4` | Reel/Edit | 19.7s |
+| V4 | `drops/FINAL_PACK/VIKAAS_04_COMEDY-CLUB.mp4` | Reel (Hindi VO comedy) | 40.8s |
+| V5 (bonus) | `drops/FINAL_PACK/VIKAAS_03_KABADI-PARADOX.mp4` | Reel (wordless meme-cut) | 14.6s |
 | P1 | `drops/v4/posts/p1_riso.png` | Card 1080×1350 | riso meme |
 | P2 | `drops/v4/posts/p2_15zero.png` | Card | data editorial |
 | P3 | `drops/v4/posts/p3_comic.png` | Card | 3-panel Hinglish saga |

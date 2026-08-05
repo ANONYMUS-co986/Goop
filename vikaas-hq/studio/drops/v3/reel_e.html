@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>EDIT γ — THE KABADIWALA PARADOX · vikaas studio v3</title>
 <style>
-@font-face{font-family:'Anton';src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
-@font-face{font-family:'Archivo';src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Anton','Devnag',sans-serif;src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Archivo','Devnag',sans-serif;src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
 @font-face{font-family:'Devnag';src:url('../../seed/fonts/NotoSansDevanagari.ttf') format('truetype');font-display:block}
 :root{
   --ink:#070B08; --ink2:#0D1510; --dew:#EAFFF4; --lime:#2EDE82; --acid:#B9FF3F;
@@ -13,12 +13,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
-body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
+body{font-family:'Archivo','Devnag',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
 .cut{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px;transform-origin:50% 50%}
-.anton{font-family:'Anton',sans-serif;font-weight:400}
+.anton{font-family:'Anton','Devnag',sans-serif;font-weight:400}
 .dev{font-family:'Devnag',sans-serif}
-.mono{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+.mono{font-family:'Archivo','Devnag',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
 #grain{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
 #scan{position:absolute;inset:0;z-index:41;pointer-events:none;opacity:.5;
@@ -31,7 +31,7 @@ body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:an
 #foot .row{display:flex;justify-content:space-between;padding:16px 30px 22px;font-size:20px;color:rgba(234,255,244,.55)}
 #foot .row .mono{font-size:20px;letter-spacing:.22em}
 /* splits for rgb flare */
-.big{position:relative;font-family:'Anton';font-size:170px;line-height:1.02}
+.big{position:relative;font-family:'Anton','Devnag',sans-serif;font-size:170px;line-height:1.02}
 .big .lay{position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;pointer-events:none;opacity:0}
 .big .lay.r{color:#ff2440}
 .big .lay.b{color:#24b8ff}
@@ -48,14 +48,14 @@ uline{text-decoration:none;border-bottom:16px solid currentColor}
 .chiprow{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 .chip{border:2px solid currentColor;border-radius:999px;padding:16px 30px;font-size:30px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .chip.g{background:var(--acid);color:var(--ink);border-color:var(--acid)}
-.numhero{font-family:'Anton';font-size:400px;line-height:.9}
-.datattl{font-family:'Anton';font-size:110px;line-height:1.06;max-width:940px}
+.numhero{font-family:'Anton','Devnag',sans-serif;font-size:400px;line-height:.9}
+.datattl{font-family:'Anton','Devnag',sans-serif;font-size:110px;line-height:1.06;max-width:940px}
 .src{margin-top:44px;border:1.5px solid rgba(185,255,63,.5);color:var(--acid);border-radius:999px;padding:14px 30px;font-size:22px;letter-spacing:.2em;text-transform:uppercase}
 .c8card{background:var(--cream);color:var(--ink);border-radius:26px;padding:80px 72px;max-width:900px;transform:rotate(-2deg);box-shadow:0 40px 120px rgba(0,0,0,.6)}
 .c8card .d1{font-size:88px;font-weight:700;line-height:1.14;letter-spacing:.01em}
 .c8card .d2{margin-top:30px;font-size:29px;font-weight:700;color:#4a5142;letter-spacing:.2em;text-transform:uppercase}
 #c10 .mini{width:240px;height:240px}
-#htag2{font-family:'Anton';font-size:118px;color:var(--acid);margin-top:36px}
+#htag2{font-family:'Anton','Devnag',sans-serif;font-size:118px;color:var(--acid);margin-top:36px}
 #c10 .hdl{margin-top:22px;font-size:26px;letter-spacing:.3em;text-transform:uppercase}
 #c10 .wink{margin-top:60px;font-size:21px;color:var(--mute);letter-spacing:.22em;text-transform:uppercase}
 </style>
@@ -70,9 +70,9 @@ uline{text-decoration:none;border-bottom:16px solid currentColor}
   </div>
 
   <div class="cut c-cream" id="c2">
-    <div class="kick mono tx-mute" style="color:#4a5142">and his scale?</div>
-    <div class="big tx-ink" id="b2">HIS SCALE:<div class="lay r" aria-hidden="true">HIS SCALE:</div><div class="lay b" aria-hidden="true">HIS SCALE:</div></div>
-    <div class="big tx-ink" id="b2b" style="margin-top:18px"><span class="uline">AT MY GATE TOO.</span></div>
+    <div class="kick mono tx-mute" style="color:#4a5142">he buys bottles. papers. whole cycles.</div>
+    <div class="big tx-ink" id="b2">EVERYTHING.<div class="lay r" aria-hidden="true">EVERYTHING.</div><div class="lay b" aria-hidden="true">EVERYTHING.</div></div>
+    <div class="big tx-ink" id="b2b" style="margin-top:18px"><span class="uline">EXCEPT MY DRAWER.</span></div>
   </div>
 
   <div class="cut c-lime" id="c3">
@@ -113,14 +113,14 @@ uline{text-decoration:none;border-bottom:16px solid currentColor}
     </div>
   </div>
 
-  <div class="cut c-cream" id="c9">
-    <div class="kick mono" style="color:#4a5142">the plan, since nobody's asking:</div>
+  <div class="cut c-ink2" id="c9">
+    <div class="kick mono tx-acid">the counter-plan:</div>
     <div class="chiprow" id="ch9">
       <span class="chip g anton" style="font-size:44px">1 DRAWER</span>
-      <span class="chip anton" style="color:var(--ink);font-size:44px">1.4 KG</span>
-      <span class="chip anton" style="color:var(--ink);font-size:44px">DOOR → GATE</span>
+      <span class="chip anton" style="color:var(--dew);font-size:44px">1.4 KG</span>
+      <span class="chip anton" style="color:var(--dew);font-size:44px">GATE, DIRECT.</span>
     </div>
-    <div class="sub2 mono" style="color:#4a5142;margin-top:44px">this sunday. receipts coming.</div>
+    <div class="sub2 mono tx-mute" style="margin-top:44px">no middleman math. sunday 9 a.m. receipts coming.</div>
   </div>
 
   <div class="cut c-ink" id="c10">
