@@ -10,7 +10,14 @@ const zlib = require('zlib');
 const cp = require('child_process');
 process.env.LD_LIBRARY_PATH = '/tmp/al2023/lib' + (process.env.LD_LIBRARY_PATH ? ':' + process.env.LD_LIBRARY_PATH : '');
 
-const FFMPEG = '/home/user/Goop/vikaas-hq/studio/.venv/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2';
+// ffmpeg candidates: workspace-root venv survives arena snapshot prunes; in-repo .venv is legacy.
+const FF_CANDIDATES = [
+  process.env.VIKAAS_FFMPEG,
+  '/home/user/.studio_venv/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2',
+  '/home/user/Goop/vikaas-hq/studio/.venv/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2',
+  '/usr/bin/ffmpeg',
+].filter(Boolean);
+const FFMPEG = FF_CANDIDATES.find(p => fs.existsSync(p)) || FF_CANDIDATES[1];
 
 // @sparticuz/chromium needs AL2023 system libs under /tmp/al2023/lib; /tmp is
 // wiped between sessions, so inflate from the package's own archive on demand.
