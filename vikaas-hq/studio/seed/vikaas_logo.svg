@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3ff08e"/><stop offset="100%" stop-color="#18c56a"/>
+    </linearGradient>
+    <linearGradient id="gViolet" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b98cff"/><stop offset="100%" stop-color="#7a4de0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- circuit ring: right arc -->
+  <path id="ring1" d="M200,44 A156,156 0 0 1 356,200 A156,156 0 0 1 200,356"
+        fill="none" stroke="url(#gViolet)" stroke-width="26" stroke-linecap="round"/>
+  <!-- circuit ring: left arc (green, the 'growth' half) -->
+  <path id="ring2" d="M200,356 A156,156 0 0 1 44,200 A156,156 0 0 1 200,44"
+        fill="none" stroke="url(#gGreen)" stroke-width="26" stroke-linecap="round"/>
+
+  <!-- circuit nodes on the violet arc -->
+  <circle id="n1" cx="330" cy="140" r="13" fill="#b98cff"/>
+  <circle id="n2" cx="352" cy="212" r="13" fill="#b98cff"/>
+  <circle id="n3" cx="300" cy="300" r="13" fill="#b98cff"/>
+  <!-- circuit traces -->
+  <path id="t1" d="M330,140 L286,140 L286,178" fill="none" stroke="#b98cff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="t2" d="M300,300 L266,268" fill="none" stroke="#b98cff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- sprout stem -->
+  <path id="stem" d="M200,300 C200,250 200,214 200,168"
+        fill="none" stroke="url(#gGreen)" stroke-width="24" stroke-linecap="round"/>
+  <!-- left leaf -->
+  <path id="leafL" d="M200,214 C160,214 132,186 132,150 C170,150 200,178 200,214 Z"
+        fill="url(#gGreen)"/>
+  <!-- right/main leaf -->
+  <path id="leafR" d="M200,190 C200,140 232,100 276,92 C280,142 248,186 200,190 Z"
+        fill="url(#gGreen)"/>
+</svg>
