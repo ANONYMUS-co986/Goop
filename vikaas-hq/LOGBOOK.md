@@ -45,3 +45,9 @@
 
 ## V4-4 — Post fleet P1–P7 + fixes logged
 - 7 cards 1080×1350@2x: riso meme / 15-0 ledger / 3-panel saga SVG / blueprint mine / tier list / classic drake / receipts protocol. Self-review caught: P2 slash colliding with label (moved), P4 right callouts clipped past 1080 (reseeded+resized), P6 header wrap (nowrap). Re-shot, verified via fix sheet. UPLOAD_KIT_V4.md = calendar+captions+click-by-click+rules.
+
+## V4-5 — Voice v2 pipeline + sandbox resilience
+- Arena snapshot pruned .venv node_modules mid-turn; hard-reset from origin recovered full tree (all masters/posts/tracks were tracked — zero loss). Venv rehomed OUTSIDE repo (/home/user/.studio_venv — exclusion-proof), engine/lib.js now has ffmpeg fallback chain.
+- Vidδ audio v2: narration voice (idx0, steadier phonemes) for POV+mummy; per-character pitch casting for the rest (narrators −4.5%, papa −3%, kabadi −6.5% + warmth EQ + compressor + tiny room). FIXED the trap: mp3 inputs are 24kHz — asetrate without prior aresample=44100 speeds 1.75×. Duration-preserving chain = aresample→asetrate→aresample→atempo(inverse).
+- 10 clips/turn generate_speech cap: hit mid-set; remaining 6 narration variants queued for next turn (cap resets). Kokoro Route A docs ready in TTS_UPGRADE.md for true-final Hindi.
+- TTS sandbox verdict (banked): HF/github-assets/bing all TLS-blocked; edge-tts dead here; kokoro deps installed + voices pending Route A.
