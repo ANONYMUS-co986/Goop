@@ -17,3 +17,14 @@
   card with strike. Footer progress + handle everywhere.
 - NEXT: Reel β ("15 recyclers. 0 doorsteps."), post arsenal (7 cards),
   upload kit (captions/tags/schedule).
+
+## V3-2 — REEL β "15 RECYCLERS. 0 DOORSTEPS." shipped (c50272b)
+- 26.0s, 30fps, 780 frames, H.264 3.5MB. Beats: 15-count (HSPCB source bar) → govt-list card + GOVT SOURCE stamp → call-dial UI w/ hold-music EQ → answers montage (3 quote cards, Devanagari №3) → red **0** hero → recycler-vs-kabadiwala VS → cream punch ("THE INFRASTRUCTURE ISN'T MISSING." struck → "THE DOORSTEP IS.") → weigh-day polaroid CTA → end plate.
+- INTEGRITY GATE LANDED: no fake call tally; quotes are labelled ON-SCREEN "dramatised — call one yourself & see. we dare you." Zero becomes "**advertise** doorstep pickup for a 1–2 kg lot" — defensible from the public list. This is the lesson from the charter codified: turn the disclaimer into engagement.
+- Probe (19 beats) reviewed: all land; count-ups deterministic on scrub; eq-bar yoyo repeats scrub fine; polaroid image load OK.
+
+## V3-3 — EDIT γ "THE KABADIWALA PARADOX" shipped
+- 14.6s phonk-style kinetic cut: 10 hard cuts, RGB-split flares (screen-blend red/blue layers), shake bursts, flash frames, scanlines. Stats used = the always-safe two (3.2Mt/yr, ~22% — sourced on-screen to CWC climate track). Hinglish card "तो भैया… डिलीवरी मैं ही करूँगा।" is the meme heart.
+- Learning: `.lay` RGB copies must be `position:absolute` INSIDE the .big (relative) so flare offsets don't reflow; `mix-blend-mode:screen` only reads right on dark scenes — so flare used on ink cuts, cream cuts get shake only.
+- First encode chain glitched transiently (render output eaten); rerun clean. Rule banked: never trust a chained pipe silently — re-run pieces with visible output.
+- AUDIO: both baked with the CC-BY quiet mix (Thinking Music fade/hp/loudnorm). Edit γ's upload note = swap trending audio in-app (IG library), Original Audio → 0. Legit phonk without copyright strikes.

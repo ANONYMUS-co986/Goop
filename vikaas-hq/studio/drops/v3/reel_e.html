@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EDIT γ — THE KABADIWALA PARADOX · vikaas studio v3</title>
+<style>
+@font-face{font-family:'Anton';src:url('../../seed/fonts/Anton.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Archivo';src:url('../../seed/fonts/Archivo.ttf') format('truetype');font-display:block}
+@font-face{font-family:'Devnag';src:url('../../seed/fonts/NotoSansDevanagari.ttf') format('truetype');font-display:block}
+:root{
+  --ink:#070B08; --ink2:#0D1510; --dew:#EAFFF4; --lime:#2EDE82; --acid:#B9FF3F;
+  --red:#FF4D5E; --cream:#EFE9DC; --violet:#A78BFA; --mute:#8FA99A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+body{font-family:'Archivo',sans-serif;color:var(--dew);-webkit-font-smoothing:antialiased}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+.cut{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px;transform-origin:50% 50%}
+.anton{font-family:'Anton',sans-serif;font-weight:400}
+.dev{font-family:'Devnag',sans-serif}
+.mono{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+#grain{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+#scan{position:absolute;inset:0;z-index:41;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(0deg,transparent 0 6px,rgba(0,0,0,.16) 6px 8px)}
+#vig{position:absolute;inset:0;z-index:42;pointer-events:none;background:radial-gradient(ellipse 130% 110% at 50% 42%,transparent 55%,rgba(0,0,0,.5) 100%)}
+#flash{position:absolute;inset:0;z-index:60;background:#fff;opacity:0;pointer-events:none}
+#foot{position:absolute;left:0;right:0;bottom:0;z-index:45;opacity:0}
+#foot .bar{height:6px;width:100%;background:rgba(234,255,244,.12)}
+#foot .fill{height:100%;width:100%;background:var(--acid);transform-origin:left;transform:scaleX(0)}
+#foot .row{display:flex;justify-content:space-between;padding:16px 30px 22px;font-size:20px;color:rgba(234,255,244,.55)}
+#foot .row .mono{font-size:20px;letter-spacing:.22em}
+/* splits for rgb flare */
+.big{position:relative;font-family:'Anton';font-size:170px;line-height:1.02}
+.big .lay{position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;pointer-events:none;opacity:0}
+.big .lay.r{color:#ff2440}
+.big .lay.b{color:#24b8ff}
+.kick{font-size:26px;letter-spacing:.3em;margin-bottom:34px}
+.sub2{margin-top:36px;font-size:26px;letter-spacing:.26em}
+/* cut colourways */
+.c-ink{background:var(--ink);color:var(--dew)}
+.c-acid{background:var(--acid);color:var(--ink)}
+.c-cream{background:var(--cream);color:var(--ink)}
+.c-lime{background:#0a1410;color:var(--dew)}
+.tx-ink{color:var(--ink)} .tx-dew{color:var(--dew)} .tx-acid{color:var(--acid)}
+.tx-lime{color:var(--lime)} .tx-red{color:var(--red)} .tx-mute{color:var(--mute)}
+uline{text-decoration:none;border-bottom:16px solid currentColor}
+.chiprow{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.chip{border:2px solid currentColor;border-radius:999px;padding:16px 30px;font-size:30px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.chip.g{background:var(--acid);color:var(--ink);border-color:var(--acid)}
+.numhero{font-family:'Anton';font-size:400px;line-height:.9}
+.datattl{font-family:'Anton';font-size:110px;line-height:1.06;max-width:940px}
+.src{margin-top:44px;border:1.5px solid rgba(185,255,63,.5);color:var(--acid);border-radius:999px;padding:14px 30px;font-size:22px;letter-spacing:.2em;text-transform:uppercase}
+.c8card{background:var(--cream);color:var(--ink);border-radius:26px;padding:80px 72px;max-width:900px;transform:rotate(-2deg);box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.c8card .d1{font-size:88px;font-weight:700;line-height:1.14;letter-spacing:.01em}
+.c8card .d2{margin-top:30px;font-size:29px;font-weight:700;color:#4a5142;letter-spacing:.2em;text-transform:uppercase}
+#c10 .mini{width:240px;height:240px}
+#htag2{font-family:'Anton';font-size:118px;color:var(--acid);margin-top:36px}
+#c10 .hdl{margin-top:22px;font-size:26px;letter-spacing:.3em;text-transform:uppercase}
+#c10 .wink{margin-top:60px;font-size:21px;color:var(--mute);letter-spacing:.22em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <div class="cut c-ink" id="c1">
+    <div class="kick mono tx-acid">this man. every sunday. 9 a.m.</div>
+    <div class="big tx-dew" id="b1">HIS HORN:<div class="lay r" aria-hidden="true">HIS HORN:</div><div class="lay b" aria-hidden="true">HIS HORN:</div></div>
+    <div class="big tx-acid" id="b1b" style="margin-top:18px">AT MY GATE.</div>
+  </div>
+
+  <div class="cut c-cream" id="c2">
+    <div class="kick mono tx-mute" style="color:#4a5142">and his scale?</div>
+    <div class="big tx-ink" id="b2">HIS SCALE:<div class="lay r" aria-hidden="true">HIS SCALE:</div><div class="lay b" aria-hidden="true">HIS SCALE:</div></div>
+    <div class="big tx-ink" id="b2b" style="margin-top:18px"><span class="uline">AT MY GATE TOO.</span></div>
+  </div>
+
+  <div class="cut c-lime" id="c3">
+    <div class="kick mono tx-mute">meanwhile · haryana govt records</div>
+    <div class="numhero tx-lime" id="n3">15</div>
+    <div class="datattl tx-dew" id="t3" style="margin-top:26px">AUTHORISED E-WASTE FACTORIES.</div>
+    <div class="sub2 mono tx-mute">in gurugram. legally. right now.</div>
+  </div>
+
+  <div class="cut c-ink" id="c4">
+    <div class="kick mono tx-mute">but when I call one with my 1.4 kg</div>
+    <div class="big tx-red" id="b4">"TOO SMALL,<div class="lay r" aria-hidden="true">"TOO SMALL,</div><div class="lay b" aria-hidden="true">"TOO SMALL,</div></div>
+    <div class="big tx-dew" id="b4b" style="margin-top:18px">BETA."</div>
+    <div class="sub2 mono tx-mute">500 kg minimum · bulk only</div>
+  </div>
+
+  <div class="cut c-ink2" id="c5" style="background:var(--ink2)">
+    <div class="kick mono tx-acid">so the national books say:</div>
+    <div class="datattl tx-dew" id="t5">INDIA GENERATES <span class="tx-lime">3.2 MILLION TONNES</span> OF E-WASTE A YEAR.</div>
+    <div class="src mono">source ✓ 1M1B changemakers world cup · climate track</div>
+  </div>
+
+  <div class="cut c-ink" id="c6">
+    <div class="numhero tx-acid" id="n6">~22%</div>
+    <div class="datattl tx-dew" id="t6" style="margin-top:20px">EVER REACHES AUTHORISED HANDS.</div>
+    <div class="sub2 mono tx-mute">the rest? watch closely.</div>
+  </div>
+
+  <div class="cut c-ink" id="c7">
+    <div class="big tx-mute" id="b7">IT JUST…<div class="lay r" aria-hidden="true">IT JUST…</div><div class="lay b" aria-hidden="true">IT JUST…</div></div>
+    <div class="big tx-red" id="b7b" style="margin-top:14px">VANISHES.</div>
+  </div>
+
+  <div class="cut c-ink" id="c8">
+    <div class="c8card" id="card8">
+      <div class="d1 dev">तो भैया… डिलीवरी मैं ही करूँगा।</div>
+      <div class="d2 mono">fine. i'll do the last mile myself.</div>
+    </div>
+  </div>
+
+  <div class="cut c-cream" id="c9">
+    <div class="kick mono" style="color:#4a5142">the plan, since nobody's asking:</div>
+    <div class="chiprow" id="ch9">
+      <span class="chip g anton" style="font-size:44px">1 DRAWER</span>
+      <span class="chip anton" style="color:var(--ink);font-size:44px">1.4 KG</span>
+      <span class="chip anton" style="color:var(--ink);font-size:44px">DOOR → GATE</span>
+    </div>
+    <div class="sub2 mono" style="color:#4a5142;margin-top:44px">this sunday. receipts coming.</div>
+  </div>
+
+  <div class="cut c-ink" id="c10">
+    <svg class="mini" id="logosvg3" viewBox="0 0 400 400">
+      <defs>
+        <linearGradient id="gG3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3ff08e"/><stop offset="100%" stop-color="#18c56a"/></linearGradient>
+        <linearGradient id="gV3" x1="1" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b98cff"/><stop offset="100%" stop-color="#7a4de0"/></linearGradient>
+      </defs>
+      <path id="xring1" d="M200,44 A156,156 0 0 1 356,200 A156,156 0 0 1 200,356" fill="none" stroke="url(#gV3)" stroke-width="26" stroke-linecap="round"/>
+      <path id="xring2" d="M200,356 A156,156 0 0 1 44,200 A156,156 0 0 1 200,44" fill="none" stroke="url(#gG3)" stroke-width="26" stroke-linecap="round"/>
+      <circle id="xn1" cx="330" cy="140" r="13" fill="#b98cff"/>
+      <circle id="xn2" cx="352" cy="212" r="13" fill="#b98cff"/>
+      <circle id="xn3" cx="300" cy="300" r="13" fill="#b98cff"/>
+      <path id="xt1" d="M330,140 L286,140 L286,178" fill="none" stroke="#b98cff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="xt2" d="M300,300 L266,268" fill="none" stroke="#b98cff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="xstem" d="M200,300 C200,250 200,214 200,168" fill="none" stroke="url(#gG3)" stroke-width="24" stroke-linecap="round"/>
+      <path id="xleafL" d="M200,214 C160,214 132,186 132,150 C170,150 200,178 200,214 Z" fill="url(#gG3)"/>
+      <path id="xleafR" d="M200,190 C200,140 232,100 276,92 C280,142 248,186 200,190 Z" fill="url(#gG3)"/>
+    </svg>
+    <div id="htag2">#EWasteOff</div>
+    <div class="hdl mono tx-dew">@qwerty_aarav · vikaas</div>
+    <div class="wink mono">an e-waste edit. because nobody else made one.</div>
+  </div>
+
+  <div id="foot">
+    <div class="bar"><div class="fill" id="fill"></div></div>
+    <div class="row"><span class="mono">@qwerty_aarav</span><span class="mono">edit γ · kabadiwala paradox</span></div>
+  </div>
+
+  <div id="vig"></div>
+  <div id="scan"></div>
+  <div id="grain"></div>
+  <div id="flash"></div>
+</div>
+
+<script src="../../node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+(function(){
+  const DUR = 14.6;
+  const $ = (s)=>document.querySelector(s);
+  gsap.ticker.lagSmoothing(0);
+  const tl = gsap.timeline({paused:true, defaults:{ease:'power3.out'}});
+  const show=(sel,at)=>tl.set(sel,{autoAlpha:1},at);
+  const hide=(sel,at)=>tl.set(sel,{autoAlpha:0},at);
+  function flash(at,op){
+    tl.set('#flash',{opacity:op||.55},at);
+    tl.to('#flash',{opacity:0,duration:.14,ease:'power1.out'},at);
+  }
+  function shake(sel,at,pow){
+    const p=pow||16;
+    tl.to(sel,{x:p,y:-p*.6,duration:.05,ease:'none'},at)
+      .to(sel,{x:-p*.8,y:p*.5,duration:.05,ease:'none'},at+.05)
+      .to(sel,{x:p*.5,y:p*.7,duration:.05,ease:'none'},at+.10)
+      .to(sel,{x:0,y:0,duration:.06,ease:'power1.out'},at+.15);
+  }
+  function rgbFlare(sel,at){
+    const r=sel+' .lay.r', b=sel+' .lay.b';
+    tl.set([r,b],{opacity:1},at);
+    tl.fromTo(r,{x:-34,y:8},{x:-4,y:0,duration:.5,ease:'power2.out'},at);
+    tl.fromTo(b,{x:34,y:-8},{x:4,y:0,duration:.5,ease:'power2.out'},at);
+    tl.to([r,b],{opacity:0,duration:.25},at+.5);
+  }
+  function pop(sel,at,d){
+    // zoom-punch held for the cut
+    tl.fromTo(sel,{scale:1.14},{scale:1.0,duration:d||1.3,ease:'power2.out'},at);
+  }
+
+  /* c1 0–1.45 */
+  show('#c1',0); hide('#c1',1.45);
+  pop('#c1',0,1.4); shake('#c1',0.02,14); rgbFlare('#b1',0.04);
+  tl.fromTo('#b1',{autoAlpha:0},{autoAlpha:1,duration:.08},0.02);
+  tl.fromTo('#c1 .kick',{autoAlpha:0,y:16},{autoAlpha:1,y:0,duration:.14},0.04);
+  tl.fromTo('#b1b',{autoAlpha:0,scale:.86},{autoAlpha:1,scale:1,duration:.22,ease:'back.out(2.6)'},0.42);
+
+  /* c2 1.42–2.8 */
+  show('#c2',1.42); hide('#c2',2.8);
+  flash(1.42); shake('#c2',1.45,16); pop('#c2',1.42,1.3); rgbFlare('#b2',1.46);
+  tl.fromTo('#b2',{autoAlpha:0},{autoAlpha:1,duration:.08},1.44);
+  tl.fromTo('#c2 .kick',{autoAlpha:0,y:16},{autoAlpha:1,y:0,duration:.14},1.46);
+  tl.fromTo('#b2b',{autoAlpha:0,scale:.86},{autoAlpha:1,scale:1,duration:.22,ease:'back.out(2.6)'},1.84);
+
+  /* c3 2.78–4.25 */
+  show('#c3',2.78); hide('#c3',4.25);
+  flash(2.78,.4); shake('#c3',2.8,12); pop('#c3',2.78,1.4);
+  tl.fromTo('#c3 .kick',{autoAlpha:0},{autoAlpha:1,duration:.16},2.84);
+  const n3o={v:0};
+  tl.fromTo('#n3',{scale:.7,autoAlpha:0},{scale:1,autoAlpha:1,duration:.24,ease:'back.out(2)'},2.86);
+  tl.to(n3o,{v:15,duration:.7,ease:'power2.out',onUpdate:()=>{$('#n3').textContent=Math.round(n3o.v);}},2.95);
+  tl.fromTo('#t3',{autoAlpha:0,y:34},{autoAlpha:1,y:0,duration:.24},3.4);
+  tl.fromTo('#c3 .sub2',{autoAlpha:0},{autoAlpha:1,duration:.2},3.8);
+  tl.to('#n3',{scale:1.05,duration:.16,yoyo:true,repeat:1},3.95);
+
+  /* c4 4.22–5.75 */
+  show('#c4',4.22); hide('#c4',5.75);
+  flash(4.22); shake('#c4',4.24,18); pop('#c4',4.22,1.4); rgbFlare('#b4',4.26);
+  tl.fromTo('#c4 .kick',{autoAlpha:0,y:16},{autoAlpha:1,y:0,duration:.16},4.26);
+  tl.fromTo('#b4',{autoAlpha:0},{autoAlpha:1,duration:.08},4.28);
+  tl.fromTo('#b4b',{autoAlpha:0,scale:.84},{autoAlpha:1,scale:1,duration:.24,ease:'back.out(3)'},4.7);
+  tl.fromTo('#c4 .sub2',{autoAlpha:0},{autoAlpha:1,duration:.2},5.15);
+
+  /* c5 5.72–7.15 */
+  show('#c5',5.72); hide('#c5',7.15);
+  flash(5.72,.4); shake('#c5',5.74,10); pop('#c5',5.72,1.4);
+  tl.fromTo('#c5 .kick',{autoAlpha:0},{autoAlpha:1,duration:.16},5.78);
+  tl.fromTo('#t5',{autoAlpha:0,y:44},{autoAlpha:1,y:0,duration:.3},5.86);
+  tl.fromTo('#c5 .src',{autoAlpha:0,scale:.85},{autoAlpha:1,scale:1,duration:.26,ease:'back.out(2)'},6.5);
+
+  /* c6 7.12–8.5 */
+  show('#c6',7.12); hide('#c6',8.5);
+  flash(7.12,.4); shake('#c6',7.14,14); pop('#c6',7.12,1.3);
+  tl.fromTo('#n6',{autoAlpha:0,scale:.7},{autoAlpha:1,scale:1,duration:.26,ease:'back.out(2)'},7.16);
+  tl.fromTo('#t6',{autoAlpha:0,y:34},{autoAlpha:1,y:0,duration:.26},7.5);
+  tl.fromTo('#c6 .sub2',{autoAlpha:0},{autoAlpha:1,duration:.2},8.0);
+  tl.to('#n6',{scale:1.06,duration:.16,yoyo:true,repeat:1},8.0);
+
+  /* c7 8.47–9.75 — VANISH blur-out */
+  show('#c7',8.47); hide('#c7',9.75);
+  flash(8.47,.5); shake('#c7',8.49,20); rgbFlare('#b7',8.5);
+  tl.fromTo('#b7',{autoAlpha:0},{autoAlpha:1,duration:.08},8.48);
+  tl.fromTo('#b7b',{autoAlpha:0,scale:.8,filter:'blur(0px)'},{autoAlpha:1,scale:1,duration:.22,ease:'back.out(2.4)'},8.86);
+  // the vanish: b7b blurs & dissolves late in the cut
+  tl.to('#b7b',{filter:'blur(18px)',scale:1.4,opacity:0,duration:.5,ease:'power2.in'},9.25);
+  tl.to('#b7',{opacity:.25,duration:.4,ease:'power2.in'},9.3);
+
+  /* c8 9.72–11.4 */
+  show('#c8',9.72); hide('#c8',11.4);
+  flash(9.72,.4); shake('#c8',9.74,12);
+  tl.fromTo('#card8',{autoAlpha:0,scale:.8,rotate:-7},{autoAlpha:1,scale:1,rotate:-2,duration:.4,ease:'back.out(2)'},9.78);
+  tl.to('#card8',{rotate:-1.4,duration:.5,yoyo:true,repeat:1,ease:'sine.inOut'},10.6);
+
+  /* c9 11.37–12.95 */
+  show('#c9',11.37); hide('#c9',12.95);
+  flash(11.37,.4); shake('#c9',11.39,14); pop('#c9',11.37,1.4);
+  tl.fromTo('#c9 .kick',{autoAlpha:0,y:16},{autoAlpha:1,y:0,duration:.16},11.42);
+  tl.fromTo('#ch9 .chip',{autoAlpha:0,scale:.6},{autoAlpha:1,scale:1,duration:.22,stagger:.16,ease:'back.out(3)'},11.5);
+  tl.fromTo('#c9 .sub2',{autoAlpha:0},{autoAlpha:1,duration:.2},12.35);
+
+  /* c10 12.92–14.6 end plate */
+  show('#c10',12.92);
+  flash(12.92,.5);
+  ['xring1','xring2','xstem'].forEach((id,i)=>{
+    const p=document.getElementById(id);const L=p.getTotalLength();
+    p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
+    tl.to(p,{strokeDashoffset:0,duration:.3,ease:'power2.inOut'},12.96+i*0.08);
+  });
+  gsap.set(['xn1','xn2','xn3'],{scale:0,transformOrigin:'50% 50%'});
+  gsap.set(['xleafL','xleafR'],{scale:0,transformOrigin:'100% 100%'});
+  tl.to(['xn1','xn2','xn3'],{scale:1,duration:.2,ease:'back.out(3)',stagger:.06},13.2);
+  tl.to(['xleafL','xleafR'],{scale:1,duration:.22,ease:'back.out(2)',stagger:.06},13.3);
+  tl.fromTo('#htag2',{autoAlpha:0,y:36,scale:.9},{autoAlpha:1,y:0,scale:1,duration:.28,ease:'back.out(2.4)'},13.45);
+  shake('#c10',13.48,10);
+  tl.fromTo('#c10 .hdl',{autoAlpha:0},{autoAlpha:1,duration:.2},13.75);
+  tl.fromTo('#c10 .wink',{autoAlpha:0},{autoAlpha:1,duration:.22},14.05);
+
+  /* footer */
+  tl.to('#foot',{opacity:1,duration:.2},0.3);
+  tl.fromTo('#fill',{scaleX:0},{scaleX:1,duration:DUR,ease:'none'},0);
+
+  window.__reel={duration:DUR,seek:(t)=>{tl.time(t);}};
+})();
+</script>
+</body>
+</html>
