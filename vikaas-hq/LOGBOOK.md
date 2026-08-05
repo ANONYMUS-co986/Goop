@@ -64,3 +64,13 @@
 - **CAUGHT & FIXED 2:** Devanagari TOFU in vid04 master — `.dev` font lost specificity wars vs `.qcard .q`/`.nm` (Anton scopes). Surgical fix: appended `'Devnag'` fallback to every font-family decl in reel_d/e/e2.html. Full re-render (1224 frames) + re-encode; audio mix byte-identical in final (md5 match proves mix preserved). मम्मी/कैलकुलेटर cards verified glyph-perfect.
 - **CAUGHT & FIXED 3:** vid03 & vid05 shared two verbatim cards ("HIS SCALE: AT MY GATE TOO." + plan chips). Re-cut 03 only (05 = flagship, untouched): hook → "EVERYTHING. EXCEPT MY DRAWER.", close → dark-ink counter-plan ("1 DRAWER · 1.4 KG · GATE, DIRECT."). Re-rendered + encoded with TR-F.
 - New docs: `FINAL_PACK/README.md` (index) + `FINAL_PACK/QC_REPORT.md` (method receipts) + `qc_all5_contact_sheet.png` (4 frames × 5 vids). UPLOAD_KIT_V4 paths → FINAL_PACK.
+
+## V6 — FULL BRANCH AUDIT (user-challenged) + the great tofu family (2026-08-05)
+- User challenged the inventory → ran branch-wide audit: every mp4 ever Added across commits = **exactly 5 videos**; every final card in tree = **exactly 7 posts** (p1–p7, 2160×2700 each), no strays. 12 deliverables total.
+- Deep glyph inspection of all 7 post PNGs: **p5/p6 carried REAL tofu** (p1 headline clean but inner rules vulnerable). Root-cause family, THREE bugs:
+  1. `.dev` losing specificity vs structural scopes (found yesterday in reel_d) — posts had it too.
+  2. My round-1 fallback patcher MISSED declarations without `sans-serif` (e.g. `.lbl .en{font-family:'Archivo'}`) — hole patched with last-family-insert regex.
+  3. My own patcher MANGLED @font-face name descriptors into invalid lists (`'Anton','Devnag'`) across all 10 files — Chrome tolerated it, but wrong is wrong. Cleaned to single names.
+- Re-baked EVERYTHING from clean CSS: 7 posts + reels 03/04/05 re-rendered. Audio kept pristine: bitstream-copied from the verified 67db401 masters (no generation loss) → LUFS re-verified EXACT: −18.5/−18.2/−18.4/−19.6/−19.3, durations exact.
+- md5-of-decode retired as the fingerprint (AAC priming/edit-list shifts make it unstable across remux); LUFS+duration+bitstream-provenance is now the receipt. QC_REPORT addendum + posts_final7_sheet.png + regenerated qc_all5_contact_sheet.png.
+- Lesson banked: patch regexes must be verified on @font-face anatomy; "self review every file" means EVERY deliverable, and the user was right to force it.

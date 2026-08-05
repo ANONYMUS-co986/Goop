@@ -39,3 +39,12 @@ timelines (27.20 / 26.00 / 14.60 / 40.80 / 19.73 s) · no silent tracks · no mi
 ## Method receipts
 Probe tool: `engine/probe.js` seeked-beat screenshots (font/layout) · `engine/lib.js render/encode`
 · ffmpeg 7.0.2 static (ebur128, aspectralstats, afade/loudnorm) · md5 of decoded PCM as fingerprint.
+
+## ADDENDUM (same day, full-branch audit)
+Glyph-level audit extended to all 7 posts after the user challenged the inventory. Found real tofu on
+p5/p6 (three-bug font family: CSS specificity; regex hole on declarations lacking generic family;
+self-inflicted @font-face descriptor mangling). All 10 source HTMLs cleaned to single-name @font-face
++ per-glyph 'Devnag' fallbacks; all 7 posts + reels 03/04/05 re-baked; audio bitstreams preserved from
+verified masters (-c:a copy). Post-fix proof: `drops/v4/posts/posts_final7_sheet.png` — every
+Devanagari string live on P1/P3/P4/P5/P6/P7. Inventory cert: 5 videos (git history A-commits) + 7 posts
+= 12 deliverables. No more, no less.
