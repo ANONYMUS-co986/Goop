@@ -1,0 +1,53 @@
+/* ---------- full-bleed chapter dividers (generated art) ---------- */
+.divider{ background:var(--navy); }
+.divider .div-bg{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  filter:saturate(1.06) brightness(.94);
+}
+.divider .div-scrim{
+  position:absolute; inset:0; z-index:1;
+  background:
+    linear-gradient(180deg, rgba(10,22,40,.62) 0%, rgba(10,22,40,.18) 34%, rgba(10,22,40,.30) 58%, rgba(10,22,40,.94) 88%, #0A1628 100%),
+    linear-gradient(100deg, rgba(10,22,40,.66) 0%, rgba(10,22,40,.10) 46%, rgba(10,22,40,.42) 100%);
+}
+.divider .content.div-content{
+  position:absolute; inset:0; z-index:3; padding:44px 52px 84px;
+  display:flex; flex-direction:column;
+}
+.divider .eyebrow{ color:var(--gold); }
+.divider .eyebrow .sec{ color:rgba(237,235,226,.55); }
+
+.div-ghost{
+  font-family:'Space Grotesk'; font-weight:700; font-size:150pt; line-height:.82;
+  color:rgba(232,180,74,.13); letter-spacing:-.04em; margin-top:2px;
+  user-select:none;
+}
+.divider h1.div-title{
+  font-family:'Space Grotesk'; font-weight:600; font-size:37pt; line-height:1.04;
+  letter-spacing:-.015em; color:#F7F4E9; margin-top:auto; margin-bottom:12px;
+  text-shadow:0 2px 26px rgba(3,8,18,.6);
+}
+.divider h1.div-title em{ font-style:normal; color:var(--emerald-bright); }
+.divider p.div-lede{
+  font-size:10.8pt; color:rgba(237,235,226,.78); max-width:62ch; margin-bottom:18px;
+  text-shadow:0 1px 12px rgba(3,8,18,.55);
+}
+.div-items{
+  display:flex; flex-wrap:wrap; gap:8px;
+}
+.div-items .dchip{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'JetBrains Mono'; font-size:7.8pt; letter-spacing:.06em;
+  color:#EDEDE2; padding:7px 13px; border-radius:99px;
+  background:rgba(10,22,40,.66); border:1px solid rgba(232,180,74,.34);
+}
+.div-items .dchip svg{ width:12px; height:12px; color:var(--emerald-bright); flex:none; }
+.div-items .dchip.goldb{ border-color:rgba(232,180,74,.5); color:var(--gold); }
+.divider .page-foot{ position:absolute; left:52px; right:52px; bottom:26px; z-index:3;
+  color:rgba(237,235,226,.5); border-top:1px solid rgba(237,235,226,.16); }
+.divider .div-credit{
+  position:absolute; right:52px; top:auto; bottom:64px; z-index:3;
+  font-family:'JetBrains Mono'; font-size:7pt; letter-spacing:.18em;
+  color:rgba(237,235,226,.5); text-transform:uppercase;
+}

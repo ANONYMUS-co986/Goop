@@ -1,0 +1,16 @@
+{
+  "name": "verde-showcase",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Verde Showcase (Night Lab)", "onAutoForward": "notify" }
+  },
+  "postCreateCommand": "cd verde-showcase && npm install --legacy-peer-deps --no-audit --no-fund",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
