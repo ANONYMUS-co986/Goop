@@ -12,7 +12,7 @@ ROOT   = "/home/user/Goop"
 FIN    = f"{ROOT}/vikaas-hq/studio/drops/FINALE"
 OUT    = f"{FIN}/posts"
 SRC    = f"{ROOT}/image-search"
-ART    = f"{ROOT}/vikaas-hq/studio/drops/ai_art_test"
+ART    = f"{ROOT}/vikaas-hq/studio/drops/FINALE/art_src"
 FONTS  = f"{ROOT}/vikaas-hq/studio/seed/fonts"
 os.makedirs(OUT, exist_ok=True)
 
@@ -82,7 +82,9 @@ def footer(draw, caption, stamp, stamp_bg=ACID):
     draw.rectangle([0, 1800-h, 1440, 1800], fill=INK)
     draw.line([0, 1800-h, 1440, 1800-h], fill=(63, 71, 64), width=3)
     cap_f = f_mono(40); sub_f = f_mono(30)
-    lines = wrap_text(draw, caption, cap_f, 1010)
+    sf = f_anton(44); w_ = draw.textlength(stamp, font=sf) + 52
+    chip_x = 1440 - 70 - w_
+    lines = wrap_text(draw, caption, cap_f, chip_x - 110)
     y = 1800 - h + 48
     for ln in lines:
         draw.text((70, y), ln, font=cap_f, fill=DEW); y += 52
@@ -274,7 +276,7 @@ posts["M6_dbf"] = build_meme(
     f"{SRC}/distracted-boyfriend-meme-template-blank-2.png",
     [
         {"x":0.17, "y":0.66, "w":0.30, "t":"BIG BILLION\nDAY SALE", "sz":48},
-        {"x":0.55, "y":0.70, "w":0.28, "t":"EVERY\nINDIAN HOME", "sz":44},
+        {"x":0.55, "y":0.80, "w":0.28, "t":"EVERY\nINDIAN HOME", "sz":44},
         {"x":0.83, "y":0.90, "w":0.32, "t":"THE DRAWER\n(ALREADY FULL)", "sz":38},
     ],
     "the drawer sees everything. the drawer remembers. the drawer is tired. open the drawer.",
@@ -297,9 +299,9 @@ posts["M8_gru"] = build_meme(
     f"{SRC}/gru-plan-4-panel-presentation-meme-templ-1.png",
     [
         {"x":0.36, "y":0.145, "w":0.22, "t":"TAULO.", "sz":40, "kind":"board"},
-        {"x":0.845, "y":0.13, "w":0.20, "t":"RECEIPTS.", "sz":32, "kind":"board"},
-        {"x":0.345, "y":0.52, "w":0.22, "t":"POST IT.", "sz":38, "kind":"board"},
-        {"x":0.85, "y":0.455, "w":0.20, "t":"1 CRORE\nDRAWERS.", "sz":30, "kind":"board", "fg":(180,30,40)},
+        {"x":0.875, "y":0.115, "w":0.18, "t":"RECEIPTS.", "sz":29, "kind":"board"},
+        {"x":0.362, "y":0.50, "w":0.20, "t":"POST IT.", "sz":36, "kind":"board"},
+        {"x":0.875, "y":0.43, "w":0.18, "t":"1 CRORE\nDRAWERS.", "sz":27, "kind":"board", "fg":(180,30,40)},
         {"x":0.72, "y":0.775, "w":0.30, "t":"TOP 3 →\nGENEVA.", "sz":48, "kind":"board"},
     ],
     "taulo. receipts. post. repeat. the world cup's top 3 fly to the UN in geneva — that's the plan, publicly.",

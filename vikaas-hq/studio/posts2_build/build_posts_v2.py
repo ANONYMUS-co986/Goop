@@ -61,8 +61,10 @@ def footer(d, caption, stamp, stamp_bg=ACID):
     h = 216
     d.rectangle([0, 1800-h, 1440, 1800], fill=INK)
     d.line([0, 1800-h, 1440, 1800-h], fill=(63, 71, 64), width=3)
+    sf0 = f_anton(42); w0 = d.textlength(stamp, font=sf0) + 50
+    cap_w = (1440 - 70 - w0) - 110
     cap_font = f_dev(44) if has_dev(caption) else f_mono(40)
-    lines = wrap(d, caption, cap_font, 1010)
+    lines = wrap(d, caption, cap_font, cap_w)
     y = 1800 - h + 44
     for ln in lines:
         lf = f_dev(44) if has_dev(ln) else f_mono(40)
@@ -137,7 +139,7 @@ def r1():
     pd_.text((sh+30, sh+74), "mixed media on drawer · donated by EVERY INDIAN HOUSEHOLD", font=f_mono(28), fill=(110,86,60))
     pd_.line([sh+26, sh+122, sh+934, sh+122], fill=(180,150,110), width=2)
     pd_.text((sh+30, sh+140), "verdict: it never did. recycle it instead.", font=f_anton(52), fill=(120,20,20))
-    rot_paste(img, card, 720, 1538, -1.5)
+    rot_paste(img, card, 720, 1466, -1.5)
     footer(d, "the national drawer anthem. LIE no. 001 — documented, framed, hung.", "LIE no.001 · TRUE")
     posts["R1_museum"] = grain(img)
 
@@ -184,7 +186,8 @@ def r2():
     sd.rectangle([8, 8, 612, 202], outline=(200,30,40,255), width=8)
     sd.text((310, 70), "DOORSTEP COUNT:", font=f_mono(38), fill=(200,30,40,255), anchor="mm")
     sd.text((310, 148), "0 (ZERO)", font=f_anton(94), fill=(200,30,40,255), anchor="mm")
-    rot_paste(img, st, 1130, 415, -11)
+    st = st.resize((int(st.width*0.88), int(st.height*0.88)), Image.LANCZOS)
+    rot_paste(img, st, 1050, 330, -11)
     footer(d, "the infrastructure exists. the doorstep doesn’t. the list is public — we just never look.", "SOURCED · HSPCB")
     posts["R2_lost"] = grain(img)
 
@@ -332,12 +335,12 @@ def r6():
     d.text((720, 108), "WANTED", font=f, fill=INKB, anchor="ma")
     d.rectangle([270, 118+ f.size*1.02, 1170, 118+f.size*1.02+8], fill=INKB)
     d.text((720, 364), "THE 2014 CHARGER", font=f_anton(104), fill=INKB, anchor="ma")
-    d.text((720, 1180), "aliases: “kabhi kaam aayega” · “backup cable” · “woh wala grey one”", font=f_mono(33), fill=INKB, anchor="ma")
-    d.text((720, 1236), "crimes: fleeing every dustbin since 2014 · occupying premium drawer real estate", font=f_mono(33), fill=INKB, anchor="ma")
-    d.line([300, 1292, 1140, 1292], fill=INKB, width=3)
+    d.text((720, 1296), "aliases: “kabhi kaam aayega” · “backup cable” · “woh wala grey one”", font=f_mono(33), fill=INKB, anchor="ma")
+    d.text((720, 1344), "crimes: fleeing every dustbin since 2014 · occupying premium drawer real estate", font=f_mono(33), fill=INKB, anchor="ma")
+    d.line([300, 1400, 1140, 1400], fill=INKB, width=3)
     f2, _ = autosize(d, "REWARD: ₹40 CASH + PEACE OF DRAWER", f_anton, 1180, 72)
-    d.text((720, 1320), "REWARD: ₹40 CASH + PEACE OF DRAWER", font=f2, fill=(120, 24, 20), anchor="ma")
-    d.text((720, 1430), "[ WEIGHED — our scale. 1.4 kg lot. ]", font=f_mono(28), fill=(110, 80, 50), anchor="ma")
+    d.text((720, 1428), "REWARD: ₹40 CASH + PEACE OF DRAWER", font=f2, fill=(120, 24, 20), anchor="ma")
+    d.text((720, 1518), "[ WEIGHED — our scale. 1.4 kg lot. ]", font=f_mono(28), fill=(110, 80, 50), anchor="ma")
     d.text((720, 1630), "TAG THE ACCOMPLICE KEEPING HIM.", font=f_anton(74), fill=INKB, anchor="ma")
     shadow = Image.new("RGBA", img.size, (0,0,0,0))
     footer_h = 0
@@ -405,7 +408,7 @@ def r7():
     sd.rectangle([10, 10, 710, 190], outline=(160,30,30,255), width=8)
     sd.text((360, 100), "WEIGHED. NOT GUESSED.", font=f_anton(72), fill=(160,30,30,255), anchor="mm")
     rot_p = stamp_l.rotate(-7, expand=True, resample=Image.BICUBIC)
-    base.alpha_composite(rot_p, (150, y+42))
+    base.alpha_composite(rot_p, (196, y+62))
     y += 290
     # barcode
     import random
