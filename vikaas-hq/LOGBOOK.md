@@ -86,3 +86,9 @@
 - Fix shipped: notebook Cell A v2 (tagless texts — cards show the speaker; grid-tuned rates; native fit-check ✅/⚠️ meter). Guide updated with STATUS block; user re-runs Cell A + Cell C only.
 - `mix_v3.sh` fully automated + battle-tested on v1 zip: silence-trim → highpass → comp → 3.2k presence → tempo-fit (warn >1.25×) → gains 0.38 bed / 1.3 VO → **sidechain duck of bed under VO** → limiter → loudnorm −19 → MIX_D_v3.m4a + VO3_preview.mp3 + VO3_AB_old-new.mp3. Two bugs squashed live: ffmpeg probe exit-1 vs pipefail; label double-consumed without asplit. Mix loudness −19.2 LUFS.
 - Deliberately NOT re-encoded master yet: v1 clips chipmunk on 4 lines. One command on v2 zip: bash mix_v3.sh <dir> --encode.
+
+## V9 — PORTFOLIO PH1 + voice v2 clarified (2026-08-06)
+- Decisions locked with user: portfolio lives in `vikaas-hq/portfolio/`; tone = my call → evidence-first craft ("evidence is the aesthetic"); shade = roast the terminal-OS TROPE, never a person; "everything explained" mandate.
+- PH1 SHIPPED: PLAN_PORTFOLIO.md (constitution + phase plan + counter-thesis) + index.html (BOOT parody honest-kernel sequence — sessionStorage-gated, skippable, reduced-motion aware / HERO "OPEN THE DRAWER." w/ count-up receipts chips, Devanagari-safe stacks / 6-room ledger grid w/ tilt + locked-phase honesty badges / integrity footnotes) + assets/fonts (4 ttf) + engine/qsnap.js (resilient multi-launch QA snapper: boot/desktop/rooms+hover/mobile, retries ×3).
+- QA battery run: caught chip Devanagari tofu (mono stack hole — 4th tofu family member), mobile cue/footnote overlap, media-block ordering bug (later base rules were overriding media). All fixed & re-snapped: desk+boot+rooms+hover+mobile all clean. LIVE PREVIEW: python http.server :4173.
+- Wake words banked: PH2 next (PROOF LEDGER drag-to-weigh + FILMS cinema cards).

@@ -46,7 +46,12 @@ in the mix without chipmunking.
 - Pacing: my v1 casting ran long (mummy 6.3s in a 3.6s slot, finale 6.1s in 4.6s). Fixed in
   **notebook Cell A v2**: speaker-tags no longer spoken (cards already show them), rates retuned to the
   film grid, and a per-line FIT CHECK prints ✅/⚠️ so you know before sending.
-- **Action: open the same notebook link and re-run Cell A + Cell C. Same zip flow.** 3 minutes.
+- **Action: re-run Cell A + Cell C. Same zip flow.** 3 minutes. The notebook file IS the v2 file already:
+  - Fastest: open the direct link again — it now opens v2:
+    `https://colab.research.google.com/github/ANONYMUS-co986/Goop/blob/arena/019fc480-goop/vikaas-hq/studio/colab_voice_gen.ipynb`
+    (close any OLD Colab tab of it first — a cached v1 tab won't update itself).
+  - Upload-flow: GitHub → branch `arena/019fc480-goop` → `vikaas-hq/studio/colab_voice_gen.ipynb`
+    → mobile: open file → three-dots ⋮ → **Download** → Colab **File → Upload notebook** → pick it.
 - Already-previewable: `vikaas-hq/studio/audio/VO3_AB_old-new.mp3` (old mix vs v1 voices, 2 snippets).
   The provisional full pass `audio/MIX_D_v3.m4a` exists but 4 lines run chipmunk-fast — NOT shipping
   that as master; it proves the mix pipeline works end-to-end (−19.2 LUFS, script: `mix_v3.sh`).
