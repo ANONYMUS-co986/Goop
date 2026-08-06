@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="assets/site.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23070B08'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='%232EDE82' font-family='Arial Black'>V</text></svg>">
 </head>
-<body>
+<body class="oldnav" data-room="room2">
 <nav class="top"><a class="back" href="index.html#rooms">← THE LEDGER OF ROOMS</a><span class="tag">ROOM 02 · PROOF LEDGER</span></nav>
 
 <header class="pg-hero wrap">
@@ -21,7 +21,7 @@
 
 <main class="wrap">
   <!-- THE SCALE TOY -->
-  <section id="scaleToy">
+  <section id="scaleToy" class="rv">
     <h3 class="anton">THE SCALE TOY — drag it yourself</h3>
     <div class="hint cmd">my drawer vs. what a recycler's truck wants · drag the slider</div>
     <div class="bars">
@@ -34,42 +34,42 @@
 
   <!-- STAT CARDS -->
   <div class="statgrid">
-    <article class="stat">
-      <div class="stamp weighed">WEIGHED</div>
-      <div class="num anton tx-acid" style="color:var(--acid)">1.4<span> KG</span></div>
+    <article class="stat rv">
+      <div class="stamp weighed" data-cursor="WHAT'S THIS?" data-tip="<b>WEIGHED</b> — physically measured + photographed. Not "estimated".">WEIGHED</div>
+      <div class="num anton tx-acid" style="color:var(--acid)"><span data-count="1.4">0</span><span> KG</span></div>
       <div class="what">dead tech in my drawer</div>
       <div class="how">Kitchen scale, weigh-day photos, before/after. The whole project started with a number small enough to photograph.</div>
       <img class="proof" src="assets/proof/scale_receipt.jpg" alt="the drawer lot on a kitchen scale" loading="lazy">
     </article>
-    <article class="stat">
-      <div class="stamp weighed">PHOTOGRAPHED</div>
+    <article class="stat rv">
+      <div class="stamp weighed" data-cursor="WHAT'S THIS?" data-tip="<b>PHOTOGRAPHED</b> — real photo, taken on my phone. That's the drawer.">PHOTOGRAPHED</div>
       <div class="num anton" style="color:var(--paper)">THE<span> DRAWER</span></div>
       <div class="what">the scene of the crime</div>
       <div class="how">The actual drawer, photographed on my phone. Not a stock image, not a render — cables, corpses and all.</div>
       <img class="proof" src="assets/proof/drawer_real.jpg" alt="the real drawer of dead tech" loading="lazy">
     </article>
-    <article class="stat">
-      <div class="stamp sourced">SOURCED · GOVT</div>
-      <div class="num anton" style="color:var(--green)">15</div>
+    <article class="stat rv">
+      <div class="stamp sourced" data-cursor="WHAT'S THIS?" data-tip="<b>SOURCED</b> — straight from the HSPCB authorised list. Link on the card.">SOURCED · GOVT</div>
+      <div class="num anton" style="color:var(--green)" data-count="15">0</div>
       <div class="what">authorised e-waste recyclers in Gurugram</div>
       <div class="how">Count taken from the HSPCB authorised-recycler list (Haryana State Pollution Control Board, Govt. of Haryana). Zero of them advertise a 1–2 kg doorstep.</div>
       <div class="how"><a class="srclink" href="https://hspcb.gov.in" target="_blank" rel="noopener">hspcb.gov.in →</a></div>
     </article>
-    <article class="stat">
-      <div class="stamp sourced">SOURCED</div>
+    <article class="stat rv">
+      <div class="stamp sourced" data-cursor="WHAT'S THIS?" data-tip="<b>SOURCED</b> — quoted with its home attached (1M1B CWC climate-track brief).">SOURCED</div>
       <div class="num anton" style="color:var(--green)">3.2<span> MT / YR → ~22%</span></div>
       <div class="what">india's e-waste, and the share reaching authorised hands</div>
       <div class="how">As quoted by the 1M1B Changemakers World Cup climate-track brief (the mission VIKAAS competes in). We quote it with its home attached.</div>
       <div class="how"><a class="srclink" href="https://www.changemakersworldcup.com/youth-impact-movement.html" target="_blank" rel="noopener">changemakersworldcup.com ↗</a></div>
     </article>
-    <article class="stat">
-      <div class="stamp est">ESTIMATE · HEDGED</div>
+    <article class="stat rv">
+      <div class="stamp est" data-cursor="WHAT'S THIS?" data-tip="<b>ESTIMATE</b> — the tilde is the point: ballpark, never a fake fact.">ESTIMATE · HEDGED</div>
       <div class="num anton" style="color:var(--gold)">~0.03<span> G</span></div>
       <div class="what">gold per phone (~UN/EPA ballpark)</div>
       <div class="how">Tiny but real. We always print the tilde: this is an estimate range from UN/EPA literature, not my measurement. Hedged on purpose — that's the rule here.</div>
     </article>
-    <article class="stat">
-      <div class="stamp drama">DRAMATISED¹</div>
+    <article class="stat rv">
+      <div class="stamp drama" data-cursor="WHAT'S THIS?" data-tip="<b>DRAMATISED</b> — comedy dialogue, labelled. The dare: call one yourself.">DRAMATISED¹</div>
       <div class="num anton" style="color:var(--red)">₹40</div>
       <div class="what">the कबाड़ीवाला's offer for a whole drawer</div>
       <div class="how">Comedy dialogue, built from real scripts every Indian home knows. On every post we say the same thing: call one yourself &amp; see. We dare you.</div>
@@ -77,7 +77,7 @@
   </div>
 
   <!-- THE 3 RULES -->
-  <section class="rules">
+  <section class="rules rv">
     <div class="rule"><h4 class="cmd">RULE 01 — WEIGH FIRST</h4><p>Any number we can physically measure, we physically measure — then photograph the scale. 1.4 kg exists because a photo of it exists.</p></div>
     <div class="rule"><h4 class="cmd">RULE 02 — SOURCE OR STAMP</h4><p>Big numbers come with their home attached (govt lists, mission briefs). Estimates keep their tilde. Saying "about" is not weakness — it's the brand.</p></div>
     <div class="rule"><h4 class="cmd">RULE 03 — COMEDY, LABELLED</h4><p>Drop-dead funny, never drop-dead wrong. Every dramatised quote carries its label, on-screen, in-caption. The dare is the point.</p></div>
@@ -109,5 +109,6 @@ function update(){
 r.addEventListener('input',update); update();
 })();
 </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
