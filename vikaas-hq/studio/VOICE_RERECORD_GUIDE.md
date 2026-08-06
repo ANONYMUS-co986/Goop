@@ -41,7 +41,17 @@ header comment has copy-paste steps for mac/linux/windows).
 The notebook prints a fit-check per line. If any says TIGHT, still send it — I can speed-fit ±8%
 in the mix without chipmunking.
 
-## What I do the moment the zip lands (nothing for you to do)
+## STATUS: v1 zip received & assessed (you nailed the Colab run ✅)
+- Voices: genuinely good — real Hindi neural emotion, characters sound like characters.
+- Pacing: my v1 casting ran long (mummy 6.3s in a 3.6s slot, finale 6.1s in 4.6s). Fixed in
+  **notebook Cell A v2**: speaker-tags no longer spoken (cards already show them), rates retuned to the
+  film grid, and a per-line FIT CHECK prints ✅/⚠️ so you know before sending.
+- **Action: open the same notebook link and re-run Cell A + Cell C. Same zip flow.** 3 minutes.
+- Already-previewable: `vikaas-hq/studio/audio/VO3_AB_old-new.mp3` (old mix vs v1 voices, 2 snippets).
+  The provisional full pass `audio/MIX_D_v3.m4a` exists but 4 lines run chipmunk-fast — NOT shipping
+  that as master; it proves the mix pipeline works end-to-end (−19.2 LUFS, script: `mix_v3.sh`).
+
+## What I do the moment the v2 zip lands (nothing for you to do)
 1. Mix: VO at ~1.3× over the kabadi-bounce bed at ~0.38×, per-line EQ/compression/room,
    em-dash beat drops on the gag timeline (slide-whistle at 8.35/16.5/22.4/30.4 stays).
 2. Re-encode VID 04 master (re-render if the sandbox pruned the frames — costs me 8 min, not you).

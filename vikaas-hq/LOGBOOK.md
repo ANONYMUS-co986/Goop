@@ -79,3 +79,10 @@
 - User verdict: arena TTS = too robotic for the Hindi comedy film. Verdict accepted.
 - Shipped zero-install voice route: `studio/colab_voice_gen.ipynb` (edge-tts Cell A with per-character casting hi-IN-Swara/Madhur + rate/pitch emotion knobs + per-line fit-check vs the 8 beat windows 1.0/4.5/8.35/12.9/16.5/22.4/30.2/37.0s; optional Piper Cell B pratham/priyamvada; Cell C zips+downloads) + `VOICE_RERECORD_GUIDE.md` (both routes, line table, my remix steps: bed 0.38/VO 1.3, per-line EQ/comp, re-encode 04, only-stems re-mix option). Local route stays `voice_pipeline.py` (already committed).
 - On zip return: mix → re-encode VIKAAS_04 → QC (LUFS/glyph sheet) → comparison render for user review.
+
+## V8 — VO ZIP v1 RECEIVED + pipeline hardened + v2 cell (2026-08-06)
+- User uploaded vo_out.zip to main (68f8b8b): 8 real edge-tts mp3s (vo1..vo8), non-silent, healthy RMS.
+- Assessment: voices GOOD (emotion real), pacing long (my v1 cast). Proof: atempo needed 1.28–1.78× on 4/8 lines vs the design grid 1.0/4.5/8.35/12.9/16.5/22.4/30.2/37.0 with sanctioned overlaps.
+- Fix shipped: notebook Cell A v2 (tagless texts — cards show the speaker; grid-tuned rates; native fit-check ✅/⚠️ meter). Guide updated with STATUS block; user re-runs Cell A + Cell C only.
+- `mix_v3.sh` fully automated + battle-tested on v1 zip: silence-trim → highpass → comp → 3.2k presence → tempo-fit (warn >1.25×) → gains 0.38 bed / 1.3 VO → **sidechain duck of bed under VO** → limiter → loudnorm −19 → MIX_D_v3.m4a + VO3_preview.mp3 + VO3_AB_old-new.mp3. Two bugs squashed live: ffmpeg probe exit-1 vs pipefail; label double-consumed without asplit. Mix loudness −19.2 LUFS.
+- Deliberately NOT re-encoded master yet: v1 clips chipmunk on 4 lines. One command on v2 zip: bash mix_v3.sh <dir> --encode.
