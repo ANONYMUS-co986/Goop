@@ -74,3 +74,8 @@
 - Re-baked EVERYTHING from clean CSS: 7 posts + reels 03/04/05 re-rendered. Audio kept pristine: bitstream-copied from the verified 67db401 masters (no generation loss) → LUFS re-verified EXACT: −18.5/−18.2/−18.4/−19.6/−19.3, durations exact.
 - md5-of-decode retired as the fingerprint (AAC priming/edit-list shifts make it unstable across remux); LUFS+duration+bitstream-provenance is now the receipt. QC_REPORT addendum + posts_final7_sheet.png + regenerated qc_all5_contact_sheet.png.
 - Lesson banked: patch regexes must be verified on @font-face anatomy; "self review every file" means EVERY deliverable, and the user was right to force it.
+
+## V7 — VOICE EXIT ROUTE + portfolio preflight (2026-08-05)
+- User verdict: arena TTS = too robotic for the Hindi comedy film. Verdict accepted.
+- Shipped zero-install voice route: `studio/colab_voice_gen.ipynb` (edge-tts Cell A with per-character casting hi-IN-Swara/Madhur + rate/pitch emotion knobs + per-line fit-check vs the 8 beat windows 1.0/4.5/8.35/12.9/16.5/22.4/30.2/37.0s; optional Piper Cell B pratham/priyamvada; Cell C zips+downloads) + `VOICE_RERECORD_GUIDE.md` (both routes, line table, my remix steps: bed 0.38/VO 1.3, per-line EQ/comp, re-encode 04, only-stems re-mix option). Local route stays `voice_pipeline.py` (already committed).
+- On zip return: mix → re-encode VIKAAS_04 → QC (LUFS/glyph sheet) → comparison render for user review.
