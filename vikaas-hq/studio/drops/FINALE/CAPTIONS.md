@@ -91,6 +91,54 @@ Dramatised? Yes. True? Also yes. 🫡
 
 ---
 
+## POSTS — SERIES 02 · THE REMIXES (posts2/) — the original v4 concepts, new-formula bodies
+
+### R1 — The Museum #001
+"कभी काम आएगा।" — said every dead charger, 2014–forever. 🕯️
+It never did. Recycle it instead. LIE no. 001, now hanging in the museum it deserves.
+
+### R2 — LOST: 15 Recyclers
+LOST: 15 authorised recyclers. Last seen: inside the haryana govt list. 📌
+Reward: ₹40-ish cash + a clean drawer. If found on a doorstep, please weigh in.
+(The list is public — SOURCED: HSPCB. The doorstep count is poetic but accurate: 0.)
+
+### R3 — E-WASTE SAGA #01 (Restored)
+Hero → Gate ("500 KG minimum, beta.") → Horn ("₹40, horn suna tha na?"). A true story in three panels. 🗯️
+Moral: doorstep missing, comedy available. Saga #02 depends on YOUR drawer.
+
+### R4 — It's A Mine (DWG 004)
+It isn't rubbish. It's a mine. ⛏️📱
+Board: gold traces ~0.03 g/phone (ESTIMATE, sources in bio) · Battery: lithium — respect the chemistry · Assayer: my kitchen scale.
+Recycle = India's cheapest mine. The ore is free — you already paid for it.
+
+### R5 — कबाड़ी Universe Tier List
+S-tier: कबाड़ीवाला. Doorstep king, zero questions, horn supremacy. Non-negotiable. 👑
+F-tier: कूड़ेदान में फेंकना. Battery-fire speedrun. WHAT are we even doing.
+Disputes welcome in comments — but weigh your drawer before you type. ⚖️
+
+### R6 — WANTED: The 2014 Charger
+WANTED: THE 2014 CHARGER. Aliases: "kabhi kaam aayega", "backup cable", "woh wala grey one". ☠️
+Crimes: fleeing every dustbin since 2014; occupying premium drawer real estate.
+Reward: ₹40 CASH (WEIGHED) + peace of drawer. TAG THE ACCOMPLICE KEEPING HIM. 👇
+
+### R7 — The Receipt
+The receipts protocol, itemized: drawer kholo → scale par rakho → HSPCB list kholo → photo + drop. 🧾
+TOTAL EVIDENCE 1.4 KG · CASH RECEIVED ₹40 · WORDS USED 0.
+Weighed. Not guessed. No returns on evidence.
+
+---
+
+## ALT TEXTS — SERIES 02
+- R1: "Museum exhibit of a tangled charger under a glass dome — 'kabhi kaam aayega. said every dead charger'"
+- R2: "LOST handbill on a street pole: 15 authorised recyclers, reward ₹40, tear-off tabs saying taulo karo"
+- R3: "3-panel retro comic: boy with drawer of e-waste, rejected by factory's 500 kg rule, saved by kabadi's horn"
+- R4: "Cyanotype blueprint: exploded phone — gold traces 0.03 g, lithium battery — 'it isn't rubbish. it's a mine.'"
+- R5: "Tier list board: kabadiwala S-tier, repair bhaiya A, authorised recycler B, drawer hoarding C, dustbin F"
+- R6: "Western wanted poster for the 2014 charger — reward ₹40, tag the accomplice keeping him"
+- R7: "Giant shop receipt listing the receipts protocol — total evidence 1.4 kg, cash ₹40, words 0"
+
+---
+
 ## ALT TEXTS (accessibility — paste in "advanced settings → write alt text")
 - M1: "Drake meme: refuses throwing phone in dustbin, approves giving it to the kabadi wala for ₹40"
 - M2: "Two buttons comic: 'drawer mein wapas rakho' vs 'finally taulo!' — hand presses both"

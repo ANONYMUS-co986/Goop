@@ -1,4 +1,5 @@
 # THE 20-DAY SCHEDULE — FINALE rollout
+Now **27 days** — Series 02 ("THE REMIXES", days 21–27) overhauls the original v4 set with the new formula.
 Start: **Thu 6 Aug 2026**, 7:30–8:30 PM IST every day. Reels every 3rd day. Never 2 memes back-to-back.
 
 | Day | Date | Asset | Type | Why this slot |
@@ -22,7 +23,14 @@ Start: **Thu 6 Aug 2026**, 7:30–8:30 PM IST every day. Reels every 3rd day. Ne
 | 17 | Sat 22 | **P6 — Mummy's Museum** | poster | Family-group missile. Launch personally. |
 | 18 | Sun 23 | **M3 — Change My Mind** | meme | Debate format = comments. |
 | 19 | Mon 24 | **M8 — The Plan** | meme | THE PLAN publicly: ladder + Geneva. Bold claim, receipt energy. |
-| 20 | Tue 25 | **V4 — The Comedy Club** | REEL | Closer: leave them laughing + the dare line. End of set, pin the best 3. |
+| 20 | Tue 25 | **V4 — The Comedy Club** | REEL | Closer of series 01: leave them laughing + the dare line. |
+| 21 | Wed 26 | **R7 — The Receipt** | remix | SERIES 02 opens with the brand itself, itemized. 🧾 |
+| 22 | Thu 27 | **R1 — The Museum #001** | remix | The anthem, framed under glass. Save-bait. |
+| 23 | Fri 28 | **R3 — Saga #01 Restored** | remix | Weekend comic strip. |
+| 24 | Sat 29 | **R6 — WANTED: 2014 Charger** | remix | Tag-the-accomplice mechanic on family-scroll day. |
+| 25 | Sun 30 | **R4 — It's A Mine (DWG 004)** | remix | The smart flex; blueprint Sunday. |
+| 26 | Mon 31 | **R5 — कबाड़ी Universe Tier List** | remix | Debate fuel. Disputes = comments = reach. |
+| 27 | Tue 1 Sep | **R2 — LOST: 15 Recyclers** | remix | Data closer: the handbill nobody read until now. |
 
 ## Story rhythm between posts
 - **After reel days:** post a "24h receipts" story (insights screenshot, face-palm emoji optional).
@@ -33,7 +41,7 @@ Start: **Thu 6 Aug 2026**, 7:30–8:30 PM IST every day. Reels every 3rd day. Ne
 reach · saves · shares · follows. Saves+shares > likes for the jury story.
 Target vibe: beat 9 likes/post baseline. Every number above 9 = already ahead. 😌
 
-## After Day 20
+## After Day 27
 - Pin top 3 performers.
-- "THE FINALE — 20 days, 20 receipts" recap carousel (make it in IG from the grid itself, or ping HQ for a wrap poster).
+- "THE FINALE — 27 days, 27 receipts" recap carousel (make it in IG from the grid itself, or ping HQ for a wrap poster).
 - Roll into M3 milestone prep with the 24h-insights album as evidence.

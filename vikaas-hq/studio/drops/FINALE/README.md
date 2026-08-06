@@ -1,17 +1,20 @@
-# 📦 THE FINALE — full drop (20 assets)
+# 📦 THE FINALE — full drop (27 assets)
 **Built 6 Aug 2026 · branch arena/019fc480-goop · verified & hashed**
 
 ```
 FINALE/
 ├── videos/          6 reels — 1080×1920 h264, faststart, feed-graded loudness
-├── posts/           14 posts — 1440×1800 jpg (8 template memes + 6 riso AI posters)
+├── posts/           SERIES 01: 14 posts — 1440×1800 (8 template memes + 6 riso AI posters)
+├── posts2/          SERIES 02 "THE REMIXES": 7 posts — the v4 concepts overhauled
+│                    (museum exhibit · LOST handbill · halftone saga comic · cyanotype
+│                     blueprint · photo tierboard · WANTED parchment · giant receipt)
 ├── alt_beds/        3 original phonk beds (m4a) — music-reel originals + IG swap safety
 ├── art_src/         the 6 blank AI art plates (pre-typography masters)
 ├── qc/              proof sheets — every post + the reel, eyeball-verified
-├── CAPTIONS.md      paste-ready captions + alt texts + hashtag block
+├── CAPTIONS.md      27 paste-ready captions + alt texts + hashtag block
 ├── HOW_TO_POST.md   tap-by-tap phone guide (reels, trend-swap, carousels, pitfalls)
-├── SCHEDULE.md      the 20-day rollout calendar (Day 1 = today)
-└── MANIFEST.sha256  integrity hashes for all 23 media files
+├── SCHEDULE.md      the 27-day rollout calendar (Day 1 = today)
+└── MANIFEST.sha256  integrity hashes for all 30 media files
 ```
 
 ## QC — the family table (verified via ffmpeg ebur128, this build)
