@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROOF LEDGER — every number, its receipt · VIKAAS</title>
+<meta name="description" content="Every number VIKAAS uses publicly, stamped WEIGHED / SOURCED / ESTIMATE / DRAMATISED, with the source attached.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23070B08'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='%232EDE82' font-family='Arial Black'>V</text></svg>">
+</head>
+<body>
+<nav class="top"><a class="back" href="index.html#rooms">← THE LEDGER OF ROOMS</a><span class="tag">ROOM 02 · PROOF LEDGER</span></nav>
+
+<header class="pg-hero wrap">
+  <div class="eyebrow cmd">built on one rule: weighed. not guessed.</div>
+  <h1 class="anton">PROOF LEDGER</h1>
+  <p class="sub">Every public number VIKAAS has ever used lives here — stamped
+  <b>WEIGHED</b>, <b>SOURCED</b>, <b>ESTIMATE</b> or <b>DRAMATISED</b>. No ghost
+  statistics. If a claim can't carry its receipt, it doesn't ship.</p>
+</header>
+
+<main class="wrap">
+  <!-- THE SCALE TOY -->
+  <section id="scaleToy">
+    <h3 class="anton">THE SCALE TOY — drag it yourself</h3>
+    <div class="hint cmd">my drawer vs. what a recycler's truck wants · drag the slider</div>
+    <div class="bars">
+      <div class="bar"><div class="lab">my drawer</div><div class="trk"><div class="fill" id="fill1"></div><div class="val" id="val1">1.4 KG</div></div></div>
+      <div class="bar b2"><div class="lab">recycler minimum</div><div class="trk"><div class="fill" id="fill2" style="width:100%"></div><div class="val">500 KG LOTS</div></div></div>
+    </div>
+    <input type="range" id="mykg" min="0" max="60" value="14" step="1" aria-label="drag: how much dead tech is in your drawer">
+    <div class="verdict" id="verdict">14 ten-gram… wait, 1.4 kg — exactly what my scale said.</div>
+  </section>
+
+  <!-- STAT CARDS -->
+  <div class="statgrid">
+    <article class="stat">
+      <div class="stamp weighed">WEIGHED</div>
+      <div class="num anton tx-acid" style="color:var(--acid)">1.4<span> KG</span></div>
+      <div class="what">dead tech in my drawer</div>
+      <div class="how">Kitchen scale, weigh-day photos, before/after. The whole project started with a number small enough to photograph.</div>
+      <img class="proof" src="assets/proof/scale_receipt.jpg" alt="the drawer lot on a kitchen scale" loading="lazy">
+    </article>
+    <article class="stat">
+      <div class="stamp weighed">PHOTOGRAPHED</div>
+      <div class="num anton" style="color:var(--paper)">THE<span> DRAWER</span></div>
+      <div class="what">the scene of the crime</div>
+      <div class="how">The actual drawer, photographed on my phone. Not a stock image, not a render — cables, corpses and all.</div>
+      <img class="proof" src="assets/proof/drawer_real.jpg" alt="the real drawer of dead tech" loading="lazy">
+    </article>
+    <article class="stat">
+      <div class="stamp sourced">SOURCED · GOVT</div>
+      <div class="num anton" style="color:var(--green)">15</div>
+      <div class="what">authorised e-waste recyclers in Gurugram</div>
+      <div class="how">Count taken from the HSPCB authorised-recycler list (Haryana State Pollution Control Board, Govt. of Haryana). Zero of them advertise a 1–2 kg doorstep.</div>
+      <div class="how"><a class="srclink" href="https://hspcb.gov.in" target="_blank" rel="noopener">hspcb.gov.in →</a></div>
+    </article>
+    <article class="stat">
+      <div class="stamp sourced">SOURCED</div>
+      <div class="num anton" style="color:var(--green)">3.2<span> MT / YR → ~22%</span></div>
+      <div class="what">india's e-waste, and the share reaching authorised hands</div>
+      <div class="how">As quoted by the 1M1B Changemakers World Cup climate-track brief (the mission VIKAAS competes in). We quote it with its home attached.</div>
+      <div class="how"><a class="srclink" href="https://www.changemakersworldcup.com/youth-impact-movement.html" target="_blank" rel="noopener">changemakersworldcup.com ↗</a></div>
+    </article>
+    <article class="stat">
+      <div class="stamp est">ESTIMATE · HEDGED</div>
+      <div class="num anton" style="color:var(--gold)">~0.03<span> G</span></div>
+      <div class="what">gold per phone (~UN/EPA ballpark)</div>
+      <div class="how">Tiny but real. We always print the tilde: this is an estimate range from UN/EPA literature, not my measurement. Hedged on purpose — that's the rule here.</div>
+    </article>
+    <article class="stat">
+      <div class="stamp drama">DRAMATISED¹</div>
+      <div class="num anton" style="color:var(--red)">₹40</div>
+      <div class="what">the कबाड़ीवाला's offer for a whole drawer</div>
+      <div class="how">Comedy dialogue, built from real scripts every Indian home knows. On every post we say the same thing: call one yourself &amp; see. We dare you.</div>
+    </article>
+  </div>
+
+  <!-- THE 3 RULES -->
+  <section class="rules">
+    <div class="rule"><h4 class="cmd">RULE 01 — WEIGH FIRST</h4><p>Any number we can physically measure, we physically measure — then photograph the scale. 1.4 kg exists because a photo of it exists.</p></div>
+    <div class="rule"><h4 class="cmd">RULE 02 — SOURCE OR STAMP</h4><p>Big numbers come with their home attached (govt lists, mission briefs). Estimates keep their tilde. Saying "about" is not weakness — it's the brand.</p></div>
+    <div class="rule"><h4 class="cmd">RULE 03 — COMEDY, LABELLED</h4><p>Drop-dead funny, never drop-dead wrong. Every dramatised quote carries its label, on-screen, in-caption. The dare is the point.</p></div>
+  </section>
+</main>
+
+<footer>
+  <div><a class="brand anton" href="index.html">VIKAAS<span style="color:var(--green)">.</span></a><div>receipts with taste · aarav choudhary · @qwerty_aarav</div></div>
+  <div>next room: <a href="films.html">FILMS →</a><br>source &amp; pipeline: <a href="https://github.com/ANONYMUS-co986/Goop/tree/arena/019fc480-goop/vikaas-hq">github · vikaas-hq</a></div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const r=document.getElementById('mykg'),f1=document.getElementById('fill1'),v1=document.getElementById('val1'),out=document.getElementById('verdict');
+const LINES=[];
+function update(){
+  const t=parseInt(r.value,10), kg=t/10;
+  f1.style.width=Math.max(0.4,(kg/500)*100)+'%'; // TRUE percent of the 500kg threshold — tininess is the story
+  v1.textContent=kg.toFixed(1)+' KG';
+  if(kg===1.4) out.textContent='1.4 kg — exactly what my scale said. (I dragged it back home for you.)';
+  else if(kg===0) out.textContent='0.0 kg — the dream. my drawer isn\'t there yet.';
+  else if(kg<1) out.textContent=kg.toFixed(1)+' kg — light. even this got "bulk only, beta".';
+  else if(kg<3) out.textContent=kg.toFixed(1)+' kg — roughly a normal drawer. still too small for a truck.';
+  else if(kg<6) out.textContent=kg.toFixed(1)+' kg — heavy drawer! still 98.8% short of the minimum lot.';
+  else out.textContent=kg.toFixed(1)+' kg — stashing neighbour drawers too? honestly: respect.';
+}
+r.addEventListener('input',update); update();
+})();
+</script>
+</body>
+</html>

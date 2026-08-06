@@ -122,8 +122,8 @@ footer a:hover{color:var(--acid)}
   <div class="hd"><h2 class="anton">THE LEDGER OF ROOMS</h2><span class="cmd" style="color:var(--mute);font-size:11px">6 rooms · every one opens with a receipt</span></div>
   <div class="grid">
     <article class="room live" data-go="#hero"><span class="no">ROOM 01</span><h3 class="anton">THE DRAWER</h3><p>The origin scene. One kitchen scale, 1.4 kg of dead tech, and the question that started everything.</p><span class="badge live">LIVE · you are here</span><span class="arr">ENTER →</span></article>
-    <article class="room locked" data-phase="2"><span class="no">ROOM 02</span><h3 class="anton">PROOF LEDGER</h3><p>Every public number VIKAAS has ever used — drag a virtual scale, open each source, watch claims survive contact.</p><span class="badge ph2">BUILDING · PHASE 2</span></article>
-    <article class="room locked" data-phase="2"><span class="no">ROOM 03</span><h3 class="anton">FILMS</h3><p>5 cuts. 3 original synth tracks. A Hindi comedy club about a charger from 2014. Cinema cards + the actual masters.</p><span class="badge ph2">BUILDING · PHASE 2</span></article>
+    <article class="room live" data-go="ledger.html"><span class="no">ROOM 02</span><h3 class="anton">PROOF LEDGER</h3><p>Every public number VIKAAS has ever used — drag a virtual scale, open each source, watch claims survive contact.</p><span class="badge live">LIVE · PHASE 2</span><span class="arr">ENTER →</span></article>
+    <article class="room live" data-go="films.html"><span class="no">ROOM 03</span><h3 class="anton">FILMS</h3><p>5 cuts. 3 original synth tracks. A Hindi comedy club about a charger from 2014. Cinema cards + the actual masters.</p><span class="badge live">LIVE · PHASE 2</span><span class="arr">ENTER →</span></article>
     <article class="room locked" data-phase="3"><span class="no">ROOM 04</span><h3 class="anton">KABADI UNIVERSE</h3><p>The कबाड़ीवाला tier list, the saga, the ₹40 gospel — a comic scrollytelling with a physics dunk game at the end.</p><span class="badge">PHASE 3</span></article>
     <article class="room locked" data-phase="3"><span class="no">ROOM 05</span><h3 class="anton">SYSTEM</h3><p>The method: weighed. not guessed. How claims get made, marked, dramatised-with-labels, and submitted.</p><span class="badge">PHASE 3</span></article>
     <article class="room locked" data-phase="4"><span class="no">ROOM 06</span><h3 class="anton">THE LAB</h3><p>Render engine, synth rack, and the great tofu-bug autopsy. Our QA process, published as content. Nobody else shows this.</p><span class="badge">PHASE 4</span></article>
@@ -187,7 +187,9 @@ document.querySelectorAll('.room').forEach(function(r){
       const ph=r.dataset.phase, b=r.querySelector('.badge'), t=b.textContent;
       b.textContent='COMING IN PHASE '+ph+' · receipts don\'t rush'; setTimeout(function(){b.textContent=t;},1400);
       r.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:260});
-    } else if(r.dataset.go){ document.querySelector(r.dataset.go).scrollIntoView({behavior:reduce?'auto':'smooth'}); } });
+    } else if(r.dataset.go){
+      if(r.dataset.go.slice(-5)==='.html'){ window.location.href=r.dataset.go; }
+      else{ document.querySelector(r.dataset.go).scrollIntoView({behavior:reduce?'auto':'smooth'}); } } });
 });
 })();
 </script>
