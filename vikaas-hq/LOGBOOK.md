@@ -92,3 +92,8 @@
 - PH1 SHIPPED: PLAN_PORTFOLIO.md (constitution + phase plan + counter-thesis) + index.html (BOOT parody honest-kernel sequence — sessionStorage-gated, skippable, reduced-motion aware / HERO "OPEN THE DRAWER." w/ count-up receipts chips, Devanagari-safe stacks / 6-room ledger grid w/ tilt + locked-phase honesty badges / integrity footnotes) + assets/fonts (4 ttf) + engine/qsnap.js (resilient multi-launch QA snapper: boot/desktop/rooms+hover/mobile, retries ×3).
 - QA battery run: caught chip Devanagari tofu (mono stack hole — 4th tofu family member), mobile cue/footnote overlap, media-block ordering bug (later base rules were overriding media). All fixed & re-snapped: desk+boot+rooms+hover+mobile all clean. LIVE PREVIEW: python http.server :4173.
 - Wake words banked: PH2 next (PROOF LEDGER drag-to-weigh + FILMS cinema cards).
+
+## V10 — audio zip whodunit + PH2 (2026-08-06)
+- User pushed "V2" zip to main (2e21933) — md5 PROVED it's bit-identical to v1 zip (66c81938833c). User saw Cell A v2's fit-check ("agent will fit" ×2) → v2 audio was generated, but the OLD zip got re-uploaded. Verdict + instructions sent: check Downloads for `vo_out (1).zip` (newest), re-upload that one.
+- PH2 SHIPPED (portfolio): ledger.html (true-percent scale toy — 1.4kg vs 500kg threshold, honest math + verdict gags; 6 stat cards stamped WEIGHED/PHOTOGRAPHED/SOURCED/ESTIMATE/DRAMATISED with real scale+drawer photos; 3 rules) + films.html (5 cinema cards, posters, hover-play desktop/tap-play mobile, AUDIO LAB with AB+v3 players) + assets/site.css shell + index rooms 02/03 -> LIVE + .html-aware card router. qsnap QA: ledger/films/index all pass desk+mobile (4 shots each loop).
+- Preview server restarted serving vikaas-hq root on :4173 (so ../studio media paths resolve).
