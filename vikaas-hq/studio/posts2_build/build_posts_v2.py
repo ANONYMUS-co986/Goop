@@ -128,10 +128,14 @@ def r1():
     img.paste(art, (0,0)); d = ImageDraw.Draw(img)
     d.text((70, 58), "THE REMIXES · R1/7 — MUSEUM #001 (P1, RESTORED)", font=f_mono(27), fill=(176,186,178))
     f, sz = autosize(d, "KABHI KAAM\nAAYEGA.", f_anton, 1240, 168)
-    d.multiline_text((720, 108), "KABHI KAAM\nAAYEGA.", font=f, fill=DEW, anchor="ma", align="center", spacing=int(f.size*0.04))
-    uy = 108 + len("KABHI KAAM\nAAYEGA.".split("\n"))*f.size*1.02 + 30
-    d.rectangle([590, uy, 850, uy+10], fill=ACID)
-    d.text((720, uy+34), "कभी काम आएगा।” — said every dead charger, 2014–forever", font=f_dev(46), fill=ACID, anchor="ma")
+    _sp = int(f.size*0.04)
+    d.multiline_text((720, 108), "KABHI KAAM\nAAYEGA.", font=f, fill=DEW, anchor="ma", align="center", spacing=_sp)
+    bb = d.multiline_textbbox((720, 108), "KABHI KAAM\nAAYEGA.", font=f, anchor="ma", align="center", spacing=_sp)
+    uy = bb[3] + 26
+    d.rectangle([(bb[0]+bb[2])/2-130, uy, (bb[0]+bb[2])/2+130, uy+10], fill=ACID)
+    sub_txt = "कभी काम आएगा।” — said every dead charger, 2014–forever"
+    s_sub, _ = autosize(d, sub_txt, f_dev, 1300, 46)
+    d.text((720, uy+44), sub_txt, font=s_sub, fill=ACID, anchor="ma")
     # plaque
     card, sh = shadow_card((960, 250))
     pd_ = ImageDraw.Draw(card)
@@ -331,10 +335,11 @@ def r6():
     art = fit(art, 1440, 1690, "cover")
     img.paste(art, (0, 40)); d = ImageDraw.Draw(img)
     INKB = (58, 36, 16)
-    f, sz = autosize(d, "WANTED", f_anton, 1200, 218)
+    f, sz = autosize(d, "WANTED", f_anton, 1200, 176)
     d.text((720, 108), "WANTED", font=f, fill=INKB, anchor="ma")
-    d.rectangle([270, 118+ f.size*1.02, 1170, 118+f.size*1.02+8], fill=INKB)
-    d.text((720, 364), "THE 2014 CHARGER", font=f_anton(104), fill=INKB, anchor="ma")
+    bb = d.textbbox((720, 108), "WANTED", font=f, anchor="ma")
+    d.rectangle([bb[0]-34, bb[3]+18, bb[2]+34, bb[3]+26], fill=INKB)
+    d.text((720, bb[3]+26+14), "THE 2014 CHARGER", font=f_anton(104), fill=INKB, anchor="ma")
     d.text((720, 1296), "aliases: “kabhi kaam aayega” · “backup cable” · “woh wala grey one”", font=f_mono(33), fill=INKB, anchor="ma")
     d.text((720, 1344), "crimes: fleeing every dustbin since 2014 · occupying premium drawer real estate", font=f_mono(33), fill=INKB, anchor="ma")
     d.line([300, 1400, 1140, 1400], fill=INKB, width=3)

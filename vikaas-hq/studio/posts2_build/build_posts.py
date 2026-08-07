@@ -188,11 +188,13 @@ def build_poster(fname, art_path, headline, sub, sub_dev, stamp, stamp_bg=ACID, 
     # block vertically centered in top empty zone (art empty zone ~0..500 on canvas)
     block_h = nlines * lh
     hy = max(120, 250 - block_h/2 + (60 if nlines == 3 else 0))
-    d.multiline_text((720, hy), headline, font=f, fill=DEW, anchor="ma", align="center", spacing=int(f.size*0.06))
-    # acid underline bar under block
-    uw = min(300, d.textlength(headline.split("\n")[-1], font=f) * 0.5)
-    uy = hy + block_h + 26
-    d.rectangle([720-uw/2, uy, 720+uw/2, uy+10], fill=ACID)
+    _sp = int(f.size*0.06)
+    d.multiline_text((720, hy), headline, font=f, fill=DEW, anchor="ma", align="center", spacing=_sp)
+    # acid underline bar — MEASURED off the real glyph bbox (never through letters, always centered)
+    bb = d.multiline_textbbox((720, hy), headline, font=f, anchor="ma", align="center", spacing=_sp)
+    uw = min(300, (bb[2]-bb[0]) * 0.5)
+    uy = bb[3] + 24
+    d.rectangle([(bb[0]+bb[2])/2 - uw/2, uy, (bb[0]+bb[2])/2 + uw/2, uy+10], fill=ACID)
     d.text((70, 52), fname, font=f_mono(28), fill=(170, 182, 172))
     # bottom band: sub + tags
     d.rectangle([0, 1800-150, 1440, 1800], fill=(7, 11, 8))
@@ -335,7 +337,7 @@ posts["P5_kabadi"] = build_poster("PR POST 13/14 · POSTER — THE SERIES 05",
 
 posts["P6_mummy"] = build_poster("PR POST 14/14 · POSTER — THE SERIES 06",
     f"{ART}/poster_mummy_blank.png",
-    "MUMMY'S\nMUSEUM.\nEST. FOREVER.", "",
+    "MUMMY'S\nMUSEUM.", "",
     "हर भारतीय घर की सबसे पुरानी गैलरी", "DRAMATISED · TRUE")
 
 # save

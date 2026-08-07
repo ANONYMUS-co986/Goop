@@ -15,3 +15,5 @@ __pycache__/
 vikaas-hq/studio/.venv/
 vikaas-hq/studio/node_modules/
 image-search/
+image-search/
+uploads/
