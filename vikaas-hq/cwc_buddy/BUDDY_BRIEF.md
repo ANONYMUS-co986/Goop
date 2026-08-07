@@ -1,70 +1,49 @@
-# FLASH CHALLENGE #2 — 1M1Bee's AI Buddy: **TAULO-1**
-**Deadline: 12 Aug 2026** · Goal: get FEATURED + bonus points · Track: e-waste (our religion)
+# FLASH CHALLENGE #2 — 1M1Bee's AI Buddy: **ReBee** 🐝⚡
+**Deadline: 12 Aug 2026** · Form: cwcsubmission.in (F2 tab) · Goal: FEATURED + bonus points
 
-## Files in this folder
-| file | what it is | use |
-|---|---|---|
-| `art/taulo_hero.png` | **THE submission image** — 3D hero shot, 1408×768 | upload this when they ask for the superhero image |
-| `taulo_poster.jpg` | brand poster 1440×1800 (MEET TAULO-1) | post on Insta if featured / as a bonus flex |
-| `art/taulo_poster_plate.png` | raw riso plate (source) | keep as source |
-| this file | concept + paste-ready text + Step-1 guide | you are here |
+## The form has exactly 4 fields — here's each answer, paste-ready
 
----
+### Q1 — Submit your IBM SkillsBuild Learning Mission completion screenshot
+Upload the completion screenshot from your phone (the one from your finished
+`students.yourlearning.ibm.com/channel/CNL_LCB_1785934317109` mission). DONE ✅ (you did this.)
 
-## THE BUDDY (paste-ready answers)
+### Q2 — Your AI Superhero's name
+```
+ReBee (री-बी) — from REduce · REuse · REcycle + BEE. 1M1Bee's brand-new buddy, hatched from an electronics drawer in Gurugram.
+```
 
-**Name:** TAULO-1 (तौलो — "to weigh". Friends call him **Taulo Bhai**)
+### Q3 — Your superhero's special ability or superpower
+**Short version** (if the box is small):
+```
+ReBee's superpower is SCRAP-SCAN: his AI visor identifies any dead device and shows a hologram tag — what's inside (copper, lithium, ~0.03 g gold per phone, roughly), what a kabadiwala will PAY for it today (≈ ₹40 — they pay YOU), and the nearest government-authorised recycler (15 in Haryana). His second power, DOORSTEP DIAL, books a pickup to your home, so nobody has to move. Mission: NO DRAWER LEFT BEHIND — weigh it, earn from it, recycle it. 1M1Bee collects pledges; ReBee collects proof (1.4 kg already weighed, ₹40 earned, receipts kept).
+```
 
-**What it looks like:** A little bee-bot — 1M1Bee's buddy — rebuilt from the very e-waste he fights.
-Body: a dead capacitor with bee stripes. Wings: transparent smartphone glass with live green
-circuit veins. Eyes: LED lights salvaged from old chargers. Antenna: bent copper earphone wire,
-3.5 mm jack tip. Chest: a weighing-scale dial that spins when scrap is near. Feet: USB plugs.
-Cape: an upcycled wedding-banner flex.
+**Full version** (if the box is long — this one name-drops the training film. Judges notice.):
+```
+ReBee's superpower is SCRAP-SCAN: his visor is a computer-vision AI that identifies any dead device in seconds and projects a hologram tag — what materials hide inside (copper, lithium, ~0.03 g of gold per phone, roughly), what a kabadiwala will PAY for it today (about ₹40, verified on our own kitchen scale), and the nearest government-authorised recycler (15 in Haryana). Just like the AI in our training film "Four ways AI can help tackle climate change" reads satellite data to understand the Earth, ReBee reads the data sleeping in our drawers.
+His second power is DOORSTEP DIAL: using the same route-planning idea the film shows for self-driving traffic, ReBee plans the smartest pickup route so an authorised recycler collects e-waste straight from your doorstep — the missing step between India's 15 authorised recyclers and its 1 billion retired phones.
+And since the film taught us that AI also discovers new materials, ReBee's third power, MATERIAL MATCH, flags which recovered metals can re-enter manufacturing — so yesterday's phone becomes tomorrow's product.
+The film ended: "AI is a tool, not a master." ReBee's real superpower is turning our motivation into action — he makes doing the right thing the easiest thing. Mission: NO DRAWER LEFT BEHIND. 1M1Bee collects pledges. ReBee collects proof — 1.4 kg weighed, ₹40 earned, receipts ready.
+```
 
-**Special ability — SCRAP-SCAN:** Point TAULO-1 at any dead device and he shows a hologram tag:
-what's hiding inside (copper, lithium, ~0.03 g of gold per phone*), what a kabadiwala will PAY
-for it (about ₹40 — they pay YOU), and the nearest government-authorised recycler
-(15 in Haryana alone). He turns guilt into a route on a map.
-(*rough estimate — he insists on honest numbers.)
-
-**Second ability — DOORSTEP DIAL:** One buzz and the pickup is booked. The drawer empties,
-nobody leaves the sofa. Doorstep count: 0 → 1.
-
-**Mission:** **NO DRAWER LEFT BEHIND.** India has over a billion retired phones sleeping in
-drawers. TAULO-1 wakes them one weigh-in at a time: weigh, earn, recycle, repeat —
-until the e-waste mountain moves in the right direction.
-
-**Catchphrase:** *"Taulo karo. Weighed, not guessed."* 1M1Bee collects the pledges;
-TAULO-1 collects the proof.
-
-**Why this wins:** it's not a generic green robot — every body part IS e-waste, the superpower
-is literally the campaign's missing doorstep, and it ships with receipts (weighed 1.4 kg lot,
-15 HSPCB recyclers, ₹40 cash). Name + appearance + ability + mission all scream one theme: e-waste.
+### Q4 — AI generated image of your superhero
+Upload **`art/rebee_hero.png`** (clean hero portrait — best for judging).
+Bonus/flex shots if extra uploads allowed: `art/rebee_scan_action.png` (the superpower in action), `rebee_poster.jpg` (brand poster).
 
 ---
 
-## STEP 1 — IBM SkillsBuild mission (YOUR part, ~30–45 min, do it TONIGHT)
-I can't register or log in for you — accounts are yours. Tap-by-tap:
+## THE BUDDY — the concept (for your reference / if asked anywhere)
+**Name:** ReBee (री-बी) — REduce · REuse · REcycle + BEE
+**Family:** 1M1Bee's buddy — the worker bee for e-waste.
+**Body:** a dead capacitor with bee stripes · **Wings:** transparent phone glass with live circuit veins · **Eyes:** charger LED lights · **Antenna:** bent copper earphone wire · **Chest:** weighing-scale dial · **Feet:** USB plugs · **Cape:** upcycled banner flex.
+He is literally built from the problem he's solving.
+**Powers:** SCRAP-SCAN (contents → cash value → nearest recycler) · DOORSTEP DIAL (pickup to the doorstep) · MATERIAL MATCH (metals back into manufacturing).
+**Mission:** NO DRAWER LEFT BEHIND.
+**Catchphrase:** Weigh it. Earn from it. Recycle it. — *weighed, not guessed.*
 
-1. Open the **REGISTRATION LINK** from the challenge page (use ONLY that link):
-   students-auth.skillsbuild.org/signup?org=2078&mgr=603740REG&mgr2=2543286REG
-2. Age category: select **"Under age 18"**.
-3. Check that **"Sponsored by 1M1B | 1M1B"** shows on your screen. If it doesn't, stop — wrong link.
-4. If asked for a code, enter: **cxuk**
-5. Open the Learning Mission link (from the challenge page) and complete the mission:
-   students.yourlearning.ibm.com/channel/CNL_LCB_1785934317109
-6. When it says completed/100% — **screenshot the completion screen**. Keep it; it's your proof.
-7. Stuck? There's a self-registration tutorial video linked on the challenge page (Google Drive).
-   Watch it on your phone — my sandbox pipes can't reach Drive/YouTube, that's a me-limit, not a you-limit.
-
-## STEP 2 — Submit the buddy
-1. Wherever the challenge asks for the superhero → upload `art/taulo_hero.png`.
-2. Paste the name + ability + mission text from above (trim to whatever box size).
-3. If there's a post/tag mechanic: use **#1M1BeeBuddy #EWasteOff #ChangemakersWorldCup @1m1bfoundation**.
-4. Save me the submission confirmation screenshot → goes in the M2 evidence album.
-
-## If they feature us
-Post `taulo_poster.jpg` the same evening with:
+## After submitting
+1. Send me the submission-confirmation screenshot → M2 evidence album.
+2. If they feature us → post `rebee_poster.jpg` the same evening with:
 > 1M1Bee's newest buddy was built in a Gurugram drawer. literally.
-> Meet TAULO-1 — parts list: 1 capacitor, 2 phone-glass wings, 1 copper-wire antenna, 0 excuses.
+> Meet ReBee — parts list: 1 capacitor, 2 phone-glass wings, 1 copper antenna, 0 excuses.
 > featured by @1m1bfoundation 🐝⚡ #1M1BeeBuddy #EWasteOff

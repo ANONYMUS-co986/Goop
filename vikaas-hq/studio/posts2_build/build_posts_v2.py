@@ -9,7 +9,7 @@ ROOT   = "/home/user/Goop"
 FIN    = f"{ROOT}/vikaas-hq/studio/drops/FINALE"
 OUT    = f"{FIN}/posts2"
 SRC    = f"{ROOT}/vikaas-hq/studio/drops/v5/remix_src"
-STASH  = f"{ROOT}/image-search"
+STASH  = f"{ROOT}/vikaas-hq/studio/posts2_build/src_assets"
 FONTS  = f"{ROOT}/vikaas-hq/studio/seed/fonts"
 os.makedirs(OUT, exist_ok=True)
 
@@ -151,7 +151,7 @@ def r1():
 def r2():
     img = Image.new("RGB", (1440, 1800), INK); d = ImageDraw.Draw(img)
     eyebrow(d, "THE REMIXES · R2/7 — LOST HANDBILL (P2, RESTORED)")
-    pole = Image.open(f"{STASH}/street-utility-pole-covered-in-flyers-pa-1.jpg").convert("RGB")
+    pole = Image.open(f"{STASH}/photo_pole.jpg").convert("RGB")
     pole = fit(pole, 1150, 1400, "cover")
     img.paste(pole, (145, 210))
     d.rectangle([139, 204, 145+pole.width+5, 210+pole.height+5], outline=ACID, width=4)
@@ -176,7 +176,7 @@ def r2():
         x0 = sh + 34 + (i+0.5) * ((FW-68)/6)
         tab = Image.new("RGBA", (200, 40), (0,0,0,0))
         td = ImageDraw.Draw(tab)
-        td.text((100, 20), "TAKE ONE · TAULO KARO", font=f_mono(26), fill=BROWN+(255,), anchor="mm")
+        td.text((100, 20), "TAKE ONE · WEIGH IT", font=f_mono(26), fill=BROWN+(255,), anchor="mm")
         rot = tab.rotate(90, expand=True)
         card.paste(rot, (int(x0-20), ty+14), rot)
     # tape strips
@@ -300,11 +300,11 @@ def r5():
     d.text((76, 250), "TIER LIST", font=f_anton(96), fill=ACID)
     d.text((1010, 168), "tier science dept.\ndispute in comments.", font=f_mono(28), fill=MUTE, anchor="ma", align="center", spacing=8)
     rows = [
-        ("S", GOLD,   f"{STASH}/kabadiwala-india-street-scrap-collector--2.png", "कबाड़ीवाला", "doorstep king. zero questions. horn supremacy."),
-        ("A", GREEN,  f"{STASH}/phone-repair-shop-hands-screwdriver-tool-1.jpg", "गली का repair भैया", "one screwdriver. full confidence. no billing app."),
-        ("B", (154, 230, 110), f"{STASH}/recycling-factory-gate-entrance-industri-2.jpg", "authorised recycler", "right place, wrong vibe — “500 kg minimum” energy."),
-        ("C", VIOLET, f"{STASH}/drawer-full-of-old-phones-chargers-cable-1.jpg", "drawer में ताड़ी मारना", "the national conservation strategy. “kabhi kaam aayega.”"),
-        ("F", RED,    f"{STASH}/e-waste-pile-old-mobile-phones-circuit-b-2.jpg", "कूड़ेदान में फेंकना", "battery-fire speedrun. WHAT are we even doing."),
+        ("S", GOLD,   f"{STASH}/photo_kabadi.png", "कबाड़ीवाला", "doorstep king. zero questions. horn supremacy."),
+        ("A", GREEN,  f"{STASH}/photo_screwdriver.jpg", "गली का repair भैया", "one screwdriver. full confidence. no billing app."),
+        ("B", (154, 230, 110), f"{STASH}/photo_gate.png", "authorised recycler", "right place, wrong vibe — “500 kg minimum” energy."),
+        ("C", VIOLET, f"{STASH}/photo_drawer.jpg", "drawer में ताड़ी मारना", "the national conservation strategy. “kabhi kaam aayega.”"),
+        ("F", RED,    f"{STASH}/photo_ewaste.jpg", "कूड़ेदान में फेंकना", "battery-fire speedrun. WHAT are we even doing."),
     ]
     y = 400
     for letter, col, th, name, sub in rows:
@@ -425,7 +425,7 @@ def r7():
     rd.text((cx, y+104), "0014 · 4002 · 2026", font=f_mono(30), fill=(90,80,65,255), anchor="ma")
     rd.text((cx, y+170), "thank you for proving things. NO RETURNS ON EVIDENCE.", font=f_mono(28), fill=(120,110,90,255), anchor="ma")
     rot_paste(img, base, 720, 1000, -3)
-    footer(d, "receipts protocol: kholo → taulo → list kholo → photo + drop. that’s the whole religion.", "WEIGHED · 1.4 KG")
+    footer(d, "receipts protocol: kholo → weigh it → list kholo → photo + drop. that’s the whole religion.", "WEIGHED · 1.4 KG")
     posts["R7_receipt"] = grain(img, amt=0.045)
 
 r1(); r2(); r3(); r4(); r5(); r6(); r7()

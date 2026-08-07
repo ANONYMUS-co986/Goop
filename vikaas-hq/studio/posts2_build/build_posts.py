@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageFilter
 ROOT   = "/home/user/Goop"
 FIN    = f"{ROOT}/vikaas-hq/studio/drops/FINALE"
 OUT    = f"{FIN}/posts"
-SRC    = f"{ROOT}/image-search"
+SRC    = f"{ROOT}/vikaas-hq/studio/posts2_build/src_assets"
 ART    = f"{ROOT}/vikaas-hq/studio/drops/FINALE/art_src"
 FONTS  = f"{ROOT}/vikaas-hq/studio/seed/fonts"
 os.makedirs(OUT, exist_ok=True)
@@ -218,7 +218,7 @@ posts = {}
 # M1 DRAKE
 posts["M1_drake"] = build_meme(
     "PR POST 01/14 · MEME — DRAKE'S CHOICE",
-    f"{SRC}/drake-meme-template-blank-hd-disgust-app-1.jpg",
+    f"{SRC}/drake.jpg",
     [
         {"x":0.75, "y":0.24, "w":0.42, "t":"DUSTBIN\nMEIN FEKNA", "sz":66},
         {"x":0.75, "y":0.76, "w":0.42, "t":"KABADI WALE\nKO DENA\n→ ₹40 BACK", "sz":60},
@@ -229,10 +229,10 @@ posts["M1_drake"] = build_meme(
 # M2 TWO BUTTONS (huge vertical restoration png)
 posts["M2_buttons"] = build_meme(
     "PR POST 02/14 · MEME — THE DAILY STRUGGLE",
-    f"{SRC}/two-buttons-meme-template-blank-sweating-3.png",
+    f"{SRC}/buttons.png",
     [
         {"x":0.31, "y":0.145, "w":0.30, "t":"DRAWER MEIN\nWAPAS RAKHO", "sz":58},
-        {"x":0.71, "y":0.145, "w":0.30, "t":"FINALLY\nTAULO!", "sz":58},
+        {"x":0.71, "y":0.145, "w":0.30, "t":"FINALLY\nWEIGH IT!", "sz":58},
     ],
     "5 saal se same decision, same paseena. the scale has been waiting patiently. it is very humble.",
     "TOO REAL · WEIGH IN")
@@ -241,7 +241,7 @@ posts["M2_buttons"] = build_meme(
 # M3 CHANGE MY MIND (rotated cover over the sign)
 posts["M3_cmm"] = build_meme(
     "PR POST 03/14 · MEME — CHANGE MY MIND",
-    f"{SRC}/change-my-mind-meme-template-blank-hd-2.jpg",
+    f"{SRC}/cmm.jpg",
     [
         {"kind":"rotcover", "x":0.705, "y":0.64, "w":0.44, "h":0.38, "angle":-5,
          "t":"THE KABADI WALA HAS BETTER\nPRICE DATA THAN YOUR APP.\nCHANGE MY MIND.", "sz":52},
@@ -252,7 +252,7 @@ posts["M3_cmm"] = build_meme(
 # M4 MONKEY PUPPET
 posts["M4_puppet"] = build_meme(
     "PR POST 04/14 · MEME — SIDE-EYE",
-    f"{SRC}/awkward-monkey-puppet-looking-away-meme--1.jpg",
+    f"{SRC}/puppet.png",
     [
         {"x":0.5, "y":0.30, "w":0.86, "t":"MUM STORING THE DEAD PHONE\nNEXT TO THE ONIONS", "sz":66, "kind":"board", "fg":(12,12,12)},
         {"x":0.5, "y":0.93, "w":0.9, "t":"“KYUNKI KAAM KA CHEEZ HAI”", "sz":60},
@@ -263,7 +263,7 @@ posts["M4_puppet"] = build_meme(
 # M5 KALM PANIK KALM (text in LEFT cells, faces on the right)
 posts["M5_panik"] = build_meme(
     "PR POST 05/14 · MEME — KALM PANIK KALM",
-    f"{SRC}/panik-kalm-panik-meme-template-blank-hd-2.png",
+    f"{SRC}/panik_cand1.jpg",
     [
         {"x":0.26, "y":0.16, "w":0.42, "t":"FOUND 3 DEAD PHONES\nIN THE DRAWER", "sz":44, "kind":"board", "fg":(15,15,15)},
         {"x":0.26, "y":0.50, "w":0.42, "t":"LANDFILL MEIN =\nLITHIUM LEAK", "sz":44, "kind":"board", "fg":(15,15,15)},
@@ -275,7 +275,7 @@ posts["M5_panik"] = build_meme(
 # M6 DISTRACTED BOYFRIEND (crop to the classic first panel)
 posts["M6_dbf"] = build_meme(
     "PR POST 06/14 · MEME — THE AFFAIR",
-    f"{SRC}/distracted-boyfriend-meme-template-blank-2.png",
+    f"{SRC}/dbf.png",
     [
         {"x":0.17, "y":0.66, "w":0.30, "t":"BIG BILLION\nDAY SALE", "sz":48},
         {"x":0.55, "y":0.80, "w":0.28, "t":"EVERY\nINDIAN HOME", "sz":44},
@@ -287,7 +287,7 @@ posts["M6_dbf"] = build_meme(
 # M7 WOMAN YELLING AT CAT (HD wide, dark text on the white label band)
 posts["M7_cat"] = build_meme(
     "PR POST 07/14 · MEME — DINNER DEBATE",
-    f"{SRC}/woman-yelling-at-cat-meme-template-blank-1.jpg",
+    f"{SRC}/cat.jpg",
     [
         {"x":0.25, "y":0.155, "w":0.40, "t":"“BAS FEK DE!\nWHY SO MUCH DRAMA?”", "sz":58, "kind":"board", "fg":(12,12,12)},
         {"x":0.75, "y":0.155, "w":0.44, "t":"15 GOVT-AUTHORISED\nRECYCLERS. NEAR YOU.", "sz":50, "kind":"board", "fg":(12,12,12)},
@@ -298,15 +298,15 @@ posts["M7_cat"] = build_meme(
 # M8 GRU 5 PANEL (short boards + big 5th board payoff)
 posts["M8_gru"] = build_meme(
     "PR POST 08/14 · MEME — THE PLAN",
-    f"{SRC}/gru-plan-4-panel-presentation-meme-templ-1.png",
+    f"{SRC}/gru.png",
     [
-        {"x":0.36, "y":0.145, "w":0.22, "t":"TAULO.", "sz":40, "kind":"board"},
-        {"x":0.875, "y":0.115, "w":0.18, "t":"RECEIPTS.", "sz":29, "kind":"board"},
-        {"x":0.362, "y":0.50, "w":0.20, "t":"POST IT.", "sz":36, "kind":"board"},
-        {"x":0.875, "y":0.43, "w":0.18, "t":"1 CRORE\nDRAWERS.", "sz":27, "kind":"board", "fg":(180,30,40)},
-        {"x":0.72, "y":0.775, "w":0.30, "t":"TOP 3 →\nGENEVA.", "sz":48, "kind":"board"},
+        {"x":0.38, "y":0.16, "w":0.17, "t":"WEIGH IT.", "sz":36, "kind":"board"},
+        {"x":0.885, "y":0.165, "w":0.17, "t":"RECEIPTS.", "sz":30, "kind":"board"},
+        {"x":0.375, "y":0.48, "w":0.17, "t":"POST IT.", "sz":36, "kind":"board"},
+        {"x":0.89, "y":0.48, "w":0.17, "t":"1 CRORE\nDRAWERS.", "sz":26, "kind":"board", "fg":(180,30,40)},
+        {"x":0.68, "y":0.845, "w":0.24, "t":"TOP 3 →\nGENEVA.", "sz":44, "kind":"board"},
     ],
-    "taulo. receipts. post. repeat. the world cup's top 3 fly to the UN in geneva — that's the plan, publicly.",
+    "weigh it. receipts. post. repeat. the world cup's top 3 fly to the UN in geneva — that's the plan, publicly.",
     "THE PLAN · CWC TOP 3")
 
 # --- AI POSTERS ---

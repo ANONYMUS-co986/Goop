@@ -12,7 +12,7 @@ The list is public. We just never look. Tap the reel, read the names, pick one.
 
 ### VIKAAS_01 — "THE DRAWER"
 Har ghar ka sabse honest room. We opened ours — 1.4 kg of "kuch kaam ka cheez" on a kitchen scale.
-Your drawer is next. Taulo it. Post it. Tag it #EWasteOff.
+Your drawer is next. Weigh it. Post it. Tag it #EWasteOff.
 
 ### VIKAAS_03 — "THE KABADI PARADOX"
 The man pays you CASH for e-waste… and still gets called "junk dealer". Make it make sense.
@@ -40,7 +40,7 @@ Same phone. Same effort. One option pays ₹40 and doesn't poison a river. Choos
 
 ### M2 — The Daily Struggle
 5 saal se same decision, same paseena. The scale is humble. It waits. 🥲
-Comment "TAULO" if your drawer has been winning too.
+Comment "WEIGHED" if your drawer has been winning too.
 (template credit: Jake-Clark — we kept his signature, respect.)
 
 ### M3 — Change My Mind
@@ -64,7 +64,7 @@ Share this to the family group if you dare. 🛒
 The cat did its homework. Have you? 🐈
 
 ### M8 — The Plan
-TAULO → RECEIPTS → POST IT → 1 CRORE DRAWERS → TOP 3 → GENEVA. ✈️
+WEIGH IT → RECEIPTS → POST IT → 1 CRORE DRAWERS → TOP 3 → GENEVA. ✈️
 The World Cup's top 3 fly to the UN on 20 Nov 2026. That's the plan — publicly. Watch us.
 
 ### P1 — It Takes One Drawer
@@ -130,7 +130,7 @@ Weighed. Not guessed. No returns on evidence.
 
 ## ALT TEXTS — SERIES 02
 - R1: "Museum exhibit of a tangled charger under a glass dome — 'kabhi kaam aayega. said every dead charger'"
-- R2: "LOST handbill on a street pole: 15 authorised recyclers, reward ₹40, tear-off tabs saying taulo karo"
+- R2: "LOST handbill on a street pole: 15 authorised recyclers, reward ₹40, tear-off tabs saying take one · weigh it"
 - R3: "3-panel retro comic: boy with drawer of e-waste, rejected by factory's 500 kg rule, saved by kabadi's horn"
 - R4: "Cyanotype blueprint: exploded phone — gold traces 0.03 g, lithium battery — 'it isn't rubbish. it's a mine.'"
 - R5: "Tier list board: kabadiwala S-tier, repair bhaiya A, authorised recycler B, drawer hoarding C, dustbin F"
@@ -141,13 +141,13 @@ Weighed. Not guessed. No returns on evidence.
 
 ## ALT TEXTS (accessibility — paste in "advanced settings → write alt text")
 - M1: "Drake meme: refuses throwing phone in dustbin, approves giving it to the kabadi wala for ₹40"
-- M2: "Two buttons comic: 'drawer mein wapas rakho' vs 'finally taulo!' — hand presses both"
+- M2: "Two buttons comic: 'drawer mein wapas rakho' vs 'finally weigh it!' — hand presses both"
 - M3: "Change my mind sign: the kabadi wala has better price data than your app"
 - M4: "Monkey puppet side-eye: mum storing the dead phone next to the onions"
 - M5: "Kalm panik kalm: dead phones found, landfill panic, kabadiwala cash ending"
 - M6: "Distracted boyfriend: every Indian home distracted by big billion day sale from the full drawer"
 - M7: "Woman yelling at cat: 'bas fek de' vs '15 govt-authorised recyclers near you'"
-- M8: "Gru's plan boards: taulo, receipts, post it, 1 crore drawers, top 3 to Geneva"
+- M8: "Gru's plan boards: weigh it, receipts, post it, 1 crore drawers, top 3 to Geneva"
 - P1: "Riso poster: schoolboy carrying a mountain of cables — 'it takes one drawer'"
 - P2: "Riso poster: handshake passing cash and cables — 'the ₹40 handshake'"
 - P3: "Riso poster: speck of gold on an open palm — '0.03 g of gold'"
