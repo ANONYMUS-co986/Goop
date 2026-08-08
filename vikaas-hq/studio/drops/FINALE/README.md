@@ -23,7 +23,7 @@ FINALE/
 | VIKAAS_01 THE-DRAWER | 27.2s | −18.5 | lo-fi nostalgia bed (kept by design) |
 | VIKAAS_02 15-RECYCLERS | 27.2s | −15.9 | 🔁 NEW drift-phonk bed (Track A, video untouched) |
 | VIKAAS_03 KABADI-PARADOX | 14.6s | −18.4 | comedy bounce (kept) |
-| VIKAAS_04 COMEDY-CLUB | 40.8s | −19.6 | VO club (kept; v3 VO mix still pending the correct zip) |
+| VIKAAS_04 COMEDY-CLUB | 40.8s | −16.1 | VO club — v3 VO mix DONE 08 Aug (correct `vo_out (1).zip` fetched from main; 8 lines timed to grid, mummy ×1.355, re-muxed to pack standard) |
 | VIKAAS_05 DOORSTEP-PHONK | 19.7s | −16.2 | 🔁 NEW drive-phonk bed (Track B, video untouched) |
 | VIKAAS_06 MEME-REEL | 26.3s | −16.0 | 🆕 beat-locked showcase of this set (Track C) |
 | posts ×14 | 1440×1800 | — | QA'd frame-by-frame across 3 fix rounds |
