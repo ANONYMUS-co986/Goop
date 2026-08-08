@@ -11,7 +11,7 @@ Open these two links in your phone browser → **long-press the image → Downlo
 | For | File | Link |
 |---|---|---|
 | **Q1** completion proof | `q1_skillsbuild_completion.jpg` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019fc480-goop/vikaas-hq/cwc_buddy/q1_skillsbuild_completion.jpg |
-| **Q4** superhero image | `rebee_hero_v2_challenger.png` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019fc480-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v2_challenger.png |
+| **Q4** superhero image | `rebee_hero_v3_suitup.png` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019fc480-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v3_suitup.png |
 
 *(Q1 tip: if you still have your own SkillsBuild completion screenshot on your phone, that works too — the repo one is the guaranteed-exact backup, extracted from your PDF.)*
 
@@ -41,7 +41,7 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 *(If the box refuses the long text → use the SHORT version from `BUDDY_BRIEF.md` §Q3.)*
 
 **Q4 — AI generated image of your superhero.**
-→ Tap **Click to upload image** → choose **`rebee_hero_v2_challenger.png`** (the champion bee standing on the e-waste mountain).
+→ Tap **Click to upload image** → choose **`rebee_hero_v3_suitup.png`** (the hero bee rising out of the junk drawer, parts assembling — one glowing green eye powering on).
 
 ## STEP 3 — Submit + prove it
 1. Tap the yellow **Confirm Submit**.

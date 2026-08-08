@@ -29,3 +29,8 @@
 - **ReBee submission TONIGHT** (Q1 = `cwc_buddy/q1_skillsbuild_completion.jpg`, Q4 = challenger B — deadline 12 Aug, 4 days).
 - Posting run per FINAL_POSTING_GUIDE; R8 can jump the queue whenever he wants a guaranteed-laugh slot.
 - M2 dashboard screenshot when unlocked · portfolio PH3 green light.
+
+## Q4 3-way playoff, FINAL (user: "only 1 image allowed, must be actual superhero feel")
+- Generated 2 fresh contenders vs reigning champion: `v3_hover.png` (Iron-Man flight pose over dusk city — max superhero feel BUT humanoid body drift + zero e-waste shown) and `v3_suitup.png` (rising from the junk drawer, parts assembling, one eye powering on).
+- **WINNER: `art/rebee_hero_v3_suitup.png`** — superhero ORIGIN MOMENT that pictures the problem itself; theme-match to brief; round-body character consistency; literally illustrates the Q2 line "hatched from an electronics drawer in Gurugram".
+- `v3_hover` banked as Insta flex asset; SUBMIT_REBEE.md + BUDDY_BRIEF.md re-pointed to the winner. LOGBOOK V16/V18's "challenger for Q4" superseded.

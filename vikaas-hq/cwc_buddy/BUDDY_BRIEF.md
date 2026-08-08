@@ -26,8 +26,8 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 ```
 
 ### Q4 — AI generated image of your superhero
-Upload **`art/rebee_hero_v2_challenger.png`** — WON the playoff: champion bee standing on the e-waste mountain; character-consistent with the portrait; answers "inspired by your challenge" wordlessly.
-(`art/rebee_hero.png` = the mascot portrait → kept for the feature-day Insta post + matches the poster.)
+Upload **`art/rebee_hero_v3_suitup.png`** — WON the 3-way playoff: superhero origin moment, rising from the junk drawer with parts magnetically assembling. Why it beats the others: (1) standard superhero shot would show a city — THIS pictures the PROBLEM (dead phones, tangled cables, one cracked screen) = wordless theme-match to the brief; (2) round bee body stays character-consistent with the poster/action shots; (3) Q2 text says "hatched from an electronics drawer in Gurugram" — this IS that moment; (4) one eye powering on = "just born" narrative charm.
+(Runner-up `art/rebee_hero_v3_hover.png` = gorgeous Iron-Man-style flight pose → saved as a later Insta flex asset; `art/rebee_hero_v2_challenger.png` champion-pose kept for posts.)
 
 ---
 
