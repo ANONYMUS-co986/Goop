@@ -1,5 +1,5 @@
 # 🏁 FINAL POSTING GUIDE — tonight's run, click by click
-Everything is verified (21/21 posts + 6/6 reels, hashes in MANIFEST.sha256). No errors outstanding. Do PART A first (2 min), then PART B.
+Everything is verified (22/22 posts + 6/6 reels, hashes in MANIFEST.sha256). No errors outstanding. Do PART A first (2 min), then PART B.
 
 ---
 

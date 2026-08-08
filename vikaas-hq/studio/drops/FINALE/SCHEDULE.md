@@ -31,6 +31,7 @@ Start: **Thu 6 Aug 2026**, 7:30–8:30 PM IST every day. Reels every 3rd day. Ne
 | 25 | Sun 30 | **R4 — It's A Mine (DWG 004)** | remix | The smart flex; blueprint Sunday. |
 | 26 | Mon 31 | **R5 — कबाड़ी Universe Tier List** | remix | Debate fuel. Disputes = comments = reach. |
 | 27 | Tue 1 Sep | **R2 — LOST: 15 Recyclers** | remix | Data closer: the handbill nobody read until now. |
+| 28 | Wed 2 | **R8 — Generation Gap (doge vs cheems)** | remix meme | BONUS BANGER: PAPA·1998 vs ME·2026. Maximum relatability weapon; comment bait = "tag someone whose phone is 'outdated'". Midweek extension keeps the grid alive. |
 
 ## Story rhythm between posts
 - **After reel days:** post a "24h receipts" story (insights screenshot, face-palm emoji optional).
@@ -41,7 +42,7 @@ Start: **Thu 6 Aug 2026**, 7:30–8:30 PM IST every day. Reels every 3rd day. Ne
 reach · saves · shares · follows. Saves+shares > likes for the jury story.
 Target vibe: beat 9 likes/post baseline. Every number above 9 = already ahead. 😌
 
-## After Day 27
+## After Day 28
 - Pin top 3 performers.
 - "THE FINALE — 27 days, 27 receipts" recap carousel (make it in IG from the grid itself, or ping HQ for a wrap poster).
 - Roll into M3 milestone prep with the 24h-insights album as evidence.

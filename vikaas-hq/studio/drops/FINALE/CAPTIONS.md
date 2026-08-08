@@ -126,6 +126,14 @@ The receipts protocol, itemized: drawer kholo → scale par rakho → HSPCB list
 TOTAL EVIDENCE 1.4 KG · CASH RECEIVED ₹40 · WORDS USED 0.
 Weighed. Not guessed. No returns on evidence.
 
+### R8 — Generation Gap (PAPA · 1998 vs ME · 2026)
+The generation gap, explained by two dogs.
+PAPA: ek phone, 22 saal, toota toh repair, aaj bhi bajta hai (good morning forwards daily).
+ME: 2 saal purana phone = 'outdated' 🥺 drawer mein 5 laashein, phir bhi naya chahiye.
+Repair > replace. Tolo your drawer. Recycle the bodies.
+Tag someone whose phone is 'outdated' right now. 🐕
+Stamp: TRUE STORY (the drama is universal; the dogs are actors).
+
 ---
 
 ## ALT TEXTS — SERIES 02
@@ -136,6 +144,7 @@ Weighed. Not guessed. No returns on evidence.
 - R5: "Tier list board: kabadiwala S-tier, repair bhaiya A, authorised recycler B, drawer hoarding C, dustbin F"
 - R6: "Western wanted poster for the 2014 charger — reward ₹40, tag the accomplice keeping him"
 - R7: "Giant shop receipt listing the receipts protocol — total evidence 1.4 kg, cash ₹40, words 0"
+- R8: "Buff doge vs crying cheems: PAPA 1998 kept one phone 22 years (repairs, good-morning forwards) vs ME 2026 crying a 2-year-old phone is 'outdated' with 5 corpses in the drawer"
 
 ---
 

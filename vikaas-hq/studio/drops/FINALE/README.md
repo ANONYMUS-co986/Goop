@@ -5,7 +5,7 @@
 FINALE/
 ├── videos/          6 reels — 1080×1920 h264, faststart, feed-graded loudness
 ├── posts/           SERIES 01: 14 posts — 1440×1800 (8 template memes + 6 riso AI posters)
-├── posts2/          SERIES 02 "THE REMIXES": 7 posts — the v4 concepts overhauled
+├── posts2/          SERIES 02 "THE REMIXES": 8 posts — the v4 concepts overhauled (+ R8 generation-gap bonus)
 │                    (museum exhibit · LOST handbill · halftone saga comic · cyanotype
 │                     blueprint · photo tierboard · WANTED parchment · giant receipt)
 ├── alt_beds/        3 original phonk beds (m4a) — music-reel originals + IG swap safety
@@ -14,7 +14,7 @@ FINALE/
 ├── CAPTIONS.md      27 paste-ready captions + alt texts + hashtag block
 ├── HOW_TO_POST.md   tap-by-tap phone guide (reels, trend-swap, carousels, pitfalls)
 ├── SCHEDULE.md      the 27-day rollout calendar (Day 1 = today)
-└── MANIFEST.sha256  integrity hashes for all 30 media files
+└── MANIFEST.sha256  integrity hashes for all 31 media files
 ```
 
 ## QC — the family table (verified via ffmpeg ebur128, this build)

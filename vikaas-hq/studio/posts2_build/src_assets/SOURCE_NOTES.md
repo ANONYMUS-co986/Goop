@@ -21,3 +21,6 @@ All builder scripts read from HERE (never from the volatile `image-search/` cach
 | `photo_gate.png` (140px) | placeholder (accio supplier thumb) | R5 future |
 
 **Rule:** M1/M3/M4/M5 masters in `drops/FINALE/posts/` are FROZEN — do not overwrite from these sources without visual QC vs the committed master.
+
+| `doge_cheems_247758660.png` (880×480) | imgflip template **247758660 "Buff Doge and Crying Cheems"** community blank; white bg, corners verified clean (no watermark); fetched 8 Aug via brave image search | R8 |
+**R8 note:** built by `build_r8.py` (one-off, house-style). Footer caption kept in latin Hinglish on purpose: fresh-venv Pillow reports `raqm=False` → Devanagari pre-base i-matra ("फिर") + stacked matra-anusvara ("लाशें") break. If Devanagari needed in future builds, verify `PIL.features.check('raqm')` first or stay latin.
