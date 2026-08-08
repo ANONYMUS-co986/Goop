@@ -4,8 +4,7 @@
 ## The form has exactly 4 fields — here's each answer, paste-ready
 
 ### Q1 — Submit your IBM SkillsBuild Learning Mission completion screenshot
-Upload the completion screenshot from your phone (the one from your finished
-`students.yourlearning.ibm.com/channel/CNL_LCB_1785934317109` mission). DONE ✅ (you did this.)
+Upload **`q1_skillsbuild_completion.jpg`** (exported from your PDF — "Completed 2 of 2" on the exact mission channel) — or your own phone screenshot of the same screen. DONE ✅ (you completed this 07 Aug.)
 
 ### Q2 — Your AI Superhero's name
 ```
@@ -27,8 +26,8 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 ```
 
 ### Q4 — AI generated image of your superhero
-Upload **`art/rebee_hero.png`** (clean hero portrait — best for judging).
-Bonus/flex shots if extra uploads allowed: `art/rebee_scan_action.png` (the superpower in action), `rebee_poster.jpg` (brand poster).
+Upload **`art/rebee_hero_v2_challenger.png`** — WON the playoff: champion bee standing on the e-waste mountain; character-consistent with the portrait; answers "inspired by your challenge" wordlessly.
+(`art/rebee_hero.png` = the mascot portrait → kept for the feature-day Insta post + matches the poster.)
 
 ---
 
