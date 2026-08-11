@@ -26,13 +26,14 @@
 
 ```
 vikaas-hq/portfolio/v2/
-├── loader.html        ← PHASE 1 (DONE): the boot sequence, standalone + entry
-├── index.html         ← THE GATE (Phase 2): hero + manifesto + ticker
+├── loader.html        ← PHASE 1.1 (DONE): THE BOOT — scroll-cinematic entry
+├── index.html         ← THE GATE (Phase 2): hero + manifesto + ticker + cursor v2
 ├── drawer.html        ← THE DRAWER (Phase 3): the story, pinned cinematic scrub
 ├── ledger.html        ← THE PROOF (Phase 4): receipts, scale toy, data viz, glass bento
-├── films.html         ← THE ARSENAL (Phase 5): 6 reels, hover-play, audio lab
-├── rebee.html         ← THE BUDDY (Phase 6): ReBee page, tilt/parallax/3D energy
-├── system.html        ← THE SYSTEM (Phase 7): the making-of, the engine, the receipts
+├── kabadi.html        ← THE KABADI UNIVERSE (Phase 5): the world, tier list, the trade
+├── films.html         ← THE ARSENAL (Phase 6): 6 reels, hover-play, audio lab, glass dock
+├── rebee.html         ← THE BUDDY (Phase 7): ReBee page, tilt/parallax/3D energy
+├── system.html        ← THE SYSTEM (Phase 8): the making-of, the engine, the receipts
 └── assets/
     ├── vendor/        gsap · ScrollTrigger · CustomEase · Lenis · SplitType (local, zero CDN)
     ├── css/           tokens.css · shell.css · fx.css (shared) + per-page css
@@ -118,8 +119,11 @@ particle splash on fast moves, morphs into labels (`PLAY`, `OPEN`, `SCRAP-SCAN`)
 
 | Asset | Where | Status |
 |---|---|---|
-| `boot.wav` — C5-E5-G5 ascending blips | loader (plays on ENTER) | ✅ built (Phase 1) |
+| `boot.wav` — C5-E5-G5 ascending blips | loader (first gesture) | ✅ built (Phase 1) |
 | `enter.wav` — thump + whoosh + chord stab | loader ENTER | ✅ built (Phase 1) |
+| runtime whooshes (WebAudio noise sweeps) | loader beat transitions | ✅ built (Phase 1) |
+| hover blip (tiny sine tick) | all interactive elements | Phase 2 |
+| ambient beds (numpy-synthesized, VIKAAS scale) | every page, mute toggle | Phases 2–8 |
 | hover blip (tiny sine tick) | all interactive elements | Phase 2 |
 | scroll whoosh (filtered noise sweep) | section changes | Phase 2 |
 | per-page ambient beds (numpy-synthesized, in the VIKAAS scale) | each page, with mute toggle | Phases 3–7 |
@@ -148,14 +152,15 @@ ffmpeg astats (RMS/peak receipts), WebAudio-synced to interactions. Autoplay-saf
 
 | # | Deliverable | Juice | You |
 |---|---|---|---|
-| **1** | **LOADER** (done ✅) | terminal typing · scramble wordmark · glitch · ring progress · glass card · dust canvas · HUD · synth audio on ENTER | **review now** |
+| **1** | **THE BOOT — loader v2** (done ✅) | **scroll-driven** · code-built 3D drawer (Three.js) · terminal reveal · scramble wordmark · glitch bursts · stats slam + stamps · ReBee fly-by · ENTER pill · synth audio | **review now** |
 | 2 | **THE GATE** (index) | SplitText hero · Aurora · BlurText manifesto · ticker · glass nav · cursor v2 · hover glow | review |
 | 3 | **THE DRAWER** | pinned cinematic scrub · photo clip reveal · scroll-jacked typography · LetterGlitch transition | review |
 | 4 | **THE PROOF** (ledger) | MagicBento stats · scale toy (ElasticSlider) · receipts · SpotlightCards · DotGrid viz | review |
-| 5 | **THE ARSENAL** (films) | glass Dock nav · reel cards (GlareHover, PixelTransition, hover-play) · audio lab | review |
-| 6 | **THE BUDDY** (rebee) | Hyperspeed/Galaxy sky · TiltedCard · spotlight powers · character parade | review |
-| 7 | **THE SYSTEM** | the engine room: how it was built · ImageTrail · Threads viz · powers.md interactive | review |
-| 8 | **POLISH** | sound design pass · perf (60fps audit) · a11y · reduced-motion · final QC battery · deploy notes | final review |
+| 5 | **THE KABADI UNIVERSE** | the world · tier list · the ₹40 trade · marquee chaos | review |
+| 6 | **THE ARSENAL** (films) | glass Dock nav · reel cards (GlareHover, PixelTransition, hover-play) · audio lab | review |
+| 7 | **THE BUDDY** (rebee) | Hyperspeed/Galaxy sky · TiltedCard · spotlight powers · character parade | review |
+| 8 | **THE SYSTEM** | the engine room · ImageTrail · Threads viz · powers.md interactive | review |
+| 9 | **POLISH** | ambient soundscape full pass · perf 60fps audit · a11y · reduced-motion · final QC battery | final review |
 
 **Phase rules:** commit-early · logbook entry every phase · MANIFEST-style QA
 receipts · `?fast=1` everywhere for QA · no CDN dependencies · integrity gate on
@@ -186,3 +191,24 @@ Everything else is mine: code, anims, audio, images, QA, deployment via `serve.p
 *Phase 1 = THE LOADER. It's live at `/portfolio/v2/loader.html` on the preview.
 Scroll-proof, click ENTER, feel the whoosh. Then tell me: GO for Phase 2, or
 "more juice" on the loader.* 🐝⚡
+
+
+---
+
+## 9. THE BOOT — loader v2 timeline (scroll-scrubbed, 460vh pin)
+
+| progress | beat | animation |
+|---|---|---|
+| 0.00 | HUD + cue | "SCROLL TO INITIALISE" pulses · dust particles · 3D drawer closed |
+| 0.02–0.10 | terminal | 7 boot lines reveal (scroll-linked, cursor) |
+| 0.08–0.20 | camera | 3D push-in · lid creaks 3° |
+| 0.20–0.38 | the open | lid swings 73° · e-waste floats out (phone/cables/battery/charger/pcb — all code-built) · drawer recedes |
+| 0.38–0.52 | the word | VIKAAS scramble-assembles char-by-char · glitch bursts at 40/46 · camera pulls in |
+| 0.52–0.64 | the stats | 1.4 KG / ₹40 / 15 / 0 slam with back-out ease · stamps rotate in |
+| 0.64–0.78 | ReBee | fly-by with glow · विकास fades in · whoosh |
+| 0.78–0.90 | the line | NO DRAWER LEFT BEHIND. clip-reveals |
+| 0.92–1.00 | enter | ENTER THE DRAWER pops · click → acid exit → GATE |
+
+Self-review receipts: 9 beats captured, 0 console errors, WebGL ✓, all states verified
+(bug family caught: GSAP onUpdate arg gotcha · tl.call params array · image path ·
+stats/enter overlap — all fixed & receipted).

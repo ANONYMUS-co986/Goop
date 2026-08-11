@@ -1,32 +1,42 @@
 /* ============================================================
-   VIKAAS v2 — LOADER (Phase 1)
-   Terminal typing + scramble wordmark + ring progress + glitch
-   + dust canvas + synth audio on ENTER. ?fast=1 for QA.
+   VIKAAS v2 — LOADER v2 "THE BOOT" (scroll-cinematic)
+   Timeline (track 460vh, pinned, scrub):
+     0.00   HUD fades in · cue pulses
+     0.02–0.10  terminal lines reveal (scroll-linked)
+     0.08–0.20  3D camera push-in · lid creak
+     0.20–0.38  lid opens · e-waste floats out of drawer
+     0.38–0.52  VIKAAS scramble-assembles · glitch bursts
+     0.52–0.64  stats slam + stamps
+     0.64–0.78  ReBee fly-by · विकास fades
+     0.78–0.90  NO DRAWER LEFT BEHIND. reveals
+     0.90–1.00  ENTER pill · click → acid exit
+   ?fast=1 / reduced-motion → final state instantly.
    ============================================================ */
 (function () {
   'use strict';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fast = new URLSearchParams(location.search).has('fast');
   const $ = (s) => document.querySelector(s);
-  const wordEl = $('#word'), devEl = $('#dev'), termEl = $('#term'),
-        pctEl = $('#pct'), ringFg = $('#ringFg'), barFill = $('#barFill'),
-        enterBtn = $('#enter'), loaderEl = $('#loader');
-
-  const RING = 578.05; // 2*pi*92? (r=92 in viewBox 200) — here r=55: 2*pi*55=345.6
-  const RING_LEN = 2 * Math.PI * 55;
-  ringFg.style.strokeDasharray = RING_LEN;
+  const stage = $('#stage'), wordEl = $('#word'), devEl = $('#dev'), termEl = $('#term'),
+        cueEl = $('#cue'), railFill = $('#railFill'), enterBtn = $('#enter'),
+        rebee = $('#rebeeFly'), bigline = $('#bigline h2'), hudTime = $('#hudTime');
+  const stats = Array.from(document.querySelectorAll('.stat'));
+  const stamps = Array.from(document.querySelectorAll('.stamp'));
 
   /* ---------- HUD clock ---------- */
-  const hudTime = $('#hudTime');
-  const tickClock = () => {
-    const d = new Date();
-    const p = (n) => String(n).padStart(2, '0');
-    hudTime.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()) + ' IST';
-  };
-  tickClock(); setInterval(tickClock, 1000);
+  const pad = (n) => String(n).padStart(2, '0');
+  const tick = () => { const d = new Date(); hudTime.textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' IST'; };
+  tick(); setInterval(tick, 1000);
 
-  /* ---------- terminal ---------- */
-  const STEPS = [
+  /* ---------- word chars ---------- */
+  const FULL = 'VIKAAS';
+  wordEl.innerHTML = FULL.split('').map((c) => '<span class="ch">' + c + '</span>').join('');
+  const chars = Array.from(wordEl.querySelectorAll('.ch'));
+  const SCR = '!<>-_\\/[]{}—=+*^?#$%&@ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const rand = () => SCR[Math.floor(Math.random() * SCR.length)];
+
+  /* ---------- terminal lines (scroll-linked reveal) ---------- */
+  const LINES = [
     ['scanning drawer inventory', '3 phones · 7 chargers · 1 speaker (2022)', 'dim'],
     ['weighing …', '1.4 KG — receipt logged', 'acid'],
     ['surveying 10 homes …', '10/10 have the same drawer', 'dim'],
@@ -35,126 +45,239 @@
     ['summoning ReBee …', 'scrap-scan online', 'gold'],
     ['finalising …', 'NO DRAWER LEFT BEHIND', 'acid'],
   ];
-  const esc = (s) => s.replace(/[<>&]/g, (m) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[m]));
+  termEl.innerHTML = LINES.map(([t, v, c]) => `<span class="${c}" data-l>${t} ${v}</span>`).join('\n');
+  const termLines = Array.from(termEl.querySelectorAll('[data-l]'));
+  const cursor = document.createElement('span'); cursor.className = 'cur'; termEl.appendChild(cursor);
 
-  function runTerminal(onDone) {
-    if (fast || reduce) { termEl.innerHTML = STEPS.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n'); onDone(); return; }
-    let si = 0, ci = 0;
-    const done = [];
-    const cursor = '<span class="cur"></span>';
-    const render = () => {
-      const lines = done.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`);
-      const cur = STEPS[si];
-      const partial = esc(cur[0].slice(0, ci));
-      lines.push(`<span class="${cur[2]}">${partial}</span>${cursor}`);
-      termEl.innerHTML = lines.join('\n');
+  /* ---------- 3D SCENE (code-built assets) ---------- */
+  let renderer = null, scene = null, camera = null, drawerGroup = null, lidPivot = null, items = [], particles = null, THREE_OK = false;
+  function initThree() {
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: $('#three'), antialias: true, alpha: true });
+    } catch (e) { document.body.classList.add('no3d'); return; }
+    THREE_OK = true;
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(innerWidth, innerHeight);
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 60);
+    camera.position.set(0, 1.1, 7.6);
+
+    // lights
+    scene.add(new THREE.AmbientLight(0x23352a, 1.1));
+    const key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(4, 7, 5); scene.add(key);
+    const acid = new THREE.PointLight(0xb9ff3f, 26, 18); acid.position.set(-3, 1.5, 3); scene.add(acid);
+    const rim = new THREE.PointLight(0x2ede82, 14, 16); rim.position.set(3, -1, 4); scene.add(rim);
+
+    // ---- THE DRAWER (code-built) ----
+    drawerGroup = new THREE.Group();
+    const metal = new THREE.MeshStandardMaterial({ color: 0x12171a, metalness: 0.82, roughness: 0.34 });
+    const dark = new THREE.MeshStandardMaterial({ color: 0x0a0f0c, metalness: 0.6, roughness: 0.5 });
+    const body = new THREE.Mesh(new THREE.BoxGeometry(3.1, 1.5, 2.1), metal);
+    body.position.y = -0.85; drawerGroup.add(body);
+    // front panel with VIKAAS label (canvas texture = code asset)
+    const cv = document.createElement('canvas'); cv.width = 512; cv.height = 160;
+    const ctx = cv.getContext('2d');
+    ctx.fillStyle = '#0d1310'; ctx.fillRect(0, 0, 512, 160);
+    ctx.strokeStyle = '#1d2a22'; ctx.lineWidth = 6; ctx.strokeRect(10, 10, 492, 140);
+    ctx.fillStyle = '#b9ff3f'; ctx.font = '700 72px Anton, sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('VIKAAS', 256, 84);
+    const tex = new THREE.CanvasTexture(cv);
+    const panel = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 0.78), new THREE.MeshBasicMaterial({ map: tex }));
+    panel.position.set(0, -0.85, 1.06); drawerGroup.add(panel);
+    // edges wireframe
+    const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.1, 1.5, 2.1)), new THREE.LineBasicMaterial({ color: 0x2ede82, transparent: true, opacity: 0.5 }));
+    edges.position.y = -0.85; drawerGroup.add(edges);
+    // LID (hinged at back)
+    lidPivot = new THREE.Group(); lidPivot.position.set(0, -0.1, -1.0);
+    const lid = new THREE.Mesh(new THREE.BoxGeometry(3.35, 0.22, 2.35), metal);
+    lid.position.set(0, 0, 1.0); lidPivot.add(lid);
+    const lidEdge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.35, 0.22, 2.35)), new THREE.LineBasicMaterial({ color: 0xb9ff3f, transparent: true, opacity: 0.35 }));
+    lidEdge.position.set(0, 0, 1.0); lidPivot.add(lidEdge);
+    drawerGroup.add(lidPivot);
+    // drawer base
+    const base = new THREE.Mesh(new THREE.BoxGeometry(3.5, 0.16, 2.5), dark); base.position.y = -1.63; drawerGroup.add(base);
+    scene.add(drawerGroup);
+
+    // ---- E-WASTE (code-built) ----
+    const makeItem = (geo, mat, x, y, z, rot) => {
+      const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); if (rot) m.rotation.set(rot[0], rot[1], rot[2]);
+      drawerGroup.add(m); items.push(m); return m;
     };
-    const step = () => {
-      if (ci < STEPS[si][0].length) { ci++; render(); setTimeout(step, 11); }
-      else {
-        done.push(STEPS[si]); si++;
-        if (si < STEPS.length) { ci = 0; render(); setTimeout(step, 160); }
-        else { termEl.innerHTML = done.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n') + '\n<span class="acid">' + esc('> READY — awaiting command') + '</span>'; onDone(); }
-      }
-    };
-    render(); step();
-  }
+    const glassMat = new THREE.MeshStandardMaterial({ color: 0x1b2420, emissive: 0x2ede82, emissiveIntensity: 0.25, metalness: 0.3, roughness: 0.4 });
+    // phone
+    const phone = makeItem(new THREE.BoxGeometry(0.78, 1.5, 0.07), glassMat, -0.85, -0.55, 0.05, [0, 0.35, 0.12]);
+    const phoneScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 1.32), new THREE.MeshBasicMaterial({ color: 0x0a2a18 }));
+    phoneScreen.position.set(0, 0, 0.05); phone.add(phoneScreen);
+    // cables (tube along curve)
+    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(-0.4, -0.6, 0.1), new THREE.Vector3(0.1, -0.2, 0.3), new THREE.Vector3(0.45, -0.5, 0.05), new THREE.Vector3(0.8, -0.2, 0.25)]);
+    const cable = new THREE.Mesh(new THREE.TubeGeometry(curve, 24, 0.045, 8), new THREE.MeshStandardMaterial({ color: 0x151a1d, metalness: 0.4, roughness: 0.6 }));
+    drawerGroup.add(cable); items.push(cable);
+    const cable2 = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(1.0, -0.7, 0.0), new THREE.Vector3(1.3, -0.3, 0.2), new THREE.Vector3(1.55, -0.6, -0.05)]), 20, 0.035, 8), new THREE.MeshStandardMaterial({ color: 0x20262a, metalness: 0.35, roughness: 0.6 }));
+    drawerGroup.add(cable2); items.push(cable2);
+    // battery
+    const battery = makeItem(new THREE.BoxGeometry(0.62, 0.3, 0.95), new THREE.MeshStandardMaterial({ color: 0x2a2f33, metalness: 0.5, roughness: 0.5 }), 0.35, -0.7, 0.3, [0.1, -0.3, 0.2]);
+    // charger
+    const charger = makeItem(new THREE.BoxGeometry(0.5, 0.5, 0.14), new THREE.MeshStandardMaterial({ color: 0x1c2125, metalness: 0.6, roughness: 0.45 }), -0.2, -0.75, -0.4, [0.2, 0.5, -0.1]);
+    const prong = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.3, 8), new THREE.MeshStandardMaterial({ color: 0x8a939b, metalness: 0.9, roughness: 0.25 }));
+    prong.position.set(0.14, -0.36, 0); charger.add(prong);
+    // pcb
+    const pcb = makeItem(new THREE.BoxGeometry(1.3, 0.05, 0.9), new THREE.MeshStandardMaterial({ color: 0x0f3d22, roughness: 0.6 }), 0.6, -0.55, -0.55, [0.1, 0.2, 0.05]);
+    const pcbLine = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.3, 0.05, 0.9)), new THREE.LineBasicMaterial({ color: 0xb9ff3f, transparent: true, opacity: 0.6 }));
+    pcbLine.position.copy(pcb.position); pcbLine.rotation.copy(pcb.rotation); drawerGroup.add(pcbLine);
 
-  /* ---------- wordmark scramble ---------- */
-  const FULL = 'VIKAAS';
-  const CHARS = '!<>-_\\/[]{}—=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let scrambleTimer = null;
-
-  function runScramble() {
-    if (fast || reduce) { wordEl.textContent = FULL; return; }
-    let frame = 0;
-    const total = 90;
-    const tick = () => {
-      const p = frame / total;
-      const reveal = Math.floor(p * FULL.length);
-      let out = '';
-      for (let i = 0; i < FULL.length; i++) {
-        out += i < reveal ? FULL[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
-      }
-      wordEl.textContent = out;
-      if (Math.random() < 0.05) { wordEl.classList.add('glitching'); setTimeout(() => wordEl.classList.remove('glitching'), 300); }
-      frame++;
-      if (frame <= total) scrambleTimer = setTimeout(tick, 34);
-      else wordEl.textContent = FULL;
-    };
-    tick();
-  }
-
-  /* ---------- progress ---------- */
-  const DUR = reduce || fast ? 50 : 5200;
-  let p = 0, done = false;
-
-  function progressLoop() {
-    if (done) return;
-    p += 100 / DUR * (1000 / 60) * (fast || reduce ? 0.35 : 1);
-    if (p >= 100) { p = 100; done = true; }
-    const eased = 1 - Math.pow(1 - p / 100, 3);
-    pctEl.innerHTML = String(Math.round(p)).padStart(3, '0') + '<small>%</small>';
-    ringFg.style.strokeDashoffset = RING_LEN * (1 - eased);
-    barFill.style.width = eased * 100 + '%';
-    if (!done) requestAnimationFrame(progressLoop);
-  }
-
-  /* ---------- dust canvas ---------- */
-  const cv = $('#dust'), cx = cv.getContext('2d');
-  let W, H, parts = [];
-  function sizeCanvas() { W = cv.width = innerWidth; H = cv.height = innerHeight; }
-  sizeCanvas(); addEventListener('resize', sizeCanvas);
-  const COLORS = ['185,255,63', '46,222,130', '255,211,77', '234,255,244'];
-  for (let i = 0; i < 70; i++) parts.push({
-    x: Math.random() * innerWidth, y: Math.random() * innerHeight,
-    r: 0.6 + Math.random() * 1.8, vy: 0.08 + Math.random() * 0.35,
-    vx: (Math.random() - 0.5) * 0.12, c: COLORS[i % 4], tw: Math.random() * 6.28,
-  });
-  let dustOn = true;
-  (function dustLoop() {
-    if (!dustOn) return;
-    cx.clearRect(0, 0, W, H);
-    for (const q of parts) {
-      q.y -= q.vy; q.x += q.vx + Math.sin(q.tw) * 0.05; q.tw += 0.02;
-      if (q.y < -4) { q.y = H + 4; q.x = Math.random() * W; }
-      if (q.x < -4) q.x = W + 4; if (q.x > W + 4) q.x = -4;
-      const a = 0.25 + 0.55 * (0.5 + 0.5 * Math.sin(q.tw * 2));
-      cx.beginPath(); cx.arc(q.x, q.y, q.r, 0, 6.283);
-      cx.fillStyle = 'rgba(' + q.c + ',' + a + ')'; cx.fill();
+    // ---- PARTICLES (dust) ----
+    const N = 420, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+    const palette = [[0.72, 1, 0.25], [0.18, 0.87, 0.51], [1, 0.83, 0.3], [0.92, 0.94, 0.96]];
+    for (let i = 0; i < N; i++) {
+      const r = 2.2 + Math.random() * 5.5, a = Math.random() * Math.PI * 2, y = (Math.random() - 0.5) * 6;
+      pos[i * 3] = Math.cos(a) * r; pos[i * 3 + 1] = y; pos[i * 3 + 2] = Math.sin(a) * r;
+      const c = palette[i % 4]; col[i * 3] = c[0]; col[i * 3 + 1] = c[1]; col[i * 3 + 2] = c[2];
     }
-    requestAnimationFrame(dustLoop);
+    const pg = new THREE.BufferGeometry();
+    pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    pg.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const pm = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false });
+    particles = new THREE.Points(pg, pm); scene.add(particles);
+
+    addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
+  }
+  initThree();
+
+  /* ---------- render loop (bob + parallax) ---------- */
+  let mx = 0, my = 0, camX = 0;
+  addEventListener('pointermove', (e) => { mx = (e.clientX / innerWidth - 0.5); my = (e.clientY / innerHeight - 0.5); }, { passive: true });
+  (function loop() {
+    if (THREE_OK) {
+      camX += (mx * 0.9 - camX) * 0.05;
+      camera.position.x = camX;
+      camera.position.y += ((1.1 + my * 0.5) - camera.position.y) * 0.05;
+      camera.lookAt(0, -0.3, 0);
+      if (particles) particles.rotation.y += 0.0006;
+      items.forEach((it, i) => { if (it.userData.bob !== undefined) it.position.y = it.userData.baseY + Math.sin(performance.now() * 0.0012 + i * 1.7) * 0.05; });
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(loop);
   })();
 
-  /* ---------- audio ---------- */
-  const SOUNDS = { boot: null, enter: null };
-  function loadAudio() {
-    const base = 'assets/audio/';
-    const mk = (name) => { const a = new Audio(base + name + '.wav'); a.volume = 0.8; return a; };
-    SOUNDS.boot = mk('boot'); SOUNDS.enter = mk('enter');
+  /* ---------- AUDIO (unlocked on first gesture) ---------- */
+  let unlocked = false;
+  const unlock = () => {
+    if (unlocked) return; unlocked = true;
+    const a = new Audio('assets/audio/boot.wav'); a.volume = 0.7; a.play().catch(() => {});
+  };
+  ['wheel', 'touchstart', 'pointerdown'].forEach((ev) => addEventListener(ev, unlock, { passive: true, once: true }));
+  const whoosh = () => {
+    if (!unlocked) return;
+    try {
+      const C = new (window.AudioContext || window.webkitAudioContext)();
+      const len = C.sampleRate * 0.7, buf = C.createBuffer(1, len, C.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+      const src = C.createBufferSource(); src.buffer = buf;
+      const f = C.createBiquadFilter(); f.type = 'bandpass'; f.frequency.setValueAtTime(300, C.currentTime); f.frequency.exponentialRampToValueAtTime(2400, C.currentTime + 0.6); f.Q.value = 1.1;
+      const g = C.createGain(); g.gain.value = 0.12;
+      src.connect(f); f.connect(g); g.connect(C.destination); src.start();
+    } catch (e) {}
+  };
+
+  /* ---------- MASTER TIMELINE (scroll-scrubbed) ---------- */
+  const tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: { trigger: '#stage', start: 'top top', end: '+=4600', pin: true, scrub: 0.6 },
+    onUpdate: function () {
+      const p = this.progress;
+      railFill.style.height = (p * 100) + '%';
+      // word scramble window
+      if (p > 0.38 && p < 0.52) {
+        const n = Math.min(FULL.length, Math.floor((p - 0.38) / 0.14 * FULL.length));
+        chars.forEach((ch, i) => { ch.textContent = i < n ? FULL[i] : rand(); });
+      }
+      // terminal active cursor line
+      const lineIdx = Math.min(LINES.length - 1, Math.floor(p / 0.14));
+      cursor.style.display = p < 0.1 && lineIdx < LINES.length ? 'inline-block' : 'none';
+    },
+  });
+
+  // HUD + cue
+  tl.to('.hud', { opacity: 1, duration: 0.02 }, 0.005);
+  tl.to('#cue', { opacity: 1, duration: 0.02 }, 0.01);
+
+  // terminal lines reveal
+  termLines.forEach((ln, i) => {
+    tl.fromTo(ln, { opacity: 0.12 }, { opacity: 1, duration: 0.02 }, 0.02 + i * 0.014);
+  });
+
+  // 3D: camera push + lid creak
+  if (THREE_OK) {
+    tl.to(camera.position, { z: 6.6, duration: 0.12 }, 0.08);
+    tl.to(lidPivot.rotation, { x: 0.05, duration: 0.06 }, 0.12);
+    tl.to(lidPivot.rotation, { x: 1.28, duration: 0.18, ease: 'power2.inOut' }, 0.20);
+    tl.to(drawerGroup.position, { y: -0.25, duration: 0.12 }, 0.20);
+    tl.to(drawerGroup.scale, { x: 0.9, y: 0.9, z: 0.9, duration: 0.14 }, 0.20);
+    items.forEach((it, i) => {
+      const dir = (i % 2 ? 1 : -1) * (0.5 + (i % 3) * 0.25);
+      it.userData.baseY = it.position.y;
+      it.userData.bob = true;
+      tl.to(it.position, { y: it.position.y + 1.5 + (i % 3) * 0.4, duration: 0.1, ease: 'power1.out' }, 0.21 + i * 0.012);
+      tl.to(it.rotation, { y: it.rotation.y + 1.2 * dir, duration: 0.1 }, 0.21 + i * 0.012);
+    });
+    tl.to(camera.position, { z: 5.4, duration: 0.16, ease: 'power1.inOut' }, 0.44);
   }
 
-  function finish() {
-    done = true; p = 100;
-    pctEl.innerHTML = '100<small>%</small>';
-    ringFg.style.strokeDashoffset = 0;
-    barFill.style.width = '100%';
-    devEl.classList.add('on');
-    enterBtn.classList.add('show');
-    if (SOUNDS.boot) SOUNDS.boot.play().catch(() => {});
-  }
+  // wordmark assemble (scramble driven in onUpdate; chars pop in)
+  chars.forEach((ch, i) => {
+    tl.fromTo(ch, { yPercent: 130, rotate: 12, scale: 0.7 }, { yPercent: 0, rotate: 0, scale: 1, opacity: 1, duration: 0.035, ease: 'back.out(2)' }, 0.385 + i * 0.012);
+  });
+  tl.call(function () { wordEl.classList.add('glitching'); }, [], 0.40);
+  tl.call(function () { wordEl.classList.remove('glitching'); }, [], 0.403);
+  tl.call(function () { wordEl.classList.add('glitching'); }, [], 0.465);
+  tl.call(function () { wordEl.classList.remove('glitching'); }, [], 0.468);
+  tl.call(whoosh, [], 0.52);
 
+  // stats slam + stamps
+  stats.forEach((s, i) => {
+    tl.fromTo(s, { scale: 0.4, y: 60, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.045, ease: 'back.out(2.2)' }, 0.535 + i * 0.02);
+  });
+  stamps.forEach((s, i) => {
+    tl.fromTo(s, { scale: 2.2, rotate: (i % 2 ? 12 : -12), opacity: 0 }, { scale: 1, rotate: 7, opacity: 1, duration: 0.03, ease: 'back.out(2)' }, 0.60 + i * 0.01);
+  });
+
+  // ReBee fly-by + विकास
+  tl.to(rebee, { opacity: 1, duration: 0.01 }, 0.64);
+  tl.fromTo(rebee, { left: '-22vw' }, { left: '110vw', duration: 0.14, ease: 'power1.in' }, 0.64);
+  tl.to(rebee, { opacity: 0, duration: 0.02 }, 0.78);
+  tl.to(devEl, { opacity: 1, duration: 0.03 }, 0.68);
+  tl.call(whoosh, [], 0.78);
+
+  // big line reveal
+  tl.to(bigline, { clipPath: 'inset(0 0% 0 0)', duration: 0.12, ease: 'power2.inOut' }, 0.78);
+  tl.to(cueEl, { opacity: 0, duration: 0.02 }, 0.85);
+
+  // ENTER
+  tl.to(enterBtn, { opacity: 1, y: 0, scale: 1, duration: 0.06, ease: 'back.out(2)' }, 0.92)
+    .add(() => enterBtn.classList.add('show'), 0.94);
+  tl.to(railFill, { opacity: 1, duration: 0.01 }, 0.95);
+
+  /* ---------- ENTER click ---------- */
   enterBtn.addEventListener('click', () => {
-    if (SOUNDS.enter) SOUNDS.enter.play().catch(() => {});
-    loaderEl.classList.add('leaving');
-    setTimeout(() => { location.href = '../index.html'; }, 1050);
+    if (unlocked) { const a = new Audio('assets/audio/enter.wav'); a.volume = 0.9; a.play().catch(() => {}); }
+    stage.classList.add('leaving');
+    setTimeout(() => { location.href = 'index.html'; }, 1100);
   });
   addEventListener('keydown', (e) => { if (e.key === 'Enter' && enterBtn.classList.contains('show')) enterBtn.click(); });
 
-  /* ---------- boot ---------- */
-  loadAudio();
-  runScramble();
-  runTerminal(() => { if (fast || reduce) finish(); });
-  progressLoop();
-  if (!fast && !reduce) setTimeout(() => { if (!done) finish(); }, DUR + 900);
+  /* ---------- fast / reduced-motion ---------- */
+  if (fast || reduce) {
+    gsap.set('.hud', { opacity: 1 });
+    gsap.set(termLines, { opacity: 1 });
+    gsap.set(chars, { opacity: 1, yPercent: 0, rotate: 0, scale: 1 });
+    gsap.set(stats, { opacity: 1, scale: 1, y: 0 });
+    gsap.set(stamps, { opacity: 1, scale: 1, rotate: 7 });
+    gsap.set(devEl, { opacity: 1 });
+    gsap.set(bigline, { clipPath: 'inset(0 0% 0 0)' });
+    gsap.set(rebee, { opacity: 0 });
+    gsap.set(cueEl, { opacity: 0 });
+    railFill.style.height = '100%';
+    enterBtn.classList.add('show');
+    if (reduce) ScrollTrigger.getAll().forEach((st) => st.disable());
+  }
 })();
