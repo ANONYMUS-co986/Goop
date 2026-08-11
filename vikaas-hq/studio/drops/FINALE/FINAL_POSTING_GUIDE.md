@@ -8,9 +8,9 @@ Everything is verified (22/22 posts + 6/6 reels, hashes in MANIFEST.sha256). No 
 2. **Q1:** upload your IBM mission COMPLETION screenshot (it's on your phone already).
 3. **Q2 (name):** copy-paste from `vikaas-hq/cwc_buddy/BUDDY_BRIEF.md` → the **Q2 block**.
 4. **Q3 (superpower):** paste the **long version** from BUDDY_BRIEF (it name-drops the BBC training film — judges love that; if the box refuses the length, use the short version right under it).
-5. **Q4 (image):** download **`vikaas-hq/cwc_buddy/art/rebee_hero_v2_challenger.png`** from the repo
-   (github.com/ANONYMUS-co986/Goop → branch **arena/019fc480-goop** → vikaas-hq → cwc_buddy → art → file → Download) and upload it.
-   *Why B over A: champion-on-the-e-waste-mountain = the theme is visible before anyone reads a word. A (mascot portrait) is your Insta flex for when they feature it.*
+5. **Q4 (image):** download **`vikaas-hq/cwc_buddy/FINAL_SUBMISSION/rebee_hero_v6_FINAL.png`** from the repo
+   (github.com/ANONYMUS-co986/Goop → branch **arena/019ff044-goop** → vikaas-hq → cwc_buddy → FINAL_SUBMISSION → file → Download) and upload it.
+   *The FINAL hero: ReBee rising from the e-waste drawer, both green eyes blazing, a girl watching in wonder — theme visible before a word is read. Full pack + answers in `FINAL_SUBMISSION/`.*
 6. **Confirm Submit** → **screenshot the confirmation** → send it to me (M2 evidence album + I'll log it).
 
 ---

@@ -1,7 +1,7 @@
 # HOW TO POST — tap-by-tap (phone, ~2 min per asset)
 
 ## 0) GET THE FILES (once)
-1. On your phone browser open: `github.com/ANONYMUS-co986/Goop` → branch **arena/019fc480-goop**
+1. On your phone browser open: `github.com/ANONYMUS-co986/Goop` → branch **arena/019ff044-goop**
 2. Go to `vikaas-hq/studio/drops/FINALE/` → open `videos/` or `posts/` → tap a file → **⬇ download** (••• menu → download, or "view raw").
 3. Files land in **Downloads**. NEVER route them through WhatsApp — it re-compresses and murders the quality. Downloads/Drive only.
 

@@ -1,5 +1,5 @@
 # 📦 THE FINALE — full drop (27 assets)
-**Built 6 Aug 2026 · branch arena/019fc480-goop · verified & hashed**
+**Built 6 Aug 2026 · branch arena/019ff044-goop · verified & hashed**
 
 ```
 FINALE/
