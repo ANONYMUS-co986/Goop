@@ -2,7 +2,9 @@
 **Flash Challenge #2 · "Create a 1M1Bee's AI Buddy" · Deadline: 12 Aug 2026 — ⚠️ TOMORROW: submit TODAY**
 Form: **cwcsubmission.in → F2 tab (the purple one)** · Goal: FEATURED + Bonus Points
 
-> 📱 **QUICKEST ROUTE:** open `SUBMIT_CHEATSHEET.png` (same folder) — it's the whole
+> 📦 **FINAL PACKAGE:** `cwc_buddy/FINAL_SUBMISSION/` — the complete sealed submission
+> (README + the write + both upload files + cheat sheet + MANIFEST.sha256 + QA receipts).
+> 📱 **QUICKEST ROUTE:** open `FINAL_SUBMISSION/SUBMIT_CHEATSHEET.png` — the whole
 > submission on ONE phone screen: all 4 answers + tap-ready links + the hero image.
 
 ---
