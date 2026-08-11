@@ -11,8 +11,8 @@ Open these two links in your phone browser → **long-press the image → Downlo
 | For | File | Link |
 |---|---|---|
 | **Q1** completion proof | `q1_skillsbuild_completion.jpg` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/q1_skillsbuild_completion.jpg |
-| **Q4** superhero image | `rebee_hero_v4_hd.png` (NEW HD portrait) | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v4_hd.png |
-| Q4 backup | `rebee_hero_v3_suitup.png` (champion) | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v3_suitup.png |
+| **Q4** superhero image | `rebee_hero_SCRAPSCAN_v2.png` (THE concept play) | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/art/rebee_hero_SCRAPSCAN_v2.png |
+| Q4 backup | `rebee_hero_TRIUMPH.png` (clean poster) | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/art/rebee_hero_TRIUMPH.png |
 | ⭐ ALL-IN-ONE | `REBEE_SUBMISSION_KIT.zip` (Q1+Q4+answers sheet) | https://github.com/ANONYMUS-co986/Goop/raw/arena/019ff046-goop/vikaas-hq/cwc_buddy/REBEE_SUBMISSION_KIT.zip |
 
 *(Q1 tip: if you still have your own SkillsBuild completion screenshot on your phone, that works too — the repo one is the guaranteed-exact backup, extracted from your PDF.)*
@@ -45,7 +45,8 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 *(If the box refuses the long text → use the SHORT version from `BUDDY_BRIEF.md` §Q3.)*
 
 **Q4 — AI generated image of your superhero.**
-→ Tap **Click to upload image** → choose **`rebee_hero_v4_hd.png`** (same ReBee rising out of the junk drawer — now a taller portrait HD re-render, so it reads better if featured). If you prefer the original aspect, upload `rebee_hero_v3_suitup.png` instead — both are the same character/origin moment.
+→ Tap **Click to upload image** → choose **`rebee_hero_SCRAPSCAN_v2.png`** — the bonus-point concept: ReBee with his **SCRAP-SCAN superpower ACTIVATED**, a green hologram exploding a dead phone into copper + gold + battery + value coins + a recycler pin. It *pictures the Q3 answer*, so Q3 + Q4 read as one unforgettable concept (this is what "most creative" juries reward). Generated with a hard no-text constraint so the hologram stays clean.
+→ If you prefer a cleaner no-hologram poster, upload `rebee_hero_TRIUMPH.png` instead (hero fist-raised on the e-waste mountain at sunrise, cape flying). Both are portrait, both are the same ReBee character.
 
 ## STEP 3 — Submit + prove it
 1. Tap the yellow **Confirm Submit**.
