@@ -277,3 +277,101 @@ DRAMATISED).
 **The loop (every phase, non-negotiable):** `node engine/suite.js verify <url>` +
 `node engine/suite.js qa <url>` → `pix.py stats/ascii` on the beats → 0 errors +
 0 overlaps + clickable CTAs = ship. Then YOU review. Then next phase.
+
+
+---
+
+## 12. PER-PAGE ANIMATION MAP (the complete plan — every room, every anim)
+
+> Doctrine: think → research → map EVERY anim → lock timeline → build → self-review → commit.
+> Every page below ships with this map executed. Self-review gates: `suite.js verify` desktop+mobile PASS.
+
+### ROOM 00 — THE BOOT (loader.html) ✅ BUILT
+| # | Anim | Trigger | Technique |
+|---|---|---|---|
+| 1 | HUD + chapter labels fade | scroll 0% | GSAP opacity, CHAPTERS array synced to progress |
+| 2 | Terminal 7 lines reveal | scroll 2–10% | scroll-linked opacity per line |
+| 3 | Camera push-in | 8–20% | cam-object tween (codrops pattern) + lerp loop |
+| 4 | Lid creak → swing open | 12–38% | pivot rotation power2.inOut |
+| 5 | LIGHT SPILL ignites | 22% | point light intensity 0→9 |
+| 6 | E-waste floats + orbits | 21–38% | y tween + spin loop (bob+spin) |
+| 7 | VIKAAS scramble-assembles | 38–52% | char scramble onUpdate + back.out pops |
+| 8 | Glitch bursts | 40/46% | CSS glitch keyframes |
+| 9 | Word pulse-glow + float | 50%+ | CSS pulseGlow + yoyo y-tween |
+| 10 | Stats slam + stamps | 52–64% | back.out(2.2) + stamp rotate-in |
+| 11 | ReBee arc fly | 64–78% | left tween + glow drop-shadow |
+| 12 | विकास fades | 68% | opacity |
+| 13 | Big line char-stagger | 78–90% | SplitType yPercent 120 + back.out |
+| 14 | ENTER pill | 88–100% | pop + pulse glow + click → acid exit |
+| FX | scan sweep · rail + % · dust canvas · whooshes | continuous | CSS scan + WebAudio |
+
+### ROOM 01 — THE GATE (index.html) ✅ BUILT
+| # | Anim | Trigger | Technique |
+|---|---|---|---|
+| 1 | Aurora blobs drift | load | CSS radial gradients, 3 blobs, 16–27s alternate |
+| 2 | Glass nav drops | load 0.05s | y -80 → 0, vx ease |
+| 3 | VIKAAS chars slam | load 0.2s | SplitType chars, back.out(1.7), stagger 0.05 |
+| 4 | विकास pops | load 0.9s | scale pop ease |
+| 5 | Sub words blur-in | load 1.05s | BlurText: filter blur(10px)→0, stagger 0.018 |
+| 6 | Chips pop + count-up | load 1.4s | pop ease + countUp rAF |
+| 7 | Cue fades | load 1.9s | opacity |
+| 8 | Manifesto lines blur-reveal | scroll | blur(14px)→0 + y 46→0, once per line |
+| 9 | Spotlight stats slam + count | scroll | radial --mx/--my spotlight + back.out + countUp |
+| 10 | Room cards stagger + 3D tilt | scroll | back.out stagger + pointer rotateX/Y |
+| 11 | ReBee parallax + tilt | scroll | yPercent scrub + perspective tilt |
+| 12 | Powers reveal | scroll | staggered rise |
+| 13 | Footer big line | scroll | y 50→0 vx |
+
+### ROOM 02 — THE DRAWER (drawer.html) — PHASE 3 · PLANNED
+| # | Anim | Trigger | Technique |
+|---|---|---|---|
+| 1 | Pinned photo reveal | scroll pin | clip-path inset sweep (drawer opens) |
+| 2 | Truth lines rise | scrub | y+opacity per line, power3 |
+| 3 | "15 RECYCLERS. 0 DOORSTEPS." slam | scrub | scale back.out + red flash |
+| 4 | LetterGlitch transition | section change | clip-path slices + text-shadow rgb split |
+| 5 | Drawer photo ken-burns | scroll | scale 1.02→1.12 scrub |
+| 6 | Ticker speeds up | scroll | animation-duration scale |
+
+### ROOM 03 — THE PROOF (ledger.html) — PHASE 4 · PLANNED
+| 1 | MagicBento stats grid | scroll | bento cells stagger + spotlight |
+| 2 | Scale toy (elastic) | scroll | ElasticSlider physics drag |
+| 3 | Receipt print | scroll | clip-path top→bottom scrub |
+| 4 | Stamps slam | once | back.out + rotate |
+| 5 | DotGrid data viz | scroll | canvas dots + cursor warp |
+| 6 | Count-ups everywhere | view | rAF countUp |
+
+### ROOM 04 — THE KABADI UNIVERSE (kabadi.html) — PHASE 5 · PLANNED
+| 1 | Tier list cards | scroll | stack reveal + tilt |
+| 2 | ₹40 handshake loop | load | infinite yoyo scale/rotate |
+| 3 | Marquee chaos | continuous | 2-speed opposing lanes |
+| 4 | Interview cards | scroll | Flip-in + spotlight |
+| 5 | Map dots pulse | scroll | SVG circle pulse |
+
+### ROOM 05 — THE ARSENAL (films.html) — PHASE 6 · PLANNED
+| 1 | Glass Dock nav | load | magnet + scale-on-hover |
+| 2 | Reel cards glare | hover | GlareHover sheen sweep |
+| 3 | Poster pixel-transition | hover | PixelTransition dissolve |
+| 4 | Hover-play videos | hover | muted play/pause |
+| 5 | ScrollStack | scroll | cards stack on scroll |
+| 6 | Audio lab | click | play/AB/captions |
+
+### ROOM 06 — THE BUDDY (rebee.html) — PHASE 7 · PLANNED
+| 1 | Galaxy/Hyperspeed sky | load | canvas star warp + mouse repulsion |
+| 2 | ReBee TiltedCard | hover | perspective tilt + glare |
+| 3 | Power spotlight cards | scroll | radial spotlight |
+| 4 | SCRAP-SCAN demo | click | hologram scan-line sweep + tags |
+| 5 | Character parade | scroll | image trail / flip cards |
+
+### ROOM 07 — THE SYSTEM (system.html) — PHASE 8 · PLANNED
+| 1 | ImageTrail cursor | hover | images follow cursor |
+| 2 | Threads viz | load | canvas flowing lines |
+| 3 | powers.md interactive | scroll | typewriter + code window |
+| 4 | Receipts of receipts | scroll | stacked receipt cards |
+
+### ROOM ★ — GENEVA (footer of every page) ✅ (in GATE)
+| 1 | Big line reveal | scroll | y + vx |
+| 2 | Links magnet | hover | magnet pull |
+| 3 | Replay boot | click | wipe to loader.html |
+
+### SHARED (every room)
+Cursor v2 (blob+ring+splash+labels) · glass nav + overlay · page wipes · grain/vignette/scanlines · HUD corners + clock · hover blips (WebAudio) · ambient beds per room · reduced-motion + touch fallbacks · suite.js verify PASS before ship.

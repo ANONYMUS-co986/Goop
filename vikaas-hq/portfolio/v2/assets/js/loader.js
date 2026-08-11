@@ -22,6 +22,8 @@
         rebee = $('#rebeeFly'), bigline = $('#bigline h2'), hudTime = $('#hudTime');
   const stats = Array.from(document.querySelectorAll('.stat'));
   const stamps = Array.from(document.querySelectorAll('.stamp'));
+  const CHAPTERS = [['00','IGNITION'],['01','THE SCAN'],['02','THE OPEN'],['03','THE WORD'],['04','THE PROOF'],['05','THE FLIGHT'],['06','THE LINE'],['07','THE DOOR']];
+  const chapterEl = $('#chapter'), railPct = $('#railPct');
 
   /* ---------- HUD clock ---------- */
   const pad = (n) => String(n).padStart(2, '0');
@@ -191,7 +193,12 @@
     scrollTrigger: { trigger: '#stage', start: 'top top', end: '+=4600', pin: true, scrub: 0.6 },
     onUpdate: function () {
       const p = this.progress;
+      if (!isFinite(p)) return;
       railFill.style.height = (p * 100) + '%';
+      const ci = Math.min(CHAPTERS.length - 1, Math.max(0, Math.floor(p * CHAPTERS.length)));
+      const ch = CHAPTERS[ci];
+      if (chapterEl && ch) chapterEl.textContent = ch[0] + ' · ' + ch[1];
+      if (railPct) railPct.textContent = Math.round(p * 100) + '%';
       if (p > 0.38 && p < 0.52) {
         const n = Math.min(FULL.length, Math.floor((p - 0.38) / 0.14 * FULL.length));
         chars.forEach((ch, i) => { ch.textContent = i < n ? FULL[i] : rand(); });
@@ -202,6 +209,7 @@
   });
 
   tl.to('.hud', { opacity: 1, duration: 0.02 }, 0.005);
+  tl.to('#chapter', { opacity: 1, duration: 0.02 }, 0.005);
   tl.to('#cue', { opacity: 1, duration: 0.02 }, 0.01);
 
   termLines.forEach((ln, i) => {
@@ -236,6 +244,7 @@
   tl.call(function () { wordEl.classList.add('glitching'); }, [], 0.465);
   tl.call(function () { wordEl.classList.remove('glitching'); }, [], 0.468);
   tl.call(function () { wordEl.classList.add('pulse'); }, [], 0.50);
+  tl.to(wordEl, { y: -8, yoyo: true, repeat: -1, duration: 1.2, ease: 'sine.inOut' }, 0.55);
   tl.call(whoosh, [], 0.52);
 
   // stats
@@ -275,6 +284,8 @@
   /* ---------- fast / reduced-motion ---------- */
   if (fast || reduce) {
     gsap.set('.hud', { opacity: 1 });
+    if (chapterEl) gsap.set(chapterEl, { opacity: 1 });
+    if (railPct) railPct.textContent = '100%';
     gsap.set(termLines, { opacity: 1 });
     gsap.set(chars, { opacity: 1, yPercent: 0, rotate: 0, scale: 1 });
     gsap.set(stats, { opacity: 1, scale: 1, y: 0 });

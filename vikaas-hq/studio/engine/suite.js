@@ -21,6 +21,8 @@ const OUT = ARGS.find((a) => !a.startsWith('--')) || '/tmp/suite';
 const MOBILE = ARGS.includes('--mobile');
 const beatsArg = ARGS.find((a) => a.startsWith('--beats='));
 const BEATS = beatsArg ? beatsArg.split('=')[1].split(',').map(Number) : [0.05, 0.3, 0.55, 0.85, 0.97];
+const ctaArg = ARGS.find((a) => a.startsWith('--cta='));
+const CTA = ctaArg ? ctaArg.split('=')[1] : '#enter';
 fs.mkdirSync(OUT, { recursive: true });
 
 (async () => {
@@ -65,14 +67,15 @@ fs.mkdirSync(OUT, { recursive: true });
   // final enter clickability
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await page.waitForTimeout(1000);
+  const hasCta = await page.evaluate((sel) => !!document.querySelector(sel), CTA);
   let clickable = false;
-  try { await page.click('#enter', { timeout: 3000 }); clickable = true; } catch (e) { clickable = false; }
+  if (hasCta) { try { await page.click(CTA, { timeout: 3000 }); clickable = true; } catch (e) { clickable = false; } }
   await page.waitForTimeout(400);
-  report.enterClickable = clickable;
+  report.enterClickable = hasCta ? clickable : 'n/a';
   report.leaving = await page.evaluate(() => { const s = document.querySelector('#stage'); return s ? (s.className || '').includes('leaving') : false; }).catch(() => false);
   report.errors = errors;
 
-  const fail = errors.length > 0 || report.beats.some((b) => b.overlaps.term_stats || b.overlaps.stats_enter || b.overlaps.term_enter) || !clickable;
+  const fail = errors.length > 0 || report.beats.some((b) => b.overlaps.term_stats || b.overlaps.stats_enter || b.overlaps.term_enter) || (hasCta && !clickable);
   console.log(JSON.stringify(report, null, 1));
   await browser.close();
   if (MODE === 'verify' && fail) { console.error('SUITE: FAIL'); process.exit(1); }

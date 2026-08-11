@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VIKAAS — BOOT SEQUENCE</title>
+<link rel="stylesheet" href="assets/css/shell.css">
 <meta name="description" content="VIKAAS boot sequence — scroll to initialise the drawer revolution.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23070B08'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='%232EDE82' font-family='Arial Black'>V</text></svg>">
 <style>
@@ -131,6 +132,15 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
   #rebeeFly img{height:min(110px,30vw)}
   #rail{display:none}
 }
+
+/* v3 polish: no native scrollbar (rail is the indicator), chapter HUD, scan sweep */
+html.no-bar{scrollbar-width:none}html.no-bar::-webkit-scrollbar{display:none}
+#chapter{position:absolute;top:22px;left:50%;transform:translateX(-50%);z-index:7;font-size:9.5px;letter-spacing:.3em;color:#56635c;text-transform:uppercase;opacity:0;pointer-events:none}
+#railPct{position:absolute;right:14px;top:calc(50% + 22vh);transform:translateX(50%);z-index:7;font-size:9px;letter-spacing:.2em;color:#41524a;pointer-events:none}
+.scan{position:absolute;left:0;right:0;height:140px;z-index:6;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(185,255,63,.06),transparent);animation:scan 7s linear infinite}
+@keyframes scan{0%{top:-20%}100%{top:120%}}
+@media(max-width:760px){#chapter,#railPct{display:none}}
+
 @media (prefers-reduced-motion:reduce){#word.glitching,#word.pulse{animation:none}}
 </style>
 </head>
@@ -170,6 +180,9 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
     <div id="cue">SCROLL TO INITIALISE</div>
     <button id="enter">ENTER THE DRAWER <span>→</span></button>
 
+    <div id="chapter" class="cmd">00 · IGNITION</div>
+    <div id="railPct">0%</div>
+    <div class="scan"></div>
     <div class="scanlines"></div>
     <div class="vignette"></div>
     <div class="grain"></div>
@@ -180,6 +193,7 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/three.min.js"></script>
 <script src="assets/vendor/SplitType.min.js"></script>
+<script src="assets/js/shell.js"></script>
 <script src="assets/js/loader.js"></script>
 </body>
 </html>
