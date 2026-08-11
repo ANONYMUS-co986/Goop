@@ -1,0 +1,135 @@
+/* ============================================================
+   VIKAAS v2 — SHELL (shared across every page)
+   tokens · scrollbar · cursor v2 · glass nav · overlay · wipe · grain/HUD
+   ============================================================ */
+@font-face{font-family:'Anton';src:url('../fonts/Anton.ttf');font-display:swap}
+@font-face{font-family:'Grotesk';src:url('../fonts/SpaceGrotesk.ttf');font-display:swap}
+@font-face{font-family:'Devnag';src:url('../fonts/NotoSansDevanagari.ttf');font-display:swap}
+:root{
+  --ink:#040605; --ink2:#0a0f0c; --paper:#EFE9DC; --dew:#EAFFF4;
+  --acid:#B9FF3F; --green:#2EDE82; --red:#FF4D5E; --gold:#FFD34D; --violet:#A78BFA; --mute:#4c5851;
+  --glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  --glass-border:rgba(255,255,255,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monospace;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+.anton{font-family:'Anton','Devnag',sans-serif;font-weight:400}
+.cmd{font-family:'Grotesk','Devnag',monospace;letter-spacing:.24em;text-transform:uppercase}
+
+/* ---------- SCROLLBAR (beautiful, brand) ---------- */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--green),var(--acid));border-radius:99px;border:2px solid var(--ink)}
+::-webkit-scrollbar-thumb:hover{background:var(--acid)}
+html{scrollbar-width:thin;scrollbar-color:var(--green) var(--ink)}
+html.no-bar{scrollbar-width:none}
+html.no-bar::-webkit-scrollbar{display:none}
+
+/* ---------- CURSOR v2 (blob + ring + splash + labels) ---------- */
+.has-cur, .has-cur a, .has-cur button, .has-cur [data-cursor]{cursor:none}
+.cur-blob{position:fixed;top:0;left:0;z-index:9999;width:10px;height:10px;border-radius:50%;
+  background:var(--acid);box-shadow:0 0 18px rgba(185,255,63,.8),0 0 44px rgba(185,255,63,.35);
+  pointer-events:none;transition:width .25s cubic-bezier(.34,1.56,.64,1),height .25s cubic-bezier(.34,1.56,.64,1),background .25s}
+.cur-ring{position:fixed;top:0;left:0;z-index:9998;width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(185,255,63,.45);pointer-events:none;
+  transition:width .3s cubic-bezier(.34,1.56,.64,1),height .3s cubic-bezier(.34,1.56,.64,1),border-color .3s}
+.cur-lab{position:fixed;top:0;left:0;z-index:9999;font-family:'Grotesk',monospace;font-size:9px;letter-spacing:.24em;
+  color:var(--ink);background:var(--acid);border-radius:999px;padding:6px 12px;pointer-events:none;
+  opacity:0;transform:translate(-50%,-50%);transition:opacity .18s;white-space:nowrap;font-weight:700}
+.cur-lab.on{opacity:1}
+.cur-splash{position:fixed;inset:0;z-index:9997;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.cur-blob,.cur-ring{display:none}}
+
+/* ---------- GLASS NAV ---------- */
+.gnav{position:fixed;top:14px;left:14px;right:14px;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 20px;border-radius:18px;
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:0 16px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.gnav-brand{font-size:21px;color:var(--paper);letter-spacing:.02em}
+.gnav-brand span{color:var(--acid)}
+.gnav-tag{font-size:9px;letter-spacing:.3em;color:var(--mute);display:none}
+@media(min-width:760px){.gnav-tag{display:block}}
+.gnav-menu{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.24em;color:var(--dew);
+  background:none;border:1px solid var(--glass-border);border-radius:999px;padding:9px 16px;cursor:pointer;transition:border-color .25s,color .25s}
+.gnav-menu:hover{border-color:var(--acid);color:var(--acid)}
+.gnav-menu i{width:4px;height:4px;border-radius:50%;background:var(--green);display:inline-block}
+.gnav-menu i:nth-child(2){opacity:.6}.gnav-menu i:nth-child(3){opacity:.3}
+.gnav-menu:hover i:nth-child(1){transform:translateY(-2px)}
+.gnav-menu:hover i:nth-child(3){transform:translateY(2px)}
+
+/* ---------- OVERLAY NAV ---------- */
+.gnov{position:fixed;inset:0;z-index:120;background:rgba(4,6,5,.96);backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,6vw,80px);
+  opacity:0;pointer-events:none;transform:translateY(-2.5%);transition:opacity .35s,transform .35s}
+.gnov.on{opacity:1;pointer-events:auto;transform:none}
+.gnov-x{position:absolute;top:24px;right:28px;background:none;border:1px solid var(--glass-border);color:var(--mute);
+  border-radius:999px;padding:10px 18px;font-size:10px;letter-spacing:.24em;cursor:pointer}
+.gnov-x:hover{color:var(--red);border-color:var(--red)}
+.gnov-hd{color:var(--green);font-size:10px;margin-bottom:16px}
+.gnov-list{display:grid;gap:2px;max-width:920px}
+.gn-item{display:flex;align-items:baseline;gap:clamp(12px,3vw,26px);padding:clamp(7px,1.4vh,12px) 4px;
+  border-bottom:1px solid #141b1720;color:var(--dew)}
+.gn-item .no{font-size:10px;letter-spacing:.3em;color:var(--mute);width:30px}
+.gn-item .tt{font-size:clamp(24px,5vh,44px);line-height:1;color:var(--paper);transition:color .2s}
+a.gn-item:hover .tt{color:var(--acid)}
+.gn-item .st{margin-left:auto;font-size:9px;letter-spacing:.2em;color:var(--mute);white-space:nowrap}
+.gn-item .st.live{color:var(--green)}
+.gn-item .st.now{color:var(--ink);background:var(--acid);border-radius:999px;padding:4px 10px;font-weight:700}
+.gn-item.locked{opacity:.4;pointer-events:none}
+.gnov-ft{position:absolute;bottom:24px;left:clamp(24px,6vw,80px);color:#3f4a44;font-size:10px;letter-spacing:.16em}
+body.navlock{overflow:hidden}
+
+/* ---------- WIPE ---------- */
+.vwipe{position:fixed;inset:0;z-index:9996;background:var(--acid);transform:scaleY(0);transform-origin:top;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:34px;letter-spacing:.02em}
+.vwipe.in2{transition:transform .38s cubic-bezier(.76,0,.24,1);transform:scaleY(1)}
+.vwipe.in{transform:scaleY(1);transform-origin:bottom}
+.vwipe.in.out{transition:transform .5s cubic-bezier(.76,0,.24,1) .15s;transform:scaleY(0)}
+
+/* ---------- GRAIN / VIGNETTE / HUD ---------- */
+body::after{content:"";position:fixed;inset:-50px;z-index:9990;pointer-events:none;opacity:.05;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.vig{position:fixed;inset:0;z-index:9990;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.5))}
+.hud{position:fixed;z-index:70;font-size:9px;letter-spacing:.28em;color:#3d4942;text-transform:uppercase;pointer-events:none}
+.hud b{color:#56635c;font-weight:400}
+.hud-tl{top:86px;left:24px}.hud-tr{top:86px;right:24px;text-align:right}
+.hud-bl{bottom:18px;left:24px}.hud-br{bottom:18px;right:24px;text-align:right}
+@media(max-width:760px){.hud{display:none}}
+
+/* ---------- SHARED bits ---------- */
+.eyebrow{color:var(--green);font-size:clamp(10px,1.5vw,13px);letter-spacing:.3em;margin-bottom:clamp(14px,2.5vh,26px);text-transform:uppercase}
+.section-title{font-family:'Anton','Devnag',sans-serif;font-weight:400;font-size:clamp(38px,7vw,88px);line-height:.95;color:var(--paper);letter-spacing:.01em;text-transform:uppercase}
+.section-title span{display:block;color:var(--mute);font-size:.42em;letter-spacing:.14em;margin-top:6px}
+.glass{background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%)}
+.stamp{display:inline-block;font-family:'Anton','Devnag';font-weight:400;font-size:13px;letter-spacing:.1em;padding:4px 11px;border-radius:6px;border:2px solid;transform:rotate(-4deg);background:var(--ink)}
+.st-green{color:var(--green);border-color:var(--green)}
+.st-gold{color:var(--gold);border-color:var(--gold)}
+.st-red{color:var(--red);border-color:var(--red)}
+.st-violet{color:var(--violet);border-color:var(--violet)}
+
+/* ---------- NEBULA (deep-space bg) ---------- */
+.nebula{position:absolute;inset:-10%;z-index:0;pointer-events:none;filter:blur(56px);overflow:hidden}
+.nebula i{position:absolute;border-radius:50%;mix-blend-mode:screen;animation:nb 22s ease-in-out infinite alternate}
+.nebula i:nth-child(1){width:52vmax;height:52vmax;left:-8%;top:-14%;background:radial-gradient(circle at 35% 35%,rgba(46,222,130,.30),transparent 62%)}
+.nebula i:nth-child(2){width:44vmax;height:44vmax;right:-6%;top:-6%;background:radial-gradient(circle at 55% 45%,rgba(185,255,63,.20),transparent 60%);animation-duration:27s;animation-delay:-8s}
+.nebula i:nth-child(3){width:40vmax;height:40vmax;left:18%;bottom:-16%;background:radial-gradient(circle at 50% 50%,rgba(167,139,250,.24),transparent 58%);animation-duration:31s;animation-delay:-15s}
+.nebula i:nth-child(4){width:30vmax;height:30vmax;right:14%;bottom:-8%;background:radial-gradient(circle at 50% 50%,rgba(255,211,77,.15),transparent 60%);animation-duration:19s;animation-delay:-4s}
+@keyframes nb{0%{transform:translate3d(0,0,0) scale(1);opacity:.42}50%{transform:translate3d(3%,-2%,0) scale(1.12);opacity:.64}100%{transform:translate3d(-2%,3%,0) scale(.95);opacity:.46}}
+
+/* ---------- text FX ---------- */
+.glow-hover{transition:color .25s,text-shadow .25s}
+.glow-hover:hover{color:var(--acid);text-shadow:0 0 10px rgba(185,255,63,.75),0 0 34px rgba(185,255,63,.35)}
+.shiny{background:linear-gradient(110deg,#9aa59e 18%,var(--acid) 40%,#fff 50%,var(--acid) 60%,#9aa59e 82%);background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5.5s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+.grad-text{background:linear-gradient(90deg,var(--paper),var(--acid),var(--green),var(--paper));background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:grad 6s linear infinite}
+@keyframes grad{to{background-position:300% 0}}
+.section-title{transition:text-shadow .35s}
+.section-title:hover{text-shadow:0 0 34px rgba(185,255,63,.55)}
+
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
