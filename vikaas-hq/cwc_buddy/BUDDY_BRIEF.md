@@ -7,11 +7,22 @@
 Upload **`q1_skillsbuild_completion.jpg`** (exported from your PDF — "Completed 2 of 2" on the exact mission channel) — or your own phone screenshot of the same screen. DONE ✅ (you completed this 07 Aug.)
 
 ### Q2 — Your AI Superhero's name
+**One-liner** (tiny box):
+```
+ReBee (री-बी) — 1M1Bee's new buddy. REduce·REuse·REcycle + BEE. Born in a Gurugram drawer.
+```
+
+**Full:**
 ```
 ReBee (री-बी) — from REduce · REuse · REcycle + BEE. 1M1Bee's brand-new buddy, hatched from an electronics drawer in Gurugram.
 ```
 
 ### Q3 — Your superhero's special ability or superpower
+**Ultra-short version** (if the box is tiny):
+```
+ReBee's superpower is SCRAP-SCAN: his AI visor reads any dead device and shows what's inside, what a kabadiwala will pay (≈₹40), and the nearest authorised recycler (15 in Haryana). His second power, DOORSTEP DIAL, gets a recycler to pick up e-waste from your home. Mission: NO DRAWER LEFT BEHIND.
+```
+
 **Short version** (if the box is small):
 ```
 ReBee's superpower is SCRAP-SCAN: his AI visor identifies any dead device and shows a hologram tag — what's inside (copper, lithium, ~0.03 g gold per phone, roughly), what a kabadiwala will PAY for it today (≈ ₹40 — they pay YOU), and the nearest government-authorised recycler (15 in Haryana). His second power, DOORSTEP DIAL, books a pickup to your home, so nobody has to move. Mission: NO DRAWER LEFT BEHIND — weigh it, earn from it, recycle it. 1M1Bee collects pledges; ReBee collects proof (1.4 kg already weighed, ₹40 earned, receipts kept).
@@ -27,7 +38,11 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 
 ### Q4 — AI generated image of your superhero
 Upload **`art/rebee_hero_v3_suitup.png`** — WON the 3-way playoff: superhero origin moment, rising from the junk drawer with parts magnetically assembling. Why it beats the others: (1) standard superhero shot would show a city — THIS pictures the PROBLEM (dead phones, tangled cables, one cracked screen) = wordless theme-match to the brief; (2) round bee body stays character-consistent with the poster/action shots; (3) Q2 text says "hatched from an electronics drawer in Gurugram" — this IS that moment; (4) one eye powering on = "just born" narrative charm.
+- **v4 optional swap (11 Aug):** `art/rebee_hero_v4_contender.png` — same character, brighter scene, way more copper body + bee-stripe yellow visible. Pixel-QA'd (1376×768, palette-consistent). Only swap if YOU prefer it after looking at both; the guide defaults to v3.
 (Runner-up `art/rebee_hero_v3_hover.png` = gorgeous Iron-Man-style flight pose → saved as a later Insta flex asset; `art/rebee_hero_v2_challenger.png` champion-pose kept for posts.)
+
+### 📱 The one-screen kit
+`SUBMIT_CHEATSHEET.png` = the entire submission on one phone screen (all 4 answers, tap-ready links, hero image, deadline). Rendered + QA'd by the in-sandbox browser (1080×1920). Use it as the fastest route.
 
 ---
 
