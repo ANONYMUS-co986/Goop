@@ -17,6 +17,7 @@ main{position:relative;z-index:2}
 .hero-inner{position:relative;z-index:2;max-width:1200px}
 .gate-title{font-size:clamp(76px,17vw,230px);line-height:.9;color:var(--paper);letter-spacing:.01em;white-space:nowrap;position:relative}
 .gate-title .dev{font-family:'Devnag','Anton',sans-serif;font-size:.34em;vertical-align:middle;margin-left:.14em;color:var(--green);text-shadow:0 0 24px rgba(46,222,130,.5)}
+.gate-title .en{display:inline-block}
 .gate-title .ch{display:inline-block;opacity:0}
 .gate-title .dev{opacity:0}
 .gate-sub{max-width:660px;margin-top:clamp(18px,3vh,30px);font-size:clamp(15px,2vw,19px);line-height:1.75;color:#c8d0ca}
@@ -62,7 +63,7 @@ main{position:relative;z-index:2}
 /* ---------- ROOMS ---------- */
 #rooms{border-top:1px solid #16201a;padding:clamp(50px,9vh,90px) 0}
 .rooms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:clamp(24px,4vh,44px)}
-.room-card{position:relative;border-radius:20px;padding:28px;min-height:200px;overflow:hidden;
+.room-card{transition:border-color .3s,box-shadow .3s,transform .25s cubic-bezier(.2,.9,.2,1);position:relative;border-radius:20px;padding:28px;min-height:200px;overflow:hidden;
   background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   box-shadow:0 24px 70px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08);
   transition:border-color .3s,box-shadow .3s;transform-style:preserve-3d;will-change:transform;opacity:0;transform:translateY(30px)}

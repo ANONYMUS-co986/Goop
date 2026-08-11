@@ -27,6 +27,9 @@ main{position:relative;z-index:2}
   box-shadow:0 24px 70px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1);
   transform-origin:top;transition:transform .8s cubic-bezier(.2,.9,.2,1);transform-style:preserve-3d}
 .toy-front.gone{transform:rotateX(-96deg)}
+.drawer-toy.open .toy-front{transform:rotateX(-96deg)}
+.drawer-toy.open .toy-item{transform:translateY(0)}
+.drawer-toy.open .toy-inside{border-color:rgba(185,255,63,.35);box-shadow:inset 0 0 60px rgba(185,255,63,.06)}
 .toy-label{font-size:34px;color:var(--acid);letter-spacing:.08em;text-shadow:0 0 24px rgba(185,255,63,.5)}
 .toy-handle{width:150px;height:16px;border-radius:99px;background:linear-gradient(180deg,#3a4348,#20262a);box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
 .toy-inside{position:absolute;inset:0;z-index:1;border-radius:14px;display:flex;align-items:flex-end;justify-content:center;gap:14px;padding:26px;

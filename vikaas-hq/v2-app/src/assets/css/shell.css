@@ -133,3 +133,12 @@ body::after{content:"";position:fixed;inset:-50px;z-index:9990;pointer-events:no
 .section-title:hover{text-shadow:0 0 34px rgba(185,255,63,.55)}
 
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+/* ---------- PAGE WIPE (route transitions) ---------- */
+.pagewipe{position:fixed;inset:0;z-index:9996;background:var(--acid);transform:scaleY(0);transform-origin:top;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.pagewipe span{font-family:'Anton','Devnag',sans-serif;font-size:clamp(30px,6vw,60px);letter-spacing:.04em}
+
+/* ---------- SCROLL PROGRESS ---------- */
+.scrollprog{position:fixed;top:0;left:0;right:0;height:3px;z-index:95;pointer-events:none}
+.scrollprog i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--acid));box-shadow:0 0 10px rgba(185,255,63,.7)}

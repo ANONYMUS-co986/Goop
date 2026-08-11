@@ -41,11 +41,15 @@ export default function Gate() {
 
     // hero load
     if (!fast && !reduce) {
-      const st = new SplitType(title, { types: 'chars' });
-      const chs = (st.chars || []).filter((c) => !c.classList.contains('dev'));
+      const en = title.querySelector('.en');
+      let chs = [];
+      try {
+        const st = new SplitType(en, { types: 'chars' });
+        chs = st.chars || [];
+      } catch (e) { /* fall back to plain fade */ }
       const dev = title.querySelector('.dev');
       gsap.timeline({ defaults: { ease: 'power4.out' } })
-        .fromTo(chs, { yPercent: 130, rotate: 10, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, stagger: 0.05, duration: 1.0, ease: 'back.out(1.7)' }, 0.2)
+        .fromTo(chs.length ? chs : en, { yPercent: 130, rotate: 10, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, stagger: 0.05, duration: 1.0, ease: 'back.out(1.7)' }, 0.2)
         .fromTo(dev, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, 0.9)
         .fromTo(subRef.current.querySelectorAll('.w'), { opacity: 0, filter: 'blur(10px)', y: 12 }, { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.018, duration: 0.7 }, 1.05)
         .fromTo(chipsRef.current.querySelectorAll('.chip'), { opacity: 0, y: 26, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.6, ease: 'back.out(2)' }, 1.4)
@@ -53,6 +57,7 @@ export default function Gate() {
         .fromTo(cueRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.9);
     } else {
       gsap.set([title, subRef.current.querySelectorAll('.w'), chipsRef.current.querySelectorAll('.chip'), cueRef.current], { opacity: 1, y: 0, filter: 'none' });
+      title.querySelectorAll('.ch').forEach((c) => { c.style.opacity = '1'; });
       chipsRef.current.querySelectorAll('[data-count]').forEach(countUp);
     }
 
@@ -66,6 +71,19 @@ export default function Gate() {
     document.querySelectorAll('.room-card').forEach((c, i) => {
       if (reduce) { gsap.set(c, { opacity: 1, y: 0 }); return; }
       gsap.fromTo(c, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out', delay: (i % 3) * 0.09, scrollTrigger: { trigger: c, start: 'top 90%', once: true } });
+    });
+
+
+    // 3D tilt on room cards
+    const cards = document.querySelectorAll('.room-card');
+    cards.forEach((c) => {
+      c.addEventListener('pointermove', (e) => {
+        const b = c.getBoundingClientRect();
+        const rx = ((e.clientY - b.top) / b.height - 0.5) * -6;
+        const ry = ((e.clientX - b.left) / b.width - 0.5) * 8;
+        c.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
+      });
+      c.addEventListener('pointerleave', () => { c.style.transform = ''; });
     });
 
     // footer
@@ -89,7 +107,7 @@ export default function Gate() {
         <div className="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
         <div className="hero-inner">
           <p className="eyebrow cmd shiny" id="heEyebrow">1M1B CHANGEMAKERS WORLD CUP 2026 <span>· TRACK: KILL THE E-WASTE</span></p>
-          <h1 className="anton gate-title" ref={titleRef}>VIKAAS<span className="dev">विकास</span></h1>
+          <h1 className="anton gate-title" ref={titleRef}><span className="en">VIKAAS</span><span className="dev">विकास</span></h1>
           <p className="gate-sub" ref={subRef}>
             <span className="w">One</span> <span className="w">drawer</span> <span className="w">in</span> <span className="w">Gurugram.</span><br />
             <span className="w">1.4</span> <span className="w">kg</span> <span className="w">of</span> <span className="w">dead</span> <span className="w">electronics</span> <span className="w">—</span> <span className="w">weighed</span> <span className="w">on</span> <span className="w">a</span> <span className="w">kitchen</span> <span className="w">scale.</span>
@@ -103,6 +121,11 @@ export default function Gate() {
         </div>
         <div className="cue" ref={cueRef}>SCROLL<span></span></div>
       </section>
+
+      <div className="ticker"><div className="lane">
+        <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · 0 WORDS <i>✦</i></span>
+        <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · 0 WORDS <i>✦</i></span>
+      </div></div>
 
       <section id="manifesto">
         <div className="wrap">

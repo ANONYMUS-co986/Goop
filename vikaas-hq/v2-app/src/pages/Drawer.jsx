@@ -49,6 +49,18 @@ export default function Drawer() {
     // footer
     if (reduce) gsap.set('.foot-big', { opacity: 1, y: 0 });
     else gsap.fromTo('.foot-big', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out', scrollTrigger: { trigger: '#geneva', start: 'top 88%', once: true } });
+
+    // 3D tilt on the toy
+    const toyEl = toyRef.current;
+    if (toyEl) {
+      toyEl.addEventListener('pointermove', (e) => {
+        const b = toyEl.getBoundingClientRect();
+        const rx = ((e.clientY - b.top) / b.height - 0.5) * -5;
+        const ry = ((e.clientX - b.left) / b.width - 0.5) * 7;
+        toyEl.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      toyEl.addEventListener('pointerleave', () => { toyEl.style.transform = ''; });
+    }
     return () => { ScrollTrigger.getAll().forEach((st) => st.kill()); };
   }, []);
 

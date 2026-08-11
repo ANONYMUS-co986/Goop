@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 
@@ -15,7 +15,21 @@ const ROOMS = [
 
 export default function Shell({ pathname }) {
   const cursorRef = useRef(null);
+  const [prog, setProg] = useState(0);
   const hideNav = pathname === '/boot';
+
+  // scroll progress bar
+  useEffect(() => {
+    if (hideNav) return;
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - innerHeight;
+      setProg(max > 0 ? Math.min(1, h.scrollTop / max) : 0);
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => removeEventListener('scroll', onScroll);
+  }, [hideNav]);
 
   // cursor v2 (blob + ring + splash)
   useEffect(() => {
@@ -75,6 +89,10 @@ export default function Shell({ pathname }) {
 
   if (hideNav) return <div className="vig" />;
 
+  const progressBar = (
+    <div className="scrollprog" aria-hidden="true"><i style={{ width: (prog * 100) + '%' }}></i></div>
+  );
+
   const here = pathname === '/' ? '/boot' : pathname === '/boot' ? '/boot' : pathname;
 
   return (
@@ -102,6 +120,7 @@ export default function Shell({ pathname }) {
       <div className="hud hud-tr cmd" id="hudTime">--:--:-- <b>IST</b></div>
       <div className="hud hud-bl cmd">#EWasteOff <b>·</b> #ChangemakersWorldCup</div>
       <div className="hud hud-br cmd">GURUGRAM <b>·</b> 28.45°N 77.02°E</div>
+      {progressBar}
       <div className="vig" />
     </>
   );
