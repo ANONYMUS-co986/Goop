@@ -195,25 +195,41 @@ Scroll-proof, click ENTER, feel the whoosh. Then tell me: GO for Phase 2, or
 
 ---
 
-## 9. THE BOOT — loader v2 timeline (scroll-scrubbed, 460vh pin)
+## 9. THE BOOT — loader v4 (FINAL): AUTO BOOT → SCROLL UNIVERSE
 
+### FLOW (two phases, one story)
+**PHASE A — AUTO BOOT (~10s, no scroll needed):**
+| t | beat |
+|---|---|
+| 0.0 | boot overlay in (nebula + glass card + sheen) |
+| 0.3–7.0 | terminal TYPES 7 lines char-by-char (cursor, progress bar, status labels) |
+| 7.0–8.4 | VIKAAS wordmark SCRAMBLE + glitch |
+| 8.4–9.4 | "READY." + bar fills |
+| 9.4–10.5 | overlay slides UP (acid) → reveals the 3D stage · "SCROLL TO ENTER THE UNIVERSE" |
+
+**PHASE B — SCROLL UNIVERSE (460vh pinned, scrub):**
 | progress | beat | animation |
 |---|---|---|
-| 0.00 | HUD + cue | "SCROLL TO INITIALISE" pulses · dust particles · 3D drawer closed |
-| 0.02–0.10 | terminal | 7 boot lines reveal (scroll-linked, cursor) |
-| 0.08–0.20 | camera | 3D push-in · lid creaks 3° |
-| 0.20–0.38 | the open | lid swings 73° · e-waste floats out (phone/cables/battery/charger/pcb — all code-built) · drawer recedes |
-| 0.38–0.52 | the word | VIKAAS scramble-assembles char-by-char · glitch bursts at 40/46 · camera pulls in |
-| 0.52–0.64 | the stats | 1.4 KG / ₹40 / 15 / 0 slam with back-out ease · stamps rotate in |
-| 0.64–0.78 | ReBee | fly-by with glow · विकास fades in · whoosh |
-| 0.78–0.90 | the line | NO DRAWER LEFT BEHIND. clip-reveals |
-| 0.92–1.00 | enter | ENTER THE DRAWER pops · click → acid exit → GATE |
+| 0.00–0.02 | HUD + chapter + cue | fades in |
+| 0.05–0.20 | camera | push-in (cam-object tween) · lid creaks 3° |
+| 0.20–0.38 | THE OPEN | **LID FLIPS UP (rotation −1.95, negative x = rises up & back)** · light spill ignites (0→9) · e-waste floats + orbits |
+| 0.38–0.52 | THE WORD | VIKAAS scramble-assembles · glitch bursts · pulse-glow + float (separate tween — infinite repeats MUST NOT live inside scrubbed timelines) |
+| 0.52–0.64 | THE PROOF | stats slam (back.out) + stamps rotate in |
+| 0.64–0.78 | THE FLIGHT | ReBee arcs across · विकास in · whoosh |
+| 0.78–0.90 | THE LINE | big line char-stagger (SplitType) |
+| 0.88–1.00 | THE DOOR | ENTER pill → acid exit → GATE |
 
-Self-review receipts: 9 beats captured, 0 console errors, WebGL ✓, all states verified
-(bug family caught: GSAP onUpdate arg gotcha · tl.call params array · image path ·
-stats/enter overlap — all fixed & receipted).
+**BANKED BUG (this build):** a `repeat:-1` tween inside a scrubbed timeline makes its
+duration infinite → ScrollTrigger progress math collapses (lid never opened, camera
+jumped to end). Infinite loops must be started via `tl.call()` as SEPARATE tweens.
+Verified: lidX 0.005 → −1.851 → −1.95 (opens UP), camZ 7.13 → 6.6 → 5.2.
 
----
+### NEBULA + TEXT FX (reactbits aesthetics, shared shell)
+- `.nebula` — 4 drifting blurred gradient orbs (violet/acid/green/gold), screen blend
+- `.glow-hover` — text glow on hover (acid double-shadow) · `.shiny` — animated
+  sheen eyebrows · `.grad-text` — animated gradient big-lines · section-title
+  hover glow · magnetic `[data-mag]` buttons
+- Expandable room cards (`data-expand`): click to expand teaser + CTA, `+` rotates 45°
 
 ## 10. THE UNIVERSE MAP (the whole world, planned)
 

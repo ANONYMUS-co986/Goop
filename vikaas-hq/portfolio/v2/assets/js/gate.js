@@ -102,6 +102,15 @@
     }
   });
 
+  /* ---------- EXPANDABLE ROOM CARDS ---------- */
+  qsa('.room-card[data-expand]').forEach((c) => {
+    c.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // let the CTA navigate
+      qsa('.room-card.expanded').forEach((o) => { if (o !== c) o.classList.remove('expanded'); });
+      c.classList.toggle('expanded');
+    });
+  });
+
   /* ---------- REBEE: parallax + tilt ---------- */
   const art = $('#rebeeArt');
   if (!reduce) {

@@ -41,9 +41,10 @@
 <main>
   <!-- ============ HERO ============ -->
   <section id="hero">
+    <div class="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="hero-inner">
-      <p class="eyebrow cmd" id="heEyebrow">1M1B CHANGEMAKERS WORLD CUP 2026 <span>· TRACK: KILL THE E-WASTE</span></p>
+      <p class="eyebrow cmd shiny" id="heEyebrow">1M1B CHANGEMAKERS WORLD CUP 2026 <span>· TRACK: KILL THE E-WASTE</span></p>
       <h1 class="anton gate-title" id="gateTitle">VIKAAS<span class="dev">विकास</span></h1>
       <p class="gate-sub" id="gateSub">
         <span class="w">We</span> <span class="w">opened</span> <span class="w">one</span> <span class="w">drawer</span> <span class="w">in</span> <span class="w">Gurugram.</span><br>
@@ -69,7 +70,7 @@
   <!-- ============ MANIFESTO ============ -->
   <section id="manifesto">
     <div class="wrap">
-      <p class="eyebrow cmd">the manifesto</p>
+      <p class="eyebrow cmd shiny">the manifesto</p>
       <div class="mani-lines">
         <p class="mani-line">The drawer had been waiting four years.</p>
         <p class="mani-line">Inside — 1.4 kg of <em>“kuch kaam ka cheez”.</em></p>
@@ -83,7 +84,7 @@
   <!-- ============ STATS BAND ============ -->
   <section id="statsband">
     <div class="wrap">
-      <p class="eyebrow cmd">the evidence · stamped</p>
+      <p class="eyebrow cmd shiny">the evidence · stamped</p>
       <div class="spots" id="spotGrid">
         <div class="spot" data-cursor="WEIGHED"><b><span data-count="1.4" data-dec="1">0.0</span> KG</b><p>weighed on our own kitchen scale — photographed, logged</p><span class="stamp st-green">WEIGHED</span></div>
         <div class="spot" data-cursor="₹40"><b>₹<span data-count="40">0</span></b><p>cash paid at the gate — the kabadi network, alive</p><span class="stamp st-gold">RECEIPT #0001</span></div>
@@ -96,12 +97,14 @@
   <!-- ============ ROOMS ============ -->
   <section id="rooms">
     <div class="wrap">
-      <p class="eyebrow cmd">the universe</p>
+      <p class="eyebrow cmd shiny">the universe</p>
       <h2 class="section-title">CHOOSE YOUR<br><span>ROOM</span></h2>
       <div class="rooms-grid" id="roomGrid">
-        <a class="room-card" href="loader.html" data-cursor="REPLAY">
-          <span class="no cmd">00</span><h3 class="anton">THE BOOT</h3><p>scroll-driven ignition — the drawer opens in 3D</p><span class="badge live">LIVE</span>
-        </a>
+        <div class="room-card" data-expand data-cursor="OPEN">
+          <span class="no cmd">00</span><h3 class="anton glow-hover">THE BOOT</h3><p>scroll-driven ignition — the drawer opens in 3D</p><span class="badge live">LIVE</span>
+          <div class="more"><p class="more-copy">A 10-second automated boot — terminal types, the drawer scans, the universe initialises. Then <b>you</b> scroll it open: lid flips up, e-waste flies, ReBee crosses the sky.</p><a class="more-cta cmd" href="loader.html" data-cursor="REPLAY">REPLAY THE BOOT →</a></div>
+          <span class="xmore anton">+</span>
+        </div>
         <div class="room-card locked" data-cursor="LOCKED">
           <span class="no cmd">02</span><h3 class="anton">THE DRAWER</h3><p>the origin story, pinned and cinematic</p><span class="badge">PHASE 3</span>
         </div>
@@ -126,7 +129,7 @@
     <div class="wrap rebee-grid">
       <div class="rebee-art" id="rebeeArt" data-cursor="SCRAP-SCAN"><img src="../../cwc_buddy/art/rebee_hero_v6_FINAL.png" alt="ReBee — 1M1B's AI buddy"></div>
       <div class="rebee-copy">
-        <p class="eyebrow cmd">flash challenge #2 · 1m1b's ai buddy</p>
+        <p class="eyebrow cmd shiny">flash challenge #2 · 1m1b's ai buddy</p>
         <h2 class="section-title">MEET<span>REBEE · री-बी</span></h2>
         <p class="sub">Built from the problem he solves — capacitor body, phone-glass wings, charger-LED eyes, a weighing-scale chest. His visor reads any dead device: what’s inside, what it’s worth, where it goes.</p>
         <div class="powers">
@@ -141,15 +144,15 @@
 
   <!-- ============ FOOTER / GENEVA ============ -->
   <footer id="geneva">
-    <div class="foot-big anton" id="footBig">NO DRAWER<br>LEFT BEHIND<span>.</span></div>
+    <div class="foot-big anton grad-text" id="footBig">NO DRAWER<br>LEFT BEHIND<span style="color:var(--acid)">.</span></div>
     <div class="foot-row">
       <p class="eyebrow cmd">the goal</p>
       <h2 class="section-title">GENEVA <span>UN · 20 NOV 2026 · 1M1B IMPACT SUMMIT</span></h2>
     </div>
     <div class="foot-links">
-      <a href="loader.html" data-cursor="REPLAY">REPLAY THE BOOT →</a>
-      <a href="https://instagram.com/qwerty_aarav" target="_blank" data-cursor="IG ↗">@qwerty_aarav ↗</a>
-      <a href="https://instagram.com/1m1bfoundation" target="_blank" data-cursor="IG ↗">@1m1bfoundation ↗</a>
+      <a href="loader.html" data-cursor="REPLAY" data-mag class="glow-hover">REPLAY THE BOOT →</a>
+      <a href="https://instagram.com/qwerty_aarav" target="_blank" data-cursor="IG ↗" data-mag class="glow-hover">@qwerty_aarav ↗</a>
+      <a href="https://instagram.com/1m1bfoundation" target="_blank" data-cursor="IG ↗" data-mag class="glow-hover">@1m1bfoundation ↗</a>
     </div>
     <div class="foot-meta cmd">#EWasteOff #ChangemakersWorldCup #1M1B<br>vikaas · gurugram · receipts with taste</div>
   </footer>

@@ -123,6 +123,17 @@
     if (window.ScrollTrigger) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add((t) => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
   }
 
+  /* ---------- MAGNETIC [data-mag] ---------- */
+  if (!touch) qsa('[data-mag]').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const b = el.getBoundingClientRect();
+      const dx = e.clientX - (b.left + b.width / 2), dy = e.clientY - (b.top + b.height / 2);
+      const d = Math.hypot(dx, dy);
+      if (d < 90 + b.width / 2) el.style.transform = 'translate(' + dx * 0.22 + 'px,' + dy * 0.22 + 'px)';
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+  });
+
   /* ---------- AUDIO: hover blips (reused AudioContext) ---------- */
   let AC = null;
   const ac = () => { if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } return AC; };

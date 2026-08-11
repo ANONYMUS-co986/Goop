@@ -23,6 +23,8 @@ const beatsArg = ARGS.find((a) => a.startsWith('--beats='));
 const BEATS = beatsArg ? beatsArg.split('=')[1].split(',').map(Number) : [0.05, 0.3, 0.55, 0.85, 0.97];
 const ctaArg = ARGS.find((a) => a.startsWith('--cta='));
 const CTA = ctaArg ? ctaArg.split('=')[1] : '#enter';
+const waitArg = ARGS.find((a) => a.startsWith('--wait='));
+const WAIT = waitArg ? parseInt(waitArg.split('=')[1], 10) : 0;
 fs.mkdirSync(OUT, { recursive: true });
 
 (async () => {
@@ -35,7 +37,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
   await page.goto(URL, { waitUntil: 'load', timeout: 60000 });
   await page.evaluate(async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready; });
-  await page.waitForTimeout(900);
+  await page.waitForTimeout(900 + WAIT);
 
   const extent = await page.evaluate(() => Math.max(document.documentElement.scrollHeight - innerHeight, 1));
   const report = { viewport: vp, extent, beats: [] };

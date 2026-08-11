@@ -1,28 +1,36 @@
 /* ============================================================
-   VIKAAS v2 — LOADER v3 "THE BOOT · FINALE"
-   Timeline (460vh pinned, scrub):
-     0.00–0.02  HUD + cue in · rail live
-     0.02–0.10  terminal lines reveal (scroll-linked)
-     0.08–0.20  camera push-in (object-tween pattern) · lid creaks
-     0.20–0.38  lid swings open · LIGHT SPILL ignites · e-waste floats + orbits
-     0.38–0.52  VIKAAS scramble-assembles · glitch · pulse glow starts
-     0.52–0.64  stats slam (scanline sweep) + stamps rotate in
-     0.64–0.78  ReBee arcs across (fixed aspect) · विकास in
-     0.78–0.90  big line char-stagger reveal (SplitType)
-     0.88–1.00  ENTER pill (wide reliable window) · click → acid exit
-   ?fast=1 / reduced-motion → final state. Mobile-safe layout.
+   VIKAAS v2 — LOADER v4 "THE BOOT · FINALE"
+   FLOW:
+     PHASE A — AUTO BOOT (~10s, no scroll needed)
+       0.0   boot overlay in (nebula + glass card + sheen)
+       0.3–7.0  terminal TYPES 7 lines char-by-char (cursor)
+              + progress bar + status labels
+       7.0–8.4  VIKAAS wordmark SCRAMBLE + glitch
+       8.4–9.4  "UNIVERSE INITIALISED" + bar fills
+       9.4–10.4 overlay slides UP (acid exit) → reveal stage
+     PHASE B — SCROLL UNIVERSE (460vh pinned, scrub)
+       0.00–0.02  HUD + chapter + cue in
+       0.05–0.20  camera push-in · lid creaks
+       0.20–0.38  LID FLIPS UP (rotation -1.95) · light spill
+                  ignites · e-waste floats + orbits
+       0.38–0.52  VIKAAS scramble-assembles · glitch · pulse
+       0.52–0.64  stats slam + stamps
+       0.64–0.78  ReBee arcs across · विकास in
+       0.78–0.90  big line char-stagger reveal
+       0.88–1.00  ENTER pill → click → acid exit → GATE
+   ?fast=1 / reduced-motion → auto boot skipped, final state.
    ============================================================ */
 (function () {
   'use strict';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fast = new URLSearchParams(location.search).has('fast');
   const $ = (s) => document.querySelector(s);
-  const stage = $('#stage'), wordEl = $('#word'), devEl = $('#dev'), termEl = $('#term'),
+  const stage = $('#stage'), wordEl = $('#word'), devEl = $('#dev'),
         cueEl = $('#cue'), railFill = $('#railFill'), enterBtn = $('#enter'),
         rebee = $('#rebeeFly'), bigline = $('#bigline h2'), hudTime = $('#hudTime');
   const stats = Array.from(document.querySelectorAll('.stat'));
   const stamps = Array.from(document.querySelectorAll('.stamp'));
-  const CHAPTERS = [['00','IGNITION'],['01','THE SCAN'],['02','THE OPEN'],['03','THE WORD'],['04','THE PROOF'],['05','THE FLIGHT'],['06','THE LINE'],['07','THE DOOR']];
+  const CHAPTERS = [['00', 'IGNITION'], ['01', 'THE OPEN'], ['02', 'THE WORD'], ['03', 'THE PROOF'], ['04', 'THE FLIGHT'], ['05', 'THE LINE'], ['06', 'THE DOOR']];
   const chapterEl = $('#chapter'), railPct = $('#railPct');
 
   /* ---------- HUD clock ---------- */
@@ -30,7 +38,7 @@
   const tick = () => { const d = new Date(); hudTime.textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' IST'; };
   tick(); setInterval(tick, 1000);
 
-  /* ---------- word chars + big line chars ---------- */
+  /* ---------- word chars ---------- */
   const FULL = 'VIKAAS';
   wordEl.innerHTML = FULL.split('').map((c) => '<span class="ch">' + c + '</span>').join('');
   const chars = Array.from(wordEl.querySelectorAll('.ch'));
@@ -41,23 +49,7 @@
     const st = new SplitType(bigline, { types: 'chars' });
     bigChars = st.chars || [];
     gsap.set(bigChars, { yPercent: 120, opacity: 0 });
-  } else {
-    gsap.set(bigline, { opacity: 1 });
   }
-
-  /* ---------- terminal ---------- */
-  const LINES = [
-    ['scanning drawer inventory', '3 phones · 7 chargers · 1 speaker (2022)', 'dim'],
-    ['weighing …', '1.4 KG — receipt logged', 'acid'],
-    ['surveying 10 homes …', '10/10 have the same drawer', 'dim'],
-    ['querying HSPCB registry …', '15 authorised recyclers found', 'acid'],
-    ['doorsteps served …', '0', 'red'],
-    ['summoning ReBee …', 'scrap-scan online', 'gold'],
-    ['finalising …', 'NO DRAWER LEFT BEHIND', 'acid'],
-  ];
-  termEl.innerHTML = LINES.map(([t, v, c]) => `<span class="${c}" data-l>${t} ${v}</span>`).join('\n');
-  const termLines = Array.from(termEl.querySelectorAll('[data-l]'));
-  const cursor = document.createElement('span'); cursor.className = 'cur'; termEl.appendChild(cursor);
 
   /* ---------- 3D SCENE ---------- */
   let renderer = null, scene = null, camera = null, drawerGroup = null, lidPivot = null,
@@ -77,10 +69,7 @@
     const key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(4, 7, 5); scene.add(key);
     const acid = new THREE.PointLight(0xb9ff3f, 26, 18); acid.position.set(-3, 1.5, 3); scene.add(acid);
     const rim = new THREE.PointLight(0x2ede82, 14, 16); rim.position.set(3, -1, 4); scene.add(rim);
-    // LIGHT SPILL inside the drawer (ignites when lid opens)
     spill = new THREE.PointLight(0xb9ff3f, 0, 12); spill.position.set(0, -0.5, 0.6); scene.add(spill);
-
-    // ground grid
     grid = new THREE.GridHelper(14, 28, 0x1d2a22, 0x0f1a14);
     grid.position.y = -1.75; scene.add(grid);
 
@@ -101,6 +90,7 @@
     panel.position.set(0, -0.85, 1.06); drawerGroup.add(panel);
     const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.1, 1.5, 2.1)), new THREE.LineBasicMaterial({ color: 0x2ede82, transparent: true, opacity: 0.5 }));
     edges.position.y = -0.85; drawerGroup.add(edges);
+    // LID — pivot at BACK edge; negative rotation.x flips the lid UP and BACK
     lidPivot = new THREE.Group(); lidPivot.position.set(0, -0.1, -1.0);
     const lid = new THREE.Mesh(new THREE.BoxGeometry(3.35, 0.22, 2.35), metal);
     lid.position.set(0, 0, 1.0); lidPivot.add(lid);
@@ -119,8 +109,7 @@
     const phone = makeItem(new THREE.BoxGeometry(0.78, 1.5, 0.07), glassMat, -0.85, -0.55, 0.05, [0, 0.35, 0.12]);
     const phoneScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 1.32), new THREE.MeshBasicMaterial({ color: 0x0a2a18 }));
     phoneScreen.position.set(0, 0, 0.05); phone.add(phoneScreen);
-    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(-0.4, -0.6, 0.1), new THREE.Vector3(0.1, -0.2, 0.3), new THREE.Vector3(0.45, -0.5, 0.05), new THREE.Vector3(0.8, -0.2, 0.25)]);
-    const cable = new THREE.Mesh(new THREE.TubeGeometry(curve, 24, 0.045, 8), new THREE.MeshStandardMaterial({ color: 0x151a1d, metalness: 0.4, roughness: 0.6 }));
+    const cable = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(-0.4, -0.6, 0.1), new THREE.Vector3(0.1, -0.2, 0.3), new THREE.Vector3(0.45, -0.5, 0.05), new THREE.Vector3(0.8, -0.2, 0.25)]), 24, 0.045, 8), new THREE.MeshStandardMaterial({ color: 0x151a1d, metalness: 0.4, roughness: 0.6 }));
     drawerGroup.add(cable); items.push(cable);
     const cable2 = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(1.0, -0.7, 0.0), new THREE.Vector3(1.3, -0.3, 0.2), new THREE.Vector3(1.55, -0.6, -0.05)]), 20, 0.035, 8), new THREE.MeshStandardMaterial({ color: 0x20262a, metalness: 0.35, roughness: 0.6 }));
     drawerGroup.add(cable2); items.push(cable2);
@@ -132,30 +121,30 @@
     const pcbLine = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.3, 0.05, 0.9)), new THREE.LineBasicMaterial({ color: 0xb9ff3f, transparent: true, opacity: 0.6 }));
     pcbLine.position.copy(pcb.position); pcbLine.rotation.copy(pcb.rotation); drawerGroup.add(pcbLine);
 
-    // ---- PARTICLES ----
-    const N = 420, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
-    const palette = [[0.72, 1, 0.25], [0.18, 0.87, 0.51], [1, 0.83, 0.3], [0.92, 0.94, 0.96]];
+    // ---- PARTICLES (nebula dust) ----
+    const N = 520, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+    const palette = [[0.72, 1, 0.25], [0.18, 0.87, 0.51], [1, 0.83, 0.3], [0.65, 0.55, 0.98], [0.92, 0.94, 0.96]];
     for (let i = 0; i < N; i++) {
-      const r = 2.2 + Math.random() * 5.5, a = Math.random() * Math.PI * 2, y = (Math.random() - 0.5) * 6;
+      const r = 2.0 + Math.random() * 6, a = Math.random() * Math.PI * 2, y = (Math.random() - 0.5) * 6.5;
       pos[i * 3] = Math.cos(a) * r; pos[i * 3 + 1] = y; pos[i * 3 + 2] = Math.sin(a) * r;
-      const c = palette[i % 4]; col[i * 3] = c[0]; col[i * 3 + 1] = c[1]; col[i * 3 + 2] = c[2];
+      const c = palette[i % 5]; col[i * 3] = c[0]; col[i * 3 + 1] = c[1]; col[i * 3 + 2] = c[2];
     }
     const pg = new THREE.BufferGeometry();
     pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     pg.setAttribute('color', new THREE.BufferAttribute(col, 3));
-    const pm = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false });
+    const pm = new THREE.PointsMaterial({ size: 0.055, vertexColors: true, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false });
     particles = new THREE.Points(pg, pm); scene.add(particles);
 
     addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
   }
   initThree();
+  window.__lid = lidPivot; window.__cam = cam;
 
-  /* ---------- render loop: apply cam object + bob + parallax ---------- */
+  /* ---------- render loop ---------- */
   let mx = 0, my = 0;
   addEventListener('pointermove', (e) => { mx = (e.clientX / innerWidth - 0.5); my = (e.clientY / innerHeight - 0.5); }, { passive: true });
   (function loop() {
     if (THREE_OK) {
-      // smooth camera toward the tweened cam object
       camera.position.x += ((cam.x + mx * 0.35) - camera.position.x) * 0.06;
       camera.position.y += ((cam.y + my * 0.18) - camera.position.y) * 0.06;
       camera.position.z += (cam.z - camera.position.z) * 0.06;
@@ -187,7 +176,109 @@
     } catch (e) {}
   };
 
-  /* ---------- MASTER TIMELINE ---------- */
+  /* ============================================================
+     PHASE A — AUTO BOOT (~10s)
+     ============================================================ */
+  const ab = $('#autoBoot'), abTerm = $('#abTerm'), abBar = $('#abBar'),
+        abStatus = $('#abStatus'), abSkip = $('#abSkip'), abWordEl = $('#abWord');
+  const BOOT_LINES = [
+    ['scanning drawer inventory', '3 phones · 7 chargers · 1 speaker (2022)', 'dim'],
+    ['weighing …', '1.4 KG — receipt logged', 'acid'],
+    ['surveying 10 homes …', '10/10 have the same drawer', 'dim'],
+    ['querying HSPCB registry …', '15 authorised recyclers found', 'acid'],
+    ['doorsteps served …', '0', 'red'],
+    ['summoning ReBee …', 'scrap-scan online', 'gold'],
+    ['mounting universe …', 'NO DRAWER LEFT BEHIND', 'acid'],
+  ];
+  const STATUS = ['INITIALISING…', 'SCANNING…', 'WEIGHING…', 'VERIFYING…', 'SUMMONING…', 'READY.'];
+  const esc = (s) => s.replace(/[<>&]/g, (m) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[m]));
+
+  let bootTl = null;
+  let bootFinished = false;
+
+  function runBoot() {
+    // disable scroll-driven timeline until boot finishes
+    if (window.ScrollTrigger) ScrollTrigger.getAll().forEach((st) => st.disable());
+    window.scrollTo(0, 0);
+
+    // boot wordmark chars
+    abWordEl.innerHTML = FULL.split('').map((c) => '<span class="ch">' + c + '</span>').join('');
+    const abChars = Array.from(abWordEl.querySelectorAll('.ch'));
+    gsap.set(abChars, { opacity: 1 });
+
+    const done = [];
+    let li = 0, ci = 0, totalChars = BOOT_LINES.reduce((a, l) => a + l[0].length, 0), typed = 0;
+    const render = () => {
+      const out = done.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`);
+      const cur = BOOT_LINES[li];
+      const partial = esc(cur[0].slice(0, ci));
+      out.push(`<span class="${cur[2]}">${partial}</span><span class="cur"></span>`);
+      abTerm.innerHTML = out.join('\n');
+      abBar.style.width = Math.round((typed + ci) / totalChars * 100) + '%';
+    };
+    const statusFor = (idx) => STATUS[Math.min(idx, STATUS.length - 1)];
+    const type = () => {
+      if (ci < BOOT_LINES[li][0].length) { ci++; typed++; render(); setTimeout(type, 18); }
+      else {
+        done.push(BOOT_LINES[li]); li++;
+        if (li < BOOT_LINES.length) {
+          ci = 0; abStatus.textContent = statusFor(li); render();
+          setTimeout(type, 180);
+        } else {
+          abTerm.innerHTML = done.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n') + '\n<span class="acid">> READY — awaiting command</span>';
+          abBar.style.width = '100%';
+          abStatus.textContent = 'READY.';
+          finishBootWord();
+        }
+      }
+    };
+    function finishBootWord() {
+      // scramble the boot wordmark
+      if (fast || reduce) { revealStage(); return; }
+      let frame = 0;
+      const total = 55;
+      (function tick() {
+        const p = frame / total;
+        const reveal = Math.floor(p * FULL.length);
+        abChars.forEach((ch, i) => { ch.textContent = i < reveal ? FULL[i] : rand(); });
+        frame++;
+        if (frame <= total) setTimeout(tick, 26);
+        else { abChars.forEach((ch, i) => { ch.textContent = FULL[i]; }); setTimeout(revealStage, 650); }
+      })();
+    }
+    function revealStage() {
+      if (bootFinished) return; bootFinished = true;
+      ab.classList.add('leaving');
+      if (unlocked) whoosh();
+      setTimeout(() => { ab.remove(); startScrollPhase(); }, 1050);
+    }
+    if (fast || reduce) { abTerm.innerHTML = BOOT_LINES.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n'); abBar.style.width = '100%'; abStatus.textContent = 'READY.'; abSkip.style.display = 'none'; setTimeout(revealStage, 500); return; }
+    type();
+  }
+
+  abSkip.addEventListener('click', () => {
+    if (bootTl) bootTl.kill();
+    if (!ab.classList.contains('leaving')) {
+      abTerm.innerHTML = BOOT_LINES.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n') + '\n<span class="acid">> READY — awaiting command</span>';
+      abBar.style.width = '100%'; abStatus.textContent = 'READY.';
+      const abChars = Array.from(abWordEl.querySelectorAll('.ch'));
+      abChars.forEach((ch, i) => { ch.textContent = FULL[i]; });
+      revealStage();
+    }
+  });
+
+  /* ============================================================
+     PHASE B — SCROLL UNIVERSE
+     ============================================================ */
+  let scrollStarted = false;
+  function startScrollPhase() {
+    scrollStarted = true;
+    if (window.ScrollTrigger) { ScrollTrigger.getAll().forEach((st) => st.enable()); ScrollTrigger.refresh(); }
+    gsap.to('#cue', { opacity: 1, duration: 0.8, delay: 0.3 });
+    gsap.to('.hud', { opacity: 1, duration: 0.6, delay: 0.5 });
+    gsap.to('#chapter', { opacity: 1, duration: 0.6, delay: 0.5 });
+  }
+
   const tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: { trigger: '#stage', start: 'top top', end: '+=4600', pin: true, scrub: 0.6 },
@@ -201,41 +292,32 @@
       if (railPct) railPct.textContent = Math.round(p * 100) + '%';
       if (p > 0.38 && p < 0.52) {
         const n = Math.min(FULL.length, Math.floor((p - 0.38) / 0.14 * FULL.length));
-        chars.forEach((ch, i) => { ch.textContent = i < n ? FULL[i] : rand(); });
+        chars.forEach((ch2, i) => { ch2.textContent = i < n ? FULL[i] : rand(); });
       }
-      const lineIdx = Math.min(LINES.length - 1, Math.floor(p / 0.14));
-      cursor.style.display = p < 0.1 && lineIdx < LINES.length ? 'inline-block' : 'none';
     },
   });
 
-  tl.to('.hud', { opacity: 1, duration: 0.02 }, 0.005);
-  tl.to('#chapter', { opacity: 1, duration: 0.02 }, 0.005);
-  tl.to('#cue', { opacity: 1, duration: 0.02 }, 0.01);
-
-  termLines.forEach((ln, i) => {
-    tl.fromTo(ln, { opacity: 0.12 }, { opacity: 1, duration: 0.02 }, 0.02 + i * 0.014);
-  });
+  tl.to('#cue', { opacity: 0, duration: 0.02 }, 0.02);
 
   if (THREE_OK) {
-    // camera object tweens (codrops pattern)
-    tl.to(cam, { z: 6.6, duration: 0.12 }, 0.08);
-    tl.to(lidPivot.rotation, { x: 0.05, duration: 0.06 }, 0.12);
-    tl.to(lidPivot.rotation, { x: 1.28, duration: 0.18, ease: 'power2.inOut' }, 0.20);
-    tl.to(spill, { intensity: 9, duration: 0.14, ease: 'power1.out' }, 0.22);
-    tl.to(drawerGroup.position, { y: -0.25, duration: 0.12 }, 0.20);
-    tl.to(drawerGroup.scale, { x: 0.9, y: 0.9, z: 0.9, duration: 0.14 }, 0.20);
+    tl.to(cam, { z: 6.6, duration: 0.12 }, 0.05);
+    tl.to(lidPivot.rotation, { x: 0.05, duration: 0.06 }, 0.10);
+    // LID FLIPS UP (negative x = front edge rises up and back)
+    tl.to(lidPivot.rotation, { x: -1.95, duration: 0.18, ease: 'power2.inOut' }, 0.18);
+    tl.to(spill, { intensity: 9, duration: 0.14, ease: 'power1.out' }, 0.20);
+    tl.to(drawerGroup.position, { y: -0.25, duration: 0.12 }, 0.18);
+    tl.to(drawerGroup.scale, { x: 0.9, y: 0.9, z: 0.9, duration: 0.14 }, 0.18);
     items.forEach((it, i) => {
       const dir = (i % 2 ? 1 : -1) * (0.5 + (i % 3) * 0.25);
       it.userData.baseY = it.position.y;
       it.userData.bob = true;
       it.userData.spin = true;
-      tl.to(it.position, { y: it.position.y + 1.5 + (i % 3) * 0.4, duration: 0.1, ease: 'power1.out' }, 0.21 + i * 0.012);
-      tl.to(it.rotation, { y: it.rotation.y + 1.2 * dir, duration: 0.1 }, 0.21 + i * 0.012);
+      tl.to(it.position, { y: it.position.y + 1.5 + (i % 3) * 0.4, duration: 0.1, ease: 'power1.out' }, 0.19 + i * 0.012);
+      tl.to(it.rotation, { y: it.rotation.y + 1.2 * dir, duration: 0.1 }, 0.19 + i * 0.012);
     });
     tl.to(cam, { z: 5.2, y: 0.75, duration: 0.16, ease: 'power1.inOut' }, 0.44);
   }
 
-  // wordmark
   chars.forEach((ch, i) => {
     tl.fromTo(ch, { yPercent: 130, rotate: 12, scale: 0.7 }, { yPercent: 0, rotate: 0, scale: 1, opacity: 1, duration: 0.035, ease: 'back.out(2)' }, 0.385 + i * 0.012);
   });
@@ -244,10 +326,9 @@
   tl.call(function () { wordEl.classList.add('glitching'); }, [], 0.465);
   tl.call(function () { wordEl.classList.remove('glitching'); }, [], 0.468);
   tl.call(function () { wordEl.classList.add('pulse'); }, [], 0.50);
-  tl.to(wordEl, { y: -8, yoyo: true, repeat: -1, duration: 1.2, ease: 'sine.inOut' }, 0.55);
+  tl.call(function () { gsap.to(wordEl, { y: -8, yoyo: true, repeat: -1, duration: 1.2, ease: 'sine.inOut' }); }, [], 0.55);
   tl.call(whoosh, [], 0.52);
 
-  // stats
   stats.forEach((s, i) => {
     tl.fromTo(s, { scale: 0.4, y: 60, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.045, ease: 'back.out(2.2)' }, 0.535 + i * 0.02);
   });
@@ -255,21 +336,17 @@
     tl.fromTo(s, { scale: 2.2, rotate: (i % 2 ? 12 : -12), opacity: 0 }, { scale: 1, rotate: 7, opacity: 1, duration: 0.03, ease: 'back.out(2)' }, 0.60 + i * 0.01);
   });
 
-  // ReBee arc
   tl.to(rebee, { opacity: 1, duration: 0.01 }, 0.64);
   tl.fromTo(rebee, { left: '-22vw', top: '20%' }, { left: '108vw', top: '12%', duration: 0.14, ease: 'power1.in' }, 0.64);
   tl.to(rebee, { opacity: 0, duration: 0.02 }, 0.78);
   tl.to(devEl, { opacity: 1, duration: 0.03 }, 0.68);
   tl.call(whoosh, [], 0.78);
 
-  // big line char reveal
   tl.to(bigline, { clipPath: 'inset(0 0% 0 0)', duration: 0.05, ease: 'power2.inOut' }, 0.78);
   if (bigChars.length) {
     tl.fromTo(bigChars, { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.012, duration: 0.045, ease: 'back.out(1.8)' }, 0.80);
   }
   tl.to(cueEl, { opacity: 0, duration: 0.02 }, 0.85);
-
-  // ENTER — wide reliable window
   tl.to(enterBtn, { opacity: 1, y: 0, scale: 1, duration: 0.06, ease: 'back.out(2)' }, 0.88)
     .add(function () { enterBtn.classList.add('show'); }, 0.90);
 
@@ -281,12 +358,11 @@
   });
   addEventListener('keydown', (e) => { if (e.key === 'Enter' && enterBtn.classList.contains('show')) enterBtn.click(); });
 
-  /* ---------- fast / reduced-motion ---------- */
+  /* ---------- fast / reduced-motion final state ---------- */
   if (fast || reduce) {
     gsap.set('.hud', { opacity: 1 });
     if (chapterEl) gsap.set(chapterEl, { opacity: 1 });
-    if (railPct) railPct.textContent = '100%';
-    gsap.set(termLines, { opacity: 1 });
+    if (railPct) railPct.textContent = '0%';
     gsap.set(chars, { opacity: 1, yPercent: 0, rotate: 0, scale: 1 });
     gsap.set(stats, { opacity: 1, scale: 1, y: 0 });
     gsap.set(stamps, { opacity: 1, scale: 1, rotate: 7 });
@@ -294,9 +370,11 @@
     gsap.set(bigline, { clipPath: 'inset(0 0% 0 0)' });
     if (bigChars.length) gsap.set(bigChars, { yPercent: 0, opacity: 1 });
     gsap.set(rebee, { opacity: 0 });
-    gsap.set(cueEl, { opacity: 0 });
-    railFill.style.height = '100%';
+    gsap.set(cueEl, { opacity: 1 });
+    railFill.style.height = '0%';
     enterBtn.classList.add('show');
     if (reduce) ScrollTrigger.getAll().forEach((st) => st.disable());
+  } else {
+    runBoot();
   }
 })();
