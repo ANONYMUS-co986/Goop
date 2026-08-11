@@ -26,8 +26,9 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 ```
 
 ### Q4 — AI generated image of your superhero
-Upload **`art/rebee_hero_v3_suitup.png`** — WON the 3-way playoff: superhero origin moment, rising from the junk drawer with parts magnetically assembling. Why it beats the others: (1) standard superhero shot would show a city — THIS pictures the PROBLEM (dead phones, tangled cables, one cracked screen) = wordless theme-match to the brief; (2) round bee body stays character-consistent with the poster/action shots; (3) Q2 text says "hatched from an electronics drawer in Gurugram" — this IS that moment; (4) one eye powering on = "just born" narrative charm.
-(Runner-up `art/rebee_hero_v3_hover.png` = gorgeous Iron-Man-style flight pose → saved as a later Insta flex asset; `art/rebee_hero_v2_challenger.png` champion-pose kept for posts.)
+Upload **`art/rebee_hero_v4_hd.png`** — v4 HD: a re-render of the playoff-winning origin shot in **portrait 3:4 @ 1200px tall** (the winner was 768px-tall landscape), so it reads like a real superhero poster and survives being FEATURED. Same ReBee, same junk-drawer origin moment, re-generated from the v3 champion as reference so the character stays consistent. Eyeball it on your phone; **fallback = `art/rebee_hero_v3_suitup.png`** (the original champion) — both are submission-ready.
+(Reasoning that made the v3 champion the pick, unchanged: (1) standard superhero shot would show a city — THIS pictures the PROBLEM (dead phones, tangled cables, one cracked screen) = wordless theme-match to the brief; (2) round bee body stays character-consistent with the poster/action shots; (3) Q2 text says "hatched from an electronics drawer in Gurugram" — this IS that moment; (4) one eye powering on = "just born" narrative charm.)
+(Runner-ups: `art/rebee_hero_v3_hover.png` = Iron-Man-style flight pose → Insta flex asset; `art/rebee_hero_v2_challenger.png` champion-pose kept for posts.)
 
 ---
 

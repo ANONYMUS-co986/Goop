@@ -10,10 +10,14 @@ Open these two links in your phone browser → **long-press the image → Downlo
 
 | For | File | Link |
 |---|---|---|
-| **Q1** completion proof | `q1_skillsbuild_completion.jpg` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019fc480-goop/vikaas-hq/cwc_buddy/q1_skillsbuild_completion.jpg |
-| **Q4** superhero image | `rebee_hero_v3_suitup.png` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019fc480-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v3_suitup.png |
+| **Q1** completion proof | `q1_skillsbuild_completion.jpg` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/q1_skillsbuild_completion.jpg |
+| **Q4** superhero image | `rebee_hero_v4_hd.png` (NEW HD portrait) | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v4_hd.png |
+| Q4 backup | `rebee_hero_v3_suitup.png` (champion) | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff046-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v3_suitup.png |
+| ⭐ ALL-IN-ONE | `REBEE_SUBMISSION_KIT.zip` (Q1+Q4+answers sheet) | https://github.com/ANONYMUS-co986/Goop/raw/arena/019ff046-goop/vikaas-hq/cwc_buddy/REBEE_SUBMISSION_KIT.zip |
 
 *(Q1 tip: if you still have your own SkillsBuild completion screenshot on your phone, that works too — the repo one is the guaranteed-exact backup, extracted from your PDF.)*
+
+> ⭐ **NEW in v4 HD:** `rebee_hero_v4_hd.png` is a re-render of the SAME ReBee origin shot but in **portrait 3:4 at 1200px tall** (vs the old 768px landscape). Taller = reads as a real superhero poster and holds up if the entry gets FEATURED on the CWC feed/Insta. Re-generated from the v3 champion as reference so the character stays consistent. **Eyeball it on your phone**; if you prefer the original, the v3 backup link is right above — both are ready.
 
 ---
 
@@ -41,7 +45,7 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 *(If the box refuses the long text → use the SHORT version from `BUDDY_BRIEF.md` §Q3.)*
 
 **Q4 — AI generated image of your superhero.**
-→ Tap **Click to upload image** → choose **`rebee_hero_v3_suitup.png`** (the hero bee rising out of the junk drawer, parts assembling — one glowing green eye powering on).
+→ Tap **Click to upload image** → choose **`rebee_hero_v4_hd.png`** (same ReBee rising out of the junk drawer — now a taller portrait HD re-render, so it reads better if featured). If you prefer the original aspect, upload `rebee_hero_v3_suitup.png` instead — both are the same character/origin moment.
 
 ## STEP 3 — Submit + prove it
 1. Tap the yellow **Confirm Submit**.
@@ -51,7 +55,7 @@ The film ended: "AI is a tool, not a master." ReBee's real superpower is turning
 ---
 
 ## If anything breaks
-- Image won't upload → check it's the downloaded file from Step 0 (gallery/Downloads folder), under any size limit; the PNG is 1408×768 (safe).
+- Image won't upload → check it's the downloaded file from Step 0 (gallery/Downloads folder), under any size limit. Both PNGs are well under the limit (v4 = 896×1200, v3 = 1408×768).
 - Form errors on Q3 → fall back to BUDDY_BRIEF.md short version.
 - Page hangs → refresh, re-login, answers are still in this file to re-paste. Nothing is lost.
 - Field looks different from this guide → screenshot it and send to me before guessing.

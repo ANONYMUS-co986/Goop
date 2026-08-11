@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>ReBee — Submission Sheet</title>
+<style>
+  :root{--ink:#0f1720;--bee:#f6b71b;--bee2:#e89c00;--green:#1fb978;--paper:#fffdf5;--muted:#5b6472}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0f1720;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);padding:16px;line-height:1.5}
+  .card{background:var(--paper);border-radius:18px;max-width:560px;margin:0 auto 16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .head{background:linear-gradient(135deg,#f6b71b,#e89c00);padding:20px 20px 16px}
+  .head h1{font-size:24px;color:#3a2a00;letter-spacing:.5px}
+  .head p{color:#4a3600;font-size:13px;margin-top:4px}
+  .body{padding:18px 20px 20px}
+  .q{font-size:14px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin:18px 0 6px}
+  .q:first-child{margin-top:0}
+  .ans{background:#fff;border:1px solid #e4dfd0;border-radius:10px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:break-word;color:#1c2733;position:relative}
+  .copy{position:absolute;top:10px;right:10px;background:var(--bee);border:none;border-radius:7px;padding:4px 10px;font-size:12px;font-weight:700;color:#3a2a00;cursor:pointer}
+  .copy.ok{background:var(--green);color:#fff}
+  .file{display:flex;align-items:center;justify-content:space-between;background:#eef3f8;border-radius:10px;padding:10px 14px;font-size:13px;margin-top:6px}
+  .file b{color:#0f1720}
+  .file span{color:var(--muted);font-size:12px}
+  .note{background:#fff7e0;border-left:4px solid var(--bee);border-radius:8px;padding:10px 14px;font-size:12.5px;color:#5a4a12;margin-top:16px}
+  .steps{background:#fff7e0;border-left:4px solid var(--bee);border-radius:8px;padding:10px 14px;font-size:12.5px;color:#5a4a12;margin-top:10px}
+  .steps ol{padding-left:18px;margin-top:4px}
+  .steps li{margin:4px 0}
+  .foot{background:#eef3f8;padding:12px 20px;font-size:11px;color:var(--muted);text-align:center}
+  .copyall{width:100%;margin-top:18px;background:#0f1720;color:#f6b71b;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:800;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="head">
+    <h1>🐝 ReBee — Submission Sheet</h1>
+    <p>Flash Challenge #2 · 1M1Bee's AI Buddy · cwcsubmission.in → F2 tab<br>Deadline: <b>12 Aug 2026</b></p>
+  </div>
+  <div class="body">
+    <div class="q">Q1 · File to upload</div>
+    <div class="file"><b>q1_skillsbuild_completion.jpg</b><span>SkillsBuild "Completed 2 of 2" screenshot</span></div>
+
+    <div class="q">Q2 · Superhero's name <button class="copy" onclick="cp(this,'q2')">Copy</button></div>
+    <div class="ans" id="q2">ReBee (री-बी) — from REduce · REuse · REcycle + BEE. 1M1Bee's brand-new buddy, hatched from an electronics drawer in Gurugram.</div>
+
+    <div class="q">Q3 · Superpower — SHORT version (small box) <button class="copy" onclick="cp(this,'q3s')">Copy</button></div>
+    <div class="ans" id="q3s">ReBee's superpower is SCRAP-SCAN: his AI visor identifies any dead device and shows a hologram tag — what's inside (copper, lithium, ~0.03 g gold per phone, roughly), what a kabadiwala will PAY for it today (≈ ₹40 — they pay YOU), and the nearest government-authorised recycler (15 in Haryana). His second power, DOORSTEP DIAL, books a pickup to your home, so nobody has to move. Mission: NO DRAWER LEFT BEHIND — weigh it, earn from it, recycle it. 1M1Bee collects pledges; ReBee collects proof (1.4 kg already weighed, ₹40 earned, receipts kept).</div>
+
+    <div class="q">Q3 · Superpower — FULL version (long box, name-drops the film) <button class="copy" onclick="cp(this,'q3f')">Copy</button></div>
+    <div class="ans" id="q3f">ReBee's superpower is SCRAP-SCAN: his visor is a computer-vision AI that identifies any dead device in seconds and projects a hologram tag — what materials hide inside (copper, lithium, ~0.03 g of gold per phone, roughly), what a kabadiwala will PAY for it today (about ₹40, verified on our own kitchen scale), and the nearest government-authorised recycler (15 in Haryana). Just like the AI in our training film "Four ways AI can help tackle climate change" reads satellite data to understand the Earth, ReBee reads the data sleeping in our drawers.
+His second power is DOORSTEP DIAL: using the same route-planning idea the film shows for self-driving traffic, ReBee plans the smartest pickup route so an authorised recycler collects e-waste straight from your doorstep — the missing step between India's 15 authorised recyclers and its 1 billion retired phones.
+And since the film taught us that AI also discovers new materials, ReBee's third power, MATERIAL MATCH, flags which recovered metals can re-enter manufacturing — so yesterday's phone becomes tomorrow's product.
+The film ended: "AI is a tool, not a master." ReBee's real superpower is turning our motivation into action — he makes doing the right thing the easiest thing. Mission: NO DRAWER LEFT BEHIND. 1M1Bee collects pledges. ReBee collects proof — 1.4 kg weighed, ₹40 earned, receipts ready.</div>
+
+    <div class="q">Q4 · AI superhero image</div>
+    <div class="file"><b>Q4_hero_image.png</b><span>Pick: rebee_hero_v4_hd.png (HD portrait) or rebee_hero_v3_suitup.png (champion)</span></div>
+
+    <div class="note">⚠ If the Q3 box refuses long text → paste the SHORT version. If a field looks different from this guide → screenshot it and send to the agent before guessing.</div>
+
+    <div class="steps"><b>Submit steps:</b>
+      <ol>
+        <li>Open <b>cwcsubmission.in</b> → log in → F2 tab (purple).</li>
+        <li>Q1: upload <b>q1_skillsbuild_completion.jpg</b>.</li>
+        <li>Q2: paste name (Copy button above).</li>
+        <li>Q3: paste SHORT or FULL version.</li>
+        <li>Q4: upload <b>Q4_hero_image.png</b>.</li>
+        <li>Tap yellow <b>Confirm Submit</b>.</li>
+        <li>📸 <b>Screenshot the confirmation</b> and send it back — it goes to the M2 evidence album.</li>
+      </ol>
+    </div>
+
+    <button class="copyall" onclick="copyAll()">Copy ALL answers to clipboard</button>
+  </div>
+  <div class="foot">ReBee · Vikaas HQ · NO DRAWER LEFT BEHIND 🐝</div>
+</div>
+
+<script>
+function cp(btn,id){
+  const t=document.getElementById(id).innerText;
+  (navigator.clipboard?navigator.clipboard.writeText(t):fallback(id)).then?.(()=>{});
+  flash(btn);
+}
+function fallback(id){
+  const r=document.createRange();r.selectNode(document.getElementById(id));
+  const s=getSelection();s.removeAllRanges();s.addRange(r);
+  document.execCommand('copy');s.removeAllRanges();
+}
+function flash(btn){btn.textContent='Copied ✓';btn.classList.add('ok');setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('ok')},1500)}
+async function copyAll(){
+  const parts=[document.getElementById('q2').innerText,
+    '--- Q3 SHORT ---\n'+document.getElementById('q3s').innerText,
+    '--- Q3 FULL ---\n'+document.getElementById('q3f').innerText];
+  const t=parts.join('\n\n');
+  try{navigator.clipboard.writeText(t)}catch(e){fallbackTxt(t)}
+  const b=document.querySelector('.copyall');b.textContent='Copied all ✓';setTimeout(()=>b.textContent='Copy ALL answers to clipboard',1500)
+}
+function fallbackTxt(t){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}
+</script>
+</body>
+</html>
