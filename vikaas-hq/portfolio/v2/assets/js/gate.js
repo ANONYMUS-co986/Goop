@@ -111,36 +111,6 @@
     });
   });
 
-  /* ---------- REBEE: parallax + tilt ---------- */
-  const art = $('#rebeeArt');
-  if (!reduce) {
-    gsap.fromTo(art.querySelector('img'), { yPercent: 5 }, {
-      yPercent: -5, ease: 'none',
-      scrollTrigger: { trigger: '#rebee', start: 'top bottom', end: 'bottom top', scrub: true },
-    });
-  }
-  if (!touch && !reduce) {
-    art.addEventListener('pointermove', (e) => {
-      const b = art.getBoundingClientRect();
-      const rx = ((e.clientY - b.top) / b.height - 0.5) * -9;
-      const ry = ((e.clientX - b.left) / b.width - 0.5) * 9;
-      art.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
-    });
-    art.addEventListener('pointerleave', () => { art.style.transform = ''; });
-  }
-  qsa('.power').forEach((p, i) => {
-    if (reduce) { gsap.set(p, { opacity: 1, y: 0 }); return; }
-    gsap.fromTo(p, { opacity: 0, y: 24 }, {
-      opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: i * 0.1,
-      scrollTrigger: { trigger: p, start: 'top 90%', once: true },
-    });
-  });
-  if (reduce) gsap.set('.mission', { opacity: 1, y: 0 });
-  else gsap.fromTo('.mission', { opacity: 0, y: 24 }, {
-    opacity: 1, y: 0, duration: 0.7, ease: 'vx',
-    scrollTrigger: { trigger: '.mission', start: 'top 92%', once: true },
-  });
-
   /* ---------- FOOTER ---------- */
   if (reduce) gsap.set('#footBig', { opacity: 1, y: 0 });
   else gsap.fromTo('#footBig', { opacity: 0, y: 50 }, {
