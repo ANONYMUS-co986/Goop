@@ -14,7 +14,7 @@ Open these two links in your phone browser → **long-press the image → Downlo
 | For | File | Link |
 |---|---|---|
 | **Q1** completion proof | `q1_skillsbuild_completion.jpg` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff044-goop/vikaas-hq/cwc_buddy/q1_skillsbuild_completion.jpg |
-| **Q4** superhero image | `rebee_hero_v3_suitup.png` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff044-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v3_suitup.png |
+| **Q4** superhero image | `rebee_hero_v6_FINAL.png` | https://raw.githubusercontent.com/ANONYMUS-co986/Goop/arena/019ff044-goop/vikaas-hq/cwc_buddy/art/rebee_hero_v6_FINAL.png |
 
 *(Q1 tip: if you still have your own SkillsBuild completion screenshot on your phone, that works too — the repo one is the guaranteed-exact backup, extracted from your PDF.)*
 *(If a raw link ever fails, fallback = GitHub web UI: `github.com/ANONYMUS-co986/Goop` → branch `arena/019ff044-goop` → `vikaas-hq/cwc_buddy/…`)*
@@ -49,8 +49,8 @@ ReBee's superpower is SCRAP-SCAN: his AI visor reads any dead device and shows w
 ```
 
 **Q4 — AI generated image of your superhero.**
-→ Tap **Click to upload image** → choose **`rebee_hero_v3_suitup.png`** (the hero bee rising out of the junk drawer, parts assembling — one glowing green eye powering on).
-*(Optional swap: `art/rebee_hero_v4_contender.png` is a NEW v4 take — brighter, more copper body + bee stripes, same character. Only use it if YOU like it better after looking at both.)*
+→ Tap **Click to upload image** → choose **`rebee_hero_v6_FINAL.png`** (THE FINAL: ReBee rising out of the e-waste drawer in a warm Indian home, parts assembling, BOTH green eyes blazing, a little girl watching in wonder — the hero born from the problem).
+*(Art bank: `art/rebee_hero_v5_doorstep_dawn.png` (the ₹40 weighing moment at sunrise) + `v5_guardian_skyline.png` (epic city guardian) + `v4_contender.png` are alternates — but v6 IS the pick. See `art/REBEE_FINAL_SHOWDOWN.png` for the before/after.)*
 
 ## STEP 3 — Submit + prove it
 1. Tap the yellow **Confirm Submit**.
