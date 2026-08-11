@@ -3,203 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AARAV CHOUDHARY — receipts with taste · VIKAAS portfolio</title>
-<meta name="description" content="Builder, Class 10, Gurugram. Every number weighed, sourced, or labelled. Portfolio of VIKAAS — the drawer, the ledger, the films, the method.">
-<link rel="stylesheet" href="assets/site.css">
+<title>VIKAAS — Kill the E-Waste · receipts with taste</title>
+<meta name="description" content="VIKAAS (विकास) — 1M1B Changemakers World Cup 2026, track Kill the E-Waste. One drawer, 1.4 kg, 15 recyclers, 0 doorsteps. Weighed, not guessed.">
+<meta property="og:title" content="VIKAAS — Kill the E-Waste">
+<meta property="og:description" content="1.4 KG weighed · ₹40 earned · 15 recyclers · 0 doorsteps. The drawer revolution, receipted.">
+<meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23070B08'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='%232EDE82' font-family='Arial Black'>V</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site2.css">
 <style>
 @font-face{font-family:'Anton';src:url('assets/fonts/Anton.ttf');font-display:swap}
 @font-face{font-family:'Archivo';src:url('assets/fonts/Archivo.ttf');font-display:swap}
 @font-face{font-family:'Devnag';src:url('assets/fonts/NotoSansDevanagari.ttf');font-display:swap}
 @font-face{font-family:'Grotesk';src:url('assets/fonts/SpaceGrotesk.ttf');font-display:swap}
-:root{--ink:#070B08;--ink2:#0D1210;--paper:#EFE9DC;--dew:#EAFFF4;--acid:#B9FF3F;--green:#2EDE82;--red:#FF4D5E;--gold:#FFD34D;--mute:#7d867f}
-*{margin:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--dew);font-family:'Archivo','Devnag',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.anton{font-family:'Anton','Devnag',sans-serif;font-weight:400}
-.cmd{font-family:'Grotesk','Devnag',monospace;letter-spacing:.22em;text-transform:uppercase}
-/* ---------- BOOT ---------- */
-#boot{position:fixed;inset:0;z-index:90;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:22px;transition:transform .7s cubic-bezier(.76,0,.24,1),opacity .4s}
-#boot.done{transform:translateY(-100%);opacity:0;pointer-events:none}
-#boot .box{width:min(760px,92vw);border:1px solid #1d2622;border-radius:16px;padding:22px 24px;background:rgba(13,18,16,.55);box-shadow:0 20px 80px rgba(0,0,0,.5)}
-#bootlog{font-size:clamp(12px,2.4vw,15px);line-height:1.6;min-height:0;text-align:left}
-
-#boot .box{width:min(760px,92vw)}
-#boot .bar{display:flex;gap:8px;margin-bottom:20px}
-#boot .bar i{width:11px;height:11px;border-radius:50%;background:#233027}
-#boot .bar i:nth-child(1){background:var(--red)}#boot .bar i:nth-child(2){background:var(--gold)}#boot .bar i:nth-child(3){background:var(--green)}
-#bootlog{font-family:'Grotesk','Devnag',monospace;font-size:clamp(12px,2.4vw,15px);line-height:2;color:#9fe6bd;white-space:pre-wrap;min-height:11.5em;text-shadow:0 0 12px rgba(46,222,130,.25)}
-#bootlog .dim{color:#4c5851}#bootlog .acid{color:var(--acid)}#bootlog .red{color:var(--red)}
-#skip{position:absolute;bottom:26px;right:30px;font-family:'Grotesk',monospace;font-size:12px;letter-spacing:.2em;color:#5e6a63;border:1px solid #233027;padding:9px 18px;border-radius:999px;cursor:pointer;background:none}
-#skip:hover{color:var(--acid);border-color:var(--acid)}
-
-/* ---------- HERO ---------- */
-#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,5vw,70px);position:relative;opacity:0}
-#hero.on{opacity:1;transition:opacity .6s}
-#hero .eyebrow{color:var(--green);font-size:clamp(10px,1.6vw,13px);margin-bottom:clamp(16px,3vh,34px)}
-#hero h1{font-size:clamp(64px,15vw,220px);line-height:.92;color:var(--paper);letter-spacing:.01em;position:relative}
-#hero h1 .u{position:relative;display:inline-block}
-#hero h1 .u::after{content:"";position:absolute;left:0;right:100%;bottom:.02em;height:.09em;background:var(--acid);animation:uline 1.1s .75s cubic-bezier(.76,0,.24,1) forwards}
-@keyframes uline{to{right:0}}
-#hero .sub{max-width:640px;margin-top:clamp(18px,3vh,30px);font-size:clamp(15px,2.1vw,19px);line-height:1.65;color:#c8d0ca}
-#hero .sub b{color:var(--dew)}
-.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(22px,4vh,40px)}
-.chip{border:1px solid #24302a;border-radius:999px;padding:12px 20px;font-family:'Grotesk','Devnag',monospace;font-size:clamp(11px,1.6vw,13px);letter-spacing:.14em;color:#cfe3d6;background:rgba(46,222,130,.04)}
-.chip b{color:var(--acid);font-family:'Anton','Devnag';font-weight:400;letter-spacing:.04em;margin-right:8px;font-size:1.25em}
-.chip small{display:block;letter-spacing:.18em;color:var(--mute);font-size:8.5px;margin-top:4px}
-.cue{position:absolute;left:clamp(20px,5vw,70px);bottom:26px;color:var(--mute);font-size:11px;letter-spacing:.28em}
-.cue::after{content:"";display:block;width:1px;height:34px;background:linear-gradient(var(--green),transparent);margin:10px auto 0;animation:drop 1.8s infinite}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.fn{position:absolute;right:clamp(20px,5vw,70px);bottom:26px;color:#3f4a44;font-size:10.5px;letter-spacing:.14em;text-align:right;line-height:1.9}
-
-/* ---------- ROOMS ---------- */
-#rooms{padding:clamp(20px,5vw,70px);border-top:1px solid #16201a}
-#rooms .hd{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:clamp(20px,3.5vh,36px)}
-#rooms .hd h2{font-size:clamp(30px,5vw,54px);color:var(--paper)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
-.room{position:relative;border:1px solid #1d2622;border-radius:18px;padding:26px;min-height:210px;background:linear-gradient(160deg,#0b0f0d,var(--ink));overflow:hidden;transition:border-color .3s;transform-style:preserve-3d;will-change:transform;cursor:pointer}
-.room::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at var(--mx,50%) var(--my,0%),rgba(46,222,130,.09),transparent 65%);opacity:0;transition:opacity .3s}
-.room:hover::before{opacity:1}
-.room:hover{border-color:#2f4a3c}
-.room .no{font-family:'Grotesk',monospace;color:var(--mute);font-size:11px;letter-spacing:.3em}
-.room h3{font-size:clamp(24px,3vw,34px);color:var(--paper);margin:14px 0 10px}
-.room p{color:#9aa59e;font-size:14px;line-height:1.6;max-width:36ch}
-.badge{position:absolute;top:22px;right:22px;font-family:'Grotesk',monospace;font-size:9.5px;letter-spacing:.2em;padding:7px 12px;border-radius:999px;border:1px solid #24302a;color:var(--mute)}
-.badge.live{color:var(--ink);background:var(--acid);border-color:var(--acid);font-weight:700}
-.badge.ph2{color:var(--green);border-color:#2f4a3c}
-.room.locked{cursor:not-allowed}
-.room .arr{position:absolute;bottom:22px;right:24px;color:var(--green);font-family:'Grotesk',monospace;font-size:13px;opacity:0;transition:opacity .3s,transform .3s;transform:translateX(-8px)}
-.room:not(.locked):hover .arr{opacity:1;transform:none}
-
-/* ---------- FOOTER ---------- */
-footer{padding:50px clamp(20px,5vw,70px) 60px;border-top:1px solid #16201a;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;color:var(--mute);font-size:12px;line-height:2}
-footer .brand{color:var(--paper);font-size:20px}
-footer a{color:var(--green)}
-footer a:hover{color:var(--acid)}
-#reboot{background:none;border:none;color:#3f4a44;font:inherit;cursor:pointer;text-decoration:underline dotted}
-@media (max-width:640px){
-  #hero{justify-content:flex-start;padding-top:11svh;padding-bottom:150px}
-  #hero h1{font-size:clamp(58px,17vw,140px)}
-  .cue{display:none}
-  .fn{position:static;margin-top:44px;text-align:left;font-size:10px}
-  footer{padding-bottom:110px}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body data-room="room1">
 
-<!-- BOOT: roasts the jargon-portfolio TROPE, never a person. Receipts, not adjectives. -->
+<!-- ============ BOOT ============ -->
 <div id="boot" aria-hidden="true">
   <div class="box">
     <div class="bar"><i></i><i></i><i></i></div>
-    <div id="bootlog"></div>
-    <div id="bootbar"><i id="bootfill"></i></div>
+    <pre id="bootlog"></pre>
+    <div id="bootbar"><i></i></div>
   </div>
   <button id="skip">SKIP →</button>
 </div>
 
-<!-- HERO -->
-<main id="hero">
-  <div class="eyebrow cmd">aarav choudhary · class 10 · gurugram · builder</div>
-  <h1 class="anton">OPEN<br>THE <span class="u">DRAWER</span>.</h1>
-  <p class="sub">Every home has one: the drawer of dead tech we're all ignoring.
-  Mine had <b>1.4 kg</b> in it — <b>weighed, not guessed</b> — and a govt list with
-  <b>15 authorised recyclers</b> and zero advertised doorsteps.
-  So I built VIKAAS: films, physics toys, a comedy club, and a ledger of receipts.
-  This site is the ledger.</p>
-  <div class="chips">
-    <div class="chip mag" data-cursor="WEIGHED ✓" data-tip="<b>1.4 kg</b> — kitchen scale, weigh-day photos. See Room 02 for the receipts."><b data-n="1.4">0</b>KG<small>my drawer · weighed</small></div>
-    <div class="chip mag" data-cursor="GOVT LIST ✓" data-tip="<b>15 authorised recyclers</b> — HSPCB list, Govt. of Haryana. Zero advertise a 1–2 kg doorstep."><b data-n="15">0</b>RECYCLERS<small>gurugram · hspcb list</small></div>
-    <div class="chip mag" data-cursor="LABELLED ¹" data-tip="Comedy dialogue, built from scripts every Indian home knows. <b>Labelled</b> on-screen. Call one yourself &amp; see.">₹<b data-n="40">0</b> OFFER<small class="dev">कबाड़ीवाला · dramatised¹</small></div>
-    <div class="chip mag" data-cursor="~ESTIMATE ²" data-tip="~0.03 g per phone, UN/EPA ballpark. We keep the <b>tilde</b> — estimates never cosplay as measurements."><b data-n="0.03">0</b>G GOLD<small>per phone · ~UN/EPA est.²</small></div>
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="eyebrow cmd" id="heroEyebrow">1M1B Changemakers World Cup 2026 · Track: Kill the E-Waste <span>#EWasteOff</span></p>
+    <div class="hero-h1-wrap" id="heroH1Wrap">
+      <h1 class="anton" id="heroTitle" aria-label="VIKAAS">VIKAAS<span class="dev">विकास</span></h1>
+    </div>
+    <p class="sub" id="heroSub">We opened <b>one drawer</b> in Gurugram — 1.4 kg of dead electronics, weighed on a kitchen scale. Then we asked ten homes. <b>Every one had the same drawer.</b> The recyclers exist — 15, on the government's own list. The doorstep doesn't.</p>
+    <div class="chips" id="heroChips">
+      <div class="chip"><b><span data-count="1.4">0</span> KG</b>weighed on a kitchen scale<small>WEIGHED · REAL</small></div>
+      <div class="chip"><b>₹<span data-count="40">0</span></b>cash, paid at the gate<small>RECEIPT #0001</small></div>
+      <div class="chip"><b><span data-count="15">0</span></b>govt-authorised recyclers<small>SOURCED · HSPCB</small></div>
+      <div class="chip"><b><span data-count="0">0</span></b>doorsteps served by them<small>THE GAP</small></div>
+    </div>
   </div>
-  <div class="cue cmd">scroll · the ledger</div>
-  <div class="fn">¹ quotes on this site marked dramatised = call one yourself &amp; see.<br>² estimate, hedged on purpose. that's the rule here.</div>
-</main>
+  <div class="cue" id="heroCue">SCROLL<span></span></div>
+  <div class="fn" id="heroFn">@qwerty_aarav · GURUGRAM<br>receipts with taste</div>
+</section>
 
-<div class="ticker" aria-hidden="true"><div class="lane">
-<span>weighed. not guessed.<i>✷</i></span><span>sourced or stamped<i>✷</i></span><span>dramatised means labelled<i>✷</i></span><span>receipts with taste<i>✷</i></span><span>weighed. not guessed.<i>✷</i></span><span>sourced or stamped<i>✷</i></span><span>dramatised means labelled<i>✷</i></span><span>receipts with taste<i>✷</i></span></div></div>
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="lane">
+    <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · 0 WORDS <i>✦</i></span>
+    <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · 0 WORDS <i>✦</i></span>
+  </div>
+</div>
 
-<!-- ROOMS -->
-<section id="rooms">
-  <div class="hd"><h2 class="anton">THE LEDGER OF ROOMS</h2><span class="cmd" style="color:var(--mute);font-size:11px">6 rooms · every one opens with a receipt</span></div>
-  <div class="grid">
-    <article class="room live rv" data-cursor="YOU ARE HERE" data-go="#hero"><span class="no">ROOM 01</span><h3 class="anton">THE DRAWER</h3><p>The origin scene. One kitchen scale, 1.4 kg of dead tech, and the question that started everything.</p><span class="badge live">LIVE · you are here</span><span class="arr">ENTER →</span></article>
-    <article class="room live rv" data-cursor="ENTER →" data-go="ledger.html"><span class="no">ROOM 02</span><h3 class="anton">PROOF LEDGER</h3><p>Every public number VIKAAS has ever used — drag a virtual scale, open each source, watch claims survive contact.</p><span class="badge live">LIVE · PHASE 2</span><span class="arr">ENTER →</span></article>
-    <article class="room live rv" data-cursor="ENTER →" data-go="films.html"><span class="no">ROOM 03</span><h3 class="anton">FILMS</h3><p>5 cuts. 3 original synth tracks. A Hindi comedy club about a charger from 2014. Cinema cards + the actual masters.</p><span class="badge live">LIVE · PHASE 2</span><span class="arr">ENTER →</span></article>
-    <article class="room locked rv" data-cursor="PHASE 3 · SHHH" data-phase="3"><span class="no">ROOM 04</span><h3 class="anton">KABADI UNIVERSE</h3><p>The कबाड़ीवाला tier list, the saga, the ₹40 gospel — a comic scrollytelling with a physics dunk game at the end.</p><span class="badge">PHASE 3</span></article>
-    <article class="room locked rv" data-cursor="PHASE 3 · SHHH" data-phase="3"><span class="no">ROOM 05</span><h3 class="anton">SYSTEM</h3><p>The method: weighed. not guessed. How claims get made, marked, dramatised-with-labels, and submitted.</p><span class="badge">PHASE 3</span></article>
-    <article class="room locked rv" data-cursor="PHASE 4 · SHHH" data-phase="4"><span class="no">ROOM 06</span><h3 class="anton">THE LAB</h3><p>Render engine, synth rack, and the great tofu-bug autopsy. Our QA process, published as content. Nobody else shows this.</p><span class="badge">PHASE 4</span></article>
+<!-- ============ STORY ============ -->
+<section id="story">
+  <div class="story-stage" id="storyStage">
+    <div class="story-photo" id="storyPhoto"><img src="assets/proof/drawer_real.jpg" alt="the drawer — real photo, our kitchen"></div>
+    <div class="story-copy">
+      <p class="line l1">The drawer had been waiting four years.</p>
+      <p class="line l2">Inside — 1.4 kg of “kuch kaam ka cheez”.</p>
+      <p class="line l3">Ten homes asked. Ten drawers found.</p>
+      <p class="line l4">Not one could name a single authorised recycler.</p>
+      <h2 class="big"><span class="n15">15 RECYCLERS.</span> <span class="n0">0 DOORSTEPS.</span></h2>
+      <p class="kicker">The infrastructure isn't missing. The doorstep is.</p>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div><div class="brand anton">VIKAAS<span style="color:var(--green)">.</span></div><div>receipts with taste · aarav choudhary · @qwerty_aarav</div></div>
-  <div>built with plain html/css/js · no template, no tracker<br>source &amp; pipeline: <a href="https://github.com/ANONYMUS-co986/Goop/tree/arena/019fc480-goop/vikaas-hq">github/ANONYMUS-co986/Goop · vikaas-hq</a><br><button id="reboot">replay the boot sequence →</button></div>
+<!-- ============ RECEIPT ============ -->
+<section id="receipt">
+  <div class="wrap">
+    <p class="eyebrow cmd">the method</p>
+    <h2 class="section-title anton" id="receiptTitle">THE RECEIPT<span>PROTOCOL</span></h2>
+    <div class="receipt" id="receiptPaper">
+      <div class="rcpt-top"><span class="cmd">VIKAAS · RECEIPT #0001</span><span class="cmd">GURUGram · 2026</span></div>
+      <div class="rcpt-items">
+        <div class="ri"><span>dead phones</span><b>3</b></div>
+        <div class="ri"><span>chargers (2014–forever)</span><b>7</b></div>
+        <div class="ri"><span>speaker, died 2022</span><b>1</b></div>
+        <div class="ri"><span>homes surveyed</span><b>10</b></div>
+        <div class="ri total"><span>TOTAL EVIDENCE</span><b>1.4 KG</b></div>
+        <div class="ri"><span>CASH RECEIVED</span><b>₹40</b></div>
+        <div class="ri"><span>WORDS USED</span><b>0</b></div>
+      </div>
+      <div class="rcpt-stamps">
+        <span class="stamp stamp-green" data-tip="<b>WEIGHED</b> — our kitchen scale, photographed">WEIGHED</span>
+        <span class="stamp stamp-gold" data-tip="<b>SOURCED</b> — HSPCB public list, cited">SOURCED</span>
+        <span class="stamp stamp-violet" data-tip="<b>ESTIMATE</b> — hedged, sources in bio">ESTIMATE</span>
+        <span class="stamp stamp-red" data-tip="<b>DRAMATISED</b> — labelled on-screen, always">DRAMATISED</span>
+      </div>
+      <div class="rcpt-foot cmd">no returns on evidence</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCALE ============ -->
+<section id="scale">
+  <div class="wrap">
+    <p class="eyebrow cmd">interactive · the ledger room</p>
+    <h2 class="section-title anton">THE SCALE<span>DOESN'T LIE</span></h2>
+    <div class="scale-toy">
+      <div class="bars">
+        <div class="bar b2"><span class="lab cmd">RECYCLER MINIMUM</span><div class="fill big"></div><b class="num anton">500 KG</b></div>
+        <div class="bar"><span class="lab cmd">WHAT WE BROUGHT</span><div class="fill small"></div><b class="num anton">1.4 KG</b></div>
+      </div>
+      <p class="punch anton" id="scalePunch">SHORT BY 498.6 KG — <span>SO WE STARTED THE DRAWER REVOLUTION.</span></p>
+      <a class="go mag" href="ledger.html" data-cursor="OPEN">weigh your own drawer →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARSENAL ============ -->
+<section id="arsenal">
+  <div class="pin-ars" id="pinArs">
+    <div class="ars-head wrap">
+      <p class="eyebrow cmd">the arsenal · made with code</p>
+      <h2 class="section-title anton">6 REELS<span>· 22 POSTS · 3 BEDS</span></h2>
+    </div>
+    <div class="reel-track" id="reelTrack">
+      <div class="reel-card" data-video="../studio/drops/FINALE/videos/VIKAAS_01_THE-DRAWER.mp4" data-cursor="PLAY">
+        <div class="screen"><video muted playsinline preload="metadata" poster="assets/posters/VIKAAS_01_THE-DRAWER.jpg" src="../studio/drops/FINALE/videos/VIKAAS_01_THE-DRAWER.mp4"></video><span class="dur cmd">29s</span></div>
+        <h3 class="anton">01 · THE DRAWER</h3><p>the origin story — one drawer, opened on camera</p>
+      </div>
+      <div class="reel-card" data-video="../studio/drops/FINALE/videos/VIKAAS_02_15-RECYCLERS-0-DOORSTEPS.mp4" data-cursor="PLAY">
+        <div class="screen"><video muted playsinline preload="metadata" poster="assets/posters/VIKAAS_02_15-RECYCLERS-0-DOORSTEPS.jpg" src="../studio/drops/FINALE/videos/VIKAAS_02_15-RECYCLERS-0-DOORSTEPS.mp4"></video><span class="dur cmd">26s</span></div>
+        <h3 class="anton">02 · 15 RECYCLERS, 0 DOORSTEPS</h3><p>the data bomb — the list is public, we just never look</p>
+      </div>
+      <div class="reel-card" data-video="../studio/drops/FINALE/videos/VIKAAS_03_KABADI-PARADOX.mp4" data-cursor="PLAY">
+        <div class="screen"><video muted playsinline preload="metadata" poster="assets/posters/VIKAAS_03_KABADI-PARADOX.jpg" src="../studio/drops/FINALE/videos/VIKAAS_03_KABADI-PARADOX.mp4"></video><span class="dur cmd">15s</span></div>
+        <h3 class="anton">03 · THE KABADI PARADOX</h3><p>the man pays cash — and still gets called “junk dealer”</p>
+      </div>
+      <div class="reel-card" data-video="../studio/drops/FINALE/videos/VIKAAS_04_COMEDY-CLUB.mp4" data-cursor="PLAY">
+        <div class="screen"><video muted playsinline preload="metadata" poster="assets/posters/VIKAAS_04_COMEDY-CLUB.jpg" src="../studio/drops/FINALE/videos/VIKAAS_04_COMEDY-CLUB.mp4"></video><span class="dur cmd">41s</span></div>
+        <h3 class="anton">04 · THE COMEDY CLUB</h3><p>8 lines of emotional Hindi voiceover — family did NOT sign off</p>
+      </div>
+      <div class="reel-card" data-video="../studio/drops/FINALE/videos/VIKAAS_05_DOORSTEP-PHONK.mp4" data-cursor="PLAY">
+        <div class="screen"><video muted playsinline preload="metadata" poster="assets/posters/VIKAAS_05_DOORSTEP-PHONK.jpg" src="../studio/drops/FINALE/videos/VIKAAS_05_DOORSTEP-PHONK.mp4"></video><span class="dur cmd">20s</span></div>
+        <h3 class="anton">05 · DOORSTEP PHONK</h3><p>1.4 kg in · ₹40 out · zero landfill — the whole trade</p>
+      </div>
+      <div class="reel-card" data-video="../studio/drops/FINALE/videos/VIKAAS_06_MEME-REEL.mp4" data-cursor="PLAY">
+        <div class="screen"><video muted playsinline preload="metadata" poster="assets/posters/VIKAAS_06_MEME-REEL.jpg" src="../studio/drops/FINALE/videos/VIKAAS_06_MEME-REEL.mp4"></video><span class="dur cmd">26s</span></div>
+        <h3 class="anton">06 · THE MEME-REEL</h3><p>the whole arsenal in 26 seconds — steal none, share all</p>
+      </div>
+    </div>
+  </div>
+  <div class="posts-marquee">
+    <div class="lane"><span>M1 DRAKE <i>✦</i></span><span>M2 BUTTONS <i>✦</i></span><span>M3 CHANGE MY MIND <i>✦</i></span><span>M4 SIDE-EYE <i>✦</i></span><span>M5 KALM PANIK KALM <i>✦</i></span><span>M6 THE AFFAIR <i>✦</i></span><span>M7 DINNER DEBATE <i>✦</i></span><span>M8 THE PLAN <i>✦</i></span><span>P1 HERO <i>✦</i></span><span>P2 HANDSHAKE <i>✦</i></span><span>P3 GOLD <i>✦</i></span><span>P4 2047 <i>✦</i></span><span>P5 SUPPLY CHAIN <i>✦</i></span><span>P6 MUMMY'S MUSEUM <i>✦</i></span><span>R1 MUSEUM <i>✦</i></span><span>R2 LOST <i>✦</i></span><span>R3 SAGA <i>✦</i></span><span>R4 MINE <i>✦</i></span><span>R5 TIER LIST <i>✦</i></span><span>R6 WANTED <i>✦</i></span><span>R7 RECEIPT <i>✦</i></span><span>R8 GENERATION GAP <i>✦</i></span>
+    <span>M1 DRAKE <i>✦</i></span><span>M2 BUTTONS <i>✦</i></span><span>M3 CHANGE MY MIND <i>✦</i></span><span>M4 SIDE-EYE <i>✦</i></span><span>M5 KALM PANIK KALM <i>✦</i></span><span>M6 THE AFFAIR <i>✦</i></span><span>M7 DINNER DEBATE <i>✦</i></span><span>M8 THE PLAN <i>✦</i></span><span>P1 HERO <i>✦</i></span><span>P2 HANDSHAKE <i>✦</i></span><span>P3 GOLD <i>✦</i></span><span>P4 2047 <i>✦</i></span><span>P5 SUPPLY CHAIN <i>✦</i></span><span>P6 MUMMY'S MUSEUM <i>✦</i></span><span>R1 MUSEUM <i>✦</i></span><span>R2 LOST <i>✦</i></span><span>R3 SAGA <i>✦</i></span><span>R4 MINE <i>✦</i></span><span>R5 TIER LIST <i>✦</i></span><span>R6 WANTED <i>✦</i></span><span>R7 RECEIPT <i>✦</i></span><span>R8 GENERATION GAP <i>✦</i></span>
+    </div>
+  </div>
+  <div class="wrap ars-cta"><a class="go mag" href="films.html" data-cursor="WATCH">enter the films room →</a></div>
+</section>
+
+<!-- ============ REBEE ============ -->
+<section id="rebee">
+  <div class="wrap grid2">
+    <div class="rebee-art" id="rebeeArt" data-cursor="SCRAP-SCAN"><img src="../cwc_buddy/art/rebee_hero_v6_FINAL.png" alt="ReBee — 1M1B's AI buddy, born from a Gurugram drawer"></div>
+    <div class="rebee-copy">
+      <p class="eyebrow cmd">flash challenge #2 · 1M1B's ai buddy</p>
+      <h2 class="section-title anton">MEET<span>REBEE</span></h2>
+      <p class="sub">Built from the problem he solves — a capacitor body, phone-glass wings, charger-LED eyes, a weighing-scale chest. Hatched from a Gurugram drawer. <b>री-बी.</b></p>
+      <div class="powers">
+        <div class="power" data-tip="<b>SCRAP-SCAN</b> — contents · cash value · nearest recycler, in one visor pass"><h3 class="anton">SCRAP-SCAN</h3><p>his visor reads any dead device — what's inside, what it's worth, where it goes.</p></div>
+        <div class="power" data-tip="<b>DOORSTEP DIAL</b> — pickup routed to your door"><h3 class="anton">DOORSTEP DIAL</h3><p>routes an authorised recycler straight to your doorstep — the missing step.</p></div>
+        <div class="power" data-tip="<b>MATERIAL MATCH</b> — recovered metals back into manufacturing"><h3 class="anton">MATERIAL MATCH</h3><p>flags which metals re-enter manufacturing — yesterday's phone, tomorrow's product.</p></div>
+      </div>
+      <p class="mission anton">NO DRAWER LEFT BEHIND<span>.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section id="plan">
+  <div class="wrap">
+    <p class="eyebrow cmd">the plan · public</p>
+    <h2 class="section-title anton">MISSION<span>TO GENEVA</span></h2>
+    <div class="road" id="road">
+      <div class="road-line" id="roadLine"></div>
+      <div class="stop done"><span class="dot"></span><div><h3 class="anton">M1 · PLEDGE</h3><p>the drawer story — submitted, verified</p></div></div>
+      <div class="stop"><span class="dot"></span><div><h3 class="anton">M2 · ACT &amp; MEASURE</h3><p>25 households · every device weighed, logged, delivered</p></div></div>
+      <div class="stop"><span class="dot"></span><div><h3 class="anton">TOP 500 → TOP 100</h3><p>receipts beat rhetoric</p></div></div>
+      <div class="stop"><span class="dot"></span><div><h3 class="anton">CITY SHOWDOWN</h3><p>90-second pitch, built from the ledger</p></div></div>
+      <div class="stop geneva"><span class="dot"></span><div><h3 class="anton">GENEVA · UN · 20 NOV 2026</h3><p>1M1B Impact Summit — the top 3 fly</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="foot">
+  <div class="foot-big anton">NO DRAWER<br>LEFT BEHIND<span>.</span></div>
+  <div class="foot-links">
+    <a href="ledger.html" data-cursor="OPEN">THE LEDGER →</a>
+    <a href="films.html" data-cursor="OPEN">THE FILMS →</a>
+    <a href="https://instagram.com/qwerty_aarav" target="_blank" data-cursor="IG ↗">@qwerty_aarav ↗</a>
+    <a href="https://instagram.com/1m1bfoundation" target="_blank" data-cursor="IG ↗">@1m1bfoundation ↗</a>
+  </div>
+  <div class="foot-meta cmd">
+    #EWasteOff #ChangemakersWorldCup #1M1B<br>
+    vikaas · gurugram · receipts with taste<br>
+    <button id="reboot">reboot the sequence ↩</button>
+  </div>
 </footer>
 
-<script>
-(function(){
-"use strict";
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const boot=document.getElementById('boot'),logEl=document.getElementById('bootlog'),hero=document.getElementById('hero');
-const LINES=[
- ["dim","vik://sys — honesty kernel v1.0 — booting receipts-only mode"],
- ["","checking for jargon…"],
- ["","> chlorophyll.exe            [████████░░] still loading adjectives"],
- ["","> o1_execution.dll           [████████░░] it was O(n) all along"],
- ["red","> \"algorithmic sanctuary\"    [not found] — translation: a navbar"],
- ["acid","> weighed_scale.exe          [FOUND] — 1.4 kg, kitchen-grade"],
- ["acid","> source_list.exe            [FOUND] — 15 authorised recyclers"],
- ["","adjectives rejected. receipts accepted."],
- ["","launching VIKAAS — the ledger of rooms ▮"]
-];
-let li=0,finished=false,timer;
-function endBoot(){ if(finished)return; finished=true; clearTimeout(timer);
-  boot.classList.add('done'); hero.classList.add('on'); countUp(); }
-const BF=document.getElementById('bootfill');
-function next(){ if(BF)BF.style.width=Math.round((li/LINES.length)*100)+'%';
-  if(li>=LINES.length){ timer=setTimeout(endBoot,650); if(BF)BF.style.width='100%'; return; }
-  const [cls,txt]=LINES[li]; const div=document.createElement('div');
-  if(cls)div.className=cls; logEl.appendChild(div);
-  if(reduce){ div.textContent=txt; li++; next(); return; }
-  let ch=0; const speed=14+Math.random()*10;
-  (function type(){ div.textContent=txt.slice(0,ch); ch+=2;
-    if(ch<=txt.length){ timer=setTimeout(type,speed); } else { li++; timer=setTimeout(next, li==2?520:200); } })();
-}
-function countUp(){ document.querySelectorAll('.chip b').forEach(el=>{ if(!el.dataset.n)return;
-  const target=parseFloat(el.dataset.n), dec=(el.dataset.n.split('.')[1]||'').length;
-  if(reduce){el.textContent=target.toFixed(dec);return;}
-  const t0=performance.now(),D=900+Math.random()*400;
-  (function tick(t){const p=Math.min((t-t0)/D,1),e=1-Math.pow(1-p,3);
-    el.textContent=(target*e).toFixed(dec); if(p<1)requestAnimationFrame(tick);})(t0); });}
-// boot policy: once per session, skippable, honest
-if(reduce){ logEl.style.minHeight='auto'; endBoot(); }
-else if(sessionStorage.getItem('vboot')==='1'){ endBoot(); }
-else{ sessionStorage.setItem('vboot','1'); next(); }
-document.getElementById('skip').addEventListener('click',endBoot);
-document.getElementById('reboot').addEventListener('click',function(){
-  sessionStorage.removeItem('vboot'); location.reload(); });
-// rooms: live navigate / locked honesty
-document.querySelectorAll('.room').forEach(function(r){
-  r.addEventListener('mousemove',function(e){ const b=r.getBoundingClientRect();
-    r.style.setProperty('--mx',(e.clientX-b.left)+'px'); r.style.setProperty('--my',(e.clientY-b.top)+'px');
-    if(reduce)return; const rx=((e.clientY-b.top)/b.height-.5)*-5, ry=((e.clientX-b.left)/b.width-.5)*6;
-    r.style.transform='perspective(700px) rotateX('+rx+'deg) rotateY('+ry+'deg)'; });
-  r.addEventListener('mouseleave',function(){ r.style.transform='none'; });
-  r.addEventListener('click',function(){
-    if(r.classList.contains('locked')){
-      const ph=r.dataset.phase, b=r.querySelector('.badge'), t=b.textContent;
-      b.textContent='COMING IN PHASE '+ph+' · receipts don\'t rush'; setTimeout(function(){b.textContent=t;},1400);
-      r.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:260});
-    } else if(r.dataset.go){
-      if(r.dataset.go.slice(-5)==='.html'){ window.location.href=r.dataset.go; }
-      else{ document.querySelector(r.dataset.go).scrollIntoView({behavior:reduce?'auto':'smooth'}); } } });
-});
-})();
-</script>
-<script src="assets/site.js" defer></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/SplitType.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/site2.js"></script>
 </body>
 </html>
