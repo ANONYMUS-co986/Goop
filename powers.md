@@ -363,3 +363,20 @@ network-blocked anyway). Local rendering, screenshots, DOM automation = full.
 *End of suite. Every power listed here has been executed in this repo with
 receipts. Hand this file to any AI, point it at the engine + logbooks, and it
 inherits the whole arsenal — brain AND hands, top to bottom.* ⚡
+
+
+## 13. 🔬 THE FINALE POWER SUITE (v2 QA CLI — the upgrade)
+
+- `vikaas-hq/studio/engine/suite.js` — ONE-COMMAND self-review:
+  `node suite.js qa <url> [--mobile] [--beats=...]` scroll-beat walk with
+  screenshots + console-error capture + **overlap probes** (elementFromPoint
+  hit-tests: term/stats/enter never collide) + CTA clickability;
+  `node suite.js verify <url>` exits 1 on ANY fail (CI-able).
+- `vikaas-hq/studio/engine/pix.py` — the sight rig: `stats` (mean/std/dark/
+  acid/green%), `ascii` (luminance maps — how the no-vision agent "sees"),
+  `diff` (pixel diff + change-region map), `region` (crop QA).
+- Discipline: every phase ships only when `verify` passes on desktop AND mobile.
+  Bug family this caught (loader v3): mobile term/stats/ENTER triple overlap
+  (stats intercepted the CTA), enter-window too tight (0.92→0.88), GSAP
+  onUpdate args, tl.call params, img path.
+

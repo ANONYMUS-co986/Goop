@@ -1,16 +1,16 @@
 /* ============================================================
-   VIKAAS v2 — LOADER v2 "THE BOOT" (scroll-cinematic)
-   Timeline (track 460vh, pinned, scrub):
-     0.00   HUD fades in · cue pulses
+   VIKAAS v2 — LOADER v3 "THE BOOT · FINALE"
+   Timeline (460vh pinned, scrub):
+     0.00–0.02  HUD + cue in · rail live
      0.02–0.10  terminal lines reveal (scroll-linked)
-     0.08–0.20  3D camera push-in · lid creak
-     0.20–0.38  lid opens · e-waste floats out of drawer
-     0.38–0.52  VIKAAS scramble-assembles · glitch bursts
-     0.52–0.64  stats slam + stamps
-     0.64–0.78  ReBee fly-by · विकास fades
-     0.78–0.90  NO DRAWER LEFT BEHIND. reveals
-     0.90–1.00  ENTER pill · click → acid exit
-   ?fast=1 / reduced-motion → final state instantly.
+     0.08–0.20  camera push-in (object-tween pattern) · lid creaks
+     0.20–0.38  lid swings open · LIGHT SPILL ignites · e-waste floats + orbits
+     0.38–0.52  VIKAAS scramble-assembles · glitch · pulse glow starts
+     0.52–0.64  stats slam (scanline sweep) + stamps rotate in
+     0.64–0.78  ReBee arcs across (fixed aspect) · विकास in
+     0.78–0.90  big line char-stagger reveal (SplitType)
+     0.88–1.00  ENTER pill (wide reliable window) · click → acid exit
+   ?fast=1 / reduced-motion → final state. Mobile-safe layout.
    ============================================================ */
 (function () {
   'use strict';
@@ -28,14 +28,22 @@
   const tick = () => { const d = new Date(); hudTime.textContent = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' IST'; };
   tick(); setInterval(tick, 1000);
 
-  /* ---------- word chars ---------- */
+  /* ---------- word chars + big line chars ---------- */
   const FULL = 'VIKAAS';
   wordEl.innerHTML = FULL.split('').map((c) => '<span class="ch">' + c + '</span>').join('');
   const chars = Array.from(wordEl.querySelectorAll('.ch'));
   const SCR = '!<>-_\\/[]{}—=+*^?#$%&@ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const rand = () => SCR[Math.floor(Math.random() * SCR.length)];
+  let bigChars = [];
+  if (window.SplitType && !reduce) {
+    const st = new SplitType(bigline, { types: 'chars' });
+    bigChars = st.chars || [];
+    gsap.set(bigChars, { yPercent: 120, opacity: 0 });
+  } else {
+    gsap.set(bigline, { opacity: 1 });
+  }
 
-  /* ---------- terminal lines (scroll-linked reveal) ---------- */
+  /* ---------- terminal ---------- */
   const LINES = [
     ['scanning drawer inventory', '3 phones · 7 chargers · 1 speaker (2022)', 'dim'],
     ['weighing …', '1.4 KG — receipt logged', 'acid'],
@@ -49,32 +57,37 @@
   const termLines = Array.from(termEl.querySelectorAll('[data-l]'));
   const cursor = document.createElement('span'); cursor.className = 'cur'; termEl.appendChild(cursor);
 
-  /* ---------- 3D SCENE (code-built assets) ---------- */
-  let renderer = null, scene = null, camera = null, drawerGroup = null, lidPivot = null, items = [], particles = null, THREE_OK = false;
+  /* ---------- 3D SCENE ---------- */
+  let renderer = null, scene = null, camera = null, drawerGroup = null, lidPivot = null,
+      items = [], particles = null, spill = null, grid = null, THREE_OK = false;
+  const cam = { x: 0, y: 1.1, z: 7.6, lx: 0, ly: -0.3, lz: 0 };
   function initThree() {
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: $('#three'), antialias: true, alpha: true });
-    } catch (e) { document.body.classList.add('no3d'); return; }
+    try { renderer = new THREE.WebGLRenderer({ canvas: $('#three'), antialias: true, alpha: true }); }
+    catch (e) { document.body.classList.add('no3d'); return; }
     THREE_OK = true;
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.setSize(innerWidth, innerHeight);
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 60);
-    camera.position.set(0, 1.1, 7.6);
+    camera.position.set(cam.x, cam.y, cam.z); camera.lookAt(cam.lx, cam.ly, cam.lz);
 
-    // lights
     scene.add(new THREE.AmbientLight(0x23352a, 1.1));
     const key = new THREE.DirectionalLight(0xffffff, 1.1); key.position.set(4, 7, 5); scene.add(key);
     const acid = new THREE.PointLight(0xb9ff3f, 26, 18); acid.position.set(-3, 1.5, 3); scene.add(acid);
     const rim = new THREE.PointLight(0x2ede82, 14, 16); rim.position.set(3, -1, 4); scene.add(rim);
+    // LIGHT SPILL inside the drawer (ignites when lid opens)
+    spill = new THREE.PointLight(0xb9ff3f, 0, 12); spill.position.set(0, -0.5, 0.6); scene.add(spill);
 
-    // ---- THE DRAWER (code-built) ----
+    // ground grid
+    grid = new THREE.GridHelper(14, 28, 0x1d2a22, 0x0f1a14);
+    grid.position.y = -1.75; scene.add(grid);
+
+    // ---- THE DRAWER ----
     drawerGroup = new THREE.Group();
     const metal = new THREE.MeshStandardMaterial({ color: 0x12171a, metalness: 0.82, roughness: 0.34 });
     const dark = new THREE.MeshStandardMaterial({ color: 0x0a0f0c, metalness: 0.6, roughness: 0.5 });
     const body = new THREE.Mesh(new THREE.BoxGeometry(3.1, 1.5, 2.1), metal);
     body.position.y = -0.85; drawerGroup.add(body);
-    // front panel with VIKAAS label (canvas texture = code asset)
     const cv = document.createElement('canvas'); cv.width = 512; cv.height = 160;
     const ctx = cv.getContext('2d');
     ctx.fillStyle = '#0d1310'; ctx.fillRect(0, 0, 512, 160);
@@ -84,48 +97,40 @@
     const tex = new THREE.CanvasTexture(cv);
     const panel = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 0.78), new THREE.MeshBasicMaterial({ map: tex }));
     panel.position.set(0, -0.85, 1.06); drawerGroup.add(panel);
-    // edges wireframe
     const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.1, 1.5, 2.1)), new THREE.LineBasicMaterial({ color: 0x2ede82, transparent: true, opacity: 0.5 }));
     edges.position.y = -0.85; drawerGroup.add(edges);
-    // LID (hinged at back)
     lidPivot = new THREE.Group(); lidPivot.position.set(0, -0.1, -1.0);
     const lid = new THREE.Mesh(new THREE.BoxGeometry(3.35, 0.22, 2.35), metal);
     lid.position.set(0, 0, 1.0); lidPivot.add(lid);
     const lidEdge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.35, 0.22, 2.35)), new THREE.LineBasicMaterial({ color: 0xb9ff3f, transparent: true, opacity: 0.35 }));
     lidEdge.position.set(0, 0, 1.0); lidPivot.add(lidEdge);
     drawerGroup.add(lidPivot);
-    // drawer base
     const base = new THREE.Mesh(new THREE.BoxGeometry(3.5, 0.16, 2.5), dark); base.position.y = -1.63; drawerGroup.add(base);
     scene.add(drawerGroup);
 
-    // ---- E-WASTE (code-built) ----
+    // ---- E-WASTE ----
     const makeItem = (geo, mat, x, y, z, rot) => {
       const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); if (rot) m.rotation.set(rot[0], rot[1], rot[2]);
       drawerGroup.add(m); items.push(m); return m;
     };
     const glassMat = new THREE.MeshStandardMaterial({ color: 0x1b2420, emissive: 0x2ede82, emissiveIntensity: 0.25, metalness: 0.3, roughness: 0.4 });
-    // phone
     const phone = makeItem(new THREE.BoxGeometry(0.78, 1.5, 0.07), glassMat, -0.85, -0.55, 0.05, [0, 0.35, 0.12]);
     const phoneScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 1.32), new THREE.MeshBasicMaterial({ color: 0x0a2a18 }));
     phoneScreen.position.set(0, 0, 0.05); phone.add(phoneScreen);
-    // cables (tube along curve)
     const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(-0.4, -0.6, 0.1), new THREE.Vector3(0.1, -0.2, 0.3), new THREE.Vector3(0.45, -0.5, 0.05), new THREE.Vector3(0.8, -0.2, 0.25)]);
     const cable = new THREE.Mesh(new THREE.TubeGeometry(curve, 24, 0.045, 8), new THREE.MeshStandardMaterial({ color: 0x151a1d, metalness: 0.4, roughness: 0.6 }));
     drawerGroup.add(cable); items.push(cable);
     const cable2 = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(1.0, -0.7, 0.0), new THREE.Vector3(1.3, -0.3, 0.2), new THREE.Vector3(1.55, -0.6, -0.05)]), 20, 0.035, 8), new THREE.MeshStandardMaterial({ color: 0x20262a, metalness: 0.35, roughness: 0.6 }));
     drawerGroup.add(cable2); items.push(cable2);
-    // battery
     const battery = makeItem(new THREE.BoxGeometry(0.62, 0.3, 0.95), new THREE.MeshStandardMaterial({ color: 0x2a2f33, metalness: 0.5, roughness: 0.5 }), 0.35, -0.7, 0.3, [0.1, -0.3, 0.2]);
-    // charger
     const charger = makeItem(new THREE.BoxGeometry(0.5, 0.5, 0.14), new THREE.MeshStandardMaterial({ color: 0x1c2125, metalness: 0.6, roughness: 0.45 }), -0.2, -0.75, -0.4, [0.2, 0.5, -0.1]);
     const prong = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.3, 8), new THREE.MeshStandardMaterial({ color: 0x8a939b, metalness: 0.9, roughness: 0.25 }));
     prong.position.set(0.14, -0.36, 0); charger.add(prong);
-    // pcb
     const pcb = makeItem(new THREE.BoxGeometry(1.3, 0.05, 0.9), new THREE.MeshStandardMaterial({ color: 0x0f3d22, roughness: 0.6 }), 0.6, -0.55, -0.55, [0.1, 0.2, 0.05]);
     const pcbLine = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(1.3, 0.05, 0.9)), new THREE.LineBasicMaterial({ color: 0xb9ff3f, transparent: true, opacity: 0.6 }));
     pcbLine.position.copy(pcb.position); pcbLine.rotation.copy(pcb.rotation); drawerGroup.add(pcbLine);
 
-    // ---- PARTICLES (dust) ----
+    // ---- PARTICLES ----
     const N = 420, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
     const palette = [[0.72, 1, 0.25], [0.18, 0.87, 0.51], [1, 0.83, 0.3], [0.92, 0.94, 0.96]];
     for (let i = 0; i < N; i++) {
@@ -143,28 +148,29 @@
   }
   initThree();
 
-  /* ---------- render loop (bob + parallax) ---------- */
-  let mx = 0, my = 0, camX = 0;
+  /* ---------- render loop: apply cam object + bob + parallax ---------- */
+  let mx = 0, my = 0;
   addEventListener('pointermove', (e) => { mx = (e.clientX / innerWidth - 0.5); my = (e.clientY / innerHeight - 0.5); }, { passive: true });
   (function loop() {
     if (THREE_OK) {
-      camX += (mx * 0.9 - camX) * 0.05;
-      camera.position.x = camX;
-      camera.position.y += ((1.1 + my * 0.5) - camera.position.y) * 0.05;
-      camera.lookAt(0, -0.3, 0);
+      // smooth camera toward the tweened cam object
+      camera.position.x += ((cam.x + mx * 0.35) - camera.position.x) * 0.06;
+      camera.position.y += ((cam.y + my * 0.18) - camera.position.y) * 0.06;
+      camera.position.z += (cam.z - camera.position.z) * 0.06;
+      camera.lookAt(cam.lx, cam.ly, cam.lz);
       if (particles) particles.rotation.y += 0.0006;
-      items.forEach((it, i) => { if (it.userData.bob !== undefined) it.position.y = it.userData.baseY + Math.sin(performance.now() * 0.0012 + i * 1.7) * 0.05; });
+      items.forEach((it, i) => {
+        if (it.userData.bob) it.position.y = it.userData.baseY + Math.sin(performance.now() * 0.0012 + i * 1.7) * 0.05;
+        if (it.userData.spin) it.rotation.y += 0.004 * (i % 2 ? 1 : -1);
+      });
       renderer.render(scene, camera);
     }
     requestAnimationFrame(loop);
   })();
 
-  /* ---------- AUDIO (unlocked on first gesture) ---------- */
+  /* ---------- AUDIO ---------- */
   let unlocked = false;
-  const unlock = () => {
-    if (unlocked) return; unlocked = true;
-    const a = new Audio('assets/audio/boot.wav'); a.volume = 0.7; a.play().catch(() => {});
-  };
+  const unlock = () => { if (unlocked) return; unlocked = true; const a = new Audio('assets/audio/boot.wav'); a.volume = 0.7; a.play().catch(() => {}); };
   ['wheel', 'touchstart', 'pointerdown'].forEach((ev) => addEventListener(ev, unlock, { passive: true, once: true }));
   const whoosh = () => {
     if (!unlocked) return;
@@ -179,51 +185,49 @@
     } catch (e) {}
   };
 
-  /* ---------- MASTER TIMELINE (scroll-scrubbed) ---------- */
+  /* ---------- MASTER TIMELINE ---------- */
   const tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: { trigger: '#stage', start: 'top top', end: '+=4600', pin: true, scrub: 0.6 },
     onUpdate: function () {
       const p = this.progress;
       railFill.style.height = (p * 100) + '%';
-      // word scramble window
       if (p > 0.38 && p < 0.52) {
         const n = Math.min(FULL.length, Math.floor((p - 0.38) / 0.14 * FULL.length));
         chars.forEach((ch, i) => { ch.textContent = i < n ? FULL[i] : rand(); });
       }
-      // terminal active cursor line
       const lineIdx = Math.min(LINES.length - 1, Math.floor(p / 0.14));
       cursor.style.display = p < 0.1 && lineIdx < LINES.length ? 'inline-block' : 'none';
     },
   });
 
-  // HUD + cue
   tl.to('.hud', { opacity: 1, duration: 0.02 }, 0.005);
   tl.to('#cue', { opacity: 1, duration: 0.02 }, 0.01);
 
-  // terminal lines reveal
   termLines.forEach((ln, i) => {
     tl.fromTo(ln, { opacity: 0.12 }, { opacity: 1, duration: 0.02 }, 0.02 + i * 0.014);
   });
 
-  // 3D: camera push + lid creak
   if (THREE_OK) {
-    tl.to(camera.position, { z: 6.6, duration: 0.12 }, 0.08);
+    // camera object tweens (codrops pattern)
+    tl.to(cam, { z: 6.6, duration: 0.12 }, 0.08);
     tl.to(lidPivot.rotation, { x: 0.05, duration: 0.06 }, 0.12);
     tl.to(lidPivot.rotation, { x: 1.28, duration: 0.18, ease: 'power2.inOut' }, 0.20);
+    tl.to(spill, { intensity: 9, duration: 0.14, ease: 'power1.out' }, 0.22);
     tl.to(drawerGroup.position, { y: -0.25, duration: 0.12 }, 0.20);
     tl.to(drawerGroup.scale, { x: 0.9, y: 0.9, z: 0.9, duration: 0.14 }, 0.20);
     items.forEach((it, i) => {
       const dir = (i % 2 ? 1 : -1) * (0.5 + (i % 3) * 0.25);
       it.userData.baseY = it.position.y;
       it.userData.bob = true;
+      it.userData.spin = true;
       tl.to(it.position, { y: it.position.y + 1.5 + (i % 3) * 0.4, duration: 0.1, ease: 'power1.out' }, 0.21 + i * 0.012);
       tl.to(it.rotation, { y: it.rotation.y + 1.2 * dir, duration: 0.1 }, 0.21 + i * 0.012);
     });
-    tl.to(camera.position, { z: 5.4, duration: 0.16, ease: 'power1.inOut' }, 0.44);
+    tl.to(cam, { z: 5.2, y: 0.75, duration: 0.16, ease: 'power1.inOut' }, 0.44);
   }
 
-  // wordmark assemble (scramble driven in onUpdate; chars pop in)
+  // wordmark
   chars.forEach((ch, i) => {
     tl.fromTo(ch, { yPercent: 130, rotate: 12, scale: 0.7 }, { yPercent: 0, rotate: 0, scale: 1, opacity: 1, duration: 0.035, ease: 'back.out(2)' }, 0.385 + i * 0.012);
   });
@@ -231,9 +235,10 @@
   tl.call(function () { wordEl.classList.remove('glitching'); }, [], 0.403);
   tl.call(function () { wordEl.classList.add('glitching'); }, [], 0.465);
   tl.call(function () { wordEl.classList.remove('glitching'); }, [], 0.468);
+  tl.call(function () { wordEl.classList.add('pulse'); }, [], 0.50);
   tl.call(whoosh, [], 0.52);
 
-  // stats slam + stamps
+  // stats
   stats.forEach((s, i) => {
     tl.fromTo(s, { scale: 0.4, y: 60, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.045, ease: 'back.out(2.2)' }, 0.535 + i * 0.02);
   });
@@ -241,23 +246,25 @@
     tl.fromTo(s, { scale: 2.2, rotate: (i % 2 ? 12 : -12), opacity: 0 }, { scale: 1, rotate: 7, opacity: 1, duration: 0.03, ease: 'back.out(2)' }, 0.60 + i * 0.01);
   });
 
-  // ReBee fly-by + विकास
+  // ReBee arc
   tl.to(rebee, { opacity: 1, duration: 0.01 }, 0.64);
-  tl.fromTo(rebee, { left: '-22vw' }, { left: '110vw', duration: 0.14, ease: 'power1.in' }, 0.64);
+  tl.fromTo(rebee, { left: '-22vw', top: '20%' }, { left: '108vw', top: '12%', duration: 0.14, ease: 'power1.in' }, 0.64);
   tl.to(rebee, { opacity: 0, duration: 0.02 }, 0.78);
   tl.to(devEl, { opacity: 1, duration: 0.03 }, 0.68);
   tl.call(whoosh, [], 0.78);
 
-  // big line reveal
-  tl.to(bigline, { clipPath: 'inset(0 0% 0 0)', duration: 0.12, ease: 'power2.inOut' }, 0.78);
+  // big line char reveal
+  tl.to(bigline, { clipPath: 'inset(0 0% 0 0)', duration: 0.05, ease: 'power2.inOut' }, 0.78);
+  if (bigChars.length) {
+    tl.fromTo(bigChars, { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, stagger: 0.012, duration: 0.045, ease: 'back.out(1.8)' }, 0.80);
+  }
   tl.to(cueEl, { opacity: 0, duration: 0.02 }, 0.85);
 
-  // ENTER
-  tl.to(enterBtn, { opacity: 1, y: 0, scale: 1, duration: 0.06, ease: 'back.out(2)' }, 0.92)
-    .add(() => enterBtn.classList.add('show'), 0.94);
-  tl.to(railFill, { opacity: 1, duration: 0.01 }, 0.95);
+  // ENTER — wide reliable window
+  tl.to(enterBtn, { opacity: 1, y: 0, scale: 1, duration: 0.06, ease: 'back.out(2)' }, 0.88)
+    .add(function () { enterBtn.classList.add('show'); }, 0.90);
 
-  /* ---------- ENTER click ---------- */
+  /* ---------- ENTER ---------- */
   enterBtn.addEventListener('click', () => {
     if (unlocked) { const a = new Audio('assets/audio/enter.wav'); a.volume = 0.9; a.play().catch(() => {}); }
     stage.classList.add('leaving');
@@ -274,6 +281,7 @@
     gsap.set(stamps, { opacity: 1, scale: 1, rotate: 7 });
     gsap.set(devEl, { opacity: 1 });
     gsap.set(bigline, { clipPath: 'inset(0 0% 0 0)' });
+    if (bigChars.length) gsap.set(bigChars, { yPercent: 0, opacity: 1 });
     gsap.set(rebee, { opacity: 0 });
     gsap.set(cueEl, { opacity: 0 });
     railFill.style.height = '100%';

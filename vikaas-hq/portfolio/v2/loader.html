@@ -10,22 +10,17 @@
 @font-face{font-family:'Anton';src:url('assets/fonts/Anton.ttf');font-display:swap}
 @font-face{font-family:'Grotesk';src:url('assets/fonts/SpaceGrotesk.ttf');font-display:swap}
 @font-face{font-family:'Devnag';src:url('assets/fonts/NotoSansDevanagari.ttf');font-display:swap}
-:root{
-  --ink:#040605; --paper:#EFE9DC; --dew:#EAFFF4;
-  --acid:#B9FF3F; --green:#2EDE82; --red:#FF4D5E; --gold:#FFD34D; --mute:#4c5851;
-}
+:root{--ink:#040605;--paper:#EFE9DC;--dew:#EAFFF4;--acid:#B9FF3F;--green:#2EDE82;--red:#FF4D5E;--gold:#FFD34D;--mute:#4c5851}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:auto}
 body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monospace;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .cmd{font-family:'Grotesk','Devnag',monospace;letter-spacing:.24em;text-transform:uppercase}
 #track{height:460vh;position:relative}
 
-/* ============ STAGE (pinned) ============ */
+/* ============ STAGE ============ */
 #stage{position:relative;height:100svh;overflow:hidden;background:var(--ink)}
 #three{position:absolute;inset:0;z-index:1;display:block}
 .no3d #three{display:none}
-
-/* glow + overlays */
 .glow{position:absolute;left:50%;top:52%;width:min(80vmin,640px);height:min(80vmin,640px);transform:translate(-50%,-50%);z-index:2;pointer-events:none;
   background:radial-gradient(circle,rgba(185,255,63,.09),rgba(46,222,130,.05) 45%,transparent 70%);filter:blur(40px)}
 .scanlines{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.45;
@@ -41,11 +36,11 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 .hud-tl{top:22px;left:26px}.hud-tr{top:22px;right:26px;text-align:right}
 .hud-bl{bottom:22px;left:26px}.hud-br{bottom:22px;right:26px;text-align:right}
 
-/* scroll rail (right edge) */
+/* scroll rail */
 #rail{position:absolute;right:26px;top:50%;transform:translateY(-50%);width:2px;height:42vh;background:rgba(255,255,255,.07);z-index:7;pointer-events:none}
 #rail i{display:block;width:100%;height:0%;background:linear-gradient(var(--green),var(--acid));box-shadow:0 0 10px rgba(185,255,63,.7)}
 
-/* terminal (center-left glass) */
+/* TERMINAL (desktop: center-left) */
 #termbox{position:absolute;left:clamp(20px,6vw,90px);top:50%;transform:translateY(-50%);z-index:6;width:min(420px,86vw);
   background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
   border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:20px 22px;
@@ -57,11 +52,13 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 #term .cur{display:inline-block;width:7px;height:1em;background:var(--acid);vertical-align:-.15em;animation:blink .8s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 
-/* WORD (center) */
+/* WORD */
 #wordzone{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);z-index:5;text-align:center;width:100%;pointer-events:none}
 #word{font-family:'Anton','Devnag',sans-serif;font-weight:400;font-size:clamp(64px,15vw,170px);line-height:.95;color:var(--paper);letter-spacing:.01em;white-space:nowrap;
   text-shadow:0 0 26px rgba(185,255,63,.38),0 0 90px rgba(185,255,63,.16)}
 #word .ch{display:inline-block;opacity:0}
+#word.pulse{animation:pulseGlow 2.4s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{text-shadow:0 0 26px rgba(185,255,63,.38),0 0 90px rgba(185,255,63,.16)}50%{text-shadow:0 0 46px rgba(185,255,63,.72),0 0 140px rgba(185,255,63,.34)}}
 #word.glitching{animation:glitch .14s steps(2) 2}
 @keyframes glitch{
   0%{transform:translate(0);text-shadow:0 0 26px rgba(185,255,63,.38)}
@@ -73,25 +70,26 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 
 /* STATS */
 #stats{position:absolute;left:50%;bottom:16vh;transform:translateX(-50%);z-index:5;display:flex;gap:clamp(10px,2vw,22px);flex-wrap:wrap;justify-content:center;width:92vw}
-.stat{position:relative;min-width:130px;text-align:center;padding:14px 18px;border-radius:16px;opacity:0;
+.stat{position:relative;min-width:130px;text-align:center;padding:14px 18px;border-radius:16px;opacity:0;overflow:visible;
   background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
   border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.09)}
 .stat b{display:block;font-family:'Anton','Devnag';font-weight:400;font-size:clamp(26px,3.6vw,40px);color:var(--acid);line-height:1;text-shadow:0 0 16px rgba(185,255,63,.4)}
 .stat span{display:block;font-size:10px;letter-spacing:.22em;color:#9aa59e;margin-top:6px;text-transform:uppercase}
-.stat .stamp{position:absolute;top:-12px;right:-10px;font-family:'Anton','Devnag';font-weight:400;font-size:12px;letter-spacing:.1em;padding:4px 10px;border-radius:6px;border:2px solid;transform:rotate(6deg);opacity:0;background:var(--ink)}
+.stat .stamp{position:absolute;top:-12px;right:-10px;font-family:'Anton','Devnag';font-weight:400;font-size:12px;letter-spacing:.1em;padding:4px 10px;border-radius:6px;border:2px solid;transform:rotate(6deg);opacity:0;background:var(--ink);pointer-events:none}
 .st-green{color:var(--green);border-color:var(--green)}
 .st-gold{color:var(--gold);border-color:var(--gold)}
 .st-red{color:var(--red);border-color:var(--red)}
 
-/* REBEE fly */
-#rebeeFly{position:absolute;z-index:5;left:-20vw;top:22%;pointer-events:none;opacity:0;filter:drop-shadow(0 0 30px rgba(46,222,130,.45))}
-#rebeeFly img{width:min(220px,30vw);display:block}
+/* REBEE fly (fixed aspect) */
+#rebeeFly{position:absolute;z-index:5;left:-22vw;top:20%;pointer-events:none;opacity:0;filter:drop-shadow(0 0 30px rgba(46,222,130,.45));will-change:left,top,transform}
+#rebeeFly img{display:block;height:min(170px,26vw);width:auto;object-fit:contain}
 
 /* BIG LINE */
 #bigline{position:absolute;left:50%;top:66%;transform:translate(-50%,-50%);z-index:5;text-align:center;width:94vw;pointer-events:none}
 #bigline h2{font-family:'Anton','Devnag';font-weight:400;font-size:clamp(30px,6.4vw,76px);color:var(--paper);letter-spacing:.02em;
   clip-path:inset(0 100% 0 0);text-shadow:0 0 30px rgba(185,255,63,.25)}
+#bigline h2 .ch{display:inline-block}
 
 /* CUE */
 #cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:7;font-size:10px;letter-spacing:.34em;color:#5e6a63;text-transform:uppercase;pointer-events:none}
@@ -99,7 +97,7 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ENTER */
-#enter{margin:0 auto;display:flex;align-items:center;gap:10px;font-family:'Anton','Devnag',sans-serif;font-weight:400;font-size:clamp(16px,2.2vw,21px);letter-spacing:.08em;
+#enter{display:flex;align-items:center;gap:10px;font-family:'Anton','Devnag',sans-serif;font-weight:400;font-size:clamp(16px,2.2vw,21px);letter-spacing:.08em;
   color:var(--ink);background:var(--acid);border:none;border-radius:999px;padding:14px 32px;cursor:pointer;
   box-shadow:0 0 44px rgba(185,255,63,.45),inset 0 -2px 0 rgba(0,0,0,.18);
   opacity:0;transform:translateY(16px) scale(.92);pointer-events:none;transition:opacity .5s,transform .5s cubic-bezier(.34,1.56,.64,1);
@@ -111,14 +109,29 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 /* leaving */
 #stage.leaving{transform:translateY(-100%);opacity:.15;transition:transform 1s cubic-bezier(.76,0,.24,1),opacity .5s}
 
+/* ============ RESPONSIVE (the consistency fix) ============ */
 @media (max-width:760px){
-  #termbox{left:50%;top:auto;bottom:16vh;transform:translateX(-50%);width:86vw}
-  #term{min-height:0;max-height:34vh;overflow:hidden}
-  #stats{bottom:8vh}
   .hud{display:none}
-  #word{font-size:clamp(56px,20vw,110px)}
+  /* terminal → compact top-left corner, never overlaps word/stats */
+  #termbox{left:4vw;top:6vh;transform:none;width:62vw;padding:12px 14px;max-height:24vh;overflow:hidden}
+  #term{font-size:9.5px;min-height:0;max-height:20vh;overflow:hidden;line-height:1.8}
+  #wordzone{top:40%}
+  #word{font-size:clamp(52px,19vw,110px)}
+  /* stats → 2x2 grid, clear of ENTER */
+  #stats{bottom:104px;width:92vw;gap:8px}
+  .stat{min-width:0;width:44%;padding:10px 12px}
+  .stat b{font-size:clamp(22px,7vw,30px)}
+  .stat span{font-size:8.5px;letter-spacing:.12em}
+  .stat .stamp{font-size:10px;top:-10px;right:-6px;padding:3px 8px}
+  /* ENTER sits at the very bottom */
+  #enter{bottom:24px;padding:12px 26px}
+  #cue{bottom:96px}
+  #bigline{top:62%}
+  #bigline h2{font-size:clamp(24px,7.6vw,44px)}
+  #rebeeFly img{height:min(110px,30vw)}
+  #rail{display:none}
 }
-@media (prefers-reduced-motion:reduce){#word.glitching{animation:none}}
+@media (prefers-reduced-motion:reduce){#word.glitching,#word.pulse{animation:none}}
 </style>
 </head>
 <body>
@@ -139,10 +152,10 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
     </div>
 
     <div id="stats">
-      <div class="stat" data-s="1.4 KG" data-l="weighed on a kitchen scale"><b>1.4 KG</b><span>weighed on a kitchen scale</span><span class="stamp st-green">WEIGHED</span></div>
-      <div class="stat" data-s="₹40" data-l="cash at the gate"><b>₹40</b><span>cash at the gate</span><span class="stamp st-gold">RECEIPT #1</span></div>
-      <div class="stat" data-s="15" data-l="govt-authorised recyclers"><b>15</b><span>govt-authorised recyclers</span><span class="stamp st-green">SOURCED</span></div>
-      <div class="stat" data-s="0" data-l="doorsteps served"><b>0</b><span>doorsteps served</span><span class="stamp st-red">THE GAP</span></div>
+      <div class="stat"><b>1.4 KG</b><span>weighed on a kitchen scale</span><span class="stamp st-green">WEIGHED</span></div>
+      <div class="stat"><b>₹40</b><span>cash at the gate</span><span class="stamp st-gold">RECEIPT #1</span></div>
+      <div class="stat"><b>15</b><span>govt-authorised recyclers</span><span class="stamp st-green">SOURCED</span></div>
+      <div class="stat"><b>0</b><span>doorsteps served</span><span class="stamp st-red">THE GAP</span></div>
     </div>
 
     <img id="rebeeFly" src="../../cwc_buddy/art/rebee_hero_v6_FINAL.png" alt="ReBee">
@@ -166,6 +179,7 @@ body{background:var(--ink);color:var(--dew);font-family:'Grotesk','Devnag',monos
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/three.min.js"></script>
+<script src="assets/vendor/SplitType.min.js"></script>
 <script src="assets/js/loader.js"></script>
 </body>
 </html>

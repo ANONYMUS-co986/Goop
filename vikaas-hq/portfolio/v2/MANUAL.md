@@ -212,3 +212,68 @@ Scroll-proof, click ENTER, feel the whoosh. Then tell me: GO for Phase 2, or
 Self-review receipts: 9 beats captured, 0 console errors, WebGL ✓, all states verified
 (bug family caught: GSAP onUpdate arg gotcha · tl.call params array · image path ·
 stats/enter overlap — all fixed & receipted).
+
+---
+
+## 10. THE UNIVERSE MAP (the whole world, planned)
+
+**One continuous story.** Every page is a ROOM in the VIKAAS machine. You enter
+through the drawer and exit at Geneva. Each room has: a cinematic scroll intro,
+2–4 over-the-top FX, at least one interactive moment, one stat with a stamp, and
+a door to the next room.
+
+```
+LOADER "THE BOOT"        scroll-driven ignition · 3D drawer opens · e-waste flies
+   │  ENTER THE DRAWER (acid exit)
+   ▼
+GATE (index)             THE MANIFESTO — SplitText hero · Aurora · BlurText copy ·
+                         ticker · cursor v2 · hover-glows · the 4 stats
+   │  scroll → story pin
+   ▼
+DRAWER                   the origin — pinned scrub · photo clip reveal ·
+                         LetterGlitch transition · "15 RECYCLERS. 0 DOORSTEPS."
+   │  the receipts → door to proof
+   ▼
+PROOF (ledger)           THE EVIDENCE — MagicBento stats · scale toy (elastic) ·
+                         receipts · SpotlightCards · DotGrid viz · stamps everywhere
+   │  the world → door to kabadi
+   ▼
+KABADI UNIVERSE          THE TRADE — tier list · the ₹40 handshake · kabadi lore ·
+                         marquee chaos · interview cards
+   │  the arsenal → door to films
+   ▼
+ARSENAL (films)          THE OUTPUT — glass dock nav · 6 reel cards (glare/pixel
+                         hover, hover-play) · audio lab · poster wall
+   │  the buddy → door to rebee
+   ▼
+BUDDY (rebee)            THE HERO — galaxy sky · TiltedCard · spotlight powers ·
+                         character parade · SCRAP-SCAN demo
+   │  the system → door to the engine room
+   ▼
+SYSTEM                   THE MAKING — ImageTrail · Threads viz · powers.md
+                         interactive · the receipts of the receipts
+   │  scroll → the goal
+   ▼
+GENEVA (footer/end)      NO DRAWER LEFT BEHIND. · @1m1bfoundation · the plan
+```
+
+**Rules of the universe:** every door is a page-wipe with the room name in Anton ·
+every stat wears a stamp · every room has its own ambient bed (generated) · the
+HUD (coords/hashtags/clock) persists everywhere · reduced-motion + touch fallbacks
+are non-negotiable · the integrity gate never breaks (WEIGHED / SOURCED / ESTIMATE /
+DRAMATISED).
+
+## 11. THE FINALE POWER SUITE (my tools, now a CLI)
+
+| Tool | What it does |
+|---|---|
+| `studio/engine/suite.js` | one-command self-review: scroll-beat walk, screenshots, console-error capture, **overlap probes** (elementFromPoint), ENTER clickability, `verify` mode exits 1 on any fail |
+| `studio/engine/pix.py` | the sight rig: `stats` (mean/std/dark/acid/green) · `ascii` (luminance map) · `diff` (pixel diff + region map) · `region` (crop QA) |
+| `studio/engine/shoot.js` | per-section screenshot walk for pages (multi-section) |
+| `studio/engine/shoot_boot.js` | loader-specific beat walk |
+| `studio/engine/make_nss_stub.py` | ELF stub forge (browser bootstrap) |
+| `studio/engine/chromium_bootstrap.sh` | one-command browser rebuild after wipes |
+
+**The loop (every phase, non-negotiable):** `node engine/suite.js verify <url>` +
+`node engine/suite.js qa <url>` → `pix.py stats/ascii` on the beats → 0 errors +
+0 overlaps + clickable CTAs = ship. Then YOU review. Then next phase.
