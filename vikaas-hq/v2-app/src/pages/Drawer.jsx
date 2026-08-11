@@ -24,6 +24,19 @@ export default function Drawer() {
 
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // drawer intro hero (visible on load)
+    const t = document.querySelector('#dintroTitle');
+    const sub = document.querySelector('#dintroSub');
+    const cue = document.querySelector('#dintroCue');
+    if (!reduce && t) {
+      gsap.timeline({ defaults: { ease: 'power4.out' } })
+        .fromTo(t, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: 'back.out(1.6)' }, 0.15)
+        .fromTo(sub, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7 }, 0.7)
+        .fromTo(cue, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.0);
+    } else {
+      gsap.set([t, sub, cue], { opacity: 1, y: 0 });
+    }
     // pinned story
     if (!reduce) {
       const tl = gsap.timeline({
@@ -79,6 +92,16 @@ export default function Drawer() {
 
   return (
     <main>
+      <section id="dintro">
+        <div className="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div className="dintro-inner">
+          <p className="eyebrow cmd shiny">room 02 · the origin</p>
+          <h1 className="anton dintro-title" id="dintroTitle">THE<br />DRAWER</h1>
+          <p className="dintro-sub" id="dintroSub">Four years of “kuch kaam ka cheez”, weighed at last. Scroll to open the story.</p>
+          <div className="cue" id="dintroCue">SCROLL<span></span></div>
+        </div>
+      </section>
+
       <section id="story">
         <div className="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div className="story-stage" id="storyStage">
