@@ -13,12 +13,23 @@ Awwwards criteria: **Design 40% · Usability 30% · Creativity 20% · Content 10
 Winners: Three.js/WebGL + GSAP choreography + custom interaction + 60fps mid-range.
 Benchmarks: Hubtown (3D monolith), Cartier rooms, Sleep Well (scroll storytelling),
 Uncommon (camera moves), By-Kin (Developer Award), Mat Voyce (kinetic type).
-Stack that wins: **Vite + React + React Router + GSAP/ScrollTrigger + Lenis +
-Three.js + our own lib/fx suite**. Ours beats NIRMAN on truth (real receipts).
+Stack that wins: **Vite + React 19 + React Router 7 + GSAP/ScrollTrigger + Lenis +
+Three.js/R3F (postprocessing bloom/glitch) + Framer Motion (declarative
+micro-interactions) + Zustand (audio/ui state) + split-type + maath +
+three-stdlib + clsx + our own lib/fx suite**. Framer Motion handles component
+micro-motion (hover/tap/AnimatePresence exits), GSAP owns scroll choreography,
+R3F owns the 3D. Ours beats NIRMAN on truth (real receipts).
 
 ---
 
 ## THE 24 PHASES (micro-granular, attention to the minutest detail)
+
+### PHASE 0 — STACK UPGRADE (done ✅ — Framer Motion 13, R3F 9, drei,
+postprocessing, maath, three-stdlib, zustand, clsx, three 0.185)
+- Peer-dep conflict resolved (three ^0.185 aligns fiber/postprocessing).
+- The full modern suite is installed and wired into every phase below.
+- Framer Motion = declarative micro-interactions (hover/tap/exit via
+  AnimatePresence); GSAP = scroll choreography; R3F = 3D scenes.
 
 ### PHASE 1 — FOUNDATION + THE QA GATE (the anti-error power)
 - Restructure app into `shell/ + pages/ + lib/fx/ + lib/hooks/`.
