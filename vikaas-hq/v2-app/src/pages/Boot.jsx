@@ -44,6 +44,7 @@ export default function Boot() {
   const abPctRef = useRef(null);
   const abWordRef = useRef(null);
   const [skipHidden, setSkipHidden] = useState(false);
+  const [bootGone, setBootGone] = useState(false);
 
   useEffect(() => {
     const fast = new URLSearchParams(location.search).has('fast');
@@ -166,7 +167,7 @@ export default function Boot() {
     const bootDone = () => {
       const ab = abRef.current; if (!ab) return;
       ab.classList.add('leaving');
-      T(() => { if (ab.parentNode) ab.remove(); enableScroll(); }, 1000);
+      T(() => { setBootGone(true); enableScroll(); }, 1000);
     };
     const enableScroll = () => {
       ScrollTrigger.getAll().forEach((st) => st.enable());
@@ -215,7 +216,7 @@ export default function Boot() {
       };
       type();
     } else {
-      if (abRef.current) abRef.current.remove();
+      setBootGone(true);
       gsap.set(['.hud', '#chapter', '#cue'], { opacity: 1 });
       enableScroll();
     }
@@ -224,7 +225,7 @@ export default function Boot() {
     const railFill = railFillRef.current, chapterEl = chapterRef.current, railPct = railPctRef.current;
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
-      scrollTrigger: { trigger: stageRef.current, start: 'top top', end: '+=4600', pin: true, scrub: 0.6 },
+      scrollTrigger: { trigger: '#track', start: 'top top', end: 'bottom bottom', scrub: 0.6 },
       onUpdate: function () {
         const p = this.progress;
         if (!isFinite(p)) return;
@@ -314,7 +315,7 @@ export default function Boot() {
           <canvas id="three" ref={canvasRef}></canvas>
           <div className="glow"></div>
           <div id="wordzone">
-            <div id="word" ref={wordRef}>VIKAAS</div>
+            <div id="word" ref={wordRef}></div>
             <div id="dev" ref={devRef}>विकास</div>
           </div>
           <div id="stats">
@@ -337,12 +338,12 @@ export default function Boot() {
         </div>
       </div>
 
-      <div id="autoBoot" ref={abRef} aria-hidden="true">
+      {!bootGone && <div id="autoBoot" ref={abRef} aria-hidden="true">
         <div className="nebula"><i></i><i></i><i></i><i></i></div>
         <div className="glow"></div>
         <div className="ab-box">
           <div className="ab-top cmd"><span>VIKAAS <b>OS</b></span><span>BOOT SEQUENCE <b>v5.0</b></span><span>GURUGRAM · <b>2026</b></span></div>
-          <div className="ab-word"><span id="abWord" ref={abWordRef}>VIKAAS</span></div>
+          <div className="ab-word"><span id="abWord" ref={abWordRef}></span></div>
           <pre id="abTerm" ref={abTermRef}></pre>
           <div className="ab-bar"><i ref={abBarRef}></i></div>
           <div className="ab-status cmd" ref={abStatusRef}>INITIALISING…</div>
@@ -354,12 +355,12 @@ export default function Boot() {
           term.innerHTML = BOOT_LINES.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n') + '\n<span class="acid">> READY — awaiting command</span>';
           abBarRef.current.style.width = '100%'; abStatusRef.current.textContent = 'READY.';
           ab.classList.add('leaving');
-          T(() => { if (ab.parentNode) ab.remove(); ScrollTrigger.getAll().forEach((st) => st.enable()); ScrollTrigger.refresh(); }, 1000);
+          T(() => { setBootGone(true); ScrollTrigger.getAll().forEach((st) => st.enable()); ScrollTrigger.refresh(); }, 1000);
         }}>SKIP BOOT →</button>
         <div className="scanlines"></div>
         <div className="vignette"></div>
         <div className="grain"></div>
-      </div>
+      </div>}
     </>
   );
 }

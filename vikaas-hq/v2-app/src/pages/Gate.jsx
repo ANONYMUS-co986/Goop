@@ -38,9 +38,10 @@ export default function Gate() {
     const fast = new URLSearchParams(location.search).has('fast');
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const title = titleRef.current;
+    const sub = subRef.current, chips = chipsRef.current, cue = cueRef.current;
 
     // hero load
-    if (!fast && !reduce) {
+    if (title && sub && chips && cue && !fast && !reduce) {
       const en = title.querySelector('.en');
       let chs = [];
       try {
@@ -51,14 +52,14 @@ export default function Gate() {
       gsap.timeline({ defaults: { ease: 'power4.out' } })
         .fromTo(chs.length ? chs : en, { yPercent: 130, rotate: 10, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, stagger: 0.05, duration: 1.0, ease: 'back.out(1.7)' }, 0.2)
         .fromTo(dev, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, 0.9)
-        .fromTo(subRef.current.querySelectorAll('.w'), { opacity: 0, filter: 'blur(10px)', y: 12 }, { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.018, duration: 0.7 }, 1.05)
-        .fromTo(chipsRef.current.querySelectorAll('.chip'), { opacity: 0, y: 26, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.6, ease: 'back.out(2)' }, 1.4)
-        .add(() => chipsRef.current.querySelectorAll('[data-count]').forEach(countUp), 1.6)
-        .fromTo(cueRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.9);
-    } else {
-      gsap.set([title, subRef.current.querySelectorAll('.w'), chipsRef.current.querySelectorAll('.chip'), cueRef.current], { opacity: 1, y: 0, filter: 'none' });
+        .fromTo(sub.querySelectorAll('.w'), { opacity: 0, filter: 'blur(10px)', y: 12 }, { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.018, duration: 0.7 }, 1.05)
+        .fromTo(chips.querySelectorAll('.chip'), { opacity: 0, y: 26, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.6, ease: 'back.out(2)' }, 1.4)
+        .add(() => chips.querySelectorAll('[data-count]').forEach(countUp), 1.6)
+        .fromTo(cue, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.9);
+    } else if (title && sub && chips && cue) {
+      gsap.set([title, sub.querySelectorAll('.w'), chips.querySelectorAll('.chip'), cue], { opacity: 1, y: 0, filter: 'none' });
       title.querySelectorAll('.ch').forEach((c) => { c.style.opacity = '1'; });
-      chipsRef.current.querySelectorAll('[data-count]').forEach(countUp);
+      chips.querySelectorAll('[data-count]').forEach(countUp);
     }
 
     // manifesto lines blur-reveal
