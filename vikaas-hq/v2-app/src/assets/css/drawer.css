@@ -62,6 +62,33 @@ main{position:relative;z-index:2}
 .ts b{display:block;font-size:30px;color:var(--acid);line-height:1}
 .ts span{display:block;font-size:9.5px;letter-spacing:.16em;color:var(--mute);margin-top:6px;text-transform:uppercase}
 
+
+/* ---------- HOLOGRAPHIC SPEC CARD (toy v2) ---------- */
+.holo-card{position:relative;margin-top:var(--r-4);padding:var(--r-4);border-radius:var(--rad-md);
+  border:1px solid rgba(185,255,63,.4);background:linear-gradient(160deg,rgba(185,255,63,.08),rgba(46,222,130,.03));
+  overflow:hidden;animation:holo-in .5s cubic-bezier(.34,1.56,.64,1);box-shadow:0 0 40px rgba(185,255,63,.15),inset 0 0 30px rgba(46,222,130,.06)}
+@keyframes holo-in{from{opacity:0;transform:translateY(18px) scale(.94)}to{opacity:1;transform:none}}
+.holo-scan{position:absolute;left:0;right:0;height:60px;top:-70px;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(185,255,63,.18),transparent);animation:holo-scan 2.2s linear infinite}
+@keyframes holo-scan{to{top:120%}}
+.holo-tag{font-size:var(--fs-tiny);color:var(--green);letter-spacing:.3em}
+.holo-name{font-size:var(--fs-sm);color:var(--paper);margin-top:var(--r-4)}
+.holo-line{color:var(--mute2);font-size:var(--fs-caption);line-height:var(--lh-body);margin-top:6px}
+.holo-rows{display:grid;gap:var(--r-4);margin-top:var(--r-4)}
+.holo-row{display:flex;justify-content:space-between;align-items:baseline;gap:var(--r-4);border-bottom:1px dashed var(--line3);padding-bottom:6px}
+.holo-row .cmd{font-size:var(--fs-tiny);color:var(--mute2)}
+.holo-row b{font-size:var(--fs-caption);color:var(--acid)}
+.holo-card .stamp{margin-top:var(--r-4)}
+@media(max-width:760px){.holo-card{margin-top:var(--r-4)}}
+
+/* items float out with stagger on open */
+.drawer-toy.open .toy-item{transform:translateY(0);transition:transform .6s cubic-bezier(.34,1.56,.64,1) var(--td,0s)}
+.drawer-toy.open .toy-item:nth-child(1){--td:.05s}
+.drawer-toy.open .toy-item:nth-child(2){--td:.12s}
+.drawer-toy.open .toy-item:nth-child(3){--td:.19s}
+.drawer-toy.open .toy-item:nth-child(4){--td:.26s}
+.drawer-toy.open .toy-item:nth-child(5){--td:.33s}
+
 /* ---------- THE LIST ---------- */
 #list{border-top:1px solid #16201a;padding:clamp(50px,9vh,90px) 0}
 .list-sub{max-width:640px;margin:16px 0 30px;color:#9aa59e;font-size:15px;line-height:1.7}

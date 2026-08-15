@@ -8,11 +8,11 @@ import '../assets/css/drawer.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const ITEMS = {
-  phone: '3 DEAD PHONES · cracked screens, swollen battery — weighed',
-  charger: '7 CHARGERS · 2014–forever — “kabhi kaam aayega”',
-  cable: 'TANGLED CABLES · the drawer’s own ecosystem',
-  battery: 'SWOLLEN POWER BANK · the one that scared us',
-  speaker: '1 SPEAKER · died 2022 — the only one that told us goodbye',
+  phone:   { name: '3 DEAD PHONES',     line: 'cracked screens, swollen battery — weighed', value: '≈ ₹12 · copper + board', recycler: 'Exigo Recycling · Manesar', stamp: 'WEIGHED' },
+  charger: { name: '7 CHARGERS',        line: '2014–forever — “kabhi kaam aayega”', value: '≈ ₹9 · copper wire + plugs', recycler: 'EcoMetals · Gurugram', stamp: 'RECEIPT #1' },
+  cable:   { name: 'TANGLED CABLES',    line: 'the drawer’s own ecosystem', value: '≈ ₹4 · mixed metals', recycler: 'Cerebra · HITEC City', stamp: 'SOURCED' },
+  battery: { name: 'SWOLLEN POWER BANK', line: 'the one that scared us', value: '≈ ₹3 · lithium — respect it', recycler: 'Attero · Noida', stamp: 'HANDLE CAREFULLY' },
+  speaker: { name: '1 SPEAKER',         line: 'died 2022 — the only one that said goodbye', value: '≈ ₹12 · magnet + board', recycler: 'E-Parisaraa · Peenya', stamp: 'WEIGHED' },
 };
 
 export default function Drawer() {
@@ -21,6 +21,7 @@ export default function Drawer() {
   const readoutRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [readout, setReadout] = useState('CLICK THE DRAWER');
+  const [spec, setSpec] = useState(null);
 
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -87,9 +88,10 @@ export default function Drawer() {
   const tapItem = (e, key) => {
     e.stopPropagation();
     const item = e.currentTarget;
-    setReadout(ITEMS[key]);
+    setReadout(ITEMS[key].name + ' — ' + ITEMS[key].line);
     item.classList.add('popped');
     setTimeout(() => item.classList.remove('popped'), 400);
+    setSpec(ITEMS[key]);
   };
 
   return (
@@ -146,6 +148,19 @@ export default function Drawer() {
                 </div>
               </div>
               <div className="toy-readout" ref={readoutRef}>{readout}</div>
+              {spec && (
+                <div className="holo-card" key={spec.name} data-cursor="SPEC">
+                  <div className="holo-scan" aria-hidden="true"></div>
+                  <span className="holo-tag cmd">SCRAP-SCAN · LIVE</span>
+                  <h4 className="anton holo-name">{spec.name}</h4>
+                  <p className="holo-line">{spec.line}</p>
+                  <div className="holo-rows">
+                    <div className="holo-row"><span className="cmd">VALUE</span><b className="anton">{spec.value}</b></div>
+                    <div className="holo-row"><span className="cmd">RECYCLER</span><b className="anton">{spec.recycler}</b></div>
+                  </div>
+                  <span className="stamp st-green">{spec.stamp}</span>
+                </div>
+              )}
             </div>
             <div className="toy-info">
               <p>Every item was real. Every item was weighed. Click the drawer, click the items — this is the audit, playable.</p>
