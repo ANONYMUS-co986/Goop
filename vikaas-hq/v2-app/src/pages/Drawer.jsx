@@ -25,17 +25,19 @@ export default function Drawer() {
   useEffect(() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // drawer intro hero (visible on load)
+    // drawer intro hero (visible on load) — line-stagger + glow
     const t = document.querySelector('#dintroTitle');
     const sub = document.querySelector('#dintroSub');
     const cue = document.querySelector('#dintroCue');
     if (!reduce && t) {
       gsap.timeline({ defaults: { ease: 'power4.out' } })
-        .fromTo(t, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: 'back.out(1.6)' }, 0.15)
-        .fromTo(sub, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7 }, 0.7)
-        .fromTo(cue, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.0);
+        .fromTo('#dintroTitle .dt-line[data-line="the"]', { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.9, ease: 'back.out(1.6)' }, 0.15)
+        .fromTo('#dintroTitle .dt-line[data-line="drawer"]', { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 1.0, ease: 'back.out(1.6)' }, 0.35)
+        .fromTo(sub, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7 }, 0.8)
+        .fromTo(cue, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.1);
     } else {
       gsap.set([t, sub, cue], { opacity: 1, y: 0 });
+      gsap.set('#dintroTitle .dt-line', { opacity: 1, y: 0 });
     }
     // pinned story
     if (!reduce) {
@@ -96,12 +98,14 @@ export default function Drawer() {
         <div className="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div className="dintro-inner">
           <p className="eyebrow cmd shiny">room 02 · the origin</p>
-          <h1 className="anton dintro-title" id="dintroTitle">THE<br />DRAWER</h1>
+          <h1 className="anton dintro-title" id="dintroTitle"><span className="dt-line" data-line="the">THE</span><span className="dt-line" data-line="drawer">DRAWER</span></h1>
           <p className="dintro-sub" id="dintroSub">Four years of “kuch kaam ka cheez”, weighed at last. Scroll to open the story.</p>
           <div className="cue" id="dintroCue">SCROLL<span></span></div>
         </div>
       </section>
 
+      <div className="story-wrap">
+      <div className="story-rail" aria-hidden="true"><i></i></div>
       <section id="story">
         <div className="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div className="story-stage" id="storyStage">
@@ -120,6 +124,7 @@ export default function Drawer() {
           </div>
         </div>
       </section>
+      </div>
 
       <section id="toy">
         <div className="wrap">
