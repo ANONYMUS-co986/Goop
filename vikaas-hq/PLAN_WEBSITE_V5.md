@@ -1,11 +1,15 @@
-# 🏛️ VIKAAS — THE APP + PORTFOLIO · MASTER PLAN v5 (FINAL, 12 Aug 2026)
+# 🏛️ VIKAAS — THE PORTFOLIO THAT EXPLAINS THE APP · MASTER PLAN v5 (FINAL, 12 Aug 2026)
 
 > **The idea (locked):** VIKAAS is an **e-waste collection app** — households
 > book doorstep pickups; the app **recruits collection centres** (the kabadiwala
 > network + authorised recyclers) to serve every doorstep; weigh → value →
-> pickup → receipt → verified recycling. **We build it before NIRMAN can steal
-> the lane.** The portfolio sells the app — the same way NIRMAN's does — but with
-> our REAL proof (1.4 kg weighed, ₹40, 15 HSPCB recyclers, 0 doorsteps).
+> pickup → receipt → verified recycling.
+>
+> **THE PORTFOLIO'S JOB: explain this app the way NIRMAN's portfolio explains
+> his.** A portfolio is a pitch — it sells the idea with story, screens, and
+> proof. **We do NOT build the app in this repo.** We build the portfolio that
+> makes the app irresistible — with our REAL proof (1.4 kg weighed, ₹40, 15
+> HSPCB recyclers, 0 doorsteps) as the receipts NIRMAN can't fake.
 > Mission: **NO DRAWER LEFT BEHIND.** Roadmap: M1 ✓ M2 ✓ → Top 100 → City
 > Showdown → **GENEVA · UN · 20 Nov 2026.**
 
@@ -19,7 +23,7 @@ CLICK GATE (19/19 PASS)**.
 
 ---
 
-## THE 30+ PHASES
+## THE PHASES (the portfolio — 28 phases)
 
 ### THE PORTFOLIO (the pitch that sells the app) — Phases 6–24
 | # | Phase | Big implementation |
@@ -44,19 +48,13 @@ CLICK GATE (19/19 PASS)**.
 | 23 | **Sound + performance** | Ambient beds, UI blips, mute; 60fps audit, code-split. |
 | 24 | **SEO + a11y + hardening + launch** | OG/sitemap/insta-embed, a11y, error boundaries, pre-push gate, handoff kit. |
 
-### THE APP (the real product — the moat) — Phases 25–34
+### THE APP-EXPLAINERS (the portfolio sections that sell the app) — Phases 25–28
 | # | Phase | Big implementation |
 |---|---|---|
-| 25 | **APP: architecture + data model** | Vite+React app `/app` (separate route group); models: Household, PickupRequest, CollectionCentre, Kabadiwala, Receipt, Recycler; localStorage/IndexedDB seed (real demo data from our audit). |
-| 26 | **APP: the request flow** | Book a pickup: address, drawer estimate (kg), photo → auto-value (₹40/kg-ish model) → slot pick. Working wizard with validation. |
-| 27 | **APP: the centre recruitment flow** | "Register your collection centre": kabadiwala/recycler onboarding — name, area, capacity, pricing; a live roster. THE moat feature (NIRMAN doesn't have real centres). |
-| 28 | **APP: the map** | Interactive Gurugram map: households (dots), centres (pins), routes — the doorstep network made visible. |
-| 29 | **APP: the receipt engine** | Generated receipt per pickup: weigh-in, ₹ paid, centre, recycler, stamp. Print/share. |
-| 30 | **APP: ReBee assistant** | In-app SCRAP-SCAN (choose device → value + centre match) + DOORSTEP DIAL (auto-book). |
-| 31 | **APP: the ledger dashboard** | Impact stats: kg diverted, ₹ paid out, pickups served, households — per centre + total. |
-| 32 | **APP: state + persistence + demo seed** | Zustand store, IndexedDB, a "demo mode" that replays our real audit (1.4 kg → ₹40 → centre X). |
-| 33 | **APP: polish + the pitch tie-in** | The portfolio's CTA now points INTO the working app ("Book your first pickup") — the portfolio is the pitch, the app is the proof. |
-| 34 | **THE LAUNCH** | Full walkthrough QA (portfolio + app), rival-beater checklist, the "go cry to every other website" reel, handoff kit. |
+| 25 | **THE APP SECTION: the 4-tap flow as a product demo** | An interactive "app mock" in the portfolio: book → weigh → value → receipt (a working UI simulation, pure front-end, seeded with OUR real audit). The visitor experiences the app idea without us building a backend. |
+| 26 | **THE APP SECTION: the centre-recruitment story** | "We recruit collection centres" — the kabadiwala + recycler onboarding story told with the 15 HSPCB recyclers + the ₹40 handshake. The moat, explained. |
+| 27 | **THE APP SECTION: the network map** | The Gurugram map: households → centres → routes — the doorstep network made visible (SVG, animated). |
+| 28 | **THE APP SECTION: screens + ReBee assistant demo** | "Screens" of the app (the way NIRMAN shows UI screenshots) — but interactive: the SCRAP-SCAN hologram, the receipt engine, the ledger. |
 
 ---
 
@@ -66,7 +64,7 @@ CLICK GATE (19/19 PASS)**.
 remove/replace React nodes (state + CSS only).
 
 ## THE USER'S PART
-**"continue!"** per phase. Ear-check at 23. Final GO at 34. That's it.
+**"continue!"** per phase. Ear-check at 23. Final GO at 28. That's it.
 
 ---
 *The idea, fully told, then built. Before him. Real. VIKAAS.* 🐝
