@@ -12,6 +12,7 @@
 # ============================================================
 set -uo pipefail
 BASE="${1:-http://localhost:5173}"
+REPO_ROOT="/home/user/Goop/vikaas-hq/v2-app/src"
 ROUTES=("/" "/drawer" "/boot?fast=1")
 ENGINE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT=/tmp/qa_gate
@@ -49,6 +50,17 @@ for route in "${ROUTES[@]}"; do
     verdict "route $route" 1 "probe failed"
   fi
 done
+
+# ---- 5b. JSX BALANCE gate (every page file: open==close section tags) ----
+echo "── 5b. JSX BALANCE ──"
+BAL_OK=1
+for jsx in "$REPO_ROOT"/*.jsx "$REPO_ROOT"/**/*.jsx; do
+  [ -f "$jsx" ] || continue
+  o=$(grep -o '<section' "$jsx" | wc -l); c=$(grep -o '</section>' "$jsx" | wc -l)
+  if [ "$o" != "$c" ]; then echo "  ❌ $jsx: $o open / $c close"; BAL_OK=0; fi
+done
+# also main-level balance via node check is overkill; section check catches the class
+verdict "jsx-balance" "$([ "$BAL_OK" = "1" ] && echo 0 || echo 1)" "section tags balanced"
 
 # ---- 6. CLICK GATE ----
 echo "── 6. CLICKS ──"
