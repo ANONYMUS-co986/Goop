@@ -8,9 +8,14 @@ const { chromium: pw } = require('playwright-core');
   let fail = 0;
   await page.goto(base + '/', { waitUntil: 'networkidle', timeout: 45000 });
   await page.waitForTimeout(2500);
-  try { await page.click('.gnav-menu', { timeout: 3000 }); console.log('  ✅ menu opens'); }
-  catch (e) { console.log('  ❌ menu: ' + e.message.slice(0, 80)); fail++; }
-  await page.waitForTimeout(600);
+  let menuOk = false;
+  for (let i = 0; i < 3 && !menuOk; i++) {
+    try { await page.click('.gnav-menu', { timeout: 3000 }); menuOk = true; }
+    catch (e) { await page.waitForTimeout(1000); }
+  }
+  if (menuOk) console.log('  ✅ menu opens'); else { console.log('  ❌ menu click failed'); fail++; }
+  await page.waitForSelector('.gnov a.gn-item', { timeout: 5000 });
+  await page.waitForTimeout(300);
   const links = await page.$$('.gnov a.gn-item');
   if (!links.length) { console.log('  ❌ no overlay links'); fail++; }
   for (const l of links) {

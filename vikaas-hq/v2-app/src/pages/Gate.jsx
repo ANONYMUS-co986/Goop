@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../assets/css/gate.css';
+import Monolith from '../components/Monolith.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,6 +112,7 @@ export default function Gate() {
   return (
     <main>
       <section id="hero">
+        <div className="mono-wrap" aria-hidden="true"><Monolith /></div>
         <div className="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div className="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
         <div className="hero-inner">
