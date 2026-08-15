@@ -5,6 +5,7 @@
 @font-face{font-family:'Anton';src:url('../fonts/Anton.ttf');font-display:swap}
 @font-face{font-family:'Grotesk';src:url('../fonts/SpaceGrotesk.ttf');font-display:swap}
 @font-face{font-family:'Devnag';src:url('../fonts/NotoSansDevanagari.ttf');font-display:swap}
+/* tokens override (loaded after in main.jsx — this file still defines legacy vars)
 :root{
   --ink:#040605; --ink2:#0a0f0c; --paper:#EFE9DC; --dew:#EAFFF4;
   --acid:#B9FF3F; --green:#2EDE82; --red:#FF4D5E; --gold:#FFD34D; --violet:#A78BFA; --mute:#4c5851;

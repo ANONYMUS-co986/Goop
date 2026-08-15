@@ -1,0 +1,21 @@
+/* ===== TYPE — the living styleguide ===== */
+.type-page{padding:var(--r-1)}
+.type-hero{padding:calc(var(--r-2) * 1.4) 0 var(--r-2);border-bottom:1px solid var(--line)}
+.type-big{font-size:var(--fs-xlg);line-height:var(--lh-tight);color:var(--paper);text-shadow:0 0 30px var(--accent-glow),0 0 90px rgba(185,255,63,.12)}
+.type-sub{color:var(--mute2);font-size:var(--fs-body);margin-top:var(--r-4);max-width:52ch}
+.type-block{padding:var(--r-2) 0;border-bottom:1px solid var(--line)}
+.type-row{display:flex;align-items:baseline;gap:var(--r-4);padding:var(--r-4) 0;border-bottom:1px dashed var(--line2);flex-wrap:wrap}
+.type-lbl{width:130px;flex:0 0 130px;color:var(--mute2);font-size:var(--fs-tiny)}
+.t-hero{font-size:var(--fs-hero);line-height:var(--lh-tight);color:var(--paper)}
+.t-hero .dev{font-family:var(--f-dev);font-size:.38em;color:var(--green)}
+.t-xlg{font-size:var(--fs-xlg);line-height:var(--lh-tight);color:var(--paper)}
+.t-lg{font-size:var(--fs-lg);line-height:var(--lh-tight);color:var(--paper)}
+.t-md{font-size:var(--fs-md);line-height:var(--lh-tight);color:var(--paper)}
+.t-body{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--dew);max-width:56ch}
+.t-meta{font-size:var(--fs-meta);color:var(--mute2)}
+.fx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--r-4)}
+.fx-cell{padding:var(--r-4);border-radius:var(--rad-lg);border:1px solid var(--glass-border);background:var(--glass)}
+.fx-tag{font-size:var(--fs-tiny);color:var(--green);margin-bottom:var(--r-4)}
+.fx-demo{font-size:var(--fs-sm);color:var(--paper);display:block}
+.stamp-row{display:flex;flex-wrap:wrap;gap:var(--r-4)}
+@media(max-width:760px){.type-lbl{width:100%;flex:none}}

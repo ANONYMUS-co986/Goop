@@ -1,38 +1,98 @@
 /* ============================================================
-   VIKAAS tokens — the single design source of truth
-   Every phase uses ONLY these (no magic numbers).
+   VIKAAS tokens — the single design source of truth (v2)
+   Palette · type scale · glass · eases · shadows · rhythm · fx
+   Every phase uses ONLY these. No magic numbers.
    ============================================================ */
 @font-face{font-family:'Anton';src:url('/fonts/Anton.ttf');font-display:swap}
 @font-face{font-family:'Grotesk';src:url('/fonts/SpaceGrotesk.ttf');font-display:swap}
 @font-face{font-family:'Devnag';src:url('/fonts/NotoSansDevanagari.ttf');font-display:swap}
 
 :root{
-  /* palette */
+  /* ---------- palette ---------- */
   --ink:#040605; --ink2:#0a0f0c; --paper:#EFE9DC; --dew:#EAFFF4;
-  --acid:#B9FF3F; --green:#2EDE82; --red:#FF4D5E; --gold:#FFD34D; --violet:#A78BFA; --mute:#4c5851;
+  --acid:#B9FF3F; --green:#2EDE82; --red:#FF4D5E; --gold:#FFD34D; --violet:#A78BFA;
+  --mute:#4c5851; --mute2:#7d867f; --line:#16201a; --line2:#1d2622; --line3:#24302a;
+  --accent-glow:rgba(185,255,63,.5); --green-glow:rgba(46,222,130,.5);
 
-  /* type */
+  /* ---------- type families ---------- */
   --f-display:'Anton','Devnag',sans-serif;
   --f-mono:'Grotesk','Devnag',monospace;
   --f-dev:'Devnag','Anton',sans-serif;
-  --fs-1:clamp(64px,15vw,170px); --fs-2:clamp(38px,7vw,88px); --fs-3:clamp(24px,3.4vw,40px);
-  --fs-4:clamp(15px,2vw,19px); --fs-5:clamp(11px,1.5vw,13.5px);
 
-  /* glass */
+  /* ---------- type scale (display → caption) ---------- */
+  --fs-hero:clamp(64px,15vw,170px);      /* VIKAAS / THE DRAWER */
+  --fs-xlg:clamp(52px,10vw,140px);       /* footer big line */
+  --fs-lg:clamp(38px,7vw,88px);          /* section titles */
+  --fs-md:clamp(26px,4.4vw,48px);        /* mission / punch */
+  --fs-sm:clamp(17px,2.4vw,22px);        /* sub-strong */
+  --fs-body:clamp(15px,2vw,19px);        /* body / sub */
+  --fs-caption:clamp(12px,1.6vw,14px);   /* card copy */
+  --fs-meta:clamp(10px,1.4vw,12.5px);    /* meta / HUD */
+  --fs-tiny:9.5px;                       /* stamps / labels */
+
+  /* ---------- type leading / tracking ---------- */
+  --lh-tight:.9; --lh-display:1.02; --lh-body:1.65; --lh-mono:1.95;
+  --tr-display:.01em; --tr-wide:.14em; --tr-hud:.28em; --tr-label:.2em;
+
+  /* ---------- glass ---------- */
   --glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  --glass-strong:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
   --glass-border:rgba(255,255,255,.12);
   --glass-blur:blur(20px) saturate(150%);
+  --glass-blur-sm:blur(14px) saturate(140%);
 
-  /* ease */
-  --ease-vx:cubic-bezier(.76,0,.24,1);
-  --ease-pop:cubic-bezier(.34,1.56,.64,1);
+  /* ---------- eases ---------- */
+  --ease-vx:cubic-bezier(.76,0,.24,1);     /* cinematic */
+  --ease-pop:cubic-bezier(.34,1.56,.64,1); /* springy hit */
+  --ease-out4:cubic-bezier(.2,.9,.2,1);    /* smooth out */
 
-  /* shadow */
+  /* ---------- shadows ---------- */
   --shadow-1:0 16px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);
   --shadow-2:0 30px 90px rgba(0,0,0,.55);
   --shadow-3:0 40px 140px rgba(0,0,0,.75);
+  --shadow-glow:0 0 44px rgba(185,255,63,.45);
 
-  /* rhythm */
-  --r-1:clamp(20px,5vw,70px); --r-2:clamp(50px,9vh,90px);
-  --r-3:clamp(24px,4vh,44px);
+  /* ---------- rhythm / spacing ---------- */
+  --r-1:clamp(20px,5vw,70px);   /* page padding */
+  --r-2:clamp(50px,9vh,90px);   /* section padding */
+  --r-3:clamp(24px,4vh,44px);   /* block gap */
+  --r-4:clamp(14px,2.4vh,24px); /* element gap */
+
+  /* ---------- radius ---------- */
+  --rad-sm:10px; --rad-md:16px; --rad-lg:20px; --rad-xl:28px; --rad-pill:999px;
+}
+
+/* ---------- type utilities ---------- */
+.anton{font-family:var(--f-display);font-weight:400}
+.cmd{font-family:var(--f-mono);letter-spacing:var(--tr-hud);text-transform:uppercase}
+.dev{font-family:var(--f-dev)}
+
+/* ---------- text fx utilities ---------- */
+.glow-hover{transition:color .25s,text-shadow .25s}
+.glow-hover:hover{color:var(--acid);text-shadow:0 0 10px var(--accent-glow),0 0 34px rgba(185,255,63,.35)}
+.shiny{background:linear-gradient(110deg,#9aa59e 18%,var(--acid) 40%,#fff 50%,var(--acid) 60%,#9aa59e 82%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5.5s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+.grad-text{background:linear-gradient(90deg,var(--paper),var(--acid),var(--green),var(--paper));background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:grad 6s linear infinite}
+@keyframes grad{to{background-position:300% 0}}
+.title-glow{transition:text-shadow .35s}
+.title-glow:hover{text-shadow:0 0 34px rgba(185,255,63,.55)}
+
+/* ---------- stamps (the integrity brand) ---------- */
+.stamp{display:inline-block;font-family:var(--f-display);font-weight:400;font-size:var(--fs-tiny);
+  letter-spacing:.1em;padding:4px 11px;border-radius:6px;border:2px solid;transform:rotate(-4deg);background:var(--ink)}
+.st-green{color:var(--green);border-color:var(--green)}
+.st-gold{color:var(--gold);border-color:var(--gold)}
+.st-red{color:var(--red);border-color:var(--red)}
+.st-violet{color:var(--violet);border-color:var(--violet)}
+.st-mute{color:var(--mute2);border-color:var(--line3)}
+
+/* ---------- glass utility ---------- */
+.glass{background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
+
+/* ---------- motion guard ---------- */
+@media (prefers-reduced-motion:reduce){
+  .shiny,.grad-text{animation:none}
+  .glow-hover{transition:none}
 }

@@ -11,6 +11,7 @@ const ROOMS = [
   ['05', 'THE BUDDY', null, 'locked', 'PHASE 7'],
   ['06', 'THE SYSTEM', null, 'locked', 'PHASE 8'],
   ['★', 'GENEVA', null, 'locked', 'THE GOAL'],
+  ['§', 'THE TYPE', '/type', 'live', 'STYLEGUIDE →'],
 ];
 
 export default function Shell({ pathname }) {
