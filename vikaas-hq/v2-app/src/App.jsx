@@ -4,6 +4,7 @@ import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Shell from './shell/Shell.jsx';
+import { unlockAudio, attachHoverBlips } from './lib/sound.js';
 import Boot from './pages/Boot.jsx';
 import Gate from './pages/Gate.jsx';
 import Drawer from './pages/Drawer.jsx';
@@ -35,6 +36,12 @@ function PageWipe({ pathname }) {
 
 export default function App() {
   const location = useLocation();
+  useEffect(() => {
+    const u = () => unlockAudio();
+    ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => addEventListener(ev, u, { once: true, passive: true }));
+    attachHoverBlips();
+    return () => ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => removeEventListener(ev, u));
+  }, []);
   const lenisRef = useRef(null);
 
   // global smooth scroll
