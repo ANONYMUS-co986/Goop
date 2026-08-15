@@ -1,0 +1,38 @@
+/* ============================================================
+   VIKAAS tokens — the single design source of truth
+   Every phase uses ONLY these (no magic numbers).
+   ============================================================ */
+@font-face{font-family:'Anton';src:url('/fonts/Anton.ttf');font-display:swap}
+@font-face{font-family:'Grotesk';src:url('/fonts/SpaceGrotesk.ttf');font-display:swap}
+@font-face{font-family:'Devnag';src:url('/fonts/NotoSansDevanagari.ttf');font-display:swap}
+
+:root{
+  /* palette */
+  --ink:#040605; --ink2:#0a0f0c; --paper:#EFE9DC; --dew:#EAFFF4;
+  --acid:#B9FF3F; --green:#2EDE82; --red:#FF4D5E; --gold:#FFD34D; --violet:#A78BFA; --mute:#4c5851;
+
+  /* type */
+  --f-display:'Anton','Devnag',sans-serif;
+  --f-mono:'Grotesk','Devnag',monospace;
+  --f-dev:'Devnag','Anton',sans-serif;
+  --fs-1:clamp(64px,15vw,170px); --fs-2:clamp(38px,7vw,88px); --fs-3:clamp(24px,3.4vw,40px);
+  --fs-4:clamp(15px,2vw,19px); --fs-5:clamp(11px,1.5vw,13.5px);
+
+  /* glass */
+  --glass:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  --glass-border:rgba(255,255,255,.12);
+  --glass-blur:blur(20px) saturate(150%);
+
+  /* ease */
+  --ease-vx:cubic-bezier(.76,0,.24,1);
+  --ease-pop:cubic-bezier(.34,1.56,.64,1);
+
+  /* shadow */
+  --shadow-1:0 16px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);
+  --shadow-2:0 30px 90px rgba(0,0,0,.55);
+  --shadow-3:0 40px 140px rgba(0,0,0,.75);
+
+  /* rhythm */
+  --r-1:clamp(20px,5vw,70px); --r-2:clamp(50px,9vh,90px);
+  --r-3:clamp(24px,4vh,44px);
+}

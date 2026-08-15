@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Shell from './components/Shell.jsx';
+import Shell from './shell/Shell.jsx';
 import Boot from './pages/Boot.jsx';
 import Gate from './pages/Gate.jsx';
 import Drawer from './pages/Drawer.jsx';

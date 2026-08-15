@@ -1,0 +1,18 @@
+/* ============ FX library styles ============ */
+
+/* SpotlightCard */
+.spot-card{position:relative;overflow:hidden}
+.spot-glow{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px 220px at var(--mx,50%) var(--my,0%),var(--spot),transparent 65%)}
+.spot-card:hover .spot-glow{opacity:1}
+
+/* GlitchText */
+.glitch-hover{display:inline-block;transition:text-shadow .25s,color .25s}
+.glitch-hover:hover{color:var(--acid);text-shadow:0 0 10px rgba(185,255,63,.75),0 0 34px rgba(185,255,63,.35)}
+.glitch-hover.glitching{animation:glitchfx .14s steps(2) 2}
+@keyframes glitchfx{
+  0%{transform:translate(0);text-shadow:0 0 10px rgba(185,255,63,.75)}
+  25%{transform:translate(-3px,1px);text-shadow:-4px 0 var(--red),4px 0 var(--acid)}
+  50%{transform:translate(3px,-1px);text-shadow:4px 0 var(--red),-4px 0 var(--acid)}
+  75%{transform:translate(-2px,2px);text-shadow:-3px 0 var(--gold),3px 0 var(--green)}
+  100%{transform:translate(0);text-shadow:0 0 10px rgba(185,255,63,.75)}}
