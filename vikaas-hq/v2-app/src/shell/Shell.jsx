@@ -27,6 +27,7 @@ export default function Shell({ pathname }) {
   const { muted, toggleMute } = useUI();
   const [prog, setProg] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
+  const [navMounted, setNavMounted] = useState(false);
   const cursorRef = useRef(null);
   const location = useLocation();
 
@@ -113,7 +114,14 @@ export default function Shell({ pathname }) {
   /* ---------- body lock on nav ---------- */
   useEffect(() => {
     document.body.classList.toggle('navlock', navOpen);
-    return () => document.body.classList.remove('navlock');
+    const onEsc = (e) => {
+      if (e.key === 'Escape' && navOpen) {
+        setNavOpen(false);
+        setTimeout(() => setNavMounted(false), 400);
+      }
+    };
+    addEventListener('keydown', onEsc);
+    return () => { document.body.classList.remove('navlock'); removeEventListener('keydown', onEsc); };
   }, [navOpen]);
 
   if (hideNav) return <div className="vig" />;
@@ -133,18 +141,18 @@ export default function Shell({ pathname }) {
           <button className="gnav-mute cmd" onClick={toggleMute} data-cursor={muted ? 'UNMUTE' : 'MUTE'} aria-label="toggle sound">
             {muted ? '🔇' : '🔊'}
           </button>
-          <button className="gnav-menu cmd" onClick={() => setNavOpen(true)}>MENU <i></i><i></i><i></i></button>
+          <button className="gnav-menu cmd" onClick={() => { setNavOpen(true); setNavMounted(true); }}>MENU <i></i><i></i><i></i></button>
         </div>
       </motion.nav>
 
       <AnimatePresence>
-        {navOpen && (
+        {navMounted && (
           <motion.div className="gnov" id="gnOverlay"
-            initial={{ opacity: 0, visibility: 'hidden' }}
-            animate={{ opacity: 1, visibility: 'visible' }}
-            exit={{ opacity: 0, visibility: 'hidden', transitionEnd: { display: 'none' } }}
+            initial={{ opacity: 0, visibility: 'hidden', pointerEvents: 'none' }}
+            animate={{ opacity: 1, visibility: 'visible', pointerEvents: 'auto' }}
+            exit={{ opacity: 0, visibility: 'hidden', pointerEvents: 'none' }}
             transition={{ duration: 0.3 }}>
-            <button className="gnov-x cmd" onClick={() => setNavOpen(false)}>✕ CLOSE</button>
+            <button className="gnov-x cmd" onClick={() => { setNavOpen(false); setTimeout(() => setNavMounted(false), 500); }}>✕ CLOSE</button>
             <div className="gnov-hd cmd">the universe — pick a room</div>
             <div className="gnov-list">
               {ROOMS.map(([no, tt, to, st, label], i) => (
@@ -153,11 +161,11 @@ export default function Shell({ pathname }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 + i * 0.05, duration: 0.4, ease: [0.2, 0.9, 0.2, 1] }}>
                   {to
-                    ? <Link className="gn-item" to={to} onClick={() => setNavOpen(false)}>
+                    ? <Link className="gn-item" to={to} onClick={() => { setNavOpen(false); setTimeout(() => setNavMounted(false), 400); }}>
                         <span className="no">{no}</span><span className="tt anton">{tt}</span>
                         <span className={`st ${pathname === to ? 'now' : 'live'}`}>{pathname === to ? 'YOU ARE HERE' : label}</span>
                       </Link>
-                    : <Link className="gn-item soon" to={to} onClick={() => setNavOpen(false)}><span className="no">{no}</span><span className="tt anton">{tt}</span><span className="st">{label}</span></Link>}
+                    : <Link className="gn-item soon" to={to} onClick={() => { setNavOpen(false); setTimeout(() => setNavMounted(false), 400); }}><span className="no">{no}</span><span className="tt anton">{tt}</span><span className="st">{label}</span></Link>}
                 </motion.div>
               ))}
             </div>

@@ -50,6 +50,14 @@ for route in "${ROUTES[@]}"; do
   fi
 done
 
+# ---- 6. CLICK GATE ----
+echo "── 6. CLICKS ──"
+if node "$ENGINE/probe_clicks_gate.js" "$BASE" 2>/dev/null; then
+  verdict "clicks" 0 "menu + all links clickable"
+else
+  verdict "clicks" 1 "menu/links not clickable"
+fi
+
 echo ""
 echo "═══ VERDICT: $pass ✅ / $fail ❌ ═══"
 [ "$fail" = "0" ] && echo "GATE: PASS — ship it." || { echo "GATE: FAIL — fix before shipping."; exit 1; }
