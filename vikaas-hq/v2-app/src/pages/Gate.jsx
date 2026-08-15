@@ -70,6 +70,23 @@ export default function Gate() {
     });
 
 
+
+    // directive reveal
+    document.querySelectorAll('#directive .directive-text, #directive .section-title').forEach((el) => {
+      if (reduce) { gsap.set(el, { opacity: 1, y: 0 }); return; }
+      gsap.fromTo(el, { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+    });
+    // nation stats + count-ups
+    document.querySelectorAll('.nstat').forEach((el, i) => {
+      if (reduce) { gsap.set(el, { opacity: 1, y: 0 }); el.querySelectorAll('[data-count]').forEach(countUp); return; }
+      gsap.fromTo(el, { opacity: 0, y: 40, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out', delay: i * 0.12, scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onStart: () => el.querySelectorAll('[data-count]').forEach(countUp) });
+    });
+    // gap cards
+    document.querySelectorAll('.gcard').forEach((el, i) => {
+      if (reduce) { gsap.set(el, { opacity: 1, y: 0 }); return; }
+      gsap.fromTo(el, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: (i % 2) * 0.1, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    });
+
     // idea blocks reveal
     document.querySelectorAll('.idea-block').forEach((b, i) => {
       if (reduce) { gsap.set(b, { opacity: 1, y: 0 }); return; }
@@ -130,6 +147,69 @@ export default function Gate() {
           </div>
         </div>
         <div className="cue" ref={cueRef}>SCROLL<span></span></div>
+      </section>
+
+      <section id="directive">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the core directive · 01</p>
+          <h2 className="section-title">ONE INTELLIGENT<br /><span>FLOW</span></h2>
+          <p className="directive-text">Every drawer hides dead electronics. Every city hides invisible e-waste. <b>VIKAAS connects the drawer → the kabadi network → the authorised recycler → impact</b> — one weighed, receipted flow. Not a concept. <em>A drawer we actually opened.</em></p>
+        </div>
+      </section>
+
+      <section id="nation">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the drawer nation · 02</p>
+          <h2 className="section-title">THE PROBLEM<br /><span>IS IN THE DRAWERS</span></h2>
+          <div className="nation-stats">
+            <div className="nstat" data-cursor="3.2M TONNES">
+              <b className="anton"><span data-count="3.2" data-dec="1">0</span>M</b>
+              <span>tonnes of e-waste, every year</span>
+              <span className="stamp st-green">SOURCED · CWC</span>
+            </div>
+            <div className="nstat" data-cursor="ONLY 22%">
+              <b className="anton"><span data-count="22">0</span>%</b>
+              <span>reaches authorised recyclers</span>
+              <span className="stamp st-red">THE REST BURNS</span>
+            </div>
+            <div className="nstat" data-cursor="10 OF 10">
+              <b className="anton"><span data-count="10">0</span>/10</b>
+              <span>homes we asked had a drawer</span>
+              <span className="stamp st-gold">OUR SURVEY · REAL</span>
+            </div>
+          </div>
+          <p className="nation-sub">The problem isn’t that people don’t care. It’s that <em>nobody knows where to go.</em> We asked ten homes on our street — all ten had the drawer, not one could name a recycler.</p>
+        </div>
+      </section>
+
+      <section id="gap">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the structural gap · 03</p>
+          <h2 className="section-title">SOLUTIONS EXIST.<br /><span>NONE REACH THE DOOR.</span></h2>
+          <div className="gap-grid">
+            <div className="gcard" data-cursor="BULK-ONLY">
+              <b className="anton">500 KG</b>
+              <span>minimum lot, said the recycler</span>
+              <span className="stamp st-red">BULK-ONLY</span>
+            </div>
+            <div className="gcard" data-cursor="WE HAD">
+              <b className="anton">1.4 KG</b>
+              <span>what our drawer weighed</span>
+              <span className="stamp st-green">WEIGHED</span>
+            </div>
+            <div className="gcard gap-hero" data-cursor="THE GAP">
+              <b className="anton">15 : 0</b>
+              <span>recyclers : doorsteps — the gap we close</span>
+              <span className="stamp st-gold">THE DOORSTEP</span>
+            </div>
+            <div className="gcard" data-cursor="THE KABADI">
+              <b className="anton">₹40</b>
+              <span>the kabadiwala pays, cash, at the gate</span>
+              <span className="stamp st-violet">THE NETWORK</span>
+            </div>
+          </div>
+          <p className="nation-sub">The infrastructure isn’t missing. <em>The doorstep is.</em> The recyclers wait at 500 kg. The homes hold 1.4. The kabadi network already knows every street. <b>Connect them — that’s the app.</b></p>
+        </div>
       </section>
 
       <div className="ticker"><div className="lane">
