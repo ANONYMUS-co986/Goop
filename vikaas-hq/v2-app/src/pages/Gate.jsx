@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 import '../assets/css/gate.css';
+import rebeeImg from '../assets/img/rebee.png';
 import Monolith from '../components/Monolith.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -85,6 +86,18 @@ export default function Gate() {
     document.querySelectorAll('.gcard').forEach((el, i) => {
       if (reduce) { gsap.set(el, { opacity: 1, y: 0 }); return; }
       gsap.fromTo(el, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: (i % 2) * 0.1, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    });
+
+
+    // flow steps reveal
+    document.querySelectorAll('.fstep').forEach((el, i) => {
+      if (reduce) { gsap.set(el, { opacity: 1, y: 0 }); return; }
+      gsap.fromTo(el, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: (i % 2) * 0.1, scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    });
+    // founders reveal
+    document.querySelectorAll('.founder-art, .founder-copy > *').forEach((el) => {
+      if (reduce) { gsap.set(el, { opacity: 1, y: 0 }); return; }
+      gsap.fromTo(el, { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
 
     // idea blocks reveal
@@ -224,6 +237,54 @@ export default function Gate() {
             <p className="mani-line">The drawer waited four years.</p>
             <p className="mani-line">Ten homes asked. <em>Ten drawers found.</em></p>
             <p className="mani-line big">The infrastructure isn’t missing.<br /><span>THE DOORSTEP IS.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="flow">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the pipeline · 04</p>
+          <h2 className="section-title">THE 4-TAP<br /><span>FLOW</span></h2>
+          <div className="flow-steps" id="flowSteps">
+            <div className="fstep" data-cursor="TAP 1">
+              <span className="fno anton">1</span>
+              <h3 className="anton">DRAWER KHOLO</h3>
+              <p>Open the drawer. Any drawer — the phone from 2014, the charger that “kabhi kaam aayega”, the speaker that died in 2022.</p>
+            </div>
+            <div className="fstep" data-cursor="TAP 2">
+              <span className="fno anton">2</span>
+              <h3 className="anton">SCALE PAR RAKHO</h3>
+              <p>Weigh it. A kitchen scale, a real number. Ours was 1.4 kg — WEIGHED, photographed, logged.</p>
+            </div>
+            <div className="fstep" data-cursor="TAP 3">
+              <span className="fno anton">3</span>
+              <h3 className="anton">LIST KHOLO</h3>
+              <p>Open the HSPCB list — 15 government-authorised recyclers in Gurugram. Or just call the kabadiwala; he already knows the street.</p>
+            </div>
+            <div className="fstep" data-cursor="TAP 4">
+              <span className="fno anton">4</span>
+              <h3 className="anton">PHOTO + DROP</h3>
+              <p>Hand it over, snap the receipt. ₹40 cash at the gate. 0 words used. Weighed, not guessed.</p>
+              <span className="stamp st-gold">RECEIPT #0001 · ₹40</span>
+            </div>
+          </div>
+          <p className="nation-sub">That’s the whole flow. <em>Now imagine it as an app</em> — a doorstep tap, a route to the nearest centre, a receipt that proves it. <b>That’s VIKAAS.</b></p>
+        </div>
+      </section>
+
+      <section id="founders">
+        <div className="wrap founders-inner">
+          <div className="founder-art" data-cursor="REBEE"><img src={rebeeImg} alt="ReBee — the AI buddy" /></div>
+          <div className="founder-copy">
+            <p className="eyebrow cmd shiny">the builders · 05</p>
+            <h2 className="section-title">ONE DRAWER.<br /><span>ONE CHANGEMAKER.</span></h2>
+            <p className="founder-text"><b>Aarav Choudhary</b> — the changemaker who weighed his drawer. 1.4 kg of “kuch kaam ka cheez” became 10 homes surveyed, 15 recyclers found, 0 doorsteps served, and a mission: <em>NO DRAWER LEFT BEHIND.</em></p>
+            <p className="founder-text">And <b>ReBee (री-बी)</b> — 1M1B’s AI buddy, built from the problem he solves: a capacitor body, phone-glass wings, charger-LED eyes, a weighing-scale chest. His visor reads any dead device — what’s inside, what it’s worth, where it goes.</p>
+            <div className="founder-stamps">
+              <span className="stamp st-green">WEIGHED</span>
+              <span className="stamp st-gold">₹40 EARNED</span>
+              <span className="stamp st-violet">REBEE · Rी-बी</span>
+            </div>
           </div>
         </div>
       </section>

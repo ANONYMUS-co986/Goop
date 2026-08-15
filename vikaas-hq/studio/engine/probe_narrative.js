@@ -8,7 +8,7 @@ const { chromium: pw } = require('playwright-core');
   await page.goto('http://localhost:5173/', { waitUntil: 'networkidle', timeout: 60000 });
   await page.waitForTimeout(3000);
   // scroll through narrative sections, capture each
-  const sections = ['#directive', '#nation', '#gap', '#idea'];
+  const sections = ['#directive', '#nation', '#gap', '#flow', '#founders', '#idea'];
   for (const sel of sections) {
     await page.evaluate((s) => document.querySelector(s).scrollIntoView({ behavior: 'instant', block: 'start' }), sel);
     await page.waitForTimeout(700);

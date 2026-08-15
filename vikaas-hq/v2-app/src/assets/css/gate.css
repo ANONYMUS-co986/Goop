@@ -90,6 +90,28 @@ main{position:relative;z-index:2}
 .gcard.gap-hero{border-color:rgba(185,255,63,.45);background:linear-gradient(160deg,rgba(185,255,63,.07),rgba(185,255,63,.015))}
 .gcard.gap-hero b{color:var(--acid);text-shadow:0 0 24px var(--accent-glow)}
 
+
+/* ---------- THE 4-TAP FLOW ---------- */
+#flow{border-top:1px solid var(--line);padding:var(--r-2) 0}
+.flow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--r-4);margin-top:var(--r-3)}
+.fstep{position:relative;padding:var(--r-3);border-radius:var(--rad-lg);border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:var(--glass-blur-sm);-webkit-backdrop-filter:var(--glass-blur-sm);box-shadow:var(--shadow-1);opacity:0;transform:translateY(40px);transition:border-color .3s,transform .3s cubic-bezier(.2,.9,.2,1)}
+.fstep:hover{border-color:rgba(185,255,63,.5);transform:translateY(-4px)}
+.fno{position:absolute;top:var(--r-4);right:var(--r-4);font-size:var(--fs-sm);color:var(--mute2)}
+.fstep h3{font-size:var(--fs-caption);color:var(--acid);letter-spacing:.06em;margin-bottom:var(--r-4)}
+.fstep p{color:var(--mute2);font-size:var(--fs-caption);line-height:var(--lh-body)}
+.fstep .stamp{margin-top:var(--r-4)}
+
+/* ---------- FOUNDERS ---------- */
+#founders{border-top:1px solid var(--line);padding:var(--r-2) 0}
+.founders-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.founder-art{border-radius:var(--rad-xl);overflow:hidden;border:1px solid var(--glass-border);box-shadow:var(--shadow-2);transform-style:preserve-3d}
+.founder-art img{width:100%;display:block}
+.founder-text{color:var(--mute2);font-size:var(--fs-body);line-height:var(--lh-body);margin-top:var(--r-4);max-width:52ch}
+.founder-text b{color:var(--dew)}
+.founder-text em{color:var(--green);font-style:normal}
+.founder-stamps{display:flex;flex-wrap:wrap;gap:var(--r-4);margin-top:var(--r-3)}
+@media(max-width:900px){.founders-inner{grid-template-columns:1fr}}
+
 /* ---------- THE IDEA (the narrative spine) ---------- */
 #idea{border-top:1px solid var(--line);padding:var(--r-2) 0}
 .idea-blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--r-4);margin-top:var(--r-3)}
