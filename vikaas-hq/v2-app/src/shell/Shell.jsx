@@ -13,11 +13,12 @@ const ROOMS = [
   ['00', 'THE BOOT', '/boot', 'live', 'REPLAY →'],
   ['01', 'THE GATE', '/', 'live', 'ENTER →'],
   ['02', 'THE DRAWER', '/drawer', 'live', 'ENTER →'],
-  ['03', 'THE PROOF', null, 'locked', 'PHASE 4'],
-  ['04', 'THE ARSENAL', null, 'locked', 'PHASE 6'],
-  ['05', 'THE BUDDY', null, 'locked', 'PHASE 7'],
-  ['06', 'THE SYSTEM', null, 'locked', 'PHASE 8'],
-  ['★', 'GENEVA', null, 'locked', 'THE GOAL'],
+  ['03', 'THE PROOF', '/proof', 'soon', 'PHASE 13 →'],
+  ['04', 'THE KABADI UNIVERSE', '/kabadi', 'soon', 'PHASE 16 →'],
+  ['05', 'THE ARSENAL', '/arsenal', 'soon', 'PHASE 17 →'],
+  ['06', 'THE BUDDY', '/buddy', 'soon', 'PHASE 19 →'],
+  ['07', 'THE SYSTEM', '/system', 'soon', 'PHASE 21 →'],
+  ['★', 'GENEVA', '/geneva', 'soon', 'THE GOAL →'],
   ['§', 'THE TYPE', '/type', 'live', 'STYLEGUIDE →'],
 ];
 
@@ -156,7 +157,7 @@ export default function Shell({ pathname }) {
                         <span className="no">{no}</span><span className="tt anton">{tt}</span>
                         <span className={`st ${pathname === to ? 'now' : 'live'}`}>{pathname === to ? 'YOU ARE HERE' : label}</span>
                       </Link>
-                    : <div className="gn-item locked"><span className="no">{no}</span><span className="tt anton">{tt}</span><span className="st">{label}</span></div>}
+                    : <Link className="gn-item soon" to={to} onClick={() => setNavOpen(false)}><span className="no">{no}</span><span className="tt anton">{tt}</span><span className="st">{label}</span></Link>}
                 </motion.div>
               ))}
             </div>

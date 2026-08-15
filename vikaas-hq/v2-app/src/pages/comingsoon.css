@@ -1,0 +1,10 @@
+/* ===== COMING SOON (locked room pages) ===== */
+.cs-page{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:var(--r-1)}
+.cs-page .nebula{position:absolute;inset:-10%;z-index:0}
+.cs-inner{position:relative;z-index:2;max-width:900px}
+.cs-title{font-size:var(--fs-xlg);line-height:var(--lh-tight);color:var(--paper);text-shadow:0 0 34px var(--accent-glow),0 0 110px rgba(46,222,130,.3)}
+.cs-phase{margin-top:var(--r-4);color:var(--acid);font-size:var(--fs-meta)}
+.cs-teaser{margin-top:var(--r-4);color:var(--mute2);font-size:var(--fs-body);line-height:var(--lh-body);max-width:56ch}
+.cs-links{display:flex;flex-wrap:wrap;gap:var(--r-4);margin-top:var(--r-3)}
+.cs-links .go{display:inline-block;font-size:var(--fs-meta);letter-spacing:var(--tr-label);color:var(--green);border:1px solid var(--line3);border-radius:var(--rad-pill);padding:12px 22px;transition:background .25s,color .25s}
+.cs-links .go:hover{color:var(--ink);background:var(--acid);border-color:var(--acid)}

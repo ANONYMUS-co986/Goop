@@ -166,7 +166,7 @@ export default function Drawer() {
             <div className="lcard" data-cursor="WE HAD"><b className="anton">1.4 KG</b><span>what our drawer weighed</span><span className="stamp st-green">WEIGHED</span></div>
             <div className="lcard" data-cursor="THE GAP"><b className="anton">498.6 KG</b><span>the distance between them</span><span className="stamp st-gold">THE GAP</span></div>
           </div>
-          <Link className="go mag glow-hover" to="/" data-cursor="THE GATE" data-mag>BACK TO THE GATE →</Link>
+          <Link className="go mag glow-hover" to="/proof" data-cursor="THE PROOF" data-mag>SEE THE FULL EVIDENCE →</Link>
         </div>
       </section>
 

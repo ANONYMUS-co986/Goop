@@ -67,6 +67,13 @@ export default function Gate() {
       gsap.fromTo(l, { opacity: 0, filter: 'blur(14px)', y: 46 }, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: l, start: 'top 86%', once: true } });
     });
 
+
+    // idea blocks reveal
+    document.querySelectorAll('.idea-block').forEach((b, i) => {
+      if (reduce) { gsap.set(b, { opacity: 1, y: 0 }); return; }
+      gsap.fromTo(b, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: (i % 2) * 0.1, scrollTrigger: { trigger: b, start: 'top 88%', once: true } });
+    });
+
     // room cards
     document.querySelectorAll('.room-card').forEach((c, i) => {
       if (reduce) { gsap.set(c, { opacity: 1, y: 0 }); return; }
@@ -134,6 +141,39 @@ export default function Gate() {
             <p className="mani-line">The drawer waited four years.</p>
             <p className="mani-line">Ten homes asked. <em>Ten drawers found.</em></p>
             <p className="mani-line big">The infrastructure isn’t missing.<br /><span>THE DOORSTEP IS.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="idea">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the idea · told in four moves</p>
+          <h2 className="section-title">THE<br /><span>IDEA</span></h2>
+          <div className="idea-blocks">
+            <div className="idea-block" data-cursor="THE DISCOVERY">
+              <span className="idea-no anton">01</span>
+              <h3 className="anton">THE DISCOVERY</h3>
+              <p>One drawer in Gurugram held <b>1.4 kg</b> of dead electronics — three phones, seven chargers, a speaker that died in 2022. We weighed it on a kitchen scale. That was the whole idea: <em>nobody had ever weighed the problem.</em></p>
+              <span className="stamp st-green">WEIGHED · 1.4 KG</span>
+            </div>
+            <div className="idea-block" data-cursor="THE GAP">
+              <span className="idea-no anton">02</span>
+              <h3 className="anton">THE GAP</h3>
+              <p>Gurugram has <b>15 government-authorised recyclers</b> — on the HSPCB’s own public list. We called. The first question is always: <em>“how many kilos?”</em> A 500-kg minimum. A home has 1.4 kg. <b>15 recyclers. 0 doorsteps.</b></p>
+              <span className="stamp st-red">THE GAP · 15 / 0</span>
+            </div>
+            <div className="idea-block" data-cursor="THE METHOD">
+              <span className="idea-no anton">03</span>
+              <h3 className="anton">THE METHOD</h3>
+              <p><b>Weigh it. Earn from it. Recycle it.</b> Drawer kholo → scale par rakho → list kholo → photo + drop. ₹40 cash at the gate, a receipt as proof. <em>Weighed, not guessed</em> — every number stamped, sourced or labelled.</p>
+              <span className="stamp st-gold">RECEIPT #0001 · ₹40</span>
+            </div>
+            <div className="idea-block" data-cursor="THE GOAL">
+              <span className="idea-no anton">04</span>
+              <h3 className="anton">THE GOAL</h3>
+              <p>25 households. Every device weighed, logged, delivered. No drawer left behind — from one drawer in Gurugram to the <b>1M1B Impact Summit at the United Nations, 20 Nov 2026.</b> That’s the plan. Publicly. Watch us.</p>
+              <span className="stamp st-violet">GENEVA · 20 NOV</span>
+            </div>
           </div>
         </div>
       </section>

@@ -60,6 +60,21 @@ main{position:relative;z-index:2}
 .spot p{color:#9aa59e;font-size:var(--fs-caption);line-height:var(--lh-body);margin-top:10px;max-width:30ch}
 .spot .stamp{position:absolute;top:18px;right:18px}
 
+
+/* ---------- THE IDEA (the narrative spine) ---------- */
+#idea{border-top:1px solid var(--line);padding:var(--r-2) 0}
+.idea-blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--r-4);margin-top:var(--r-3)}
+.idea-block{position:relative;padding:var(--r-3);border-radius:var(--rad-lg);border:1px solid var(--glass-border);
+  background:var(--glass);backdrop-filter:var(--glass-blur-sm);-webkit-backdrop-filter:var(--glass-blur-sm);
+  box-shadow:var(--shadow-1);opacity:0;transform:translateY(40px);transition:border-color .3s,box-shadow .3s}
+.idea-block:hover{border-color:rgba(185,255,63,.5);box-shadow:var(--shadow-2),0 0 40px rgba(185,255,63,.1)}
+.idea-no{position:absolute;top:var(--r-4);right:var(--r-4);font-size:var(--fs-sm);color:var(--mute2)}
+.idea-block h3{font-size:var(--fs-sm);color:var(--acid);letter-spacing:.05em;margin-bottom:var(--r-4)}
+.idea-block p{color:var(--mute2);font-size:var(--fs-caption);line-height:var(--lh-body)}
+.idea-block p b{color:var(--dew)}
+.idea-block p em{color:var(--green);font-style:normal}
+.idea-block .stamp{margin-top:var(--r-4)}
+
 /* ---------- ROOMS ---------- */
 #rooms{border-top:1px solid #16201a;padding:var(--r-2) 0}
 .rooms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:clamp(24px,4vh,44px)}
