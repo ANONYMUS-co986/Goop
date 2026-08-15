@@ -1,10 +1,11 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
-import Lenis from 'lenis';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Shell from './shell/Shell.jsx';
 import { unlockAudio, attachHoverBlips } from './lib/sound.js';
+import useLenis from './lib/hooks/useLenis.js';
 import Boot from './pages/Boot.jsx';
 import Gate from './pages/Gate.jsx';
 import Drawer from './pages/Drawer.jsx';
@@ -12,63 +13,52 @@ import Type from './pages/Type.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER' };
+const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/type': 'THE TYPE' };
 
+/* ---------- PAGE WIPE (route transition curtain) ---------- */
 function PageWipe({ pathname }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const name = ROOM_NAMES[pathname] || 'VIKAAS';
-    el.querySelector('span').textContent = name;
-    el.style.transition = 'none';
-    el.style.transform = 'scaleY(1)';
-    el.style.transformOrigin = 'top';
-    el.style.display = 'flex';
-    void el.offsetWidth;
-    el.style.transition = 'transform .75s cubic-bezier(.76,0,.24,1)';
-    el.style.transform = 'scaleY(0)';
-    const t = setTimeout(() => { el.style.display = 'none'; }, 850);
-    return () => clearTimeout(t);
-  }, [pathname]);
-  return <div className="pagewipe" ref={ref}><span></span></div>;
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div className="pagewipe" key={'wipe-' + pathname}
+        initial={{ scaleY: 1, transformOrigin: 'top' }}
+        animate={{ scaleY: 0, transformOrigin: 'top', transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1] } }}
+        exit={{ scaleY: 0 }}
+        style={{ position: 'fixed', inset: 0, zIndex: 9996, background: 'var(--acid)', pointerEvents: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span style={{ fontFamily: 'var(--f-display)', fontSize: 'clamp(30px,6vw,60px)', color: 'var(--ink)', letterSpacing: '.04em' }}>
+          {ROOM_NAMES[pathname] || 'VIKAAS'}
+        </span>
+      </motion.div>
+    </AnimatePresence>
+  );
 }
 
 export default function App() {
   const location = useLocation();
+  const pathname = location.pathname;
+
+  // audio unlock + hover blips (once)
   useEffect(() => {
     const u = () => unlockAudio();
     ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => addEventListener(ev, u, { once: true, passive: true }));
     attachHoverBlips();
     return () => ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => removeEventListener(ev, u));
   }, []);
-  const lenisRef = useRef(null);
 
-  // global smooth scroll
-  useEffect(() => {
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const touch = matchMedia('(hover: none)').matches;
-    if (reduce || touch || location.pathname === '/boot') return;
-    const lenis = new Lenis({ lerp: 0.1 });
-    lenisRef.current = lenis;
-    lenis.on('scroll', ScrollTrigger.update);
-    const raf = (t) => lenis.raf(t * 1000);
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
-    return () => { gsap.ticker.remove(raf); lenis.destroy(); };
-  }, [location.pathname]);
+  // per-route Lenis (disabled on boot — it has its own scroll universe)
+  useLenis({ enabled: pathname !== '/boot' });
 
-  // scroll to top on route change (not for boot)
+  // scroll to top on route change (not boot) + refresh triggers
   useEffect(() => {
-    if (location.pathname !== '/boot') window.scrollTo(0, 0);
-    ScrollTrigger.refresh();
-  }, [location.pathname]);
+    if (pathname !== '/boot') window.scrollTo(0, 0);
+    const t = setTimeout(() => ScrollTrigger.refresh(), 200);
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   return (
     <>
-      <Shell pathname={location.pathname} />
-      <PageWipe pathname={location.pathname} />
-      <Routes>
+      <Shell pathname={pathname} />
+      <PageWipe pathname={pathname} />
+      <Routes location={location}>
         <Route path="/" element={<Gate />} />
         <Route path="/boot" element={<Boot />} />
         <Route path="/drawer" element={<Drawer />} />
