@@ -41,6 +41,7 @@ export default function Boot() {
   const abTermRef = useRef(null);
   const abBarRef = useRef(null);
   const abStatusRef = useRef(null);
+  const abPctRef = useRef(null);
   const abWordRef = useRef(null);
   const [skipHidden, setSkipHidden] = useState(false);
 
@@ -138,15 +139,34 @@ export default function Boot() {
 
     /* ===== AUDIO ===== */
     let unlocked = false;
-    const unlock = () => { if (unlocked) return; unlocked = true; try { new Audio('/audio/boot.wav').play().catch(() => {}); } catch (e) {} };
+    const unlock = () => {
+      if (unlocked) return; unlocked = true;
+      try { new Audio('/audio/boot.wav').play().catch(() => {}); } catch (e) {}
+      try {
+        const amb = new Audio('/audio/boot_ambient.wav');
+        amb.loop = true; amb.volume = 0.5;
+        amb.play().catch(() => {});
+        window.__amb = amb;
+      } catch (e) {}
+    };
     ['wheel', 'touchstart', 'pointerdown'].forEach((ev) => addEventListener(ev, unlock, { passive: true, once: true }));
 
     /* ===== AUTO BOOT ===== */
-    const abTerm = abTermRef.current, abBar = abBarRef.current, abStatus = abStatusRef.current, abWord = abWordRef.current;
+    const getBootEls = () => ({
+      abTerm: document.querySelector('#abTerm'),
+      abBar: document.querySelector('.ab-bar i'),
+      abStatus: document.querySelector('.ab-status'),
+      abWord: document.querySelector('.ab-word span'),
+    });
+    let { abTerm, abBar, abStatus, abWord } = getBootEls();
+
+    const bootTimers = [];
+    const T = (fn, ms) => { const id = setTimeout(fn, ms); bootTimers.push(id); return id; };
+
     const bootDone = () => {
       const ab = abRef.current; if (!ab) return;
       ab.classList.add('leaving');
-      setTimeout(() => { if (ab.parentNode) ab.remove(); enableScroll(); }, 1000);
+      T(() => { if (ab.parentNode) ab.remove(); enableScroll(); }, 1000);
     };
     const enableScroll = () => {
       ScrollTrigger.getAll().forEach((st) => st.enable());
@@ -163,27 +183,32 @@ export default function Boot() {
       const done = [];
       let li = 0, ci = 0, totalChars = BOOT_LINES.reduce((a, l) => a + l[0].length, 0), typed = 0;
       const render = () => {
+        const els = getBootEls(); if (!els.abTerm || !els.abBar) return;
         const out = done.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`);
         const cur = BOOT_LINES[li];
         out.push(`<span class="${cur[2]}">${esc(cur[0].slice(0, ci))}</span><span class="cur"></span>`);
-        abTerm.innerHTML = out.join('\n');
-        abBar.style.width = Math.round((typed + ci) / totalChars * 100) + '%';
+        els.abTerm.innerHTML = out.join('\n');
+        const pct = Math.round((typed + ci) / totalChars * 100);
+        els.abBar.style.width = pct + '%';
+        const pctEl = document.querySelector('.ab-status span');
+        if (pctEl) pctEl.textContent = pct + '%';
       };
       const type = () => {
-        if (ci < BOOT_LINES[li][0].length) { ci++; typed++; render(); setTimeout(type, 18); }
+        if (ci < BOOT_LINES[li][0].length) { ci++; typed++; render(); T(type, 18); }
         else {
           done.push(BOOT_LINES[li]); li++;
-          if (li < BOOT_LINES.length) { ci = 0; abStatus.textContent = STATUS[Math.min(li, STATUS.length - 1)]; render(); setTimeout(type, 180); }
+          if (li < BOOT_LINES.length) { ci = 0; abStatus.textContent = STATUS[Math.min(li, STATUS.length - 1)]; render(); T(type, 180); }
           else {
             abTerm.innerHTML = done.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n') + '\n<span class="acid">> READY — awaiting command</span>';
             abBar.style.width = '100%'; abStatus.textContent = 'READY.';
+            if (abPctRef.current) abPctRef.current.textContent = '100%';
             let frame = 0;
             (function tick() {
               const p = frame / 55;
               abChars.forEach((ch, i) => { ch.textContent = i < Math.floor(p * FULL.length) ? FULL[i] : rand(); });
               frame++;
-              if (frame <= 55) setTimeout(tick, 26);
-              else { abChars.forEach((ch, i) => { ch.textContent = FULL[i]; }); setTimeout(bootDone, 650); }
+              if (frame <= 55) T(tick, 26);
+              else { abChars.forEach((ch, i) => { ch.textContent = FULL[i]; }); T(bootDone, 650); }
             })();
           }
         }
@@ -265,10 +290,13 @@ export default function Boot() {
       enterEl.classList.add('show');
     }
 
+    // (type loop uses T so cleanup can cancel)
     return () => {
+      bootTimers.forEach(clearTimeout);
       removeEventListener('pointermove', pm);
       ScrollTrigger.getAll().forEach((st) => st.kill());
       if (renderer) { renderer.dispose(); }
+      if (window.__amb) { try { window.__amb.pause(); } catch (e) {} window.__amb = null; }
     };
   }, [nav]);
 
@@ -314,8 +342,8 @@ export default function Boot() {
         <div className="glow"></div>
         <div className="ab-box">
           <div className="ab-top cmd"><span>VIKAAS <b>OS</b></span><span>BOOT SEQUENCE <b>v5.0</b></span><span>GURUGRAM · <b>2026</b></span></div>
-          <div className="ab-word"><span ref={abWordRef}>VIKAAS</span></div>
-          <pre ref={abTermRef}></pre>
+          <div className="ab-word"><span id="abWord" ref={abWordRef}>VIKAAS</span></div>
+          <pre id="abTerm" ref={abTermRef}></pre>
           <div className="ab-bar"><i ref={abBarRef}></i></div>
           <div className="ab-status cmd" ref={abStatusRef}>INITIALISING…</div>
         </div>
@@ -326,7 +354,7 @@ export default function Boot() {
           term.innerHTML = BOOT_LINES.map(([t, v, c]) => `<span class="${c}">${esc(t)} ${esc(v)}</span>`).join('\n') + '\n<span class="acid">> READY — awaiting command</span>';
           abBarRef.current.style.width = '100%'; abStatusRef.current.textContent = 'READY.';
           ab.classList.add('leaving');
-          setTimeout(() => { if (ab.parentNode) ab.remove(); ScrollTrigger.getAll().forEach((st) => st.enable()); ScrollTrigger.refresh(); }, 1000);
+          T(() => { if (ab.parentNode) ab.remove(); ScrollTrigger.getAll().forEach((st) => st.enable()); ScrollTrigger.refresh(); }, 1000);
         }}>SKIP BOOT →</button>
         <div className="scanlines"></div>
         <div className="vignette"></div>
