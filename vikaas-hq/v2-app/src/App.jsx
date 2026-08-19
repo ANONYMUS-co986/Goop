@@ -12,6 +12,7 @@ import Drawer from './pages/Drawer.jsx';
 import Type from './pages/Type.jsx';
 import ComingSoon from './pages/ComingSoon.jsx';
 import AppHome from './pages/AppHome.jsx';
+import Book from './pages/Book.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,7 +73,7 @@ export default function App() {
         <Route path="/system" element={<ComingSoon />} />
         <Route path="/geneva" element={<ComingSoon />} />
         <Route path="/app" element={<AppHome />} />
-        <Route path="/app/book" element={<ComingSoon />} />
+        <Route path="/app/book" element={<Book />} />
         <Route path="/app/centres" element={<ComingSoon />} />
         <Route path="/app/map" element={<ComingSoon />} />
         <Route path="/app/receipts" element={<ComingSoon />} />
