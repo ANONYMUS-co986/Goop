@@ -20,6 +20,7 @@ const ROOMS = [
   ['07', 'THE SYSTEM', '/system', 'soon', 'PHASE 21 →'],
   ['★', 'GENEVA', '/geneva', 'soon', 'THE GOAL →'],
   ['§', 'THE TYPE', '/type', 'live', 'STYLEGUIDE →'],
+  ['📱', 'THE APP', '/app', 'live', 'TRY IT →'],
 ];
 
 export default function Shell({ pathname }) {

@@ -11,6 +11,7 @@ import Gate from './pages/Gate.jsx';
 import Drawer from './pages/Drawer.jsx';
 import Type from './pages/Type.jsx';
 import ComingSoon from './pages/ComingSoon.jsx';
+import AppHome from './pages/AppHome.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,6 +71,15 @@ export default function App() {
         <Route path="/buddy" element={<ComingSoon />} />
         <Route path="/system" element={<ComingSoon />} />
         <Route path="/geneva" element={<ComingSoon />} />
+        <Route path="/app" element={<AppHome />} />
+        <Route path="/app/book" element={<ComingSoon />} />
+        <Route path="/app/centres" element={<ComingSoon />} />
+        <Route path="/app/map" element={<ComingSoon />} />
+        <Route path="/app/receipts" element={<ComingSoon />} />
+        <Route path="/app/assistant" element={<ComingSoon />} />
+        <Route path="/app/dashboard" element={<ComingSoon />} />
+        <Route path="/app/login" element={<ComingSoon />} />
+        <Route path="/app/admin" element={<ComingSoon />} />
         <Route path="*" element={<Gate />} />
       </Routes>
     </>

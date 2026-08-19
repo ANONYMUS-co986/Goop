@@ -269,6 +269,7 @@ export default function Gate() {
             </div>
           </div>
           <p className="nation-sub">That’s the whole flow. <em>Now imagine it as an app</em> — a doorstep tap, a route to the nearest centre, a receipt that proves it. <b>That’s VIKAAS.</b></p>
+          <div className="flow-cta"><Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link></div>
         </div>
       </section>
 
