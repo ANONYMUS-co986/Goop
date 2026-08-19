@@ -73,3 +73,25 @@ echo "── verdict ──"
 echo "duration=${DUR}s size=$W frames=$COUNT flags=${FLAGS:-none} dups=$dup lufs=$(cat "$OUT/$NAME.lufs" | tr '\n' ' ')" > "$OUT/$NAME.verdict"
 cat "$OUT/$NAME.verdict"
 echo "DONE — review dir: $OUT"
+
+# ---- 8. OCR FRAME HUNT (MISSION PASSWORD MODE) ----
+# Runs OCR on every extracted frame and dumps the text. Purpose-built to
+# find on-screen text that audio can't hear — e.g. the M2 MISSION PASSWORD.
+# Usage: OCR=1 bash engine/video_review.sh video.mp4   (or pass --ocr)
+for a in "$@"; do [ "$a" = "--ocr" ] && OCR=1; done
+if [ "${OCR:-0}" = "1" ]; then
+  echo "── 8. OCR FRAME HUNT (looking for on-screen text) ──"
+  HUNT="$OUT/PASSWORD_HUNT.txt"
+  : > "$HUNT"
+  for fr in "$OUT"/frames/*.jpg; do
+    txt=$(node "$ENGINE/ocr.js" "$fr" 2>/dev/null | tr '\n' ' ' | sed 's/  */ /g')
+    echo "--- $(basename "$fr") ---" >> "$HUNT"
+    echo "$txt" >> "$HUNT"
+    # flag suspicious tokens: codes, passwords, words in caps
+    echo "$txt" | grep -oiE "(pass[a-z]*|code|secret|token|key|vikaas|mission[ -]?password|[A-Z0-9]{6,})" \
+      | sort -u | sed 's/^/    🕵️ FLAG: /' >> "$HUNT" || true
+  done
+  echo "  ✓ OCR hunt written: $HUNT (open it, search for the password)"
+  grep -c "FLAG" "$HUNT" 2>/dev/null | xargs -I{} echo "  flagged tokens: {}"
+fi
+echo "═══ VIDEO REVIEW DONE — see $OUT/REVIEW.md ═══"

@@ -80,6 +80,11 @@ export default function AppHome() {
               <Link to="/app/book" data-cursor="BOOK" data-mag className="go mag glow-hover">START A PICKUP →</Link>
               <Link to="/app/centres" data-cursor="CENTRES" data-mag className="go ghost mag glow-hover">SEE THE CENTRES</Link>
             </div>
+            <div className="app-roomnav cmd">
+              <Link to="/app/map" data-cursor="MAP" className="glow-hover">NETWORK MAP</Link>
+              <Link to="/app/receipts" data-cursor="RECEIPTS" className="glow-hover">RECEIPTS</Link>
+              <Link to="/app/assistant" data-cursor="REBEE" className="glow-hover">REBEE AI</Link>
+            </div>
             <button className="auto-toggle cmd" onClick={() => setAuto(!auto)}>{auto ? '⏸ PAUSE DEMO' : '▶ PLAY DEMO'}</button>
           </div>
         </div>

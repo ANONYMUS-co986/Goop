@@ -56,3 +56,6 @@
 .moat-ctas .go.ghost{background:none;color:var(--green);border:1px solid var(--line3)}
 .moat-ctas .go.ghost:hover{background:var(--acid);color:var(--ink)}
 @media(max-width:900px){.app-stage{grid-template-columns:1fr}.app-title{font-size:clamp(52px,16vw,110px)}}
+.app-roomnav{display:flex;flex-wrap:wrap;gap:18px;margin-top:var(--r-4);color:var(--mute2);font-size:var(--fs-meta);letter-spacing:.18em}
+.app-roomnav a{color:var(--mute2);text-decoration:none;transition:color .25s}
+.app-roomnav a:hover{color:var(--acid)}

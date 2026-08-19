@@ -148,6 +148,7 @@ export default function Book() {
               </motion.div>
             )}
         </div>
+        <p className="bk-foot cmd">VIKAAS · THE SAME FLOW WE RAN BY HAND — 1.4 KG · ₹40 · RECEIPTED · <Link to="/app/receipts" className="glow-hover">SEE THE RECEIPTS →</Link></p>
       </div>
     </main>
   );

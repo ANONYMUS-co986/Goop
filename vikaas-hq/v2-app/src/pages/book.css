@@ -50,3 +50,5 @@
 .done-receipt{margin:var(--r-4) auto 0;max-width:320px;background:var(--paper);color:var(--ink);border-radius:10px;padding:16px;font-family:var(--f-mono);font-size:12px;display:grid;gap:6px;text-align:center}
 .done-receipt b{font-size:18px}
 .bk-done .bk-nav{justify-content:center}
+.bk-foot{margin:var(--r-3) 0 var(--r-2);color:var(--mute2);letter-spacing:.14em;font-size:var(--fs-meta)}
+.bk-foot a{color:var(--acid);text-decoration:none;letter-spacing:.1em}

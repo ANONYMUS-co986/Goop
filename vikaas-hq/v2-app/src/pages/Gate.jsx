@@ -149,30 +149,70 @@ export default function Gate() {
           <p className="eyebrow cmd shiny" id="heEyebrow">1M1B CHANGEMAKERS WORLD CUP 2026 <span>· TRACK: KILL THE E-WASTE</span></p>
           <h1 className="anton gate-title" ref={titleRef}><span className="en">VIKAAS</span><span className="dev">विकास</span></h1>
           <p className="gate-sub" ref={subRef}>
-            <span className="w">One</span> <span className="w">drawer</span> <span className="w">in</span> <span className="w">Gurugram.</span><br />
-            <span className="w">1.4</span> <span className="w">kg</span> <span className="w">of</span> <span className="w">dead</span> <span className="w">electronics</span> <span className="w">—</span> <span className="w">weighed</span> <span className="w">on</span> <span className="w">a</span> <span className="w">kitchen</span> <span className="w">scale.</span>
+            <span className="w">The</span> <span className="w">app</span> <span className="w">that</span> <span className="w">books</span> <span className="w">e-waste</span> <span className="w">pickup</span> <span className="w">like</span> <span className="w">food.</span><br />
+            <span className="w">Open</span> <span className="w">it.</span> <span className="w">Enter</span> <span className="w">your</span> <span className="w">waste.</span> <span className="w">Book.</span> <span className="w">A</span> <span className="w">collection</span> <span className="w">centre</span> <span className="w">comes</span> <span className="w">—</span> <span className="w">weighs.</span> <span className="w">pays.</span> <span className="w">receipts.</span>
           </p>
           <div className="stat-chips" ref={chipsRef}>
-            <div className="chip"><b><span data-count="1.4" data-dec="1">0.0</span> KG</b><span>weighed on a kitchen scale</span><span className="stamp st-green">WEIGHED</span></div>
-            <div className="chip"><b>₹<span data-count="40">0</span></b><span>cash at the gate</span><span className="stamp st-gold">RECEIPT #1</span></div>
+            <div className="chip"><b><span data-count="1.4" data-dec="1">0.0</span> KG</b><span>the pilot we booked by hand</span><span className="stamp st-green">WEIGHED</span></div>
+            <div className="chip"><b>₹<span data-count="40">0</span></b><span>paid at the door, cash</span><span className="stamp st-gold">RECEIPT #1</span></div>
             <div className="chip"><b><span data-count="15">0</span></b><span>govt-authorised recyclers</span><span className="stamp st-green">SOURCED</span></div>
             <div className="chip"><b><span data-count="0">0</span></b><span>doorsteps served by them</span><span className="stamp st-red">THE GAP</span></div>
+          </div>
+          <div className="hero-ctas">
+            <Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link>
+            <Link to="/drawer" data-cursor="THE PILOT" data-mag className="go ghost mag glow-hover">SEE THE PILOT</Link>
           </div>
         </div>
         <div className="cue" ref={cueRef}>SCROLL<span></span></div>
       </section>
 
+      <section id="theapp">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">what is vikaas · 01</p>
+          <h2 className="section-title">AN APP LIKE SWIGGY.<br /><span>FOR E-WASTE.</span></h2>
+          <p className="directive-text">Not a poster. Not a drive. <b>An app.</b> You open VIKAAS, enter your waste — what it is, how much — and <b>book a pickup</b>. A collection centre (a kabadiwala or an authorised recycler, recruited by us) arrives at your door, weighs it in front of you, pays cash, and receipts it all the way to a verified recycler. Like Swiggy — but the delivery is your dead electronics, going to the right place.</p>
+          <div className="anatomy-grid">
+            <div className="acard" data-cursor="TAP 1">
+              <span className="fno anton">1</span>
+              <h3 className="anton">OPEN THE APP</h3>
+              <p>List your devices — phone, charger, cable, speaker. Type the amount or snap a photo; the AI estimates weight and value.</p>
+            </div>
+            <div className="acard" data-cursor="TAP 2">
+              <span className="fno anton">2</span>
+              <h3 className="anton">BOOK A PICKUP</h3>
+              <p>Pick a slot. The app routes your door to the nearest collection centre — licensed recycler or kabadiwala, both recruited, both rated.</p>
+            </div>
+            <div className="acard" data-cursor="TAP 3">
+              <span className="fno anton">3</span>
+              <h3 className="anton">WEIGH · PAY</h3>
+              <p>The centre arrives, weighs it on the spot, pays cash. 1.4 kg = ₹40. Real rates from real centres, never guesswork.</p>
+            </div>
+            <div className="acard" data-cursor="TAP 4">
+              <span className="fno anton">4</span>
+              <h3 className="anton">RECEIPT</h3>
+              <p>A receipt with a chain of custody — from your door to an HSPCB-verified recycler. Weighed, not guessed. Stamped, not screenshotted.</p>
+              <span className="stamp st-gold">RECEIPT #0001 · REAL</span>
+            </div>
+          </div>
+          <p className="nation-sub">Scrap apps exist. <em>E-waste doorstep doesn't.</em> VIKAAS is dedicated to dead electronics — AI estimates, live rates, verified chain of custody, any quantity from half a kilo. <b>That's the USP: where others aren't — your door.</b></p>
+          <div className="flow-cta">
+            <Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link>
+            <Link to="/app/book" data-cursor="BOOK" data-mag className="go ghost mag glow-hover">BOOK A PICKUP →</Link>
+          </div>
+        </div>
+      </section>
+
       <section id="directive">
         <div className="wrap">
-          <p className="eyebrow cmd shiny">the core directive · 01</p>
+          <p className="eyebrow cmd shiny">the core directive · 02</p>
           <h2 className="section-title">ONE INTELLIGENT<br /><span>FLOW</span></h2>
-          <p className="directive-text">Every drawer hides dead electronics. Every city hides invisible e-waste. <b>VIKAAS connects the drawer → the kabadi network → the authorised recycler → impact</b> — one weighed, receipted flow. Not a concept. <em>A drawer we actually opened.</em></p>
+          <p className="directive-text">Every drawer hides dead electronics. Every city hides invisible e-waste. <b>VIKAAS is the app that closes the loop — drawer → doorstep pickup → weighed → paid → receipted → verified recycler</b>. One flow, four taps, real money, real proof. Not a concept. <em>A drawer we actually opened — 1.4 kg, ₹40, receipted.</em></p>
         </div>
       </section>
 
       <section id="nation">
         <div className="wrap">
-          <p className="eyebrow cmd shiny">the drawer nation · 02</p>
+          <p className="eyebrow cmd shiny">the drawer nation · 03</p>
           <h2 className="section-title">THE PROBLEM<br /><span>IS IN THE DRAWERS</span></h2>
           <div className="nation-stats">
             <div className="nstat" data-cursor="3.2M TONNES">
@@ -197,7 +237,7 @@ export default function Gate() {
 
       <section id="gap">
         <div className="wrap">
-          <p className="eyebrow cmd shiny">the structural gap · 03</p>
+          <p className="eyebrow cmd shiny">the structural gap · 04</p>
           <h2 className="section-title">SOLUTIONS EXIST.<br /><span>NONE REACH THE DOOR.</span></h2>
           <div className="gap-grid">
             <div className="gcard" data-cursor="BULK-ONLY">
@@ -215,19 +255,19 @@ export default function Gate() {
               <span>recyclers : doorsteps — the gap we close</span>
               <span className="stamp st-gold">THE DOORSTEP</span>
             </div>
-            <div className="gcard" data-cursor="THE KABADI">
+            <div className="gcard" data-cursor="THE PARTNERS">
               <b className="anton">₹40</b>
-              <span>the kabadiwala pays, cash, at the gate</span>
+              <span>collection partners pay cash, at the door</span>
               <span className="stamp st-violet">THE NETWORK</span>
             </div>
           </div>
-          <p className="nation-sub">The infrastructure isn’t missing. <em>The doorstep is.</em> The recyclers wait at 500 kg. The homes hold 1.4. The kabadi network already knows every street. <b>Connect them — that’s the app.</b></p>
+          <p className="nation-sub">The infrastructure isn’t missing. <em>The doorstep is.</em> The recyclers wait at 500 kg. The homes hold 1.4. The kabadiwala knows every street — the recycler holds the licence. <b>The app connects them to your door — that’s VIKAAS.</b></p>
         </div>
       </section>
 
       <div className="ticker"><div className="lane">
-        <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · 0 WORDS <i>✦</i></span>
-        <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · 0 WORDS <i>✦</i></span>
+        <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>SWIGGY FOR E-WASTE <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · RECEIPTED <i>✦</i></span>
+        <span>NO DRAWER LEFT BEHIND <i>✦</i></span><span>WEIGH IT <i>✦</i></span><span>EARN FROM IT <i>✦</i></span><span>RECYCLE IT <i>✦</i></span><span>SWIGGY FOR E-WASTE <i>✦</i></span><span>15 RECYCLERS · 0 DOORSTEPS <i>✦</i></span><span>1.4 KG · ₹40 · RECEIPTED <i>✦</i></span>
       </div></div>
 
       <section id="manifesto">
@@ -243,32 +283,33 @@ export default function Gate() {
 
       <section id="flow">
         <div className="wrap">
-          <p className="eyebrow cmd shiny">the pipeline · 04</p>
-          <h2 className="section-title">THE 4-TAP<br /><span>FLOW</span></h2>
+          <p className="eyebrow cmd shiny">the pipeline · 05</p>
+          <h2 className="section-title">THE APP'S<br /><span>4 TAPS</span></h2>
+          <p className="nation-sub">Before the app existed, we ran this flow <b>by hand</b> — 1.4 kg, ₹40, one drawer in Gurugram, receipted. The app is that flow, at scale.</p>
           <div className="flow-steps" id="flowSteps">
             <div className="fstep" data-cursor="TAP 1">
               <span className="fno anton">1</span>
-              <h3 className="anton">DRAWER KHOLO</h3>
-              <p>Open the drawer. Any drawer — the phone from 2014, the charger that “kabhi kaam aayega”, the speaker that died in 2022.</p>
+              <h3 className="anton">OPEN THE APP</h3>
+              <p>Open VIKAAS. Add your devices — the phone from 2014, the charger that “kabhi kaam aayega”, the speaker that died in 2022. Type the amount, or snap a photo.</p>
             </div>
             <div className="fstep" data-cursor="TAP 2">
               <span className="fno anton">2</span>
-              <h3 className="anton">SCALE PAR RAKHO</h3>
-              <p>Weigh it. A kitchen scale, a real number. Ours was 1.4 kg — WEIGHED, photographed, logged.</p>
+              <h3 className="anton">GET THE ESTIMATE</h3>
+              <p>Live rate card from nearby centres. 1.4 kg ≈ ₹40 — real rates from the real centres we called and recruited, not guesswork.</p>
             </div>
             <div className="fstep" data-cursor="TAP 3">
               <span className="fno anton">3</span>
-              <h3 className="anton">LIST KHOLO</h3>
-              <p>Open the HSPCB list — 15 government-authorised recyclers in Gurugram. Or just call the kabadiwala; he already knows the street.</p>
+              <h3 className="anton">BOOK THE PICKUP</h3>
+              <p>Pick a slot. The app routes your door to the nearest collection centre — a kabadiwala or an HSPCB-licensed recycler, both recruited by us, both rated.</p>
             </div>
             <div className="fstep" data-cursor="TAP 4">
               <span className="fno anton">4</span>
-              <h3 className="anton">PHOTO + DROP</h3>
-              <p>Hand it over, snap the receipt. ₹40 cash at the gate. 0 words used. Weighed, not guessed.</p>
+              <h3 className="anton">WEIGH · PAY · RECEIPT</h3>
+              <p>Weighed in front of you, paid cash, receipted with a chain of custody to a verified recycler. Weighed, not guessed — every number stamped, sourced or labelled.</p>
               <span className="stamp st-gold">RECEIPT #0001 · ₹40</span>
             </div>
           </div>
-          <p className="nation-sub">That’s the whole flow. <em>Now imagine it as an app</em> — a doorstep tap, a route to the nearest centre, a receipt that proves it. <b>That’s VIKAAS.</b></p>
+          <p className="nation-sub">Four taps. That's the whole product. <em>Try the app</em> — book a pickup, see the centres, watch the network map. <b>This portfolio sells an app, and the app works.</b></p>
           <div className="flow-cta"><Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link></div>
         </div>
       </section>
@@ -277,7 +318,7 @@ export default function Gate() {
         <div className="wrap founders-inner">
           <div className="founder-art" data-cursor="REBEE"><img src={rebeeImg} alt="ReBee — the AI buddy" /></div>
           <div className="founder-copy">
-            <p className="eyebrow cmd shiny">the builders · 05</p>
+            <p className="eyebrow cmd shiny">the builders · 06</p>
             <h2 className="section-title">ONE DRAWER.<br /><span>ONE CHANGEMAKER.</span></h2>
             <p className="founder-text"><b>Aarav Choudhary</b> — the changemaker who weighed his drawer. 1.4 kg of “kuch kaam ka cheez” became 10 homes surveyed, 15 recyclers found, 0 doorsteps served, and a mission: <em>NO DRAWER LEFT BEHIND.</em></p>
             <p className="founder-text">And <b>ReBee (री-बी)</b> — 1M1B’s AI buddy, built from the problem he solves: a capacitor body, phone-glass wings, charger-LED eyes, a weighing-scale chest. His visor reads any dead device — what’s inside, what it’s worth, where it goes.</p>

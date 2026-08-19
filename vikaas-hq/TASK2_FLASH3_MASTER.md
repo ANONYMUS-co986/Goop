@@ -88,9 +88,49 @@ hand, now we're building the doorstep."**
 ---
 
 ## STATUS
-- OCR eyes: ONLINE (read all 7 screenshots). Video reviewer: ONLINE.
-- Portfolio: /app built (Phase 12) — the app demo is live on the site.
-- Gate: TRY THE APP CTA → /app. Nav: THE APP room live.
-- Next phases: book wizard → centres → map → receipts/assistant → dashboard/
-  auth/admin → proof room → kabadi → arsenal → buddy → system → geneva → sound
-  → seo → database → launch.
+- OCR eyes: ONLINE (read all 7 screenshots + the new 19-Aug one). Video reviewer: ONLINE (+ OCR frame-hunt mode).
+- Portfolio: Phase 16 done — /app/receipts + /app/assistant live; QA GATE 43/43 PASS.
+- Next phases: dashboard/auth/admin → proof room → kabadi → arsenal → buddy → system → geneva → sound → seo → database → launch.
+
+---
+
+# ⚡ V3 UPDATE — 19 Aug 2026 (after new commits on main)
+
+## New intelligence (what changed today)
+1. **Divaa's video (9P6xal4dWKLo) is DELETED from YouTube** — verified: page returns "This video isn't available anymore". Your audio (22 MB mp3) + transcripts + screenshots are now THE evidence. Keep them safe. (Also: Flash 3 answers were already grounded in her real lines — nothing lost.)
+2. **M2 explainer FULL transcript re-processed** (whisper, timestamped) — the complete Measure→Act→Measure Again text is now in `/tmp/transcripts` + on `main`. Keywords mined: "validate, don't assume", "e-waste collection drive" (their own example!), "document everything", "What changed? How do I know it? Can I prove it?".
+3. **MISSION PASSWORD VERDICT (upgraded):** checked the YouTube page directly (title/description/transcript pulled) — the password is NOT in the description and NOT spoken. It is **ON-SCREEN** in the M2 video (the brief literally says "keep your eyes open"). Same trick as Flash Challenge 2's on-screen registration code (cxuk).
+   - **Fastest path:** you watch the 6-min video on your phone → find the word/code → send it to me.
+   - **Automated path (zero effort):** download the M2 **video file** (mp4, not mp3) via YTDown → commit to `main` → I run `OCR=1 bash engine/video_review.sh mission2.mp4` → the frame-by-frame OCR hunt flags the password automatically. The pipeline is built and tested (reel smoke-test passed).
+4. **Flash 3 submission portal (wcsubmission.in)**: not reachable from the sandbox (blocked at network layer, both http/https) — you submit from your phone/laptop. If the form asks for a Document attachment, attach the Flash-3 answers as a PDF (I'll generate it on request) — the 3 answers fit the Response Text box as planned.
+5. **Your `transcribe_briefs.py` error explained:** your Downloads folder is named `vikaas—hq` (long dash, not hyphen). The script now DETECTS non-ASCII folder names and tells you exactly what to rename — it can't fail silently anymore.
+6. **The `vo_out.zip` files = your 8 VO clips** (vo1_pov → vo8_finale, Aug 6) — the promo video voiceover. Will be wired into THE ARSENAL (Phase 20).
+
+## YOUR PHYSICAL CHECKLIST (Mission 2 — do in this order, ~3 hrs total, spread over 3 days)
+
+| # | Action | Proof to capture | Deadline |
+|---|---|---|---|
+| 1 | **BEFORE photo** — the drawer as it is NOW (open, devices visible) | photo | today |
+| 2 | **BEFORE number** — weigh the drawer contents on the kitchen scale, same method as M1 | photo of scale reading (1.4 kg or current) + note | today |
+| 3 | **Talk to 2 neighbours** — "do you have a drawer of dead electronics? what stops you from clearing it?" (listen, don't pitch) | 2 short notes + photo of drawers (ask permission) or voice memo | 21 Aug |
+| 4 | **Recycler call** — call 1 HSPCB recycler on speaker, ask minimum kg + doorstep service | 30–60s video or call log + one-line finding | 22 Aug |
+| 5 | **Weigh-day video** — drawer → scale → handover, 30–60s, one take | video (commit mp4) | 23–24 Aug |
+| 6 | **AFTER photo** — the SAME drawer, emptied | photo | 24 Aug |
+| 7 | **AFTER number** — kg diverted · ₹ paid · drawer empty (same method) | photo of receipt + scale | 24 Aug |
+| 8 | **AGREEMENT** — someone continues it: kabadiwala thumbprint/"will accept small doorstep lots" on paper, or society WhatsApp commitment | photo / screenshot | 25 Aug |
+| 9 | **Commit ALL evidence to repo `main`** (photos, videos, notes) | push | 26 Aug |
+| 10 | **Mission Password** — watch M2 video (or commit mp4, I hunt it) | the word/code | before submit |
+
+**Then I build (by 27 Aug):** the M2 submission PPT/PDF (BEFORE/AFTER + numbers + story + agreement + judges'-criteria mapping) + refined Flash-3 text + the evidence album that feeds the portfolio's proof room.
+
+## Flash 3 — DO IT NOW (deadline 23 Aug)
+1. Open `FLASH3_FINAL_ANSWERS.md` → paste Q1/Q2/Q3 into the Response Text box.
+2. If the form wants a document: tell me, I'll generate `FLASH3_SUBMISSION.pdf` in 2 minutes.
+3. Screenshot the confirmation → commit to `main`.
+
+## Judges' 5 criteria (mapped to our evidence)
+① People spoken to → 2 neighbour conversations + 10-home survey + recycler calls
+② Cause, not symptoms → the 500-kg minimum / 0 doorsteps (structural gap, not awareness)
+③ Impact per effort → the weigh-and-drop day: 1 drawer, 40 minutes, ₹40, 1.4 kg diverted
+④ Continues after you're gone → the AGREEMENT (kabadi accepts small lots) + the app itself
+⑤ Copyable → the 4-tap flow, one page, anyone can replicate — that's the point

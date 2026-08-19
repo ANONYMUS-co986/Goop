@@ -8,8 +8,30 @@ Writes transcripts/*.txt next to the briefs.
 import os, sys, glob
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+# --- FOLDER-NAME GUARD: the repo folder must be "vikaas-hq" (HYPHEN) ---
+# If you renamed it (e.g. "vikaas—hq" with a long dash), the paths break.
+# We detect it and tell you exactly what to do instead of failing weirdly.
+import re
+seg = HERE.replace("\\", "/").split("/")
+bad = [x for x in seg if re.search(r"[^\x00-\x7f]", x)]
+if bad:
+    print("!! FOLDER NAME PROBLEM DETECTED !!")
+    print(f"   Found non-ASCII characters in this path: {bad}")
+    print("   Your folder is probably named vikaas—hq (with a long dash).")
+    print("   FIX: rename it to vikaas-hq (normal hyphen):")
+    print('       Windows Explorer: right-click folder -> Rename -> vikaas-hq')
+    print("   Then run this script again from the SAME folder.")
+    sys.exit(2)
+
 # the mp3s live in vikaas-hq/briefs/ (two levels up from engine/)
 BRIEFS = os.path.normpath(os.path.join(HERE, "..", "briefs"))
+if not os.path.isdir(BRIEFS):
+    # fallback: maybe the user moved just the studio folder somewhere
+    for cand in ("briefs", "../briefs", os.path.join(os.getcwd(), "briefs")):
+        if os.path.isdir(cand):
+            BRIEFS = os.path.abspath(cand)
+            break
 OUT = os.path.join(BRIEFS, "transcripts")
 os.makedirs(OUT, exist_ok=True)
 
