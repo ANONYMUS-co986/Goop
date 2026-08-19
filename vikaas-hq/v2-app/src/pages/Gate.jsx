@@ -22,7 +22,7 @@ function countUp(el) {
 
 const ROOM_CARDS = [
   { to: '/drawer', no: '02', title: 'THE DRAWER', desc: 'the origin — pinned, cinematic, interactive', badge: 'ENTER →', live: true },
-  { no: '03', title: 'THE PROOF', desc: 'receipts, the scale toy, the data', badge: 'PHASE 4', more: 'Every number stamped: WEIGHED, SOURCED, ESTIMATE, DRAMATISED. The scale toy, the receipts, the data — all interactive.' },
+  { to: '/proof', no: '03', title: 'THE PROOF', desc: 'the evidence vault — real photos, real receipts', badge: 'ENTER →', live: true },
   { no: '04', title: 'THE ARSENAL', desc: '6 reels · 22 posts · made with code', badge: 'PHASE 6', more: 'Six reels and twenty-two posts, every frame made with code. Hover to play, click to open the films room.' },
   { no: '05', title: 'THE BUDDY', desc: 'ReBee — born from a Gurugram drawer', badge: 'PHASE 7', more: "1M1B's AI buddy: SCRAP-SCAN, DOORSTEP DIAL, MATERIAL MATCH. Built from the problem he solves." },
   { no: '06', title: 'THE SYSTEM', desc: 'the engine room — how it was all built', badge: 'PHASE 8', more: 'The receipts of the receipts — the engine, the pipelines, the self-review loop. The machine behind the machine.' },

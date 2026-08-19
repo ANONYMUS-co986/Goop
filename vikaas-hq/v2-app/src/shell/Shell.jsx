@@ -13,7 +13,7 @@ const ROOMS = [
   ['00', 'THE BOOT', '/boot', 'live', 'REPLAY →'],
   ['01', 'THE GATE', '/', 'live', 'ENTER →'],
   ['02', 'THE DRAWER', '/drawer', 'live', 'ENTER →'],
-  ['03', 'THE PROOF', '/proof', 'soon', 'PHASE 16 →'],
+  ['03', 'THE PROOF', '/proof', 'live', 'ENTER →'],
   ['04', 'THE KABADI UNIVERSE', '/kabadi', 'soon', 'PHASE 17 →'],
   ['05', 'THE ARSENAL', '/arsenal', 'soon', 'PHASE 18 →'],
   ['06', 'THE BUDDY', '/buddy', 'soon', 'PHASE 19 →'],

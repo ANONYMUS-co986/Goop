@@ -20,10 +20,11 @@ import Assistant from './pages/Assistant.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Login from './pages/Login.jsx';
 import Admin from './pages/Admin.jsx';
+import Proof from './pages/Proof.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/type': 'THE TYPE', '/app/receipts': 'THE RECEIPTS', '/app/assistant': 'REBEE', '/app/dashboard': 'THE LEDGER', '/app/login': 'THE DOOR', '/app/admin': 'CENTRE OPS' };
+const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/proof': 'THE PROOF', '/type': 'THE TYPE', '/app/receipts': 'THE RECEIPTS', '/app/assistant': 'REBEE', '/app/dashboard': 'THE LEDGER', '/app/login': 'THE DOOR', '/app/admin': 'CENTRE OPS' };
 
 /* ---------- PAGE WIPE (route transition curtain) ---------- */
 function PageWipe({ pathname }) {
@@ -73,7 +74,7 @@ export default function App() {
         <Route path="/boot" element={<Boot />} />
         <Route path="/drawer" element={<Drawer />} />
         <Route path="/type" element={<Type />} />
-        <Route path="/proof" element={<ComingSoon />} />
+        <Route path="/proof" element={<Proof />} />
         <Route path="/kabadi" element={<ComingSoon />} />
         <Route path="/arsenal" element={<ComingSoon />} />
         <Route path="/buddy" element={<ComingSoon />} />
