@@ -125,6 +125,112 @@ export default function Shell({ pathname }) {
     return () => { document.body.classList.remove('navlock'); removeEventListener('keydown', onEsc); };
   }, [navOpen]);
 
+  /* ============================================================
+     THE MOUSE-REACTIVITY ENGINE (global, delegated — every page)
+     1. MAGNETIC buttons  — [data-mag] pull toward the cursor
+     2. CARD SPOTLIGHT    — glass cards get a cursor-tracking glow
+     3. 3D TILT           — big cards lean with the pointer
+     4. VELOCITY SKEW     — hero titles skew with scroll speed
+     ============================================================ */
+  useEffect(() => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    /* 1+2+3: pointer delegation */
+    const SPOT = '.gcard,.acard,.chip,.nstat,.spot,.room-card,.impact-cell,.how-card,.kb-card,.kb-why-card,.pf-num,.pf-ev,.rx-card,.rx-stamp-cell,.as-power,.op-stat,.op-row,.op-req,.rx-slot';
+    const TILT = '.gcard,.acard,.impact-cell,.kb-card,.kb-why-card,.pf-num,.rx-card,.as-power,.op-stat,.op-row,.op-req,.how-card,.rx-slot';
+
+    let mag = null, magTarget = null, magRAF = 0;
+    const magLoop = () => {
+      if (mag && magTarget) {
+        const dx = magTarget.cx - magTarget.rx, dy = magTarget.cy - magTarget.ry;
+        magTarget.rx += dx * 0.22; magTarget.ry += dy * 0.22;
+        mag.style.transform = `translate(${magTarget.rx}px,${magTarget.ry}px)`;
+        if (Math.abs(dx) > 0.3 || Math.abs(dy) > 0.3) magRAF = requestAnimationFrame(magLoop);
+        else { mag.style.transform = `translate(${magTarget.rx}px,${magTarget.ry}px)`; mag = null; }
+      }
+    };
+    const clearMag = () => {
+      if (mag && magTarget) {
+        magTarget.rx = 0; magTarget.ry = 0;
+        mag.style.transform = '';
+      }
+      mag = null; magTarget = null;
+      cancelAnimationFrame(magRAF);
+    };
+
+    const onOver = (e) => {
+      const t = e.target.closest('[data-mag]');
+      if (t && t !== magTarget) {
+        clearMag();
+        mag = t; magTarget = { rx: 0, ry: 0, cx: 0, cy: 0 };
+        mag.style.willChange = 'transform';
+        const r = t.getBoundingClientRect();
+        magTarget.cx = e.clientX - (r.left + r.width / 2);
+        magTarget.cy = e.clientY - (r.top + r.height / 2);
+        magTarget.cx = Math.max(-9, Math.min(9, magTarget.cx * 0.28));
+        magTarget.cy = Math.max(-7, Math.min(7, magTarget.cy * 0.28));
+        magRAF = requestAnimationFrame(magLoop);
+      }
+    };
+
+    const onMove = (e) => {
+      const s = e.target.closest(SPOT);
+      if (s) {
+        if (!s.classList.contains('fx-spot')) s.classList.add('fx-spot');
+        const r = s.getBoundingClientRect();
+        s.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        s.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      }
+      const t = e.target.closest(TILT);
+      if (t && !t.closest('[data-mag]')) {
+        const r = t.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        t.style.transform = `perspective(900px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 9).toFixed(2)}deg) translateY(-4px)`;
+        t.style.transition = 'transform .08s linear';
+      }
+      if (magTarget) {
+        const r = mag.getBoundingClientRect();
+        magTarget.cx = Math.max(-9, Math.min(9, (e.clientX - (r.left + r.width / 2)) * 0.28));
+        magTarget.cy = Math.max(-7, Math.min(7, (e.clientY - (r.top + r.height / 2)) * 0.28));
+      }
+    };
+    const onOut = (e) => {
+      const t = e.target.closest(TILT);
+      if (t && !t.closest('[data-mag]')) { t.style.transform = ''; t.style.transition = 'transform .4s cubic-bezier(.22,1,.36,1)'; }
+      clearMag();
+    };
+
+    document.addEventListener('mouseover', onOver);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseout', onOut);
+
+    /* 4: velocity skew on hero titles */
+    const TITLES = 'h1.anton,h2.section-title';
+    let lastY = scrollY, vel = 0, velRAF = 0;
+    const skewLoop = () => {
+      const y = scrollY;
+      vel += ((y - lastY) - vel) * 0.25;
+      lastY = y;
+      const v = Math.max(-2.2, Math.min(2.2, vel * 0.14));
+      document.documentElement.style.setProperty('--vel', v.toFixed(3));
+      velRAF = requestAnimationFrame(skewLoop);
+    };
+    const tagTitles = () => document.querySelectorAll(TITLES).forEach((el) => el.classList.add('vel-skew'));
+    tagTitles();
+    velRAF = requestAnimationFrame(skewLoop);
+
+    return () => {
+      document.removeEventListener('mouseover', onOver);
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseout', onOut);
+      clearMag();
+      cancelAnimationFrame(velRAF);
+      document.documentElement.style.setProperty('--vel', '0');
+    };
+  }, []);
+
   if (hideNav) return <div className="vig" />;
 
   const here = pathname;

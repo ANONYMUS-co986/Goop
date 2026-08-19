@@ -153,3 +153,25 @@ body::after{content:"";position:fixed;inset:-50px;z-index:9990;pointer-events:no
 /* ---------- SCROLL PROGRESS ---------- */
 .scrollprog{position:fixed;top:0;left:0;right:0;height:3px;z-index:95;pointer-events:none}
 .scrollprog i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--green),var(--acid));box-shadow:0 0 10px rgba(185,255,63,.7)}
+
+/* ============================================================
+   THE OVERHAUL — mouse-reactivity layers (Phase 19.5)
+   ============================================================ */
+/* card spotlight — cursor-tracking glow (vars set by Shell) */
+.fx-spot{position:relative}
+.fx-spot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(280px 180px at var(--mx,50%) var(--my,0%),rgba(185,255,63,.14),transparent 65%);z-index:1}
+.fx-spot:hover::after{opacity:1}
+.fx-spot>*{position:relative;z-index:1}
+/* hero title velocity skew (--vel set by Shell) */
+.vel-skew{transform:skewY(calc(var(--vel,0) * 1.1deg));will-change:transform}
+/* stamps react to the mouse */
+.stamp{transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,color .25s,border-color .25s}
+.stamp:hover{transform:rotate(-4deg) scale(1.22);box-shadow:0 0 22px rgba(185,255,63,.35)}
+/* magnetic buttons */
+[data-mag]{will-change:transform}
+/* chips pop on hover */
+.chip:hover{transform:translateY(-4px) scale(1.04)}
+/* scroll progress + hint glow */
+.scrollprog i{box-shadow:0 0 14px rgba(185,255,63,.9)}
+@media (prefers-reduced-motion:reduce){.fx-spot::after,.vel-skew{display:none}}

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Shell from './shell/Shell.jsx';
+import Scape from './components/Scape.jsx';
 import { unlockAudio, attachHoverBlips } from './lib/sound.js';
 import useLenis from './lib/hooks/useLenis.js';
 import Boot from './pages/Boot.jsx';
@@ -66,8 +67,14 @@ export default function App() {
     return () => clearTimeout(t);
   }, [pathname]);
 
+  // scape (fixed 3D bg): ON in real browsers, OFF in automation (headless
+  // SwiftShader can stall the GPU process — breaks the QA gate), force on
+  // via ?scape=1 for the dedicated Scape probe.
+  const scapeOn = pathname !== '/boot' && (new URLSearchParams(location.search).has('scape') || !navigator.webdriver);
+
   return (
     <>
+      {scapeOn && <Scape />}
       <Shell pathname={pathname} />
       <PageWipe pathname={pathname} />
       <Routes location={location}>

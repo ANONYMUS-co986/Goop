@@ -18,6 +18,11 @@ ENGINE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT=/tmp/qa_gate
 mkdir -p "$OUT"
 
+# hygiene: kill leftover headless chromium from any crashed probe (they
+# poison later launches via GPU process leaks)
+pkill -9 -f "headless_shell" 2>/dev/null; pkill -9 -f "chrome-linux" 2>/dev/null; pkill -9 -f "chrome_crashpad" 2>/dev/null
+sleep 1
+
 pass=0; fail=0
 verdict() { # $1 name $2 ok(0)/not(1) $3 detail
   if [ "$2" = "0" ]; then echo "  ✅ $1 — $3"; pass=$((pass+1));
@@ -28,7 +33,7 @@ echo "═══ VIKAAS QA GATE ═══  base: $BASE"
 
 # ---- 1. COMPILE gate (curl every route module) ----
 echo "── 1. COMPILE ──"
-for mod in /src/App.jsx /src/main.jsx /src/shell/Shell.jsx /src/pages/Gate.jsx /src/pages/Drawer.jsx /src/pages/Boot.jsx /src/pages/Type.jsx /src/pages/AppHome.jsx /src/pages/Book.jsx /src/pages/Centres.jsx /src/pages/MapPage.jsx /src/pages/Receipts.jsx /src/pages/Assistant.jsx /src/pages/Dashboard.jsx /src/pages/Login.jsx /src/pages/Admin.jsx /src/pages/Proof.jsx /src/pages/Kabadi.jsx /src/pages/ComingSoon.jsx; do
+for mod in /src/App.jsx /src/main.jsx /src/shell/Shell.jsx /src/components/Scape.jsx /src/pages/Gate.jsx /src/pages/Drawer.jsx /src/pages/Boot.jsx /src/pages/Type.jsx /src/pages/AppHome.jsx /src/pages/Book.jsx /src/pages/Centres.jsx /src/pages/MapPage.jsx /src/pages/Receipts.jsx /src/pages/Assistant.jsx /src/pages/Dashboard.jsx /src/pages/Login.jsx /src/pages/Admin.jsx /src/pages/Proof.jsx /src/pages/Kabadi.jsx /src/pages/ComingSoon.jsx; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$BASE$mod")
   verdict "module $mod" "$([ "$code" = "200" ] && echo 0 || echo 1)" "HTTP $code"
 done
@@ -71,6 +76,14 @@ else
 fi
 
 echo ""
+# ---- 6b. SCAPE GATE (fixed 3D bg, forced on — real browsers only) ----
+echo "── 6b. SCAPE ──"
+if node "$ENGINE/probe_scape.js" "$BASE" 2>/dev/null; then
+  verdict "scape-3d" 0 "canvas + WebGL + console clean"
+else
+  verdict "scape-3d" 1 "3D background probe failed"
+fi
+
 # ---- 7. REBEE CHAT GATE (real-AI fallback path) ----
 echo "── 7. REBEE CHAT ──"
 if node "$ENGINE/probe_rebee.js" "$BASE" 2>/dev/null; then

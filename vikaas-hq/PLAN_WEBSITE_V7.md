@@ -56,6 +56,7 @@ NIRMAN mapping (their 16 sections → ours): GenesisLoader→Boot · HeroFluid�
 | 17 | Dashboard + login + admin (the operator side) | ✅ GATE 51/51 |
 | 18 | THE PROOF room (evidence vault, real photos, M2 live feed) | ✅ GATE 54/54 |
 | 19 | **THE KABADI UNIVERSE (the network room — cast, economics, recruitment)** | ✅ GATE 57/57 |
+| 19.5 | **THE INTERACTIVITY OVERHAUL** — global fixed 3D particle scape (Three.js, mouse-repel + parallax, every page) · magnetic buttons (data-mag finally live) · cursor-tracking card spotlight · 3D tilt on all big cards · scroll-velocity title skew · reactive stamps/chips | ✅ GATE 59/59 |
 | 20 | THE ARSENAL (6 reels · 22 posts · VO clips) | ⏭ NEXT |
 | 20 | THE ARSENAL (6 reels · 22 posts · VO clips) | ⏭ |
 | 21 | THE BUDDY (ReBee full room) | ⏭ |
