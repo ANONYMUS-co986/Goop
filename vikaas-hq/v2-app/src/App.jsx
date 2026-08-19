@@ -14,6 +14,7 @@ import ComingSoon from './pages/ComingSoon.jsx';
 import AppHome from './pages/AppHome.jsx';
 import Book from './pages/Book.jsx';
 import Centres from './pages/Centres.jsx';
+import MapPage from './pages/MapPage.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +77,7 @@ export default function App() {
         <Route path="/app" element={<AppHome />} />
         <Route path="/app/book" element={<Book />} />
         <Route path="/app/centres" element={<Centres />} />
-        <Route path="/app/map" element={<ComingSoon />} />
+        <Route path="/app/map" element={<MapPage />} />
         <Route path="/app/receipts" element={<ComingSoon />} />
         <Route path="/app/assistant" element={<ComingSoon />} />
         <Route path="/app/dashboard" element={<ComingSoon />} />
