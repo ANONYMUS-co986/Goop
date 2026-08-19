@@ -1,62 +1,56 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { askReBee, REBEE_INTRO } from '../lib/rebee.js';
 import './assistant.css';
 
-const SCRIPT = {
-  '💸 What\'s my drawer worth?': {
-    reply: 'Snap a photo or tell me what\'s inside 📸 A dead phone ≈ ₹25–40, 7 chargers ≈ ₹12, a 2022 speaker ≈ ₹8. Your drawer ≈ ₹40–60 — but only the scale decides. Book a pickup and the centre weighs it in front of you.',
-    stamp: ['ESTIMATE', 'st-violet'],
-  },
-  '📅 Book a pickup': {
-    reply: 'Done. 15 collection centres within 10 km of you. Nearest: Sharma E-Waste Hub · 1.2 km · ₹8/kg · 4.6★. Pick a slot on the book page — the app routes your door to them, not the other way round.',
-    stamp: ['BOOKED', 'st-green'],
-  },
-  '🔗 Where does it actually go?': {
-    reply: 'Your e-waste travels: drawer → doorstep → collection partner → HSPCB-verified recycler → refiner. Receipt #0001 proved that chain end-to-end — 1.4 kg, ₹40, every hand stamped. No landfill, no backyard burning.',
-    stamp: ['CHAIN', 'st-gold'],
-  },
-  '♻️ What can I recycle?': {
-    reply: 'If it has a plug or a battery, it\'s VIKAAS. Phones, chargers, cables, speakers, laptops, batteries, PCBs, CPU fans, that keyboard with the missing key. No drawer left behind.',
-    stamp: ['NO DRAWER LEFT BEHIND', 'st-red'],
-  },
-};
-
-const CHIP_ORDER = Object.keys(SCRIPT);
+const QUICK = [
+  '💸 What\'s my drawer worth?',
+  '📅 Book a pickup',
+  '🔗 Where does it actually go?',
+  '🎯 Mission 2 — what do I do?',
+  '🏆 Forbes 30 under 30?',
+  '🇨🇭 Geneva trip?',
+];
 
 export default function Assistant() {
-  const [msgs, setMsgs] = useState([
-    { who: 'bee', text: 'Hi! I\'m ReBee — the AI inside VIKAAS 🐝 Tell me what\'s in your drawer and I\'ll tell you what it\'s worth, where it goes, and when it gets picked up.' },
-  ]);
+  const [msgs, setMsgs] = useState([{ who: 'bee', text: REBEE_INTRO }]);
   const [typing, setTyping] = useState(false);
-  const [sent, setSent] = useState({});
+  const [input, setInput] = useState('');
+  const [online, setOnline] = useState(null); // null = unknown, true = LLM, false = script
   const boxRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const b = boxRef.current;
     if (b) b.scrollTop = b.scrollHeight;
   }, [msgs, typing]);
 
-  const ask = (chip) => {
-    if (sent[chip] || typing) return;
-    setSent((s) => ({ ...s, [chip]: true }));
-    setMsgs((m) => [...m, { who: 'you', text: chip }]);
+  const send = async (textRaw) => {
+    const text = (textRaw || input).trim();
+    if (!text || typing) return;
+    setInput('');
+    setMsgs((m) => [...m, { who: 'you', text }]);
     setTyping(true);
-    setTimeout(() => {
-      const a = SCRIPT[chip];
-      setMsgs((m) => [...m, { who: 'bee', text: a.reply, stamp: a.stamp }]);
-      setTyping(false);
-    }, 900);
+    const history = msgs
+      .filter((m) => m.who === 'you' || m.who === 'bee')
+      .map((m) => ({ role: m.who === 'you' ? 'user' : 'assistant', content: m.text }));
+    const res = await askReBee([...history, { role: 'user', content: text }]);
+    setTyping(false);
+    setOnline(res.offline ? false : true);
+    setMsgs((m) => [...m, { who: 'bee', text: res.reply }]);
   };
+
+  const onKey = (e) => { if (e.key === 'Enter') send(); };
 
   return (
     <main className="as-page">
       <div className="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
       <section className="as-hero">
-        <p className="eyebrow cmd shiny">the ai inside · the buddy</p>
+        <p className="eyebrow cmd shiny">the ai inside · the buddy · real llm</p>
         <h1 className="anton as-title">MEET<br /><span>REBEE</span></h1>
-        <p className="as-sub">1M1B's AI buddy, born from a Gurugram drawer — now the brain of the app. Capacitor body, phone-glass wings, charger-LED eyes, weighing-scale chest. Ask him what your junk is worth.</p>
+        <p className="as-sub">1M1B's AI buddy, born from a Gurugram drawer — now the brain of the app, powered by a real language model. <b>He's portfolio-aware:</b> ask him about the 1.4-kg drawer, the 15 recyclers, Mission 2, Flash 3, or what your junk is worth.</p>
       </section>
 
       <section className="as-chat-sec">
@@ -66,9 +60,9 @@ export default function Assistant() {
               <span className="as-bee">🐝</span>
               <div>
                 <b>ReBee · री-बी</b>
-                <span className="cmd">ONLINE · SCRAP-SCAN READY</span>
+                <span className="cmd">PORTFOLIO-AWARE · {online === null ? 'AI BRAIN' : online ? 'AI ONLINE' : 'SCRIPT MODE'}</span>
               </div>
-              <i className="as-live" />
+              <i className={`as-live ${online === false ? 'off' : ''}`} />
             </div>
             <div className="as-box" ref={boxRef}>
               <AnimatePresence initial={false}>
@@ -76,7 +70,6 @@ export default function Assistant() {
                   <motion.div key={i} className={`as-msg ${m.who}`}
                     initial={{ opacity: 0, y: 14, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.3 }}>
                     <p>{m.text}</p>
-                    {m.stamp && <span className={`stamp ${m.stamp[1]}`}>{m.stamp[0]}</span>}
                   </motion.div>
                 ))}
                 {typing && (
@@ -87,14 +80,25 @@ export default function Assistant() {
                 )}
               </AnimatePresence>
             </div>
-            <div className="as-chips">
-              {CHIP_ORDER.map((c) => (
-                <button key={c} className={`as-chip ${sent[c] ? 'done' : ''}`} onClick={() => ask(c)} disabled={!!sent[c] || typing}>
-                  {sent[c] ? '✓ ' : ''}{c}
-                </button>
+            <div className="as-quick">
+              {QUICK.map((c) => (
+                <button key={c} className="as-chip" onClick={() => send(c)} disabled={typing}>{c}</button>
               ))}
             </div>
+            <div className="as-inputrow">
+              <input
+                ref={inputRef}
+                className="as-input"
+                placeholder="Ask ReBee anything about VIKAAS…"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={onKey}
+                maxLength={300}
+              />
+              <button className="as-send" onClick={() => send()} disabled={typing || !input.trim()}>SEND →</button>
+            </div>
           </div>
+          <p className="as-legal cmd">REBEE · BRAIN: {online === false ? 'SCRIPT MODE (AI unreachable — check internet)' : 'OPENROUTER LLM · portfolio-aware'}</p>
         </div>
       </section>
 
@@ -122,7 +126,7 @@ export default function Assistant() {
               <span className="stamp st-gold">CHAIN</span>
             </div>
           </div>
-          <p className="as-note">ReBee won 1M1B's Flash Challenge — the AI buddy built from the problem he solves. Now he runs the app. <em>That's the AI feature scrap apps don't have.</em></p>
+          <p className="as-note">ReBee won 1M1B's Flash Challenge — the AI buddy built from the problem he solves. Now he runs the app, powered by a real LLM that knows the whole VIKAAS story. <em>That's the AI feature scrap apps don't have.</em></p>
           <div className="as-ctas">
             <Link to="/app/book" data-cursor="BOOK" data-mag className="go mag glow-hover">BOOK A PICKUP →</Link>
             <Link to="/app" data-cursor="THE APP" data-mag className="go ghost mag glow-hover">BACK TO THE APP</Link>

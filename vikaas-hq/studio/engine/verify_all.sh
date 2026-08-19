@@ -71,5 +71,13 @@ else
 fi
 
 echo ""
+# ---- 7. REBEE CHAT GATE (real-AI fallback path) ----
+echo "── 7. REBEE CHAT ──"
+if node "$ENGINE/probe_rebee.js" "$BASE" 2>/dev/null; then
+  verdict "rebee-chat" 0 "chips + fallback replies + free text"
+else
+  verdict "rebee-chat" 1 "chat probe failed"
+fi
+
 echo "═══ VERDICT: $pass ✅ / $fail ❌ ═══"
 [ "$fail" = "0" ] && echo "GATE: PASS — ship it." || { echo "GATE: FAIL — fix before shipping."; exit 1; }
