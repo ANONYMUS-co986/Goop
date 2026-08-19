@@ -1,0 +1,138 @@
+[0.0-3.6]  Welcome back, and if this is the first time you're here, welcome.
+[3.6-8.8]  Right now, over 10,000 students from all across India have joined the Changemakers World Cup.
+[8.8-12.2]  They have identified problems in their schools and communities
+[12.2-15.1]  and are taking action for something incredible.
+[15.1-20.6]  An all-expense paid trip to Switzerland where top three students will get an opportunity
+[20.6-25.1]  to present their impact at the 1M1B Impact Summit in Geneva, Switzerland.
+[25.1-27.8]  Well, if you haven't started yet, there's still time.
+[27.8-31.4]  And if you have completed Mission 1, congratulations.
+[31.4-34.5]  You've done something that most people never do.
+[34.5-36.7]  You've stopped walking past a problem.
+[36.7-38.7]  Now comes the real challenge.
+[38.7-40.6]  Can you actually change something?
+[40.6-41.7]  Welcome to Mission 2.
+[42.5-44.8]  Here's something you'll realize very quickly.
+[44.8-46.7]  Anyone can point to a problem.
+[46.7-48.6]  Anyone can complain about it.
+[48.6-50.9]  Anyone can post about it online.
+[50.9-56.7]  But very few people can honestly say that today something is different
+[56.7-59.0]  because I did something.
+[59.0-60.9]  That's what Mission 2 is all about.
+[60.9-65.0]  If Mission 1 is choosing a problem that matters to you,
+[65.0-69.1]  Mission 2 is proving that your action makes a real difference.
+[69.1-71.7]  Because just good intentions don't change the world.
+[71.7-74.2]  Every Changemaker follows three simple steps.
+[75.0-77.9]  Measure, act, measure again.
+[77.9-79.6]  Let's start with the first one, measure.
+[79.6-83.3]  Before you try solving a problem, it's time to understand it.
+[83.3-86.2]  For example, if you're doing something on plastic waste,
+[86.2-92.0]  you can count how many number of plastic bottles are being disposed of right now.
+[92.0-94.9]  And for example, if you're working on water,
+[94.9-97.1]  measure how many taps are leaking,
+[97.1-101.2]  how many liters of water is getting wastage right now.
+[101.2-102.6]  And if you're working on food,
+[102.6-106.1]  find out how much food is being wasted right now
+[106.1-108.2]  or being thrown away in KGs.
+[108.2-109.6]  And if you're working on clothing,
+[110.2-115.4]  ask your classmate, study how much of their clothing is being wasted.
+[115.4-117.0]  What is the pattern all about?
+[117.0-119.8]  Here's what most of the people make a mistake.
+[119.8-121.4]  They assume they know the problem.
+[122.0-125.0]  Most successful Changemaker don't assume.
+[125.0-127.0]  They go and validate that.
+[127.0-130.1]  Now you can validate by talking to your classmates,
+[130.1-133.2]  your teachers, your principals, your community,
+[133.2-135.3]  your parents, your brothers, your sisters,
+[135.8-140.5]  your local sabziwala, your local kabadiwala, anyone.
+[140.5-143.2]  Just go and validate and don't assume.
+[143.8-146.4]  Remember, people closest to the problem
+[146.4-149.4]  understand it much better than anyone else.
+[149.4-151.8]  And believe me, this is just an indicative list.
+[151.8-154.3]  You can go and talk to literally anyone.
+[154.3-159.3]  The idea is to really go out and talk and talk and talk to people
+[159.3-160.9]  to get your understanding.
+[160.9-162.6]  Just go nuts doing this.
+[162.6-164.5]  Now step two is act.
+[165.0-166.7]  Now that you understand the problem,
+[166.7-168.7]  it's time to do something about it.
+[168.7-171.8]  Now here is where people make another mistake.
+[171.8-174.1]  They think I'll organize an awareness session,
+[174.1-179.5]  probably put some posters, talk about it and that's it.
+[179.5-181.0]  The session gets over.
+[181.0-184.1]  Real change does not happen in one afternoon.
+[184.1-187.1]  So instead of just one event, build a campaign.
+[187.1-188.9]  So here's a simple way to do it.
+[188.9-192.1]  In week one, really understand the problem.
+[192.1-195.4]  Measure it, talk to people, build on your baseline.
+[195.4-199.3]  Week two, start your campaign, take action, speak to people.
+[199.3-200.7]  Get your classmates involved,
+[200.8-202.1]  speak to your teachers,
+[202.1-204.0]  get your principal involved maybe.
+[204.0-206.5]  Maybe you can organize a clothing donation drive
+[207.3-209.8]  or maybe you can convince your canteen
+[209.8-212.4]  to reduce single use plastics.
+[212.4-215.2]  Maybe you create a reporting system for leaking taps.
+[215.8-218.3]  Maybe you organize an e-waste collection drive.
+[218.3-221.0]  Maybe you work with your apartment association.
+[221.5-223.1]  Maybe you talk to your neighbors,
+[223.1-224.9]  but these are just examples.
+[225.6-226.6]  Just go all out.
+[226.6-228.6]  And by the way, if you have a better idea,
+[228.6-229.7]  just go and try it.
+[230.3-233.4]  This competition is not about falling instruction.
+[233.4-235.8]  It is about creating real impact.
+[235.8-237.8]  And don't try to do it all alone.
+[237.8-240.5]  Bring people together, bring your friends,
+[240.5-243.0]  their families, teachers, principal,
+[243.0-246.2]  apartment association, community vendors.
+[246.2-247.9]  Just get all of them together.
+[247.9-249.8]  It's time to mobilize people.
+[249.8-252.3]  And one thing I really want you guys to remember
+[252.3-256.4]  is just keep on documenting whatever actions you're taking.
+[256.4-258.6]  Take pictures, make videos,
+[258.6-261.4]  take testimonials, record conversations,
+[261.4-264.4]  record interviews, collect evidences
+[264.4-266.8]  because you don't want to be in a place
+[266.8-269.1]  where you lack any one of them.
+[269.1-272.4]  And believe me, the future you will thank the present you
+[272.4-274.7]  because every video, every picture,
+[274.7-278.0]  every evidence, every testimonial proves
+[278.0-280.0]  that you've really created an impact.
+[280.0-283.4]  Now it's time for step three, measure again.
+[283.4-287.2]  Now go back and measure what you exactly measured in week one.
+[287.2-290.2]  If you counted plastic bottles, count them again.
+[291.0-294.1]  If you measured food waste, measure it again.
+[294.1-297.3]  If you were looking at leaking taps, check them again.
+[297.8-299.5]  If you were measuring how many people
+[299.5-302.6]  are getting reusable bottles, measure it again.
+[303.4-305.9]  Use the same method you used in the beginning
+[305.9-308.6]  because that's the only way to prove
+[308.6-311.1]  that your campaign really made a difference.
+[311.1-312.8]  Now compare your results.
+[312.8-313.8]  Did anything change?
+[314.6-315.8]  Well, that's your impact.
+[315.8-318.2]  It's not about the number of posters you made
+[318.2-321.0]  or the number of hours you put into the campaign
+[321.0-323.8]  or the number of people who did likes to you
+[323.8-325.0]  or applauded you.
+[325.0-327.0]  It's all about where you started
+[327.0-328.6]  and where you are right now.
+[328.6-330.7]  Because a campaign without measurement
+[330.7-332.2]  is just good intentions.
+[332.2-335.7]  Evidence is what makes changemaking real.
+[335.7-339.9]  And well, if your numbers changed, improved, celebrate.
+[340.4-341.9]  If not, it's okay.
+[342.5-344.2]  Go back and try again.
+[344.2-346.6]  Before you submit your mission to ask yourself
+[346.6-347.8]  three simple things.
+[347.8-348.6]  What changed?
+[349.4-350.8]  How do I know it?
+[350.8-351.9]  And can I prove it?
+[351.9-353.4]  And by the end of this mission,
+[353.4-355.0]  believe me, you'll have something
+[355.0-357.1]  that very few students can say.
+[357.1-359.3]  I didn't just talk about change.
+[359.3-360.6]  I created it.
+[360.6-361.3]  Good luck.
+[361.3-363.4]  We just can't wait to see what you build.
+[363.4-365.5]  Till then, happy changemaking.
