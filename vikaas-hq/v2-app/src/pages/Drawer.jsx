@@ -57,6 +57,35 @@ export default function Drawer() {
       gsap.set('#storyPhoto', { clipPath: 'inset(0 0% 0 0)' });
       gsap.set('.story-copy .line, .story-copy .big, .story-copy .kicker', { opacity: 1, y: 0 });
     }
+
+    // scale sequence (scroll-scrubbed)
+    if (!reduce) {
+      const stScale = ScrollTrigger.create({
+        trigger: '#scaleRig', start: 'top 80%', end: 'bottom 60%', scrub: 0.5,
+      });
+      gsap.timeline({
+        scrollTrigger: stScale,
+        onUpdate: function () {
+          let p = stScale.progress;
+          if (!isFinite(p)) p = 0;
+          p = Math.max(0, Math.min(1, p));
+          const needle = document.querySelector('#needle');
+          const read = document.querySelector('#scaleReadout b');
+          const status = document.querySelector('#scaleReadout span');
+          if (needle) needle.setAttribute('x2', String(100 + Math.sin(p * Math.PI) * 60));
+          if (read) read.textContent = (1.4 * p).toFixed(2) + ' KG';
+          if (status) status.textContent = p >= 0.98 ? 'SETTLED · 1.4 KG' : (p > 0.05 ? 'WEIGHING…' : 'READY');
+        },
+      })
+        .fromTo('#sLine1', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25 }, 0.1)
+        .fromTo('#sLine2', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25 }, 0.3)
+        .fromTo('#sLine3', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25 }, 0.55)
+        .fromTo('#sLine4', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25 }, 0.72)
+        .fromTo('#sReceipt', { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.8)' }, 0.85);
+    } else {
+      gsap.set('.scale-line, #sReceipt', { opacity: 1, y: 0 });
+    }
+
     // list cards
     document.querySelectorAll('.lcard').forEach((c, i) => {
       if (reduce) { gsap.set(c, { opacity: 1, y: 0 }); return; }
@@ -171,6 +200,39 @@ export default function Drawer() {
                 <div className="ts"><b className="anton">10</b><span>homes surveyed</span></div>
               </div>
               <span className="stamp st-green">WEIGHED · 1.4 KG</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scale-seq">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the moment · weighed, not guessed</p>
+          <h2 className="section-title">THE WEIGH<br /><span>IN</span></h2>
+          <div className="scale-rig" id="scaleRig">
+            <div className="scale-dial">
+              <svg viewBox="0 0 200 140" className="scale-svg">
+                <path d="M20 120 A80 80 0 0 1 180 120" fill="none" stroke="rgba(255,255,255,.12)" strokeWidth="3"/>
+                <path d="M40 120 A60 60 0 0 1 160 120" fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="2"/>
+                <g className="ticks">
+                  {[0,15,30,45,60,75,90,105,120,135,150,165,180].map(a => (
+                    <line key={a} x1={100 + 78*Math.cos((a-90)*Math.PI/180)} y1={120 + 78*Math.sin((a-90)*Math.PI/180)} x2={100 + 84*Math.cos((a-90)*Math.PI/180)} y2={120 + 84*Math.sin((a-90)*Math.PI/180)} stroke="rgba(185,255,63,.5)" strokeWidth="2"/>
+                  ))}
+                </g>
+                <text x="100" y="105" textAnchor="middle" className="scale-unit cmd">0–2 KG</text>
+                <g id="needleG" className="needle">
+                  <line id="needle" x1="100" y1="120" x2="100" y2="44" stroke="#B9FF3F" strokeWidth="3" strokeLinecap="round"/>
+                  <circle cx="100" cy="120" r="7" fill="#B9FF3F"/>
+                </g>
+              </svg>
+              <div className="scale-readout" id="scaleReadout"><b className="anton">0.00 KG</b><span className="cmd">WEIGHING…</span></div>
+            </div>
+            <div className="scale-copy">
+              <p className="scale-line" id="sLine1">The drawer, on the scale.</p>
+              <p className="scale-line" id="sLine2">The needle swings… settles.</p>
+              <p className="scale-line" id="sLine3"><b className="anton">1.4 KG.</b> Weighed. Photographed. Logged.</p>
+              <p className="scale-line" id="sLine4">Not guessed. Not “about this much”. <em>Weighed.</em></p>
+              <div className="scale-receipt" id="sReceipt"><span className="cmd">RECEIPT #0001</span><b className="anton">1.4 KG · ₹40</b><span className="stamp st-green">WEIGHED</span></div>
             </div>
           </div>
         </div>
