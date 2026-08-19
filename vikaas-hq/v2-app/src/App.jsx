@@ -17,10 +17,13 @@ import Centres from './pages/Centres.jsx';
 import MapPage from './pages/MapPage.jsx';
 import Receipts from './pages/Receipts.jsx';
 import Assistant from './pages/Assistant.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import Login from './pages/Login.jsx';
+import Admin from './pages/Admin.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/type': 'THE TYPE', '/app/receipts': 'THE RECEIPTS', '/app/assistant': 'REBEE' };
+const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/type': 'THE TYPE', '/app/receipts': 'THE RECEIPTS', '/app/assistant': 'REBEE', '/app/dashboard': 'THE LEDGER', '/app/login': 'THE DOOR', '/app/admin': 'CENTRE OPS' };
 
 /* ---------- PAGE WIPE (route transition curtain) ---------- */
 function PageWipe({ pathname }) {
@@ -82,9 +85,9 @@ export default function App() {
         <Route path="/app/map" element={<MapPage />} />
         <Route path="/app/receipts" element={<Receipts />} />
         <Route path="/app/assistant" element={<Assistant />} />
-        <Route path="/app/dashboard" element={<ComingSoon />} />
-        <Route path="/app/login" element={<ComingSoon />} />
-        <Route path="/app/admin" element={<ComingSoon />} />
+        <Route path="/app/dashboard" element={<Dashboard />} />
+        <Route path="/app/login" element={<Login />} />
+        <Route path="/app/admin" element={<Admin />} />
         <Route path="*" element={<Gate />} />
       </Routes>
     </>

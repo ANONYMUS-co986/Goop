@@ -13,7 +13,7 @@
 set -uo pipefail
 BASE="${1:-http://localhost:5173}"
 REPO_ROOT="/home/user/Goop/vikaas-hq/v2-app/src"
-ROUTES=("/" "/drawer" "/boot?fast=1" "/type" "/app" "/app/book" "/app/centres" "/app/map" "/app/receipts" "/app/assistant")
+ROUTES=("/" "/drawer" "/boot?fast=1" "/type" "/app" "/app/book" "/app/centres" "/app/map" "/app/receipts" "/app/assistant" "/app/dashboard" "/app/login" "/app/admin")
 ENGINE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT=/tmp/qa_gate
 mkdir -p "$OUT"
@@ -28,11 +28,11 @@ echo "═══ VIKAAS QA GATE ═══  base: $BASE"
 
 # ---- 1. COMPILE gate (curl every route module) ----
 echo "── 1. COMPILE ──"
-for mod in /src/App.jsx /src/main.jsx /src/shell/Shell.jsx /src/pages/Gate.jsx /src/pages/Drawer.jsx /src/pages/Boot.jsx /src/pages/Type.jsx /src/pages/AppHome.jsx /src/pages/Book.jsx /src/pages/Centres.jsx /src/pages/MapPage.jsx /src/pages/Receipts.jsx /src/pages/Assistant.jsx /src/pages/ComingSoon.jsx; do
+for mod in /src/App.jsx /src/main.jsx /src/shell/Shell.jsx /src/pages/Gate.jsx /src/pages/Drawer.jsx /src/pages/Boot.jsx /src/pages/Type.jsx /src/pages/AppHome.jsx /src/pages/Book.jsx /src/pages/Centres.jsx /src/pages/MapPage.jsx /src/pages/Receipts.jsx /src/pages/Assistant.jsx /src/pages/Dashboard.jsx /src/pages/Login.jsx /src/pages/Admin.jsx /src/pages/ComingSoon.jsx; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$BASE$mod")
   verdict "module $mod" "$([ "$code" = "200" ] && echo 0 || echo 1)" "HTTP $code"
 done
-for css in /src/assets/css/shell.css /src/assets/css/gate.css /src/assets/css/drawer.css /src/assets/css/boot.css /src/pages/type.css /src/pages/apphome.css /src/pages/book.css /src/pages/centres.css /src/pages/map.css /src/pages/receipts.css /src/pages/assistant.css /src/pages/comingsoon.css; do
+for css in /src/assets/css/shell.css /src/assets/css/gate.css /src/assets/css/drawer.css /src/assets/css/boot.css /src/pages/type.css /src/pages/apphome.css /src/pages/book.css /src/pages/centres.css /src/pages/map.css /src/pages/receipts.css /src/pages/assistant.css /src/pages/op.css /src/pages/comingsoon.css; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$BASE$css")
   verdict "css $css" "$([ "$code" = "200" ] && echo 0 || echo 1)" "HTTP $code"
 done

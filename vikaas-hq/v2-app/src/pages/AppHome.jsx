@@ -84,6 +84,8 @@ export default function AppHome() {
               <Link to="/app/map" data-cursor="MAP" className="glow-hover">NETWORK MAP</Link>
               <Link to="/app/receipts" data-cursor="RECEIPTS" className="glow-hover">RECEIPTS</Link>
               <Link to="/app/assistant" data-cursor="REBEE" className="glow-hover">REBEE AI</Link>
+              <Link to="/app/login" data-cursor="LOGIN" className="glow-hover">LOGIN</Link>
+              <Link to="/app/admin" data-cursor="OPS" className="glow-hover">CENTRE OPS</Link>
             </div>
             <button className="auto-toggle cmd" onClick={() => setAuto(!auto)}>{auto ? '⏸ PAUSE DEMO' : '▶ PLAY DEMO'}</button>
           </div>

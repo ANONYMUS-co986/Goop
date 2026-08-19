@@ -94,6 +94,27 @@ hand, now we're building the doorstep."**
 
 ---
 
+# ⚡ V4 UPDATE — 19 Aug 2026 (fresh OCR of all 7 screenshots, this session)
+
+## CONFIRMED FROM THE FORMS THEMSELVES (fresh OCR, verbatim)
+1. **FLASH 3 submission = "Response Text" box only** (shot 160605): "Response Text — Describes your project, audit findings, or action taken..." + **Confirm Submit**. NO document needed. Form has the 3 questions: ① how do you get on Forbes 30-under-30 ② your thoughts on Divaa's "intentional YOLO" ③ a question for Divaa/Manav. Top 5 questions = ₹1000 vouchers + Zoom call. Deadline chip: **"High on purpose! 23 Aug 2026 · 1M1BEE SAYS: 4 days left"**.
+2. **M2 submission = "Document File (PDF/DOC)" upload OR paste URL + "Mission Password ~" field** (shot 160552) + Confirm Submit ("will become active on the submission date").
+3. **PASSWORD HINT, VERBATIM (shot 160544):** "(Psst: keep your eyes open, there's a Mission password hiding in the videos 🤫)" — 100% VISUAL/ON-SCREEN confirmation. Videos: M2 Explainer = youtu.be/-OgSjIMHUTE · How to Stand Out = youtu.be/OiqD4psEYQU. Bonus: Changemakers Playbook playlist.
+4. **M2 form opens LATER** (shot 160544): "Submissions open after 2 weeks. So if you're rushing, rush into research, not into a rough draft nobody asked for." → prepare everything NOW; the deck must be PPT/PDF + pictures.
+5. **M2 exact submit structure (shots 160451/160535/160544):** ① BEFORE: photograph the problem ② BEFORE NUMBER: measure in units that fit (Litres | Kilograms | Items | People | Percentage) ③ TAKE ACTION: campaign, documented with photos/videos/numbers ④ AFTER: photograph the same location again ⑤ the continuation questions: "Is the new option actually being used? How much of the old problem has been eliminated per day? Any resistance? Did people adapt? **Will this continue after you step back?**" — that's the AGREEMENT requirement. NON-NEGOTIABLE (verbatim): "No number = incomplete. No proof = incomplete. This is the one rule with zero flexibility."
+6. **Portal state (shot 160451): MISSIONS PROGRESS 3/5** — M1 ✓ F1 ✓ F2 ✓ M2 active (31 Aug, 12 days left from 19 Aug), M3 locked.
+
+## THE 3 MISSION VIDEOS (all processed)
+- `9P6xal4dWKLo` — Divaa on High-on-Purpose (19:08) — **DELETED from YouTube** (audio + transcripts are the evidence). Full story extracted: Forbes 30-under-30 at 17, Project Surya, "we just said YOLO and went ahead", start-early/be-you/dream-big/test-it/have-balance advice.
+- `-OgSjIMHUTE` — M2 Explainer (6:09) — full transcript with timestamps; the password is ON SCREEN.
+- `OiqD4psEYQU` — Judges' 5 criteria (3:59) — full transcript: talk to people / cause not symptoms / impact per effort / continues after you leave / copyable.
+
+## M2 PASSWORD — the two paths (unchanged)
+1. Aarav watches the 6-min explainer on his phone → finds the word/code → sends it.
+2. Aarav downloads the M2 **mp4** via YTDown → commits to `main` → I run `OCR=1 bash engine/video_review.sh` → frame-by-frame OCR hunt flags it automatically (pipeline built + smoke-tested).
+
+---
+
 # ⚡ V3 UPDATE — 19 Aug 2026 (after new commits on main)
 
 ## New intelligence (what changed today)
