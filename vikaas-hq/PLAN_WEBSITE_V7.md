@@ -52,9 +52,11 @@ NIRMAN mapping (their 16 sections → ours): GenesisLoader→Boot · HeroFluid�
 | 14 | /app/centres roster + register (the moat) | ✅ GATE 20/20 |
 | 15 | /app/map network map (15 dots · 10 homes) | ✅ GATE 20/20 |
 | 16 | **/app/receipts proof library + /app/assistant ReBee chat** | ✅ GATE 43/43 |
-| 17 | Dashboard + login + admin (the operator side) | ⏭ NEXT |
-| 18 | THE PROOF room (standalone, evidence vault) | ⏭ |
-| 19 | THE KABADI UNIVERSE (the network as a room) | ⏭ |
+| 16.5 | ReBee real-AI brain (OpenRouter LLM, portfolio-aware) | ✅ GATE 44/44 |
+| 17 | Dashboard + login + admin (the operator side) | ✅ GATE 51/51 |
+| 18 | THE PROOF room (evidence vault, real photos, M2 live feed) | ✅ GATE 54/54 |
+| 19 | **THE KABADI UNIVERSE (the network room — cast, economics, recruitment)** | ✅ GATE 57/57 |
+| 20 | THE ARSENAL (6 reels · 22 posts · VO clips) | ⏭ NEXT |
 | 20 | THE ARSENAL (6 reels · 22 posts · VO clips) | ⏭ |
 | 21 | THE BUDDY (ReBee full room) | ⏭ |
 | 22 | THE SYSTEM (engine room: pipelines, QA law) | ⏭ |
