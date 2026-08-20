@@ -1,4 +1,4 @@
-// probe_rebee.js — THE REBEE CHAT TEST: opens /app/assistant, clicks a quick
+// probe_rebee.js — THE REBEE CHAT TEST: opens /buddy, clicks a quick
 // chip, waits for the reply, verifies a ReBee message appears + console clean.
 // Sandbox can't reach OpenRouter → exercises the script-fallback path.
 // Usage: node probe_rebee.js [baseUrl]
@@ -17,7 +17,7 @@ const { chromium: pw } = require('playwright-core');
   const errs = [];
   page.on('pageerror', e => errs.push('PAGE:' + e.message.slice(0, 140)));
   page.on('console', m => { if (m.type() === 'error') errs.push('CON:' + m.text().slice(0, 140)); });
-  await page.goto(base + '/app/assistant', { waitUntil: 'networkidle', timeout: 45000 });
+  await page.goto(base + '/buddy', { waitUntil: 'networkidle', timeout: 45000 });
   await page.waitForTimeout(2500);
 
   const chips = await page.$$('.as-chip');

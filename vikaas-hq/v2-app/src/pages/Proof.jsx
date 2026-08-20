@@ -111,8 +111,8 @@ export default function Proof() {
             ))}
           </div>
           <div className="pf-ctas">
-            <Link to="/app/receipts" data-cursor="RECEIPTS" data-mag className="go mag glow-hover">THE RECEIPTS ROOM →</Link>
-            <Link to="/app/map" data-cursor="MAP" data-mag className="go ghost mag glow-hover">THE NETWORK MAP</Link>
+            <Link to="/buddy" data-cursor="REBEE" data-mag className="go mag glow-hover">ASK REBEE →</Link>
+            <Link to="/kabadi" data-cursor="KABADI" data-mag className="go ghost mag glow-hover">THE KABADI UNIVERSE</Link>
           </div>
         </div>
       </section>

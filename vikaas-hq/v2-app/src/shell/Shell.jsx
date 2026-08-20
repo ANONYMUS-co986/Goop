@@ -15,11 +15,10 @@ const ROOMS = [
   ['02', 'THE DRAWER', '/drawer', 'live', 'ENTER →'],
   ['03', 'THE PROOF', '/proof', 'live', 'ENTER →'],
   ['04', 'THE KABADI UNIVERSE', '/kabadi', 'live', 'ENTER →'],
-  ['05', 'THE BUDDY', '/buddy', 'soon', 'PHASE 21 →'],
-  ['07', 'THE SYSTEM', '/system', 'soon', 'PHASE 22 →'],
-  ['★', 'GENEVA', '/geneva', 'soon', 'PHASE 23 →'],
+  ['05', 'THE BUDDY', '/buddy', 'live', 'ENTER →'],
+  ['06', 'THE SYSTEM', '/system', 'soon', 'PHASE 22 →'],
+  ['★', 'GENEVA', '/geneva', 'soon', 'THE GOAL →'],
   ['§', 'THE TYPE', '/type', 'live', 'STYLEGUIDE →'],
-  ['📱', 'THE APP', '/app', 'live', 'TRY IT →'],
 ];
 
 export default function Shell({ pathname }) {

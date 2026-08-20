@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Shell from './shell/Shell.jsx';
 import Scape from './components/Scape.jsx';
+import SafeNet from './lib/SafeNet.jsx';
 import { unlockAudio, attachHoverBlips } from './lib/sound.js';
 import useLenis from './lib/hooks/useLenis.js';
 import Boot from './pages/Boot.jsx';
@@ -12,21 +13,13 @@ import Gate from './pages/Gate.jsx';
 import Drawer from './pages/Drawer.jsx';
 import Type from './pages/Type.jsx';
 import ComingSoon from './pages/ComingSoon.jsx';
-import AppHome from './pages/AppHome.jsx';
-import Book from './pages/Book.jsx';
-import Centres from './pages/Centres.jsx';
-import MapPage from './pages/MapPage.jsx';
-import Receipts from './pages/Receipts.jsx';
-import Assistant from './pages/Assistant.jsx';
-import Dashboard from './pages/Dashboard.jsx';
-import Login from './pages/Login.jsx';
-import Admin from './pages/Admin.jsx';
 import Proof from './pages/Proof.jsx';
 import Kabadi from './pages/Kabadi.jsx';
+import Assistant from './pages/Assistant.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/proof': 'THE PROOF', '/kabadi': 'THE KABADI', '/type': 'THE TYPE', '/app/receipts': 'THE RECEIPTS', '/app/assistant': 'REBEE', '/app/dashboard': 'THE LEDGER', '/app/login': 'THE DOOR', '/app/admin': 'CENTRE OPS' };
+const ROOM_NAMES = { '/': 'THE GATE', '/boot': 'THE BOOT', '/drawer': 'THE DRAWER', '/proof': 'THE PROOF', '/kabadi': 'THE KABADI', '/buddy': 'THE BUDDY', '/type': 'THE TYPE' };
 
 /* ---------- PAGE WIPE (route transition curtain) ---------- */
 function PageWipe({ pathname }) {
@@ -73,7 +66,7 @@ export default function App() {
   const scapeOn = pathname !== '/boot' && (new URLSearchParams(location.search).has('scape') || !navigator.webdriver);
 
   return (
-    <>
+    <SafeNet>
       {scapeOn && <Scape />}
       <Shell pathname={pathname} />
       <PageWipe pathname={pathname} />
@@ -84,21 +77,14 @@ export default function App() {
         <Route path="/type" element={<Type />} />
         <Route path="/proof" element={<Proof />} />
         <Route path="/kabadi" element={<Kabadi />} />
-
-        <Route path="/buddy" element={<ComingSoon />} />
+        <Route path="/buddy" element={<Assistant />} />
         <Route path="/system" element={<ComingSoon />} />
         <Route path="/geneva" element={<ComingSoon />} />
-        <Route path="/app" element={<AppHome />} />
-        <Route path="/app/book" element={<Book />} />
-        <Route path="/app/centres" element={<Centres />} />
-        <Route path="/app/map" element={<MapPage />} />
-        <Route path="/app/receipts" element={<Receipts />} />
-        <Route path="/app/assistant" element={<Assistant />} />
-        <Route path="/app/dashboard" element={<Dashboard />} />
-        <Route path="/app/login" element={<Login />} />
-        <Route path="/app/admin" element={<Admin />} />
+        <Route path="/arsenal" element={<Gate />} />
+        <Route path="/app" element={<Gate />} />
+        <Route path="/app/*" element={<Gate />} />
         <Route path="*" element={<Gate />} />
       </Routes>
-    </>
+    </SafeNet>
   );
 }

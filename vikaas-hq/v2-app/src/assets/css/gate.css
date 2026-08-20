@@ -1,4 +1,4 @@
-/* ============================================================
+/* ==============================================
    VIKAAS v2 — THE GATE (index.html) styles
    aurora hero · SplitText title · chips · ticker · manifesto
    blur-reveal · spotlight stats · rooms grid · rebee · footer
@@ -228,3 +228,15 @@ a.more-cta:hover{color:var(--ink);background:var(--acid);border-color:var(--acid
 .social-main p{color:var(--mute2);font-size:var(--fs-caption);line-height:var(--lh-body);margin-top:6px}
 .social-go{color:var(--green);font-size:10px;letter-spacing:.2em;flex:0 0 auto}
 @media (max-width:820px){.theapp-layout{grid-template-columns:1fr}.theapp-3d{height:380px}}
+=======
+/* ===== V8.1: the features grid (the app's feature set) ===== */
+#features{padding:var(--r-2) 0;border-top:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--r-4);margin-top:var(--r-3)}
+.feat-card{position:relative;padding:var(--r-3);border-radius:var(--rad-lg);border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:var(--glass-blur-sm);box-shadow:var(--shadow-1);transition:border-color .3s,transform .3s,box-shadow .3s;overflow:hidden}
+.feat-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(260px 160px at var(--mx,50%) var(--my,0%),rgba(185,255,63,.13),transparent 65%)}
+.feat-card:hover::after{opacity:1}
+.feat-card:hover{border-color:rgba(185,255,63,.5);box-shadow:var(--shadow-2),0 0 40px rgba(185,255,63,.08)}
+.feat-ico{font-size:30px;display:block}
+.feat-card h3{font-size:var(--fs-caption);color:var(--paper);margin:var(--r-4) 0 6px;letter-spacing:.08em}
+.feat-card p{color:var(--mute2);font-size:var(--fs-caption);line-height:var(--lh-body)}
+.feat-card .stamp{position:absolute;top:16px;right:16px;font-size:9px;padding:2px 8px}

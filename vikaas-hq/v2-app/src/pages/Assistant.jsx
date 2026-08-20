@@ -128,8 +128,8 @@ export default function Assistant() {
           </div>
           <p className="as-note">ReBee won 1M1B's Flash Challenge — the AI buddy built from the problem he solves. Now he runs the app, powered by a real LLM that knows the whole VIKAAS story. <em>That's the AI feature scrap apps don't have.</em></p>
           <div className="as-ctas">
-            <Link to="/app/book" data-cursor="BOOK" data-mag className="go mag glow-hover">BOOK A PICKUP →</Link>
-            <Link to="/app" data-cursor="THE APP" data-mag className="go ghost mag glow-hover">BACK TO THE APP</Link>
+            <Link to="/proof" data-cursor="PROOF" data-mag className="go mag glow-hover">THE PROOF →</Link>
+            <Link to="/" data-cursor="THE GATE" data-mag className="go ghost mag glow-hover">BACK TO THE GATE</Link>
           </div>
         </div>
       </section>

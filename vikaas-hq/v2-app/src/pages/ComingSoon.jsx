@@ -24,6 +24,7 @@ export default function ComingSoon() {
           <Link to="/drawer" data-cursor="THE DRAWER" data-mag className="go mag glow-hover">← BACK TO THE DRAWER</Link>
           <Link to="/" data-cursor="THE GATE" data-mag className="go mag glow-hover">THE GATE →</Link>
         </div>
+        <div className="cs-foot cmd">NO DRAWER LEFT BEHIND · VIKAAS · GURUGRAM · RECEIPTS WITH TASTE · 1.4 KG · ₹40 · 15 RECYCLERS · 0 DOORSTEPS</div>
       </div>
     </main>
   );

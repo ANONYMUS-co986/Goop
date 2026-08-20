@@ -121,8 +121,8 @@ export default function Kabadi() {
           <div className="kb-moat">
             <p className="kb-moat-q">Anybody can draw an app.<br /><span>We recruited the network.</span></p>
             <div className="kb-ctas">
-              <Link to="/app/centres" data-cursor="REGISTER" data-mag className="go mag glow-hover">REGISTER YOUR CENTRE →</Link>
-              <Link to="/app/map" data-cursor="MAP" data-mag className="go ghost mag glow-hover">SEE THE NETWORK MAP</Link>
+              <Link to="/buddy" data-cursor="REBEE" data-mag className="go mag glow-hover">ASK REBEE →</Link>
+              <Link to="/" data-cursor="THE GATE" data-mag className="go ghost mag glow-hover">BACK TO THE GATE</Link>
             </div>
           </div>
         </div>

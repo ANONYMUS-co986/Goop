@@ -166,8 +166,8 @@ export default function Gate() {
             <div className="chip"><b><span data-count="0">0</span></b><span>doorsteps served by them</span><span className="stamp st-red">THE GAP</span></div>
           </div>
           <div className="hero-ctas">
-            <Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link>
-            <Link to="/drawer" data-cursor="THE PILOT" data-mag className="go ghost mag glow-hover">SEE THE PILOT</Link>
+            <a href="#theapp" data-cursor="THE APP" data-mag className="go mag glow-hover">SEE THE APP ↓</a>
+            <Link to="/buddy" data-cursor="REBEE" data-mag className="go ghost mag glow-hover">MEET REBEE →</Link>
           </div>
         </div>
         <div className="cue" ref={cueRef}>SCROLL<span></span></div>
@@ -209,8 +209,8 @@ export default function Gate() {
           </div>
           <p className="nation-sub">Scrap apps exist. <em>E-waste doorstep doesn't.</em> VIKAAS is dedicated to dead electronics — AI estimates, live rates, verified chain of custody, any quantity from half a kilo. <b>That's the USP: where others aren't — your door.</b></p>
           <div className="flow-cta">
-            <Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link>
-            <Link to="/app/book" data-cursor="BOOK" data-mag className="go ghost mag glow-hover">BOOK A PICKUP →</Link>
+            <Link to="/buddy" data-cursor="REBEE" data-mag className="go mag glow-hover">MEET REBEE →</Link>
+            <Link to="/proof" data-cursor="PROOF" data-mag className="go ghost mag glow-hover">THE PROOF</Link>
           </div>
         </div>
       </section>
@@ -323,7 +323,56 @@ export default function Gate() {
             </div>
           </div>
           <p className="nation-sub">Four taps. That's the whole product. <em>Try the app</em> — book a pickup, see the centres, watch the network map. <b>This portfolio sells an app, and the app works.</b></p>
-          <div className="flow-cta"><Link to="/app" data-cursor="THE APP" data-mag className="go mag glow-hover">TRY THE APP →</Link></div>
+          <div className="flow-cta">
+            <a href="#features" data-cursor="FEATURES" data-mag className="go mag glow-hover">THE FEATURES ↓</a>
+            <Link to="/buddy" data-cursor="REBEE" data-mag className="go ghost mag glow-hover">ASK REBEE</Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the feature set · what the app will do</p>
+          <h2 className="section-title">BUILT TO BE<br /><span>THE UNIVERSAL APP</span></h2>
+          <p className="nation-sub">The app is being built separately — this portfolio is the pitch. Every feature below exists because the pilot proved the need: <em>one drawer, weighed, paid, receipted.</em></p>
+          <div className="feat-grid">
+            <div className="feat-card" data-cursor="AI">
+              <span className="feat-ico">🤖</span>
+              <h3 className="anton">AI SCRAP-SCAN</h3>
+              <p>Snap a photo of your pile — the app reads the devices, estimates weight and value before the centre even leaves. No guessing, no bargaining in the dark.</p>
+              <span className="stamp st-violet">ESTIMATE</span>
+            </div>
+            <div className="feat-card" data-cursor="RATES">
+              <span className="feat-ico">📊</span>
+              <h3 className="anton">LIVE RATE CARDS</h3>
+              <p>Every centre publishes its rate — ₹8/kg, transparent, before you book. The price is the price; the scale decides the rest.</p>
+              <span className="stamp st-green">SOURCED</span>
+            </div>
+            <div className="feat-card" data-cursor="CHAIN">
+              <span className="feat-ico">🧾</span>
+              <h3 className="anton">CHAIN-OF-CUSTODY RECEIPTS</h3>
+              <p>Every handover receipts: door → collection partner → HSPCB-verified recycler → refiner. Weighed, not guessed — the pilot's receipt is the proof.</p>
+              <span className="stamp st-gold">RECEIPT #0001</span>
+            </div>
+            <div className="feat-card" data-cursor="SCALE">
+              <span className="feat-ico">⚖️</span>
+              <h3 className="anton">DOORSTEP WEIGHING</h3>
+              <p>The centre arrives with the scale and weighs in front of you. The pilot: 1.4 kg, ₹40, cash at the door. No hidden kilos.</p>
+              <span className="stamp st-green">WEIGHED</span>
+            </div>
+            <div className="feat-card" data-cursor="NETWORK">
+              <span className="feat-ico">🏘️</span>
+              <h3 className="anton">NETWORK RECRUITMENT</h3>
+              <p>Kabadiwalas + authorised recyclers register, set their rates and area, and the app routes pickups to them. 15 HSPCB recyclers found; 0 doorsteps served — until the app.</p>
+              <span className="stamp st-red">THE GAP</span>
+            </div>
+            <div className="feat-card" data-cursor="ANY KG">
+              <span className="feat-ico">📦</span>
+              <h3 className="anton">ANY QUANTITY, ANY DOOR</h3>
+              <p>Recyclers wait at 500 kg; homes hold 1.4. The app books from half a kilo up — small lots consolidate into full loads. Every drawer counts.</p>
+              <span className="stamp st-violet">0.5 KG → UP</span>
+            </div>
+          </div>
         </div>
       </section>
 
