@@ -17,3 +17,8 @@ vikaas-hq/studio/node_modules/
 image-search/
 image-search/
 uploads/
+
+# secrets — never commit
+vikaas-hq/v2-app/.env
+vikaas-hq/v2-app/.env.local
+*.env.local

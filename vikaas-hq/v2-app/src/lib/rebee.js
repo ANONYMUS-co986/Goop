@@ -5,13 +5,13 @@
  * browser can reach openrouter.ai even though the sandbox can't).
  * Falls back to the canned script when the API is unreachable.
  *
- * ⚠️ SECURITY: the key below is visible in client-side code.
- * It's fine for a private demo/preview. ROTATE or move to a
- * server-side proxy (Vercel function / Supabase edge fn) before
- * anything public. It lives in one place — this file.
+ * KEY HANDLING: read from VITE_REBEE_KEY (.env — gitignored).
+ * NOTE: VITE_* vars are still client-visible by design; before a
+ * public launch, move calls behind a server-side proxy that
+ * holds the key server-side.
  * ============================================================ */
-export const REBEE_KEY = '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';
-export const REBEE_MODEL = 'openai/gpt-4o-mini';
+export const REBEE_KEY = (import.meta.env.VITE_REBEE_KEY || '').trim();
+export const REBEE_MODEL = (import.meta.env.VITE_REBEE_MODEL || 'openai/gpt-4o-mini').trim();
 
 /* ---------- THE PORTFOLIO-AWARE BRAIN (system prompt) ---------- */
 export const REBEE_BRAIN = `You are REBEE (री-बी), the AI assistant inside VIKAAS — an app like Swiggy/Zomato but for E-WASTE pickup, built by Aarav Choudhary (15, Gurugram) for the 1M1B Changemakers World Cup 2026 "Kill the E-Waste" track. Goal: Top 3 → present at the 1M1B Impact Summit, UN Geneva, 20 Nov 2026.

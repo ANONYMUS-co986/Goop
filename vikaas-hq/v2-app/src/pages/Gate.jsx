@@ -24,7 +24,7 @@ const ROOM_CARDS = [
   { to: '/drawer', no: '02', title: 'THE DRAWER', desc: 'the origin — pinned, cinematic, interactive', badge: 'ENTER →', live: true },
   { to: '/proof', no: '03', title: 'THE PROOF', desc: 'the evidence vault — real photos, real receipts', badge: 'ENTER →', live: true },
   { to: '/kabadi', no: '04', title: 'THE KABADI UNIVERSE', desc: 'the network — 15 recyclers, the street kings, the moat', badge: 'ENTER →', live: true },
-  { no: '05', title: 'THE ARSENAL', desc: '6 reels · 22 posts · made with code', badge: 'PHASE 20', more: 'Six reels and twenty-two posts, every frame made with code. Hover to play, click to open the films room.' },
+  { to: '/arsenal', no: '05', title: 'THE ARSENAL', desc: '6 reels · 22 posts · 8 voices — made with code', badge: 'ENTER →', live: true },
   { no: '06', title: 'THE BUDDY', desc: 'ReBee — born from a Gurugram drawer', badge: 'PHASE 21', more: "1M1B's AI buddy: SCRAP-SCAN, DOORSTEP DIAL, MATERIAL MATCH. Built from the problem he solves." },
   { no: '07', title: 'THE SYSTEM', desc: 'the engine room — how it was all built', badge: 'PHASE 22', more: 'The receipts of the receipts — the engine, the pipelines, the self-review loop. The machine behind the machine.' },
   { no: '★', title: 'GENEVA', desc: 'UN · 20 NOV 2026 · the goal', badge: 'THE GOAL', more: "Top 3 fly to the 1M1B Impact Summit at the United Nations. That's the plan — publicly. Watch us." },

@@ -3,7 +3,6 @@ import SplitReveal from '../lib/fx/SplitReveal.jsx';
 import './comingsoon.css';
 
 const ROOM_META = {
-  arsenal:  { no: '05', name: 'THE ARSENAL',  phase: 'PHASE 20 · IN BUILD', teaser: '6 reels · 22 posts · 3 phonk beds. Every frame made with code — hover to play.' },
   buddy:    { no: '06', name: 'THE BUDDY',    phase: 'PHASE 21 · IN BUILD', teaser: 'ReBee — 1M1B\u2019s AI buddy. SCRAP-SCAN, DOORSTEP DIAL, MATERIAL MATCH. Built from the problem.' },
   system:   { no: '07', name: 'THE SYSTEM',   phase: 'PHASE 22 · IN BUILD', teaser: 'The engine room: the pipelines, the QA gate, the receipts of the receipts.' },
   geneva:   { no: '★',  name: 'GENEVA',       phase: 'THE GOAL · 20 NOV 2026', teaser: 'Top 3 fly to the 1M1B Impact Summit at the United Nations. That\u2019s the plan — publicly.' },
