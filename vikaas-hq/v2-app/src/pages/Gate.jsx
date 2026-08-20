@@ -6,6 +6,7 @@ import SplitType from 'split-type';
 import '../assets/css/gate.css';
 import rebeeImg from '../assets/img/rebee.png';
 import Monolith from '../components/Monolith.jsx';
+import AppPhone from '../components/AppPhone.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,13 +21,18 @@ function countUp(el) {
   })(t0);
 }
 
+const SOCIALS = [
+  { h: '@qwerty_aarav', label: 'THE PORTFOLIO · VIKAAS', icon: '📸', url: 'https://instagram.com/qwerty_aarav', note: 'weigh-days · the drawer nation · the journey' },
+  { h: '@1m1bfoundation', label: 'THE MISSION · 1M1B', icon: '🐝', url: 'https://instagram.com/1m1bfoundation', note: '#EWasteOff · the Changemakers World Cup' },
+  { h: '1M1B CHANGEMAKERS HUB', label: 'THE SHOWS · YOUTUBE', icon: '▶️', url: 'https://youtube.com/@1m1bchangemakershub', note: 'Divaa · Mission 2 · the briefs' },
+];
+
 const ROOM_CARDS = [
   { to: '/drawer', no: '02', title: 'THE DRAWER', desc: 'the origin — pinned, cinematic, interactive', badge: 'ENTER →', live: true },
   { to: '/proof', no: '03', title: 'THE PROOF', desc: 'the evidence vault — real photos, real receipts', badge: 'ENTER →', live: true },
   { to: '/kabadi', no: '04', title: 'THE KABADI UNIVERSE', desc: 'the network — 15 recyclers, the street kings, the moat', badge: 'ENTER →', live: true },
-  { to: '/arsenal', no: '05', title: 'THE ARSENAL', desc: '6 reels · 22 posts · 8 voices — made with code', badge: 'ENTER →', live: true },
-  { no: '06', title: 'THE BUDDY', desc: 'ReBee — born from a Gurugram drawer', badge: 'PHASE 21', more: "1M1B's AI buddy: SCRAP-SCAN, DOORSTEP DIAL, MATERIAL MATCH. Built from the problem he solves." },
-  { no: '07', title: 'THE SYSTEM', desc: 'the engine room — how it was all built', badge: 'PHASE 22', more: 'The receipts of the receipts — the engine, the pipelines, the self-review loop. The machine behind the machine.' },
+  { no: '05', title: 'THE BUDDY', desc: 'ReBee — born from a Gurugram drawer', badge: 'PHASE 21', more: "1M1B's AI buddy: SCRAP-SCAN, DOORSTEP DIAL, MATERIAL MATCH. Built from the problem he solves." },
+  { no: '06', title: 'THE SYSTEM', desc: 'the engine room — how it was all built', badge: 'PHASE 22', more: 'The receipts of the receipts — the engine, the pipelines, the self-review loop. The machine behind the machine.' },
   { no: '★', title: 'GENEVA', desc: 'UN · 20 NOV 2026 · the goal', badge: 'THE GOAL', more: "Top 3 fly to the 1M1B Impact Summit at the United Nations. That's the plan — publicly. Watch us." },
 ];
 
@@ -171,8 +177,13 @@ export default function Gate() {
         <div className="wrap">
           <p className="eyebrow cmd shiny">what is vikaas · 01</p>
           <h2 className="section-title">AN APP LIKE SWIGGY.<br /><span>FOR E-WASTE.</span></h2>
-          <p className="directive-text">Not a poster. Not a drive. <b>An app.</b> You open VIKAAS, enter your waste — what it is, how much — and <b>book a pickup</b>. A collection centre (a kabadiwala or an authorised recycler, recruited by us) arrives at your door, weighs it in front of you, pays cash, and receipts it all the way to a verified recycler. Like Swiggy — but the delivery is your dead electronics, going to the right place.</p>
-          <div className="anatomy-grid">
+          <p className="directive-text">Not a poster. Not a drive. <b>The universal app</b> for India's dead electronics. You open VIKAAS, enter your waste — what it is, how much, or a photo — and <b>book a pickup</b>. A collection centre (a kabadiwala or an authorised recycler, recruited by us) arrives at your door, weighs it in front of you, pays cash, and receipts it all the way to a verified recycler. Households, kabadiwalas, recyclers, cities — <b>one network, one app.</b> Like Swiggy — but the delivery is your e-waste, going to the right place.</p>
+          <div className="theapp-layout">
+            <div className="theapp-3d" data-cursor="THE APP, IN 3D">
+              <AppPhone />
+              <span className="theapp-3d-cap cmd">SELF-MADE MODEL · GLSL SCREEN · THE REAL APP</span>
+            </div>
+            <div className="anatomy-grid">
             <div className="acard" data-cursor="TAP 1">
               <span className="fno anton">1</span>
               <h3 className="anton">OPEN THE APP</h3>
@@ -194,6 +205,7 @@ export default function Gate() {
               <p>A receipt with a chain of custody — from your door to an HSPCB-verified recycler. Weighed, not guessed. Stamped, not screenshotted.</p>
               <span className="stamp st-gold">RECEIPT #0001 · REAL</span>
             </div>
+          </div>
           </div>
           <p className="nation-sub">Scrap apps exist. <em>E-waste doorstep doesn't.</em> VIKAAS is dedicated to dead electronics — AI estimates, live rates, verified chain of custody, any quantity from half a kilo. <b>That's the USP: where others aren't — your door.</b></p>
           <div className="flow-cta">
@@ -361,6 +373,27 @@ export default function Gate() {
               <p>25 households. Every device weighed, logged, delivered. No drawer left behind — from one drawer in Gurugram to the <b>1M1B Impact Summit at the United Nations, 20 Nov 2026.</b> That’s the plan. Publicly. Watch us.</p>
               <span className="stamp st-violet">GENEVA · 20 NOV</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="socials">
+        <div className="wrap">
+          <p className="eyebrow cmd shiny">the journey · follow the build</p>
+          <h2 className="section-title">THE CAMPAIGN LIVES<br /><span>ON INSTAGRAM</span></h2>
+          <p className="nation-sub">The reels, the posts, the weigh-days — the day-to-day of the build lives on the feeds below. <em>This portfolio sells the app; the feed documents the journey.</em></p>
+          <div className="socials-grid">
+            {SOCIALS.map((s) => (
+              <a key={s.h} className="social-card" href={s.url} target="_blank" rel="noreferrer" data-cursor="FOLLOW ↗" data-mag>
+                <span className="social-icon">{s.icon}</span>
+                <div className="social-main">
+                  <b className="anton">{s.h}</b>
+                  <span className="cmd">{s.label}</span>
+                  <p>{s.note}</p>
+                </div>
+                <span className="social-go cmd">OPEN ↗</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

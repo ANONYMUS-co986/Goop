@@ -13,7 +13,7 @@
 set -uo pipefail
 BASE="${1:-http://localhost:5173}"
 REPO_ROOT="/home/user/Goop/vikaas-hq/v2-app/src"
-ROUTES=("/" "/drawer" "/proof" "/kabadi" "/arsenal" "/boot?fast=1" "/type" "/app" "/app/book" "/app/centres" "/app/map" "/app/receipts" "/app/assistant" "/app/dashboard" "/app/login" "/app/admin")
+ROUTES=("/" "/drawer" "/proof" "/kabadi" "/boot?fast=1" "/type" "/app" "/app/book" "/app/centres" "/app/map" "/app/receipts" "/app/assistant" "/app/dashboard" "/app/login" "/app/admin")
 ENGINE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT=/tmp/qa_gate
 mkdir -p "$OUT"
@@ -33,11 +33,11 @@ echo "═══ VIKAAS QA GATE ═══  base: $BASE"
 
 # ---- 1. COMPILE gate (curl every route module) ----
 echo "── 1. COMPILE ──"
-for mod in /src/App.jsx /src/main.jsx /src/shell/Shell.jsx /src/components/Scape.jsx /src/pages/Gate.jsx /src/pages/Drawer.jsx /src/pages/Boot.jsx /src/pages/Type.jsx /src/pages/AppHome.jsx /src/pages/Book.jsx /src/pages/Centres.jsx /src/pages/MapPage.jsx /src/pages/Receipts.jsx /src/pages/Assistant.jsx /src/pages/Dashboard.jsx /src/pages/Login.jsx /src/pages/Admin.jsx /src/pages/Proof.jsx /src/pages/Kabadi.jsx /src/pages/Arsenal.jsx /src/pages/ComingSoon.jsx; do
+for mod in /src/App.jsx /src/main.jsx /src/shell/Shell.jsx /src/components/Scape.jsx /src/components/AppPhone.jsx /src/pages/Gate.jsx /src/pages/Drawer.jsx /src/pages/Boot.jsx /src/pages/Type.jsx /src/pages/AppHome.jsx /src/pages/Book.jsx /src/pages/Centres.jsx /src/pages/MapPage.jsx /src/pages/Receipts.jsx /src/pages/Assistant.jsx /src/pages/Dashboard.jsx /src/pages/Login.jsx /src/pages/Admin.jsx /src/pages/Proof.jsx /src/pages/Kabadi.jsx /src/pages/ComingSoon.jsx; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$BASE$mod")
   verdict "module $mod" "$([ "$code" = "200" ] && echo 0 || echo 1)" "HTTP $code"
 done
-for css in /src/assets/css/shell.css /src/assets/css/gate.css /src/assets/css/drawer.css /src/assets/css/boot.css /src/pages/type.css /src/pages/apphome.css /src/pages/book.css /src/pages/centres.css /src/pages/map.css /src/pages/receipts.css /src/pages/assistant.css /src/pages/op.css /src/pages/proof.css /src/pages/kabadi.css /src/pages/arsenal.css /src/pages/comingsoon.css; do
+for css in /src/assets/css/shell.css /src/assets/css/gate.css /src/assets/css/drawer.css /src/assets/css/boot.css /src/pages/type.css /src/pages/apphome.css /src/pages/book.css /src/pages/centres.css /src/pages/map.css /src/pages/receipts.css /src/pages/assistant.css /src/pages/op.css /src/pages/proof.css /src/pages/kabadi.css /src/pages/comingsoon.css; do
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$BASE$css")
   verdict "css $css" "$([ "$code" = "200" ] && echo 0 || echo 1)" "HTTP $code"
 done
@@ -76,14 +76,6 @@ else
 fi
 
 echo ""
-# ---- 6b. SCAPE GATE (fixed 3D bg, forced on — real browsers only) ----
-echo "── 6b. SCAPE ──"
-if node "$ENGINE/probe_scape.js" "$BASE" 2>/dev/null; then
-  verdict "scape-3d" 0 "canvas + WebGL + console clean"
-else
-  verdict "scape-3d" 1 "3D background probe failed"
-fi
-
 # ---- 7. REBEE CHAT GATE (real-AI fallback path) ----
 echo "── 7. REBEE CHAT ──"
 if node "$ENGINE/probe_rebee.js" "$BASE" 2>/dev/null; then
@@ -91,6 +83,17 @@ if node "$ENGINE/probe_rebee.js" "$BASE" 2>/dev/null; then
 else
   verdict "rebee-chat" 1 "chat probe failed"
 fi
+
+# ---- 8. SCAPE GATE (fixed 3D bg — LAST: WebGL probes can poison the
+# shared GPU process, so it runs after every other browser probe) ----
+echo "── 8. SCAPE ──"
+pkill -9 -f "headless_shell" 2>/dev/null; pkill -9 -f "chrome-linux" 2>/dev/null; sleep 1
+if node "$ENGINE/probe_scape.js" "$BASE" 2>/dev/null; then
+  verdict "scape-3d" 0 "canvas + WebGL + console clean"
+else
+  verdict "scape-3d" 1 "3D background probe failed"
+fi
+pkill -9 -f "headless_shell" 2>/dev/null; pkill -9 -f "chrome-linux" 2>/dev/null
 
 echo "═══ VERDICT: $pass ✅ / $fail ❌ ═══"
 [ "$fail" = "0" ] && echo "GATE: PASS — ship it." || { echo "GATE: FAIL — fix before shipping."; exit 1; }

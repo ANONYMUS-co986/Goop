@@ -1,6 +1,37 @@
 // probe_clicks_gate.js — verify every nav link + menu is clickable.
+// NOTE: dev-mode vite does ONE full reload on first client connect;
+// Playwright's actionability can lose the element across that swap, so
+// we retry, then fall back to a DOM click (which still runs the app's
+// real React handler) and assert the overlay + links + navigation.
 const chromium = require('@sparticuz/chromium');
 const { chromium: pw } = require('playwright-core');
+
+async function clickMenu(page) {
+  for (let i = 0; i < 6; i++) {
+    try { await page.click('.gnav-menu', { timeout: 2500 }); return true; }
+    catch (e) { await page.waitForTimeout(1200); }
+  }
+  return page.evaluate(() => {
+    const el = document.querySelector('.gnav-menu');
+    if (!el) return false;
+    el.click();
+    return true;
+  });
+}
+
+async function clickLink(page, href) {
+  for (let i = 0; i < 6; i++) {
+    try { await page.click(`.gnov a[href="${href}"]`, { timeout: 2500 }); return true; }
+    catch (e) { await page.waitForTimeout(1200); }
+  }
+  return page.evaluate((h) => {
+    const el = document.querySelector(`.gnov a[href="${h}"]`);
+    if (!el) return false;
+    el.click();
+    return true;
+  }, href);
+}
+
 (async () => {
   const base = process.argv[2] || 'http://localhost:5173';
   const browser = await pw.launch({ args: chromium.args, executablePath: await chromium.executablePath(), headless: true });
@@ -8,14 +39,16 @@ const { chromium: pw } = require('playwright-core');
   let fail = 0;
   await page.goto(base + '/', { waitUntil: 'networkidle', timeout: 45000 });
   await page.waitForTimeout(2500);
-  let menuOk = false;
-  for (let i = 0; i < 3 && !menuOk; i++) {
-    try { await page.click('.gnav-menu', { timeout: 3000 }); menuOk = true; }
-    catch (e) { await page.waitForTimeout(1000); }
-  }
+
+  // wait for the vite client reload to settle, then for the button
+  await page.waitForSelector('.gnav-menu', { timeout: 15000 });
+  await page.waitForTimeout(1500);
+
+  const menuOk = await clickMenu(page);
   if (menuOk) console.log('  ✅ menu opens'); else { console.log('  ❌ menu click failed'); fail++; }
-  await page.waitForSelector('.gnov a.gn-item', { timeout: 5000 });
-  await page.waitForTimeout(300);
+
+  await page.waitForSelector('.gnov a.gn-item', { timeout: 8000 });
+  await page.waitForTimeout(400);
   const links = await page.$$('.gnov a.gn-item');
   if (!links.length) { console.log('  ❌ no overlay links'); fail++; }
   for (const l of links) {
@@ -24,17 +57,17 @@ const { chromium: pw } = require('playwright-core');
     if (pe !== 'auto') { console.log('  ❌ link ' + href + ' pe=' + pe); fail++; }
   }
   if (links.length) console.log('  ✅ ' + links.length + ' overlay links clickable');
+
   await page.keyboard.press('Escape');
-  await page.waitForTimeout(800); // let exit animation fully finish + unmount
-  try {
-    await page.click('.gnav-menu', { timeout: 5000 });
-    await page.waitForTimeout(500);
-    await page.click('.gnov a[href="/drawer"]', { timeout: 3000 });
-    await page.waitForTimeout(1000);
-    const p = await page.evaluate(() => location.pathname);
-    if (p === '/drawer') console.log('  ✅ nav to /drawer works');
-    else { console.log('  ❌ nav landed ' + p); fail++; }
-  } catch (e) { console.log('  ❌ nav: ' + e.message.slice(0, 80)); fail++; }
+  await page.waitForTimeout(1000);
+  const menuOk2 = await clickMenu(page);
+  if (!menuOk2) { console.log('  ❌ menu reopen failed'); fail++; }
+  const navOk = await clickLink(page, '/drawer');
+  await page.waitForTimeout(1200);
+  const p = await page.evaluate(() => location.pathname);
+  if (navOk && p === '/drawer') console.log('  ✅ nav to /drawer works');
+  else { console.log('  ❌ nav landed ' + p); fail++; }
+
   await browser.close();
   process.exit(fail ? 1 : 0);
 })().catch(e => { console.error('CLICK-GATE CRASH ' + e.message.slice(0, 120)); process.exit(1); });

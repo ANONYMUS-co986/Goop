@@ -15,8 +15,7 @@ const ROOMS = [
   ['02', 'THE DRAWER', '/drawer', 'live', 'ENTER →'],
   ['03', 'THE PROOF', '/proof', 'live', 'ENTER →'],
   ['04', 'THE KABADI UNIVERSE', '/kabadi', 'live', 'ENTER →'],
-  ['05', 'THE ARSENAL', '/arsenal', 'live', 'ENTER →'],
-  ['06', 'THE BUDDY', '/buddy', 'soon', 'PHASE 21 →'],
+  ['05', 'THE BUDDY', '/buddy', 'soon', 'PHASE 21 →'],
   ['07', 'THE SYSTEM', '/system', 'soon', 'PHASE 22 →'],
   ['★', 'GENEVA', '/geneva', 'soon', 'PHASE 23 →'],
   ['§', 'THE TYPE', '/type', 'live', 'STYLEGUIDE →'],
@@ -137,8 +136,8 @@ export default function Shell({ pathname }) {
     if (reduce) return;
 
     /* 1+2+3: pointer delegation */
-    const SPOT = '.gcard,.acard,.chip,.nstat,.spot,.room-card,.impact-cell,.how-card,.kb-card,.kb-why-card,.pf-num,.pf-ev,.rx-card,.rx-stamp-cell,.as-power,.op-stat,.op-row,.op-req,.rx-slot,.ar-reel,.ar-tile,.ar-vo-row';
-    const TILT = '.gcard,.acard,.impact-cell,.kb-card,.kb-why-card,.pf-num,.rx-card,.as-power,.op-stat,.op-row,.op-req,.how-card,.rx-slot,.ar-reel,.ar-tile';
+    const SPOT = '.gcard,.acard,.chip,.nstat,.spot,.room-card,.impact-cell,.how-card,.kb-card,.kb-why-card,.pf-num,.pf-ev,.rx-card,.rx-stamp-cell,.as-power,.op-stat,.op-row,.op-req,.rx-slot,.social-card';
+    const TILT = '.gcard,.acard,.impact-cell,.kb-card,.kb-why-card,.pf-num,.rx-card,.as-power,.op-stat,.op-row,.op-req,.how-card,.rx-slot,.social-card';
 
     let mag = null, magTarget = null, magRAF = 0;
     const magLoop = () => {
